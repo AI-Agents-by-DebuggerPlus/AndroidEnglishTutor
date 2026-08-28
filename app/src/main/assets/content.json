@@ -1,0 +1,133 @@
+{
+  "lessons": [
+    {
+      "id": "a1-01",
+      "title": "Greetings",
+      "level": "A1",
+      "orderIndex": 1,
+      "content": "Learn basic greetings in English.\n\n- Hello! — Привет!\n- Good morning — Доброе утро\n- Good evening — Добрый вечер\n- Goodbye — До свидания\n\nUse these phrases when meeting people.\n\nHeadset: Play = listen / record, Next = skip, Previous = repeat.",
+      "practicePhrases": [
+        "Hello, how are you?",
+        "Good morning",
+        "Good evening",
+        "Goodbye"
+      ],
+      "languageCode": "en-US"
+    },
+    {
+      "id": "a1-02",
+      "title": "Introductions",
+      "level": "A1",
+      "orderIndex": 2,
+      "content": "Introduce yourself in English.\n\n- My name is Anna.\n- Nice to meet you.\n- I am from Russia.\n- I am a student.\n\nPractice telling someone about yourself.",
+      "practicePhrases": [
+        "My name is Anna",
+        "Nice to meet you",
+        "I am a student"
+      ],
+      "languageCode": "en-US"
+    },
+    {
+      "id": "a1-03",
+      "title": "Numbers",
+      "level": "A1",
+      "orderIndex": 3,
+      "content": "Count from one to ten.\n\n1 — one\n2 — two\n3 — three\n4 — four\n5 — five\n6 — six\n7 — seven\n8 — eight\n9 — nine\n10 — ten",
+      "practicePhrases": [
+        "one two three",
+        "four five six",
+        "seven eight nine ten"
+      ],
+      "languageCode": "en-US"
+    },
+    {
+      "id": "a2-01",
+      "title": "Daily Routine",
+      "level": "A2",
+      "orderIndex": 4,
+      "content": "Talk about your daily activities.\n\n- I wake up at seven.\n- I have breakfast.\n- I go to work.\n- I read in the evening.\n\nDescribe your typical day.",
+      "practicePhrases": [
+        "I wake up at seven",
+        "I have breakfast",
+        "I go to work"
+      ],
+      "languageCode": "en-US"
+    },
+    {
+      "id": "a2-02",
+      "title": "Shopping",
+      "level": "A2",
+      "orderIndex": 5,
+      "content": "Useful phrases for shopping.\n\n- How much is this?\n- I would like to buy...\n- Do you have a smaller size?\n- Can I pay by card?\n\nPractice asking for help in a store.",
+      "practicePhrases": [
+        "How much is this",
+        "I would like to buy this",
+        "Can I pay by card"
+      ],
+      "languageCode": "en-US"
+    },
+    {
+      "id": "b1-01",
+      "title": "Travel",
+      "level": "B1",
+      "orderIndex": 6,
+      "content": "English for travelers.\n\n- Where is the nearest station?\n- I have a reservation.\n- Could you recommend a restaurant?\n- I need a taxi, please.\n\nPrepare for your next trip.",
+      "practicePhrases": [
+        "Where is the nearest station",
+        "I have a reservation",
+        "I need a taxi please"
+      ],
+      "languageCode": "en-US"
+    }
+  ],
+  "placementTest": {
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple_choice",
+        "question": "What does \"Hello\" mean?",
+        "options": ["Привет", "Пока", "Спасибо", "Да"],
+        "correctIndex": 0,
+        "level": "A1"
+      },
+      {
+        "id": "q2",
+        "type": "multiple_choice",
+        "question": "Choose the correct translation: \"Good morning\"",
+        "options": ["Добрый вечер", "Доброе утро", "Спокойной ночи", "До свидания"],
+        "correctIndex": 1,
+        "level": "A1"
+      },
+      {
+        "id": "q3",
+        "type": "pronunciation",
+        "question": "Say aloud: \"Good morning\"",
+        "expectedText": "good morning",
+        "level": "A1"
+      },
+      {
+        "id": "q4",
+        "type": "multiple_choice",
+        "question": "\"I wake up at seven\" — this sentence is about:",
+        "options": ["Travel", "Daily routine", "Food", "Weather"],
+        "correctIndex": 1,
+        "level": "A2"
+      },
+      {
+        "id": "q5",
+        "type": "multiple_choice",
+        "question": "What is the best phrase in a shop?",
+        "options": ["How much is this?", "What is your name?", "Good night", "See you tomorrow"],
+        "correctIndex": 0,
+        "level": "A2"
+      },
+      {
+        "id": "q6",
+        "type": "pronunciation",
+        "question": "Say aloud: \"How much is this\"",
+        "expectedText": "how much is this",
+        "level": "A2"
+      }
+    ]
+  }
+}

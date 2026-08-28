@@ -1,0 +1,8 @@
+{
+  "supabaseUrl": "",
+  "supabaseAnonKey": "",
+  "senderName": "AndroidEnglishTutor",
+  "logRecipientName": "WpfChat",
+  "useAnonymousAuth": true,
+  "skipDuplicateLogsToSupabase": true
+}

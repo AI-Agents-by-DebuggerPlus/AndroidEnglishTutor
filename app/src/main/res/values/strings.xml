@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">English Tutor</string>
+    <string name="headset_test_notification_title">BT Play (English Tutor)</string>
+    <string name="headset_test_notification_text">Тест кнопок гарнитуры</string>
+    <string name="tests_title">Окно тестов</string>
+    <string name="tests_tab_tts">TTS</string>
+    <string name="tests_tab_stt">STT</string>
+    <string name="tests_tab_bt_play">BT Play</string>
+    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Счётчик растёт на каждое событие Play. TTS/STT на этой вкладке отключены.</string>
+    <string name="bt_play_test_count_label">нажатий BT Play</string>
+    <string name="bt_play_test_last_event">Последнее: %1$s · %2$s</string>
+    <string name="bt_play_test_simulate">Симулировать Play</string>
+    <string name="bt_play_test_capture_on">Native capture: ON (MediaSession)</string>
+    <string name="bt_play_test_capture_off">Native capture: OFF</string>
+    <string name="bt_play_test_log_title">Журнал событий</string>
+    <string name="bt_play_test_log_empty">Пока нет событий</string>
+</resources>
