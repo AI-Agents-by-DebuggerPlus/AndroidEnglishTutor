@@ -94,6 +94,7 @@ class LessonSessionService : Service() {
     }
 
     private suspend fun startLesson(lessonId: String) {
+        HeadsetMonitorService.start(this)
         val lesson = lessonRepository.getLesson(lessonId) ?: run {
             stopSelf()
             return

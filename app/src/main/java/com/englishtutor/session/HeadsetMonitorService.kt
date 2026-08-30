@@ -115,7 +115,7 @@ class HeadsetMonitorService : Service() {
                             PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS or
                             PlaybackStateCompat.ACTION_STOP,
                     )
-                    .setState(PlaybackStateCompat.STATE_PLAYING, 0, 1f)
+                    .setState(PlaybackStateCompat.STATE_PAUSED, 0, 0f)
                     .build(),
             )
             isActive = true

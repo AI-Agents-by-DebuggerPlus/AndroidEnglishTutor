@@ -10,6 +10,7 @@ import com.englishtutor.bluetooth.ConnectedBluetoothDevice
 import com.englishtutor.domain.voice.SpeechRecognizerProvider
 import com.englishtutor.domain.voice.TextToSpeechProvider
 import com.englishtutor.session.HeadsetButtonNotifier
+import com.englishtutor.session.HeadsetMonitorService
 import com.englishtutor.session.HeadsetTestController
 import com.englishtutor.session.LessonSessionService
 import com.englishtutor.util.AppLogger
@@ -115,6 +116,7 @@ class VoiceTestViewModel @Inject constructor(
         textToSpeech.stopSpeaking()
         speechRecognizer.cancel()
         stopLessonSession()
+        HeadsetMonitorService.start(appContext)
         headsetButtonNotifier.btPlayTestIsolation = true
         refreshIsolatedHandler()
         logger.i(TAG, "Headset isolation ON")

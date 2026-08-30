@@ -71,6 +71,11 @@ class AppSessionManager @Inject constructor(
         logger.i("App", "Background work stopped")
     }
 
+    fun restartHeadsetMonitor() {
+        runCatching { HeadsetMonitorService.start(appContext) }
+            .onFailure { logger.e("App", "HeadsetMonitorService restart failed: ${it.message}") }
+    }
+
     companion object {
         const val STARTUP_GREETING = "Android English Tutor is ready"
         const val STOP_PHRASE = "AndroidEnglishTutor will be stopped"
