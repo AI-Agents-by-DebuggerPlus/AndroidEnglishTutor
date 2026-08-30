@@ -30,6 +30,9 @@ data class LogEntry(
 
 @Singleton
 class AppLogger @Inject constructor() {
+    @Volatile
+    var minBufferLevel: LogLevel = LogLevel.INFO
+
     private val _entries = MutableStateFlow<List<LogEntry>>(emptyList())
     val entries: StateFlow<List<LogEntry>> = _entries.asStateFlow()
     private var nextId = 0L
@@ -47,16 +50,6 @@ class AppLogger @Inject constructor() {
     }
 
     private fun log(level: LogLevel, tag: String, message: String) {
-        val entry = LogEntry(
-            id = ++nextId,
-            timestampMs = System.currentTimeMillis(),
-            level = level,
-            tag = tag,
-            message = message,
-        )
-        _entries.update { current ->
-            (current + entry).takeLast(MAX_ENTRIES)
-        }
         android.util.Log.println(
             when (level) {
                 LogLevel.DEBUG -> android.util.Log.DEBUG
@@ -67,6 +60,19 @@ class AppLogger @Inject constructor() {
             "EnglishTutor/$tag",
             message,
         )
+        if (level.ordinal < minBufferLevel.ordinal) {
+            return
+        }
+        val entry = LogEntry(
+            id = ++nextId,
+            timestampMs = System.currentTimeMillis(),
+            level = level,
+            tag = tag,
+            message = message,
+        )
+        _entries.update { current ->
+            (current + entry).takeLast(MAX_ENTRIES)
+        }
     }
 
     companion object {

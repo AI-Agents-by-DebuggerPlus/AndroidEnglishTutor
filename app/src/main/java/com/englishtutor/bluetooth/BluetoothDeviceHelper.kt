@@ -62,9 +62,7 @@ data class BluetoothConnectionSnapshot(
         buildString {
             append("perm=$permissionGranted")
             append("|connected=")
-            append(devices.joinToString(",") { "${it.address}:${it.profileLabel}" })
-            append("|active=")
-            append(activeDevice?.let { "${it.address}:${it.routeLabel}" }.orEmpty())
+            append(devices.joinToString(",") { it.address })
         }
 }
 

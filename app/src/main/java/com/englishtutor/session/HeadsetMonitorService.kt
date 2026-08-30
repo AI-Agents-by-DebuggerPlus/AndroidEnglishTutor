@@ -29,6 +29,7 @@ import javax.inject.Inject
 class HeadsetMonitorService : Service() {
 
     @Inject lateinit var headsetButtonNotifier: HeadsetButtonNotifier
+    @Inject lateinit var headsetTestController: HeadsetTestController
 
     private var mediaSession: MediaSessionCompat? = null
 
@@ -47,6 +48,7 @@ class HeadsetMonitorService : Service() {
     }
 
     override fun onDestroy() {
+        headsetTestController.setCaptureStatus(nativeCaptureOn = false)
         mediaSession?.isActive = false
         mediaSession?.release()
         mediaSession = null
@@ -58,10 +60,12 @@ class HeadsetMonitorService : Service() {
     private fun attachMediaSession() {
         if (mediaSession != null) {
             mediaSession?.isActive = true
+            headsetTestController.setCaptureStatus(nativeCaptureOn = true)
             return
         }
 
         val notifier = headsetButtonNotifier
+        val controller = headsetTestController
         val session = MediaSessionCompat(this, "EnglishTutorHeadset").apply {
             setFlags(
                 MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or
@@ -111,12 +115,13 @@ class HeadsetMonitorService : Service() {
                             PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS or
                             PlaybackStateCompat.ACTION_STOP,
                     )
-                    .setState(PlaybackStateCompat.STATE_PAUSED, 0, 0f)
+                    .setState(PlaybackStateCompat.STATE_PLAYING, 0, 1f)
                     .build(),
             )
             isActive = true
         }
         mediaSession = session
+        controller.setCaptureStatus(nativeCaptureOn = true)
     }
 
     private fun extractKeyEvent(intent: Intent?): KeyEvent? {

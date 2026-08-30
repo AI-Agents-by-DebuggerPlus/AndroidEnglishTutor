@@ -294,6 +294,6 @@ class VoiceTestViewModel @Inject constructor(
 
     companion object {
         private const val TAG = "VoiceTest"
-        private const val BLUETOOTH_REFRESH_MS = 2_000L
+        private const val BLUETOOTH_REFRESH_MS = 15_000L
     }
 }

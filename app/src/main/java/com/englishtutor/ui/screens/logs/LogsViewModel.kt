@@ -7,6 +7,7 @@ import com.englishtutor.data.supabase.SupabaseSettingsRepository
 import com.englishtutor.util.AppLogger
 import com.englishtutor.util.AppVersion
 import com.englishtutor.util.LogEntry
+import com.englishtutor.util.LogLevel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 data class LogsUiState(
     val versionLabel: String = AppVersion.label,
     val entries: List<LogEntry> = emptyList(),
+    val showDebug: Boolean = false,
     val isUploading: Boolean = false,
     val uploadStatus: String? = null,
     val uploadError: String? = null,
@@ -34,14 +36,18 @@ class LogsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val uploadState = MutableStateFlow(UploadUi())
+    private val showDebug = MutableStateFlow(false)
 
     val uiState: StateFlow<LogsUiState> = combine(
         logger.entries,
+        showDebug,
         uploadState,
-    ) { entries, upload ->
+    ) { entries, debug, upload ->
+        val minLevel = if (debug) LogLevel.DEBUG else LogLevel.INFO
         LogsUiState(
             versionLabel = AppVersion.label,
-            entries = entries,
+            entries = entries.filter { it.level.ordinal >= minLevel.ordinal },
+            showDebug = debug,
             isUploading = upload.isUploading,
             uploadStatus = upload.status,
             uploadError = upload.error,
@@ -61,6 +67,11 @@ class LogsViewModel @Inject constructor(
         logger.clear()
         supabaseLogRepository.clearSentMarks()
         uploadState.update { it.copy(status = "Логи очищены", error = null) }
+    }
+
+    fun setShowDebug(enabled: Boolean) {
+        showDebug.value = enabled
+        logger.minBufferLevel = if (enabled) LogLevel.DEBUG else LogLevel.INFO
     }
 
     fun sendToServer() {

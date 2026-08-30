@@ -323,6 +323,7 @@ android.permission.BLUETOOTH_CONNECT
 - [ ] ACL connect/disconnect озвучивается или пишется в лог
 - [ ] `BLUETOOTH_CONNECT` запрошен и выдан
 - [ ] Tasker BT Key **выключен** на время теста (не перехватывает Play)
+- [ ] `adb shell dumpsys media_session` в момент нажатия Play показывает `com.englishtutor` как единственную/верхнюю активную сессию, а не только `HeadsetMonitorService` в списке процессов
 
 ---
 

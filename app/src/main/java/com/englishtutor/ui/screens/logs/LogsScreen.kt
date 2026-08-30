@@ -26,6 +26,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -101,6 +102,23 @@ fun LogsScreen(
                     text = "sink: ${state.recipientLabel} · sender: AndroidEnglishTutor · [LOG:…]",
                     style = MaterialTheme.typography.bodySmall,
                 )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Показывать DEBUG",
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                    Switch(
+                        checked = state.showDebug,
+                        onCheckedChange = viewModel::setShowDebug,
+                        enabled = !state.isUploading,
+                    )
+                }
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = viewModel::sendToServer,
