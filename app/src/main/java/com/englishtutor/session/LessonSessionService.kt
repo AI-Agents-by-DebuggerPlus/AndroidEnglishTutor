@@ -12,14 +12,10 @@ import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.os.Build
 import android.os.IBinder
-import android.support.v4.media.MediaMetadataCompat
-import android.support.v4.media.session.MediaSessionCompat
-import android.support.v4.media.session.PlaybackStateCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import com.englishtutor.MainActivity
 import com.englishtutor.R
-import com.englishtutor.domain.model.LessonPhase
 import com.englishtutor.domain.repository.LessonRepository
 import com.englishtutor.domain.repository.ProgressRepository
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,19 +29,20 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
- * Foreground MediaSession host so headset AVRCP buttons work with screen off / app backgrounded.
+ * Foreground lesson host: audio focus + notification.
+ * Headset buttons are captured by [HeadsetMonitorService] → [HeadsetButtonNotifier].
  */
 @AndroidEntryPoint
 class LessonSessionService : Service() {
 
     @Inject lateinit var sessionController: LessonSessionController
+    @Inject lateinit var headsetButtonNotifier: HeadsetButtonNotifier
     @Inject lateinit var lessonRepository: LessonRepository
     @Inject lateinit var progressRepository: ProgressRepository
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private var stateJob: Job? = null
 
-    private var mediaSession: MediaSessionCompat? = null
     private var audioManager: AudioManager? = null
     private var audioFocusRequest: AudioFocusRequest? = null
     private var hasAudioFocus = false
@@ -58,12 +55,10 @@ class LessonSessionService : Service() {
             -> {
                 hasAudioFocus = false
                 sessionController.setAudioFocusHeld(false)
-                // Keep session alive on transient loss (call, other media).
             }
             AudioManager.AUDIOFOCUS_GAIN -> {
                 hasAudioFocus = true
                 sessionController.setAudioFocusHeld(true)
-                updatePlaybackState(PlaybackStateCompat.STATE_PLAYING)
             }
         }
     }
@@ -72,47 +67,8 @@ class LessonSessionService : Service() {
         super.onCreate()
         audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         createNotificationChannel()
-        mediaSession = MediaSessionCompat(this, "EnglishTutorLesson").apply {
-            setFlags(
-                MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or
-                    MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS,
-            )
-            setCallback(object : MediaSessionCompat.Callback() {
-                override fun onPlay() {
-                    ensureAudioFocus()
-                    sessionController.onPlayPause()
-                }
-
-                override fun onPause() {
-                    ensureAudioFocus()
-                    sessionController.onPlayPause()
-                }
-
-                override fun onSkipToNext() {
-                    ensureAudioFocus()
-                    sessionController.onNext()
-                }
-
-                override fun onSkipToPrevious() {
-                    ensureAudioFocus()
-                    sessionController.onPrevious()
-                }
-            })
-            isActive = true
-        }
-
         stateJob = serviceScope.launch {
             sessionController.state.collectLatest { state ->
-                updateMetadata(state.lessonTitle, state.currentPhrase, state.phraseProgressLabel)
-                val playbackState = when (state.phase) {
-                    LessonPhase.SPEAKING_PHRASE,
-                    LessonPhase.SPEAKING_FEEDBACK,
-                    LessonPhase.RECORDING,
-                    -> PlaybackStateCompat.STATE_PLAYING
-                    LessonPhase.COMPLETED -> PlaybackStateCompat.STATE_STOPPED
-                    else -> PlaybackStateCompat.STATE_PAUSED
-                }
-                updatePlaybackState(playbackState)
                 updateNotification(
                     title = state.lessonTitle.ifBlank { getString(R.string.app_name) },
                     text = state.statusMessage ?: state.currentPhrase,
@@ -155,6 +111,8 @@ class LessonSessionService : Service() {
             startForeground(NOTIFICATION_ID, notification)
         }
 
+        headsetButtonNotifier.btPlayTestIsolation = false
+        headsetButtonNotifier.isolatedBtPlayHandler = null
         ensureAudioFocus()
         sessionController.start(lesson = lesson, alreadyCompleted = alreadyCompleted)
     }
@@ -188,8 +146,6 @@ class LessonSessionService : Service() {
         }
         hasAudioFocus = result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
         sessionController.setAudioFocusHeld(hasAudioFocus)
-        mediaSession?.isActive = true
-        updatePlaybackState(PlaybackStateCompat.STATE_PLAYING)
     }
 
     private fun abandonAudioFocus() {
@@ -204,30 +160,6 @@ class LessonSessionService : Service() {
         sessionController.setAudioFocusHeld(false)
     }
 
-    private fun updatePlaybackState(state: Int) {
-        val actions = PlaybackStateCompat.ACTION_PLAY or
-            PlaybackStateCompat.ACTION_PAUSE or
-            PlaybackStateCompat.ACTION_PLAY_PAUSE or
-            PlaybackStateCompat.ACTION_SKIP_TO_NEXT or
-            PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS
-        mediaSession?.setPlaybackState(
-            PlaybackStateCompat.Builder()
-                .setActions(actions)
-                .setState(state, PlaybackStateCompat.PLAYBACK_POSITION_UNKNOWN, 1f)
-                .build(),
-        )
-    }
-
-    private fun updateMetadata(title: String, phrase: String, progress: String) {
-        mediaSession?.setMetadata(
-            MediaMetadataCompat.Builder()
-                .putString(MediaMetadataCompat.METADATA_KEY_TITLE, phrase.ifBlank { title })
-                .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, "English Tutor")
-                .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, "$title · $progress")
-                .build(),
-        )
-    }
-
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val channel = NotificationChannel(
@@ -235,7 +167,7 @@ class LessonSessionService : Service() {
             "Lesson session",
             NotificationManager.IMPORTANCE_LOW,
         ).apply {
-            description = "Keeps headset controls active during a lesson"
+            description = "Keeps lesson session active"
         }
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
@@ -261,10 +193,6 @@ class LessonSessionService : Service() {
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .addAction(0, "Stop", stopIntent)
-            .setStyle(
-                androidx.media.app.NotificationCompat.MediaStyle()
-                    .setMediaSession(mediaSession?.sessionToken),
-            )
             .build()
     }
 
@@ -276,7 +204,6 @@ class LessonSessionService : Service() {
     private fun stopSession() {
         sessionController.stop()
         abandonAudioFocus()
-        mediaSession?.isActive = false
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
     }
@@ -285,11 +212,6 @@ class LessonSessionService : Service() {
         stateJob?.cancel()
         serviceScope.cancel()
         abandonAudioFocus()
-        mediaSession?.apply {
-            isActive = false
-            release()
-        }
-        mediaSession = null
         super.onDestroy()
     }
 

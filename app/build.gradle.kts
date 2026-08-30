@@ -15,8 +15,8 @@ android {
         applicationId = "com.englishtutor"
         minSdk = 26
         targetSdk = 35
-        versionCode = 9
-        versionName = "1.3.3"
+        versionCode = 15
+        versionName = "1.3.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

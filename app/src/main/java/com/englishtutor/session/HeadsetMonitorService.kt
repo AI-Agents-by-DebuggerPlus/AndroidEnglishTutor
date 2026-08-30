@@ -22,12 +22,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 /**
- * Foreground MediaSession for headset button testing (AndroidChat HeadsetMonitorService pattern).
+ * Sticky foreground MediaSession for Bluetooth headset buttons (AndroidChat pattern).
+ * No audio focus, no MediaButtonReceiver — plain notification + active session.
  */
 @AndroidEntryPoint
-class HeadsetTestService : Service() {
+class HeadsetMonitorService : Service() {
 
-    @Inject lateinit var headsetTestController: HeadsetTestController
+    @Inject lateinit var headsetButtonNotifier: HeadsetButtonNotifier
 
     private var mediaSession: MediaSessionCompat? = null
 
@@ -39,21 +40,13 @@ class HeadsetTestService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
-            ACTION_STOP -> {
-                stopTest()
-                return START_NOT_STICKY
-            }
-        }
         if (mediaSession?.isActive != true) {
             attachMediaSession()
         }
-        headsetTestController.setActive(true)
         return START_STICKY
     }
 
     override fun onDestroy() {
-        headsetTestController.setActive(false)
         mediaSession?.isActive = false
         mediaSession?.release()
         mediaSession = null
@@ -68,8 +61,8 @@ class HeadsetTestService : Service() {
             return
         }
 
-        val controller = headsetTestController
-        val session = MediaSessionCompat(this, "EnglishTutorHeadsetTest").apply {
+        val notifier = headsetButtonNotifier
+        val session = MediaSessionCompat(this, "EnglishTutorHeadset").apply {
             setFlags(
                 MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or
                     MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS,
@@ -77,23 +70,23 @@ class HeadsetTestService : Service() {
             setCallback(
                 object : MediaSessionCompat.Callback() {
                     override fun onPlay() {
-                        controller.notifyButton("MEDIA_PLAY")
+                        notifier.notifyButton("MEDIA_PLAY")
                     }
 
                     override fun onPause() {
-                        controller.notifyButton("MEDIA_PAUSE")
+                        notifier.notifyButton("MEDIA_PAUSE")
                     }
 
                     override fun onSkipToNext() {
-                        controller.notifyButton("MEDIA_NEXT")
+                        notifier.notifyButton("MEDIA_NEXT")
                     }
 
                     override fun onSkipToPrevious() {
-                        controller.notifyButton("MEDIA_PREVIOUS")
+                        notifier.notifyButton("MEDIA_PREVIOUS")
                     }
 
                     override fun onStop() {
-                        controller.notifyButton("MEDIA_STOP")
+                        notifier.notifyButton("MEDIA_STOP")
                     }
 
                     override fun onMediaButtonEvent(mediaButtonIntent: Intent?): Boolean {
@@ -101,7 +94,7 @@ class HeadsetTestService : Service() {
                             ?: return super.onMediaButtonEvent(mediaButtonIntent)
                         val label = HeadsetButtonNames.fromKeyCode(event.keyCode)
                         if (label != null && event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 0) {
-                            controller.notifyButton(label)
+                            notifier.notifyButton(label)
                             return true
                         }
                         return super.onMediaButtonEvent(mediaButtonIntent)
@@ -143,7 +136,7 @@ class HeadsetTestService : Service() {
             "Кнопки гарнитуры",
             NotificationManager.IMPORTANCE_LOW,
         ).apply {
-            description = "Мониторинг media-кнопок Bluetooth для теста"
+            description = "Мониторинг media-кнопок Bluetooth"
         }
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
@@ -176,41 +169,17 @@ class HeadsetTestService : Service() {
         }
     }
 
-    private fun stopTest() {
-        headsetTestController.setActive(false)
-        mediaSession?.isActive = false
-        stopForeground(STOP_FOREGROUND_REMOVE)
-        stopSelf()
-    }
-
     companion object {
-        const val ACTION_START = "com.englishtutor.headset.START"
-        const val ACTION_STOP = "com.englishtutor.headset.STOP"
-        private const val CHANNEL_ID = "headset_test"
+        private const val CHANNEL_ID = "headset_monitor"
         private const val NOTIFICATION_ID = 43
 
         fun start(context: Context) {
-            stopLessonSession(context)
-            val intent = Intent(context, HeadsetTestService::class.java).apply {
-                action = ACTION_START
-            }
+            val intent = Intent(context, HeadsetMonitorService::class.java)
             ContextCompat.startForegroundService(context, intent)
         }
 
         fun stop(context: Context) {
-            context.startService(
-                Intent(context, HeadsetTestService::class.java).apply {
-                    action = ACTION_STOP
-                },
-            )
-        }
-
-        private fun stopLessonSession(context: Context) {
-            context.startService(
-                Intent(context, LessonSessionService::class.java).apply {
-                    action = LessonSessionService.ACTION_STOP
-                },
-            )
+            context.stopService(Intent(context, HeadsetMonitorService::class.java))
         }
     }
 }

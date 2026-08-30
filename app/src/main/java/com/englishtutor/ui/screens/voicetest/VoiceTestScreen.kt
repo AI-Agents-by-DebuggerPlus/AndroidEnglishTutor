@@ -19,6 +19,8 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -32,12 +34,10 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -46,7 +46,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishtutor.R
-import com.englishtutor.session.HeadsetTestService
+import com.englishtutor.bluetooth.ActiveBluetoothDevice
+import com.englishtutor.bluetooth.ConnectedBluetoothDevice
 import com.englishtutor.ui.components.BuildVersionSubtitle
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,7 +58,6 @@ fun VoiceTestScreen(
     viewModel: VoiceTestViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions(),
@@ -73,20 +73,6 @@ fun VoiceTestScreen(
             }
         }
         permissionLauncher.launch(permissions.toTypedArray())
-    }
-
-    LaunchedEffect(state.selectedTab) {
-        if (state.selectedTab == 2) {
-            HeadsetTestService.start(context)
-        } else {
-            HeadsetTestService.stop(context)
-        }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            HeadsetTestService.stop(context)
-        }
     }
 
     val tabs = listOf(
@@ -141,6 +127,15 @@ fun VoiceTestScreen(
                     .padding(horizontal = 16.dp, vertical = 8.dp),
             )
 
+            BluetoothDevicesSection(
+                permissionGranted = state.bluetoothPermissionGranted,
+                connectedDevices = state.connectedBluetoothDevices,
+                activeDevice = state.activeBluetoothDevice,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+            )
+
             ScrollableTabRow(selectedTabIndex = state.selectedTab, edgePadding = 8.dp) {
                 tabs.forEachIndexed { index, title ->
                     Tab(
@@ -178,11 +173,82 @@ fun VoiceTestScreen(
                     pressCount = state.btPressCount,
                     lastEventLabel = state.btLastEventLabel,
                     lastEventAt = state.btLastEventAt,
-                    nativeCaptureOn = state.headsetActive,
+                    nativeCaptureOn = state.nativeCaptureOn,
                     eventLog = state.btEventLog,
                     onSimulate = viewModel::simulateBtPlay,
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun BluetoothDevicesSection(
+    permissionGranted: Boolean,
+    connectedDevices: List<ConnectedBluetoothDevice>,
+    activeDevice: ActiveBluetoothDevice?,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.bt_devices_section_title),
+                style = MaterialTheme.typography.titleSmall,
+            )
+            if (!permissionGranted) {
+                Text(
+                    text = stringResource(R.string.bt_devices_no_permission),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+                return@Column
+            }
+            Text(
+                text = stringResource(R.string.bt_devices_connected_title),
+                style = MaterialTheme.typography.labelLarge,
+            )
+            if (connectedDevices.isEmpty()) {
+                Text(
+                    text = stringResource(R.string.bt_devices_none),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            } else {
+                connectedDevices.forEach { device ->
+                    Text(
+                        text = device.displayLine(),
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            fontFamily = FontFamily.Monospace,
+                        ),
+                    )
+                }
+            }
+            Text(
+                text = stringResource(R.string.bt_devices_active_title),
+                style = MaterialTheme.typography.labelLarge,
+            )
+            Text(
+                text = activeDevice?.displayLine()
+                    ?: stringResource(R.string.bt_devices_active_none),
+                style = MaterialTheme.typography.bodySmall.copy(
+                    fontFamily = FontFamily.Monospace,
+                ),
+                color = if (activeDevice != null) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                },
+            )
         }
     }
 }

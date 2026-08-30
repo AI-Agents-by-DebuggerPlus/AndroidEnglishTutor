@@ -1,7 +1,7 @@
 # Тест кнопок Bluetooth-гарнитуры (AndroidEnglishTutor)
 
-**Версия:** 1.3.3+  
-**Эталон UI/логики:** AndroidChat `TestsScreen` → вкладка BT Play
+**Версия:** 1.3.8+  
+**Эталон:** AndroidChat `HeadsetMonitorService` + `HeadsetButtonNotifier`
 
 ---
 
@@ -35,7 +35,7 @@
 
 | Элемент | Описание |
 |---------|----------|
-| Статус capture | ON/OFF — активен ли `HeadsetTestService` |
+| Статус capture | ON/OFF — активен ли `HeadsetMonitorService` (старт при запуске приложения) |
 | Большой счётчик | Число нажатий Play / Play-Pause / HeadsetHook |
 | Последнее событие | Метка + время `HH:mm:ss.SSS` |
 | Симулировать Play | Проверка без гарнитуры |
@@ -50,10 +50,13 @@
 Гарнитура (AVRCP)
         │
         ▼
-HeadsetTestService (foreground, MediaSessionCompat)
-        │  onPlay / onPause / onSkipToNext / onMediaButtonEvent
+HeadsetMonitorService (foreground, MediaSessionCompat) — sticky, как AndroidChat
+        │  onPlay / onPause / onMediaButtonEvent
         ▼
-HeadsetTestController.notifyButton(label)
+HeadsetButtonNotifier.notifyButton(label)
+        │
+        ├─ btPlayTestIsolation? → счётчик (+ optional STT handler на вкладке STT)
+        └─ production → EnglishTutorPlayHandler
         │  debounce 500 ms
         │  только Play-эквиваленты → счётчик + UI
         ▼
@@ -62,27 +65,39 @@ VoiceTestScreen (вкладка BT Play)
 
 ### Ключевые файлы
 
-- `session/HeadsetTestService.kt` — MediaSession, паттерн AndroidChat `HeadsetMonitorService`
-- `session/HeadsetTestController.kt` — состояние теста
+- `session/HeadsetMonitorService.kt` — sticky MediaSession (как AndroidChat)
+- `session/HeadsetButtonNotifier.kt` — debounce + isolation + routing
+- `session/HeadsetTestController.kt` — счётчик UI
 - `session/HeadsetButtonNames.kt` — KeyEvent → `MEDIA_PLAY`, `HEADSETHOOK`, …
 - `ui/screens/voicetest/VoiceTestScreen.kt` — 3 вкладки
 
-### Автозапуск / остановка
+### Жизненный цикл
 
-- Вкладка **BT Play** выбрана → `HeadsetTestService.start()`
-- Другая вкладка или выход с экрана → `HeadsetTestService.stop()`
-- При старте теста останавливается `LessonSessionService` (избежание двух MediaSession)
+- **Запуск приложения** → `HeadsetMonitorService.start()` (sticky)
+- **Окно тестов открыто** → `btPlayTestIsolation = true`
+- **Окно тестов закрыто** → isolation OFF → кнопки в урок
+- Вкладка BT Play **не** стартует/останавливает сервис
 
 ---
 
 ## Отличия от урока
 
-| | Урок (`LessonSessionService`) | Тест (`HeadsetTestService`) |
-|--|-------------------------------|------------------------------|
+| | Урок (`LessonSessionService`) | Тест (isolation) |
+|--|-------------------------------|------------------|
+| MediaSession | `HeadsetMonitorService` (общий) | тот же сервис |
 | Audio focus | Да (TTS/STT) | Нет (как AndroidChat) |
-| Playback state | PLAYING / PAUSED по фазе | `STATE_PAUSED` |
-| TTS при кнопке | Да | Нет |
-| Play-эквиваленты | play/pause логика урока | Только счётчик |
+| Play-эквиваленты | `EnglishTutorPlayHandler` | Только счётчик |
+
+### BT Play в уроке (`EnglishTutorPlayHandler`)
+
+| Состояние | Действие Play |
+|-----------|---------------|
+| STT слушает | cancel |
+| TTS фразы на паузе | cue «Continue» → resume |
+| TTS фразы играет | pause + cue «Pause» |
+| Idle, фраза не озвучена | speak phrase |
+| Idle, фраза озвучена | STT (Bluetooth SCO) |
+| Пустой STT | cue «Play» → next phrase |
 
 ---
 
@@ -112,5 +127,6 @@ VoiceTestScreen (вкладка BT Play)
 
 ## См. также
 
+- [AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md](AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md) — полный отчёт по BT из AndroidChat
 - [AndroidChat-BT-Headset-Testing-Report.md](AndroidChat-BT-Headset-Testing-Report.md) — полный разбор AndroidChat
 - `TaskerToWpf/Docs/Known-Issues.md` — конфликты MediaSession с Tasker

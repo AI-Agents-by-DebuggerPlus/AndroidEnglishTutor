@@ -2,13 +2,14 @@
 
 Офлайн Android-приложение для изучения английского: уроки, стартовый тест, прогресс, управление через Bluetooth-гарнитуру.
 
-**Текущая сборка:** v1.3.3 (versionCode 9)
+**Текущая сборка:** v1.3.8 (versionCode 14)
 
 ## Возможности
 
 - Уроки с несколькими фразами (Room + JSON в assets)
 - Стартовый тест уровня (multiple choice + произношение)
-- Урок в режиме eyes-free: `LessonSessionService` + `MediaSessionCompat`
+- Урок в режиме eyes-free: `LessonSessionService` + `EnglishTutorPlayHandler` (pause/resume TTS, STT + SCO)
+- Определение BT-гарнитуры, голосовое приветствие, кнопка Stop
 - **Окно тестов** (TTS / STT / BT Play) — по образцу AndroidChat
 - **Экран логов** с отправкой на Supabase (`[LOG:category] message`)
 - Версия сборки на главных экранах
@@ -49,8 +50,11 @@ Package: `com.englishtutor`
 app/src/main/java/com/englishtutor/
 ├── session/
 │   ├── LessonSessionService.kt    # Урок: MediaSession + audio focus
-│   ├── HeadsetTestService.kt      # Тест BT Play (как AndroidChat)
-│   └── HeadsetTestController.kt   # Счётчик + журнал
+│   ├── EnglishTutorPlayHandler.kt # BT Play → pause/resume/STT/next
+│   ├── HeadsetMonitorService.kt   # Sticky MediaSession (как AndroidChat)
+│   ├── HeadsetButtonNotifier.kt # Маршрутизация + isolation
+│   └── HeadsetTestController.kt # Счётчик + журнал BT Play
+├── bluetooth/                     # BT device detection, SCO, ACL monitor
 ├── ui/screens/voicetest/          # Окно тестов (3 вкладки)
 └── data/supabase/                 # Отправка логов
 ```
@@ -61,4 +65,5 @@ app/src/main/java/com/englishtutor/
 |------|----------|
 | [Docs/cursor_prompt_language_tutor_mvp.md](Docs/cursor_prompt_language_tutor_mvp.md) | Исходный MVP-промпт |
 | [Docs/headset-testing.md](Docs/headset-testing.md) | Тест кнопок гарнитуры |
+| [Docs/AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md](Docs/AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md) | Полный отчёт по BT из AndroidChat |
 | [Docs/AndroidChat-BT-Headset-Testing-Report.md](Docs/AndroidChat-BT-Headset-Testing-Report.md) | Сравнение с AndroidChat |

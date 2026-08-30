@@ -1,20 +1,30 @@
 package com.englishtutor.ui.screens.voicetest
 
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.englishtutor.bluetooth.ActiveBluetoothDevice
+import com.englishtutor.bluetooth.BluetoothConnectionMonitor
+import com.englishtutor.bluetooth.ConnectedBluetoothDevice
 import com.englishtutor.domain.voice.SpeechRecognizerProvider
 import com.englishtutor.domain.voice.TextToSpeechProvider
+import com.englishtutor.session.HeadsetButtonNotifier
 import com.englishtutor.session.HeadsetTestController
+import com.englishtutor.session.LessonSessionService
 import com.englishtutor.util.AppLogger
 import com.englishtutor.util.AppVersion
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 data class VoiceTestUiState(
@@ -30,21 +40,27 @@ data class VoiceTestUiState(
     val micGranted: Boolean = false,
     val ttsAvailable: Boolean = false,
     val sttAvailable: Boolean = false,
-    val headsetActive: Boolean = false,
+    val nativeCaptureOn: Boolean = false,
     val btPressCount: Int = 0,
     val btLastEventLabel: String = "",
     val btLastEventAt: String = "",
     val btEventLog: List<String> = emptyList(),
     val headsetStatus: String? = null,
+    val bluetoothPermissionGranted: Boolean = true,
+    val connectedBluetoothDevices: List<ConnectedBluetoothDevice> = emptyList(),
+    val activeBluetoothDevice: ActiveBluetoothDevice? = null,
 ) {
     val isBusy: Boolean get() = isSpeaking || isRecording
 }
 
 @HiltViewModel
 class VoiceTestViewModel @Inject constructor(
+    @ApplicationContext private val appContext: Context,
     private val textToSpeech: TextToSpeechProvider,
     private val speechRecognizer: SpeechRecognizerProvider,
     private val headsetTestController: HeadsetTestController,
+    private val headsetButtonNotifier: HeadsetButtonNotifier,
+    private val bluetoothConnectionMonitor: BluetoothConnectionMonitor,
     private val logger: AppLogger,
 ) : ViewModel() {
 
@@ -58,14 +74,18 @@ class VoiceTestViewModel @Inject constructor(
     val uiState: StateFlow<VoiceTestUiState> = combine(
         localState,
         headsetTestController.state,
-    ) { local, headset ->
+        bluetoothConnectionMonitor.snapshot,
+    ) { local, headset, bluetooth ->
         local.copy(
-            headsetActive = headset.isActive,
+            nativeCaptureOn = headset.nativeCaptureOn,
             btPressCount = headset.pressCount,
             btLastEventLabel = headset.lastEventLabel,
             btLastEventAt = headset.lastEventAt,
             btEventLog = headset.eventLog,
             headsetStatus = headset.statusMessage,
+            bluetoothPermissionGranted = bluetooth.permissionGranted,
+            connectedBluetoothDevices = bluetooth.devices,
+            activeBluetoothDevice = bluetooth.activeDevice,
         )
     }.stateIn(
         scope = viewModelScope,
@@ -75,6 +95,50 @@ class VoiceTestViewModel @Inject constructor(
 
     init {
         logger.i(TAG, "Voice test opened · ${AppVersion.label}")
+        bluetoothConnectionMonitor.ensureStarted(appContext)
+        bluetoothConnectionMonitor.refresh(appContext)
+        viewModelScope.launch {
+            while (isActive) {
+                delay(BLUETOOTH_REFRESH_MS)
+                bluetoothConnectionMonitor.refresh(appContext)
+            }
+        }
+        enterHeadsetIsolation()
+    }
+
+    override fun onCleared() {
+        exitHeadsetIsolation()
+        super.onCleared()
+    }
+
+    private fun enterHeadsetIsolation() {
+        textToSpeech.stopSpeaking()
+        speechRecognizer.cancel()
+        stopLessonSession()
+        headsetButtonNotifier.btPlayTestIsolation = true
+        refreshIsolatedHandler()
+        logger.i(TAG, "Headset isolation ON")
+    }
+
+    private fun exitHeadsetIsolation() {
+        headsetButtonNotifier.btPlayTestIsolation = false
+        headsetButtonNotifier.isolatedBtPlayHandler = null
+        logger.i(TAG, "Headset isolation OFF")
+    }
+
+    private fun stopLessonSession() {
+        appContext.startService(
+            Intent(appContext, LessonSessionService::class.java).apply {
+                action = LessonSessionService.ACTION_STOP
+            },
+        )
+    }
+
+    private fun refreshIsolatedHandler() {
+        headsetButtonNotifier.isolatedBtPlayHandler = when (localState.value.selectedTab) {
+            1 -> ({ recognize() })
+            else -> null
+        }
     }
 
     fun onSpeakTextChanged(value: String) {
@@ -95,11 +159,12 @@ class VoiceTestViewModel @Inject constructor(
 
     fun selectTab(index: Int) {
         localState.update { it.copy(selectedTab = index.coerceIn(0, 2)) }
+        refreshIsolatedHandler()
     }
 
     fun resetBtPlayCounter() = headsetTestController.resetCounter()
 
-    fun simulateBtPlay() = headsetTestController.simulatePlay()
+    fun simulateBtPlay() = headsetButtonNotifier.notifyButton("MEDIA_PLAY", source = "ui-simulate")
 
     fun speak() {
         val text = localState.value.speakText.trim()
@@ -229,5 +294,6 @@ class VoiceTestViewModel @Inject constructor(
 
     companion object {
         private const val TAG = "VoiceTest"
+        private const val BLUETOOTH_REFRESH_MS = 2_000L
     }
 }

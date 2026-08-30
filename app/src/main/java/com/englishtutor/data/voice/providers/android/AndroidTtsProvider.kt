@@ -30,6 +30,10 @@ class AndroidTtsProvider @Inject constructor(
 
     override fun isAvailable(): Boolean = initialized || true
 
+    override fun stopSpeaking() {
+        tts?.stop()
+    }
+
     override suspend fun speak(text: String, languageCode: String) {
         val engine = ensureInitialized()
         withContext(Dispatchers.Main) {

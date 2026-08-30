@@ -15,6 +15,7 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,11 +27,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishtutor.R
 import com.englishtutor.domain.model.Lesson
 import com.englishtutor.ui.components.BuildVersionLabel
 import com.englishtutor.ui.components.BuildVersionSubtitle
@@ -46,6 +50,11 @@ fun HomeScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
+    DisposableEffect(Unit) {
+        viewModel.onScreenVisible()
+        onDispose { }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -56,6 +65,12 @@ fun HomeScreen(
                     }
                 },
                 actions = {
+                    IconButton(
+                        onClick = viewModel::stopApp,
+                        enabled = !state.isStopping,
+                    ) {
+                        Icon(Icons.Default.Stop, contentDescription = stringResource(R.string.action_stop))
+                    }
                     IconButton(onClick = onOpenVoiceTest) {
                         Icon(Icons.Default.Settings, contentDescription = "Окно тестов")
                     }
@@ -78,6 +93,13 @@ fun HomeScreen(
         ) {
             item {
                 BuildVersionLabel()
+            }
+            item {
+                Text(
+                    text = state.bluetoothStatus,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.secondary,
+                )
             }
             item {
                 Button(

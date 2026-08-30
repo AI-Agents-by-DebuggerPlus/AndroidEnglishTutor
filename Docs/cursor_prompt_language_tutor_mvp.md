@@ -102,7 +102,7 @@
 
 ---
 
-## Статус реализации (2026-08-28, v1.3.3)
+## Статус реализации (2026-08-28, v1.3.5)
 
 ### Реализовано
 
@@ -112,6 +112,10 @@
 | Стартовый тест, экран прогресса | ✅ |
 | `SpeechRecognizerProvider` / `TextToSpeechProvider` + Hilt | ✅ |
 | `LessonSessionService` + MediaSession для урока | ✅ |
+| `EnglishTutorPlayHandler` — BT Play: pause/resume TTS, STT+SCO, next | ✅ |
+| Определение BT-устройства + ACL connect/disconnect (TTS) | ✅ |
+| Голосовое приветствие при старте, кнопка Stop | ✅ |
+| Runtime `BLUETOOTH_CONNECT` | ✅ |
 | Окно тестов: TTS / STT / **BT Play** (как AndroidChat) | ✅ |
 | `HeadsetTestService` — тест кнопок гарнитуры | ✅ |
 | Экран логов + Supabase `[LOG:…]` | ✅ |
@@ -121,9 +125,11 @@
 
 - Отправка логов на Supabase (опционально, `default_settings.json`)
 - Окно тестов по образцу AndroidChat
+- BT-мониторинг и Play-логика по отчёту AndroidChat
 
 ### Документация
 
 - [README.md](../README.md) — обзор проекта
 - [headset-testing.md](headset-testing.md) — тест BT Play
+- [AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md](AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md) — полный отчёт по BT
 - [AndroidChat-BT-Headset-Testing-Report.md](AndroidChat-BT-Headset-Testing-Report.md) — сравнение с AndroidChat

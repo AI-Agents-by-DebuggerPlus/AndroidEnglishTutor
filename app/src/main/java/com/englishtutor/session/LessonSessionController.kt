@@ -24,7 +24,7 @@ import kotlinx.coroutines.sync.withLock
 
 /**
  * Eyes-free lesson flow driven by headset AVRCP commands.
- * UI only mirrors [state]; primary control is Play/Pause, Next, Previous.
+ * BT Play logic mirrors AndroidChat HeadsetPlayHandler, adapted for pronunciation lessons.
  */
 @Singleton
 class LessonSessionController @Inject constructor(
@@ -36,12 +36,14 @@ class LessonSessionController @Inject constructor(
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private val commandMutex = Mutex()
     private var activeJob: Job? = null
+    private var phraseSpeechPaused = false
 
     private val _state = MutableStateFlow(LessonSessionState())
     val state: StateFlow<LessonSessionState> = _state.asStateFlow()
 
     fun start(lesson: Lesson, alreadyCompleted: Boolean) {
         activeJob?.cancel()
+        phraseSpeechPaused = false
         logger.i(TAG, "Session start lesson=${lesson.id} phrases=${lesson.practicePhrases.size}")
         _state.value = LessonSessionState(
             lessonId = lesson.id,
@@ -65,6 +67,9 @@ class LessonSessionController @Inject constructor(
     fun stop() {
         activeJob?.cancel()
         activeJob = null
+        speechRecognizer.cancel()
+        textToSpeech.stopSpeaking()
+        phraseSpeechPaused = false
         logger.i(TAG, "Session stop")
         _state.update {
             it.copy(
@@ -79,29 +84,17 @@ class LessonSessionController @Inject constructor(
         _state.update { it.copy(audioFocusHeld = held) }
     }
 
+    fun handleBtPlay(source: String = "native") {
+        if (!_state.value.isActive) {
+            logger.d(TAG, "BT Play ($source) ignored — no active lesson")
+            return
+        }
+        enqueue { handleBtPlayLocked(source) }
+    }
+
     /** Play/Pause: speak phrase, or start recording if phrase already spoken. */
     fun onPlayPause() {
-        logger.d(TAG, "AVRCP play/pause phraseSpoken=${_state.value.phraseSpoken}")
-        enqueue {
-            val current = _state.value
-            if (!current.isActive || current.phrases.isEmpty()) return@enqueue
-            if (current.phase == LessonPhase.COMPLETED) {
-                speakFeedback("Урок уже завершён")
-                return@enqueue
-            }
-            if (current.phase == LessonPhase.RECORDING ||
-                current.phase == LessonPhase.SPEAKING_PHRASE ||
-                current.phase == LessonPhase.SPEAKING_FEEDBACK
-            ) {
-                return@enqueue
-            }
-
-            if (!current.phraseSpoken) {
-                speakCurrentPhrase()
-            } else {
-                startRecording()
-            }
-        }
+        handleBtPlay("avrcp")
     }
 
     /** Next: skip current exercise and move on. */
@@ -128,6 +121,7 @@ class LessonSessionController @Inject constructor(
                 speakFeedback("Урок уже завершён")
                 return@enqueue
             }
+            phraseSpeechPaused = false
             _state.update {
                 it.copy(
                     phraseSpoken = false,
@@ -140,6 +134,50 @@ class LessonSessionController @Inject constructor(
             speakFeedback("Повторим ещё раз")
             speakCurrentPhrase()
         }
+    }
+
+    private suspend fun handleBtPlayLocked(source: String) {
+        val current = _state.value
+        if (!current.isActive || current.phrases.isEmpty()) return@handleBtPlayLocked
+        if (current.phase == LessonPhase.COMPLETED) {
+            speakFeedback("Урок уже завершён")
+            return@handleBtPlayLocked
+        }
+
+        if (current.phase == LessonPhase.RECORDING) {
+            logger.i(TAG, "BT Play ($source) → cancel STT")
+            cancelRecording()
+            return@handleBtPlayLocked
+        }
+
+        if (phraseSpeechPaused) {
+            logger.i(TAG, "BT Play ($source) → Continue")
+            speakCue("Continue")
+            resumePhraseSpeech()
+            return@handleBtPlayLocked
+        }
+
+        if (current.phase == LessonPhase.SPEAKING_PHRASE) {
+            logger.i(TAG, "BT Play ($source) → Pause")
+            pausePhraseSpeech()
+            speakCue("Pause")
+            return@handleBtPlayLocked
+        }
+
+        if (current.phase == LessonPhase.SPEAKING_FEEDBACK) {
+            textToSpeech.stopSpeaking()
+            _state.update { it.copy(phase = LessonPhase.IDLE) }
+            return@handleBtPlayLocked
+        }
+
+        if (!current.phraseSpoken) {
+            logger.i(TAG, "BT Play ($source) → speak phrase")
+            speakCurrentPhrase()
+            return@handleBtPlayLocked
+        }
+
+        logger.i(TAG, "BT Play ($source) → start STT")
+        startRecording()
     }
 
     private fun enqueue(block: suspend () -> Unit) {
@@ -156,6 +194,7 @@ class LessonSessionController @Inject constructor(
         val phrase = current.currentPhrase
         if (phrase.isBlank()) return
 
+        phraseSpeechPaused = false
         _state.update {
             it.copy(
                 phase = LessonPhase.SPEAKING_PHRASE,
@@ -164,6 +203,7 @@ class LessonSessionController @Inject constructor(
         }
         try {
             textToSpeech.speak(phrase, current.languageCode)
+            phraseSpeechPaused = false
             _state.update {
                 it.copy(
                     phraseSpoken = true,
@@ -172,12 +212,46 @@ class LessonSessionController @Inject constructor(
                 )
             }
         } catch (error: Exception) {
+            phraseSpeechPaused = false
             _state.update {
                 it.copy(
                     phase = LessonPhase.IDLE,
                     statusMessage = error.message ?: "Ошибка озвучки",
                 )
             }
+        }
+    }
+
+    private fun pausePhraseSpeech() {
+        if (_state.value.phase != LessonPhase.SPEAKING_PHRASE) {
+            return
+        }
+        textToSpeech.stopSpeaking()
+        phraseSpeechPaused = true
+        _state.update {
+            it.copy(
+                phase = LessonPhase.IDLE,
+                statusMessage = "Пауза. Play — продолжить.",
+            )
+        }
+    }
+
+    private suspend fun resumePhraseSpeech() {
+        if (!phraseSpeechPaused) {
+            return
+        }
+        phraseSpeechPaused = false
+        speakCurrentPhrase()
+    }
+
+    private suspend fun cancelRecording() {
+        speechRecognizer.cancel()
+        _state.update {
+            it.copy(
+                phase = LessonPhase.READY_TO_RECORD,
+                phraseSpoken = true,
+                statusMessage = "Запись отменена",
+            )
         }
     }
 
@@ -194,11 +268,15 @@ class LessonSessionController @Inject constructor(
                 statusMessage = "Записываю",
             )
         }
-        speakFeedback("Записываю")
+        speakCue("Listen")
 
         _state.update { it.copy(phase = LessonPhase.RECORDING, statusMessage = "Говорите…") }
         speechRecognizer.recognize(current.languageCode)
             .onSuccess { spoken ->
+                if (spoken.isBlank()) {
+                    handleEmptyRecognition()
+                    return@onSuccess
+                }
                 val expected = _state.value.currentPhrase
                 val score = PronunciationMatcher.similarity(expected, spoken)
                 val matched = score >= 0.7f
@@ -211,22 +289,36 @@ class LessonSessionController @Inject constructor(
                     )
                 }
                 if (matched) {
-                    advanceToNext(announce = "Верно, следующее")
+                    advanceToNext(announce = "Correct, next")
                 } else {
                     _state.update { it.copy(statusMessage = "Не совсем. Play — снова.") }
-                    speakFeedback("Повторим ещё раз")
+                    speakFeedback("Try again")
                 }
             }
             .onFailure { error ->
+                val message = error.message.orEmpty()
+                if (message.contains("cancel", ignoreCase = true)) {
+                    return@onFailure
+                }
                 _state.update {
                     it.copy(
                         phase = LessonPhase.READY_TO_RECORD,
                         phraseSpoken = true,
-                        statusMessage = error.message ?: "Не расслышал",
+                        statusMessage = message.ifBlank { "Не расслышал" },
                     )
                 }
-                speakFeedback("Не расслышал, попробуй ещё раз")
+                if (message.contains("ERROR_NO_MATCH") || message.contains("ERROR_SPEECH_TIMEOUT")) {
+                    handleEmptyRecognition()
+                } else {
+                    speakFeedback("Try again")
+                }
             }
+    }
+
+    private suspend fun handleEmptyRecognition() {
+        logger.i(TAG, "Empty STT → Play cue → next")
+        speakCue("Play")
+        advanceToNext(announce = "Next")
     }
 
     private suspend fun advanceToNext(announce: String) {
@@ -237,6 +329,7 @@ class LessonSessionController @Inject constructor(
             return
         }
 
+        phraseSpeechPaused = false
         _state.update {
             it.copy(
                 phraseIndex = nextIndex,
@@ -257,6 +350,7 @@ class LessonSessionController @Inject constructor(
         if (!_state.value.isCompleted) {
             progressRepository.markLessonCompleted(lessonId, score)
         }
+        phraseSpeechPaused = false
         _state.update {
             it.copy(
                 isCompleted = true,
@@ -265,7 +359,7 @@ class LessonSessionController @Inject constructor(
                 statusMessage = "Урок завершён",
             )
         }
-        speakFeedback("$announcePrefix. Урок завершён")
+        speakFeedback("$announcePrefix. Lesson complete")
     }
 
     private suspend fun speakFeedback(text: String) {
@@ -277,6 +371,17 @@ class LessonSessionController @Inject constructor(
             textToSpeech.speak(text, lang)
         } catch (_: Exception) {
             // Feedback is best-effort; session continues.
+        }
+        if (_state.value.phase == LessonPhase.SPEAKING_FEEDBACK) {
+            _state.update { it.copy(phase = LessonPhase.IDLE) }
+        }
+    }
+
+    private suspend fun speakCue(text: String) {
+        try {
+            textToSpeech.speak(text, "en-US")
+        } catch (error: Exception) {
+            logger.w(TAG, "Cue failed: ${error.message}")
         }
     }
 

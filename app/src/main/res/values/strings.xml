@@ -14,4 +14,12 @@
     <string name="bt_play_test_capture_off">Native capture: OFF</string>
     <string name="bt_play_test_log_title">Журнал событий</string>
     <string name="bt_play_test_log_empty">Пока нет событий</string>
+    <string name="action_stop">Stop</string>
+    <string name="bluetooth_status_prefix">Bluetooth</string>
+    <string name="bt_devices_section_title">Bluetooth-устройства</string>
+    <string name="bt_devices_connected_title">Подключённые</string>
+    <string name="bt_devices_active_title">Активное</string>
+    <string name="bt_devices_none">Нет</string>
+    <string name="bt_devices_active_none">Не определено</string>
+    <string name="bt_devices_no_permission">Нет разрешения BLUETOOTH_CONNECT</string>
 </resources>
