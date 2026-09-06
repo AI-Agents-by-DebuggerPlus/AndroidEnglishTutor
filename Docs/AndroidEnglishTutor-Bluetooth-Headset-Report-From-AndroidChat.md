@@ -313,17 +313,21 @@ android.permission.BLUETOOTH_CONNECT
 - Foreground notification с понятным текстом (требование Android 14+).
 - Тест **Simulate Play** в CI/emulator без физической гарнитуры.
 
-### 10.4 Чеклист приёмки BT в AndroidEnglishTutor
+### 10.4 Чеклист приёмки BT в AndEngTutor (v1.5.1+)
 
-- [ ] Play на гарнитуре увеличивает счётчик на Tests → BT Play
-- [ ] В журнале видна метка (`MEDIA_PLAY` / `HEADSETHOOK`)
-- [ ] Simulate Play работает без BT
+- [x] Play на гарнитуре увеличивает счётчик на Tests → BT Play (**HARDWARE**, 2026-09-06)
+- [x] В журнале видна метка HARDWARE / SIMULATED
+- [x] Simulate Play работает без BT
 - [ ] При озвучке урока Play ставит на паузу / снимает с паузы
 - [ ] В idle Play запускает STT с микрофона гарнитуры (SCO)
-- [ ] ACL connect/disconnect озвучивается или пишется в лог
-- [ ] `BLUETOOTH_CONNECT` запрошен и выдан
-- [ ] Tasker BT Key **выключен** на время теста (не перехватывает Play)
-- [ ] `adb shell dumpsys media_session` в момент нажатия Play показывает `com.englishtutor` как единственную/верхнюю активную сессию, а не только `HeadsetMonitorService` в списке процессов
+- [x] ACL connect/disconnect озвучивается или пишется в лог
+- [x] `BLUETOOTH_CONNECT` запрошен и выдан
+- [x] На вкладке BT Play нет конфликта Tasker Grab **или** профиль выключен
+- [x] `adb shell dumpsys media_session` после Reassert: Media button session = `com.englishtutor`
+- [x] USAGE_MEDIA pulse при reassert (иначе session остаётся null — TTS cue недостаточен)
+
+Актуальная инструкция по тесту: [Docs/headset-testing.md](headset-testing.md).  
+Отчёт фикса HARDWARE: [Docs/Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md](Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md).
 
 ---
 

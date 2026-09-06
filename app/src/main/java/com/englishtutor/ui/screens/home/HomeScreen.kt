@@ -128,6 +128,19 @@ fun HomeScreen(
                     }
                 }
             }
+            item {
+                OutlinedButton(
+                    onClick = viewModel::stopApp,
+                    enabled = !state.isStopping,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Icon(Icons.Default.Stop, contentDescription = null)
+                    Text(
+                        text = stringResource(R.string.action_close_app),
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                }
+            }
             items(state.lessons, key = { it.id }) { lesson ->
                 LessonCard(
                     lesson = lesson,

@@ -7,8 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.englishtutor.bluetooth.ActiveBluetoothDevice
 import com.englishtutor.bluetooth.BluetoothConnectionMonitor
 import com.englishtutor.bluetooth.ConnectedBluetoothDevice
+import com.englishtutor.bluetooth.ActiveMediaSessionRow
+import com.englishtutor.bluetooth.ActiveSessionsHelper
+import com.englishtutor.bluetooth.DiagnosticLevel
+import com.englishtutor.bluetooth.HeadsetDiagnosticLine
+import com.englishtutor.bluetooth.HeadsetDiagnosticsHelper
 import com.englishtutor.domain.voice.SpeechRecognizerProvider
 import com.englishtutor.domain.voice.TextToSpeechProvider
+import com.englishtutor.session.AppSessionManager
 import com.englishtutor.session.HeadsetButtonNotifier
 import com.englishtutor.session.HeadsetMonitorService
 import com.englishtutor.session.HeadsetTestController
@@ -30,7 +36,7 @@ import kotlinx.coroutines.launch
 
 data class VoiceTestUiState(
     val versionLabel: String = AppVersion.label,
-    val selectedTab: Int = 1,
+    val selectedTab: Int = 2,
     val speakText: String = "Hello, how are you?",
     val languageCode: String = "en-US",
     val recognizedText: String? = null,
@@ -50,6 +56,13 @@ data class VoiceTestUiState(
     val bluetoothPermissionGranted: Boolean = true,
     val connectedBluetoothDevices: List<ConnectedBluetoothDevice> = emptyList(),
     val activeBluetoothDevice: ActiveBluetoothDevice? = null,
+    val taskerMayConflict: Boolean = false,
+    val diagnosticLines: List<HeadsetDiagnosticLine> = emptyList(),
+    val diagnosticsSummary: String = "",
+    val mediaButtonPathReady: Boolean = false,
+    val notificationAccessEnabled: Boolean = false,
+    val activeMediaSessions: List<ActiveMediaSessionRow> = emptyList(),
+    val isClosing: Boolean = false,
 ) {
     val isBusy: Boolean get() = isSpeaking || isRecording
 }
@@ -62,6 +75,9 @@ class VoiceTestViewModel @Inject constructor(
     private val headsetTestController: HeadsetTestController,
     private val headsetButtonNotifier: HeadsetButtonNotifier,
     private val bluetoothConnectionMonitor: BluetoothConnectionMonitor,
+    private val headsetDiagnosticsHelper: HeadsetDiagnosticsHelper,
+    private val activeSessionsHelper: ActiveSessionsHelper,
+    private val appSessionManager: AppSessionManager,
     private val logger: AppLogger,
 ) : ViewModel() {
 
@@ -102,9 +118,17 @@ class VoiceTestViewModel @Inject constructor(
             while (isActive) {
                 delay(BLUETOOTH_REFRESH_MS)
                 bluetoothConnectionMonitor.refresh(appContext)
+                if (localState.value.selectedTab == 2) {
+                    refreshDiagnostics()
+                }
             }
         }
         enterHeadsetIsolation()
+        reassertBtPlayCapture(speakCue = true)
+        viewModelScope.launch {
+            delay(SERVICE_START_GRACE_MS)
+            refreshDiagnostics()
+        }
     }
 
     override fun onCleared() {
@@ -119,6 +143,7 @@ class VoiceTestViewModel @Inject constructor(
         HeadsetMonitorService.start(appContext)
         headsetButtonNotifier.btPlayTestIsolation = true
         refreshIsolatedHandler()
+        refreshDiagnostics()
         logger.i(TAG, "Headset isolation ON")
     }
 
@@ -151,17 +176,87 @@ class VoiceTestViewModel @Inject constructor(
         localState.update { it.copy(languageCode = value) }
     }
 
-    fun onMicPermission(granted: Boolean) {
-        localState.update { it.copy(micGranted = granted) }
-        logger.i(TAG, "Mic permission: $granted")
-        if (!granted) {
+    fun onPermissionsResult(grants: Map<String, Boolean>) {
+        val micGranted = grants[android.Manifest.permission.RECORD_AUDIO] == true
+        localState.update { it.copy(micGranted = micGranted) }
+        logger.i(TAG, "Mic permission: $micGranted")
+        if (!micGranted) {
             localState.update { it.copy(errorMessage = "Нужен доступ к микрофону") }
         }
+        bluetoothConnectionMonitor.refresh(appContext)
+        refreshDiagnostics()
     }
 
     fun selectTab(index: Int) {
         localState.update { it.copy(selectedTab = index.coerceIn(0, 2)) }
         refreshIsolatedHandler()
+        if (index == 2) {
+            reassertBtPlayCapture(speakCue = true)
+            refreshDiagnostics()
+        }
+    }
+
+    fun reassertBtPlayCapture(speakCue: Boolean = true) {
+        HeadsetMonitorService.reassert(appContext)
+        logger.i(TAG, "MediaSession reassert requested")
+        if (speakCue) {
+            viewModelScope.launch {
+                runCatching {
+                    textToSpeech.speak(BT_TEST_READY_CUE, "en-US")
+                }.onFailure { error ->
+                    logger.w(TAG, "BT test cue failed: ${error.message}")
+                }
+            }
+        }
+        viewModelScope.launch {
+            delay(SERVICE_START_GRACE_MS)
+            refreshDiagnostics()
+        }
+    }
+
+    fun refreshDiagnostics() {
+        val headset = headsetTestController.state.value
+        val snapshot = headsetDiagnosticsHelper.collect(
+            context = appContext,
+            nativeCaptureOn = headset.nativeCaptureOn,
+            btIsolationOn = headsetButtonNotifier.btPlayTestIsolation,
+            micGranted = localState.value.micGranted,
+        )
+        val taskerMayConflict = snapshot.lines.any {
+            it.id == "tasker_listener" && it.level == DiagnosticLevel.WARN
+        }
+        localState.update {
+            it.copy(
+                diagnosticLines = snapshot.lines,
+                diagnosticsSummary = snapshot.summary,
+                mediaButtonPathReady = snapshot.mediaButtonPathReady,
+                notificationAccessEnabled = snapshot.notificationAccessEnabled,
+                activeMediaSessions = snapshot.activeSessions,
+                taskerMayConflict = taskerMayConflict,
+            )
+        }
+    }
+
+    fun openNotificationAccessSettings() {
+        runCatching {
+            appContext.startActivity(
+                activeSessionsHelper.notificationAccessSettingsIntent().addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK,
+                ),
+            )
+        }.onFailure { error ->
+            logger.w(TAG, "Open notification access failed: ${error.message}")
+        }
+    }
+
+    fun closeApp() {
+        if (localState.value.isClosing) {
+            return
+        }
+        viewModelScope.launch {
+            localState.update { it.copy(isClosing = true) }
+            appSessionManager.stopApp()
+        }
     }
 
     fun resetBtPlayCounter() = headsetTestController.resetCounter()
@@ -179,10 +274,8 @@ class VoiceTestViewModel @Inject constructor(
             localState.update {
                 it.copy(isSpeaking = true, errorMessage = null, statusMessage = "Озвучка…")
             }
-            logger.i(TAG, "TTS start lang=$lang text=\"$text\"")
             try {
                 textToSpeech.speak(text, lang)
-                logger.i(TAG, "TTS done")
                 localState.update { it.copy(statusMessage = "Озвучка завершена") }
             } catch (error: Exception) {
                 logger.e(TAG, "TTS error: ${error.message}")
@@ -214,10 +307,8 @@ class VoiceTestViewModel @Inject constructor(
                     recognizedText = null,
                 )
             }
-            logger.i(TAG, "STT start lang=$lang")
             speechRecognizer.recognize(lang)
                 .onSuccess { spoken ->
-                    logger.i(TAG, "STT result=\"$spoken\"")
                     localState.update {
                         it.copy(
                             isRecording = false,
@@ -253,7 +344,6 @@ class VoiceTestViewModel @Inject constructor(
             localState.update {
                 it.copy(isSpeaking = true, errorMessage = null, statusMessage = "Озвучка…")
             }
-            logger.i(TAG, "TTS→STT start")
             try {
                 textToSpeech.speak(text, lang)
             } catch (error: Exception) {
@@ -273,7 +363,6 @@ class VoiceTestViewModel @Inject constructor(
             }
             speechRecognizer.recognize(lang)
                 .onSuccess { spoken ->
-                    logger.i(TAG, "TTS→STT result=\"$spoken\"")
                     localState.update {
                         it.copy(
                             isRecording = false,
@@ -297,5 +386,7 @@ class VoiceTestViewModel @Inject constructor(
     companion object {
         private const val TAG = "VoiceTest"
         private const val BLUETOOTH_REFRESH_MS = 15_000L
+        private const val SERVICE_START_GRACE_MS = 1_000L
+        private const val BT_TEST_READY_CUE = "BT test ready"
     }
 }

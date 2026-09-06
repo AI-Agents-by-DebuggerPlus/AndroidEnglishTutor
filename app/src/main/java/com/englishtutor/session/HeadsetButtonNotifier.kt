@@ -12,7 +12,8 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 /**
- * Routes headset media buttons — AndroidChat HeadsetButtonNotifier pattern.
+ * Routes headset media buttons — AndroidChatBtTest95 HeadsetButtonNotifier pattern.
+ * HARDWARE vs SIMULATED labels for BT Play test journal.
  */
 @Singleton
 class HeadsetButtonNotifier @Inject constructor(
@@ -47,18 +48,19 @@ class HeadsetButtonNotifier @Inject constructor(
             }
 
             if (HeadsetButtonNames.isBtPlayLabel(label)) {
-                headsetTestController.recordBtPlayEvent(label)
+                val kind = eventKind(source)
+                headsetTestController.recordBtPlayEvent(label, source = source, kind = kind)
                 if (btPlayTestIsolation) {
                     val handler = isolatedBtPlayHandler
                     if (handler != null) {
-                        logger.i(TAG, "BT Play ($label) via $source → isolated handler")
+                        logger.i(TAG, "$kind: $label via $source → isolated handler")
                         withContext(Dispatchers.Main) { handler() }
                     } else {
-                        logger.i(TAG, "BT Play ($label) via $source → isolation (counter only)")
+                        logger.i(TAG, "$kind: $label via $source → isolation (counter only)")
                     }
                     return@launch
                 }
-                logger.i(TAG, "BT Play ($label) via $source → lesson handler")
+                logger.i(TAG, "$kind: $label via $source → lesson handler")
                 englishTutorPlayHandler.handleBtPlay(source)
                 return@launch
             }
@@ -76,5 +78,18 @@ class HeadsetButtonNotifier @Inject constructor(
         private const val TAG = "Headset"
         private const val DEBOUNCE_MS = 500L
         private const val BT_PLAY_KEY = "BT_PLAY"
+
+        fun eventKind(source: String): String {
+            val s = source.lowercase()
+            return if (
+                s.contains("hardware") ||
+                s.contains("mediabuttonevent") ||
+                s.contains("callback-on")
+            ) {
+                "HARDWARE"
+            } else {
+                "SIMULATED"
+            }
+        }
     }
 }

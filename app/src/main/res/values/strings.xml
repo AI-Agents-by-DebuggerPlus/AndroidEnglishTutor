@@ -1,20 +1,22 @@
 <resources>
-    <string name="app_name">English Tutor</string>
-    <string name="headset_test_notification_title">BT Play (English Tutor)</string>
+    <string name="app_name">AndEngTutor</string>
+    <string name="headset_test_notification_title">BT Play (AndEngTutor)</string>
     <string name="headset_test_notification_text">Тест кнопок гарнитуры</string>
     <string name="tests_title">Окно тестов</string>
     <string name="tests_tab_tts">TTS</string>
     <string name="tests_tab_stt">STT</string>
     <string name="tests_tab_bt_play">BT Play</string>
-    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Счётчик растёт на каждое событие Play. TTS/STT на этой вкладке отключены.</string>
+    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Счётчик растёт на каждое событие Play (HARDWARE). Simulate = SIMULATED. Перед тестом закройте YouTube.</string>
     <string name="bt_play_test_count_label">нажатий BT Play</string>
     <string name="bt_play_test_last_event">Последнее: %1$s · %2$s</string>
     <string name="bt_play_test_simulate">Симулировать Play</string>
+    <string name="bt_play_test_reassert">Reassert MediaSession</string>
     <string name="bt_play_test_capture_on">Native capture: ON (MediaSession)</string>
     <string name="bt_play_test_capture_off">Native capture: OFF</string>
-    <string name="bt_play_test_log_title">Журнал событий</string>
+    <string name="bt_play_test_log_title">Журнал событий (HARDWARE / SIMULATED)</string>
     <string name="bt_play_test_log_empty">Пока нет событий</string>
     <string name="action_stop">Stop</string>
+    <string name="action_close_app">Закрыть приложение</string>
     <string name="bluetooth_status_prefix">Bluetooth</string>
     <string name="bt_devices_section_title">Bluetooth-устройства</string>
     <string name="bt_devices_connected_title">Подключённые</string>
@@ -22,4 +24,10 @@
     <string name="bt_devices_none">Нет</string>
     <string name="bt_devices_active_none">Не определено</string>
     <string name="bt_devices_no_permission">Нет разрешения BLUETOOTH_CONNECT</string>
+    <string name="headset_diagnostics_title">Диагностика BT / media-кнопок</string>
+    <string name="headset_diagnostics_refresh">Обновить диагностику</string>
+    <string name="headset_diagnostics_pending">Обновление…</string>
+    <string name="headset_diagnostics_notification_access">Открыть Notification Access</string>
+    <string name="headset_diagnostics_sessions_title">Active MediaSessions</string>
+    <string name="bt_play_tasker_conflict">У Tasker есть разрешение на перехват media-кнопок (SET_MEDIA_KEY_LISTENER). Если включён профиль с Grab (например «BT Key») — кнопка гарнитуры не дойдёт до этого экрана. Отключите профиль в Tasker на время теста.</string>
 </resources>

@@ -30,10 +30,17 @@ class BluetoothConnectionMonitor @Inject constructor(
 
     private var lastLoggedFingerprint: String? = null
 
+    @Volatile
+    private var onAclEventListener: (() -> Unit)? = null
+
     private val _snapshot = MutableStateFlow(
         BluetoothConnectionSnapshot(permissionGranted = false, devices = emptyList()),
     )
     val snapshot: StateFlow<BluetoothConnectionSnapshot> = _snapshot.asStateFlow()
+
+    fun setOnAclEventListener(listener: (() -> Unit)?) {
+        onAclEventListener = listener
+    }
 
     fun refresh(context: Context) {
         val next = deviceHelper.snapshot(context.applicationContext)
@@ -47,22 +54,16 @@ class BluetoothConnectionMonitor @Inject constructor(
 
     private fun logSnapshot(snapshot: BluetoothConnectionSnapshot) {
         if (!snapshot.permissionGranted) {
-            logger.i(TAG, "BT connected: permission not granted")
-            logger.i(TAG, "BT active: permission not granted")
+            logger.i(TAG, "BT state: permission not granted")
             return
         }
-        if (snapshot.devices.isEmpty()) {
-            logger.i(TAG, "BT connected: none")
+        val connected = if (snapshot.devices.isEmpty()) {
+            "none"
         } else {
-            val lines = snapshot.devices.joinToString(separator = "; ") { it.displayLine() }
-            logger.i(TAG, "BT connected (${snapshot.devices.size}): $lines")
+            snapshot.devices.joinToString(separator = "; ") { it.displayLine() }
         }
-        val active = snapshot.activeDevice
-        if (active == null) {
-            logger.i(TAG, "BT active: none")
-        } else {
-            logger.i(TAG, "BT active: ${active.displayLine()}")
-        }
+        val active = snapshot.activeDevice?.displayLine() ?: "none"
+        logger.i(TAG, "BT state: connected=${snapshot.devices.size} [$connected]; active=$active")
     }
 
     fun ensureStarted(context: Context) {
@@ -88,11 +89,7 @@ class BluetoothConnectionMonitor @Inject constructor(
                 },
                 onEvent = {
                     refresh(appContext)
-                    val snapshot = _snapshot.value
-                    logger.i(
-                        TAG,
-                        "ACL event → connected=${snapshot.statusLabel}, active=${snapshot.activeStatusLabel}",
-                    )
+                    onAclEventListener?.invoke()
                 },
             )
             appContext.registerReceiver(receiver, BluetoothAclReceiver.intentFilter())

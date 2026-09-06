@@ -4,7 +4,8 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <!-- Letter E for AndEngTutor launcher -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,30c-13.2,0 -24,10.8 -24,24s10.8,24 24,24 24,-10.8 24,-24 -10.8,-24 -24,-24zM44,48h20v4H44zM44,56h14v4H44z" />
+        android:pathData="M34,28h40v10H48v10h22v10H48v12h26v10H34z" />
 </vector>

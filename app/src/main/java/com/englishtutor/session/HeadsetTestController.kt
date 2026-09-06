@@ -16,12 +16,13 @@ data class HeadsetTestState(
     val pressCount: Int = 0,
     val lastEventLabel: String = "",
     val lastEventAt: String = "",
+    val lastEventKind: String = "",
     val eventLog: List<String> = emptyList(),
     val statusMessage: String? = null,
 )
 
 /**
- * UI state for BT Play test tab — counter and event log only.
+ * UI state for BT Play test tab — counter and HARDWARE/SIMULATED event log.
  */
 @Singleton
 class HeadsetTestController @Inject constructor(
@@ -29,6 +30,7 @@ class HeadsetTestController @Inject constructor(
 ) {
     private val _state = MutableStateFlow(HeadsetTestState())
     val state: StateFlow<HeadsetTestState> = _state.asStateFlow()
+    private var lastLoggedCaptureOn: Boolean? = null
 
     fun setCaptureStatus(nativeCaptureOn: Boolean) {
         _state.update {
@@ -41,24 +43,32 @@ class HeadsetTestController @Inject constructor(
                 },
             )
         }
-        logger.i(TAG, if (nativeCaptureOn) "Headset monitor ON" else "Headset monitor OFF")
+        if (lastLoggedCaptureOn != nativeCaptureOn) {
+            lastLoggedCaptureOn = nativeCaptureOn
+            logger.i(TAG, if (nativeCaptureOn) "Headset monitor ON" else "Headset monitor OFF")
+        }
     }
 
-    fun recordBtPlayEvent(label: String) {
+    fun recordBtPlayEvent(
+        label: String,
+        source: String = "native",
+        kind: String = HeadsetButtonNotifier.eventKind(source),
+    ) {
         val display = HeadsetButtonNames.displayLabel(HeadsetButtonNames.normalize(label))
         val now = System.currentTimeMillis()
         val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
-        logger.i(TAG, "BT button $display via native")
+        logger.i(TAG, "BT button $display via $source ($kind)")
 
         _state.update { current ->
             val playCount = current.pressCount + 1
-            val line = "$at  $display  (#$playCount)"
+            val line = "$at  [$kind]  $display  (#$playCount)"
             current.copy(
                 pressCount = playCount,
-                lastEventLabel = display,
+                lastEventLabel = "$display · $kind",
                 lastEventAt = at,
+                lastEventKind = kind,
                 eventLog = (listOf(line) + current.eventLog).take(MAX_EVENTS),
-                statusMessage = "Получено: $display ($at)",
+                statusMessage = "Получено: $display ($kind) · $at",
             )
         }
     }
@@ -69,6 +79,7 @@ class HeadsetTestController @Inject constructor(
                 pressCount = 0,
                 lastEventLabel = "",
                 lastEventAt = "",
+                lastEventKind = "",
                 eventLog = emptyList(),
             )
         }

@@ -1,33 +1,39 @@
-# Тест кнопок Bluetooth-гарнитуры (AndroidEnglishTutor)
+# Тест кнопок Bluetooth-гарнитуры (AndEngTutor)
 
-**Версия:** 1.3.8+  
-**Эталон:** AndroidChat `HeadsetMonitorService` + `HeadsetButtonNotifier`
+**Версия:** 1.5.1+ (versionCode 22)  
+**Отображаемое имя:** AndEngTutor · пакет `com.englishtutor`  
+**Эталон:** BT_Play / `AndroidChatBtTest95` (AudioFocus + USAGE_MEDIA pulse + reassert)
+
+Подтверждено на Pixel 6a + Pixel Buds Pro 2 (2026-09-06): физический Play → **HARDWARE** в логе.
+
+Отчёты:
+
+- [Reports/AndEngTutor_BT_Play_Implementation_Report_2026-09-06.md](Reports/AndEngTutor_BT_Play_Implementation_Report_2026-09-06.md)
+- [Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md](Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md)
 
 ---
 
 ## Быстрый старт
 
-1. Подключите BT-гарнитуру к телефону.
-2. **Выключите** профиль Tasker **BT Headset Play Pause** (если используется) — иначе конфликт MediaSession.
-3. Откройте приложение → **Окно тестов (речь + гарнитура)**.
-4. Перейдите на вкладку **BT Play**.
-5. Убедитесь:
-   - `Native capture: ON (MediaSession)`
-   - Уведомление «BT Play (English Tutor)»
-6. Нажмите **Симулировать Play** — счётчик должен стать `1`.
-7. Нажмите Play на гарнитуре — счётчик растёт, строка в журнале.
+1. Подключите BT-гарнитуру.
+2. Force-stop конкурентов (YouTube, музыкальные плееры, BtTest*):
+   ```bash
+   adb shell am force-stop com.google.android.youtube
+   ```
+3. Отключите Tasker-профиль **BT Key / Grab**, если включён.
+4. Откройте **AndEngTutor** → **Окно тестов** (вкладка **BT Play** открывается по умолчанию).
+5. Дождитесь cue *«BT test ready»* и (тихого) USAGE_MEDIA pulse.
+6. Статус: `Native capture: ON`.
+7. **Симулировать Play** → журнал `[SIMULATED]`.
+8. Play на гарнитуре → журнал `[HARDWARE]`, счётчик +1.
+9. Если Play «молчит» после YouTube → **Reassert MediaSession**.
 
----
+Проверка системы:
 
-## Вкладки окна тестов
-
-| Вкладка | Назначение |
-|---------|------------|
-| **TTS** | Озвучка произвольного текста |
-| **STT** | Запись и распознавание речи |
-| **BT Play** | Тест media-кнопок гарнитуры (изоляция от урока) |
-
-На вкладке BT Play **не** запускаются TTS/STT урока — только счётчик Play и журнал (как в AndroidChat).
+```bash
+adb shell dumpsys media_session
+# Ожидание: Media button session is com.englishtutor/AndEngTutorHeadset/...
+```
 
 ---
 
@@ -35,98 +41,81 @@
 
 | Элемент | Описание |
 |---------|----------|
-| Статус capture | ON/OFF — активен ли `HeadsetMonitorService` (старт при запуске приложения) |
-| Большой счётчик | Число нажатий Play / Play-Pause / HeadsetHook |
-| Последнее событие | Метка + время `HH:mm:ss.SSS` |
-| Симулировать Play | Проверка без гарнитуры |
-| Журнал событий | До 40 строк: `12:34:56.789  Play  (#3)` |
-| ↻ в шапке | Сброс счётчика и журнала |
+| Native capture | ON/OFF — `HeadsetMonitorService` + MediaSession |
+| Счётчик | Play / Play-Pause / HeadsetHook |
+| Последнее событие | Метка + HARDWARE/SIMULATED + время |
+| Reassert MediaSession | Force reattach + AudioFocus + USAGE_MEDIA pulse + cue |
+| Симулировать Play | Без гарнитуры → SIMULATED |
+| Журнал | До 40 строк: `HH:mm:ss.SSS  [HARDWARE]  Play  (#n)` |
+| Диагностика (внизу) | Разрешения, Tasker, Media-button #1, ActiveSessions |
+| Notification Access | Для списка Active MediaSessions (кто #1) |
 
 ---
 
-## Архитектура
+## Архитектура (v1.5.1)
 
 ```
-Гарнитура (AVRCP)
+Гарнитура (AVRCP Play)
         │
         ▼
-HeadsetMonitorService (foreground, MediaSessionCompat) — sticky, как AndroidChat
-        │  onPlay / onPause / onMediaButtonEvent
-        ▼
-HeadsetButtonNotifier.notifyButton(label)
+Android media-button session  ← должна быть com.englishtutor
         │
-        ├─ btPlayTestIsolation? → счётчик (+ optional STT handler на вкладке STT)
-        └─ production → EnglishTutorPlayHandler
-        │  debounce 500 ms
-        │  только Play-эквиваленты → счётчик + UI
         ▼
-VoiceTestScreen (вкладка BT Play)
+HeadsetMonitorService (FGS mediaPlayback)
+  • requestAudioFocus(USAGE_MEDIA)
+  • PLAYING → PAUSED claim
+  • USAGE_MEDIA AudioTrack pulse (UID приложения)
+  • reassert / ACL force reattach (main thread)
+        │
+        ▼
+HeadsetButtonNotifier (debounce 500 ms, HARDWARE/SIMULATED)
+        │
+        ├─ isolation ON (экран тестов) → счётчик / журнал
+        └─ isolation OFF → EnglishTutorPlayHandler → урок
 ```
+
+**Важно:** cue через Google TTS сам по себе **не** назначает media-button session приложению (playback уходит в `com.google.android.tts`). Нужен pulse под UID `com.englishtutor`.
 
 ### Ключевые файлы
 
-- `session/HeadsetMonitorService.kt` — sticky MediaSession (как AndroidChat)
-- `session/HeadsetButtonNotifier.kt` — debounce + isolation + routing
-- `session/HeadsetTestController.kt` — счётчик UI
-- `session/HeadsetButtonNames.kt` — KeyEvent → `MEDIA_PLAY`, `HEADSETHOOK`, …
-- `ui/screens/voicetest/VoiceTestScreen.kt` — 3 вкладки
+| Файл | Роль |
+|------|------|
+| `session/HeadsetMonitorService.kt` | FGS, AudioFocus, claim, reassert, pulse |
+| `session/MediaPlaybackPulse.kt` | Короткий USAGE_MEDIA AudioTrack |
+| `session/HeadsetButtonNotifier.kt` | Debounce, isolation, HARDWARE/SIMULATED |
+| `session/HeadsetTestController.kt` | Счётчик UI |
+| `bluetooth/ActiveSessionsHelper.kt` | Кто #1 MediaSession |
+| `bluetooth/NoOpNotificationListener.kt` | Notification Access |
+| `bluetooth/HeadsetDiagnosticsHelper.kt` | Карточка диагностики |
+| `ui/screens/voicetest/*` | Tests UI, Reassert, cue |
 
 ### Жизненный цикл
 
-- **Запуск приложения** → `HeadsetMonitorService.start()` (sticky)
-- **Окно тестов открыто** → `btPlayTestIsolation = true`
-- **Окно тестов закрыто** → isolation OFF → кнопки в урок
-- Вкладка BT Play **не** стартует/останавливает сервис
+- **Холодный старт** → `HeadsetMonitorService.start()` в `Application`
+- **Окно тестов** → isolation ON, `reassert(speakCue=true)` + pulse
+- **Вкладка BT Play** → повторный reassert при входе
+- **ACL connect/disconnect** → force reattach
+- **Закрытие тестов** → isolation OFF → кнопки в урок
 
 ---
 
-## Отличия от урока
+## Типичные сбои
 
-| | Урок (`LessonSessionService`) | Тест (isolation) |
-|--|-------------------------------|------------------|
-| MediaSession | `HeadsetMonitorService` (общий) | тот же сервис |
-| Audio focus | Да (TTS/STT) | Нет (как AndroidChat) |
-| Play-эквиваленты | `EnglishTutorPlayHandler` | Только счётчик |
-
-### BT Play в уроке (`EnglishTutorPlayHandler`)
-
-| Состояние | Действие Play |
-|-----------|---------------|
-| STT слушает | cancel |
-| TTS фразы на паузе | cue «Continue» → resume |
-| TTS фразы играет | pause + cue «Pause» |
-| Idle, фраза не озвучена | speak phrase |
-| Idle, фраза озвучена | STT (Bluetooth SCO) |
-| Пустой STT | cue «Play» → next phrase |
+| Симптом | Причина | Действие |
+|---------|---------|----------|
+| Simulate OK, HARDWARE нет | Чужая / null media-button session | Reassert; force-stop YouTube; dumpsys |
+| Media button session = null | Нет playback от UID приложения | Pulse при reassert (уже в 1.5.1) |
+| Tasker WARN в диагностике | Grab media keys | Выключить BT Key |
+| После YouTube Play «молчит» | YouTube = #1 | Reassert |
 
 ---
 
-## Логи
+## Чеклист приёмки
 
-Экран **Логи** → категория `Headset`:
-
-```
-[LOG:Headset] BT button Play via native
-[LOG:Headset] Headset test ACTIVE
-```
-
-Отправка на сервер: кнопка **Отправить логи на сервер** (Supabase, см. README).
-
----
-
-## Устранение неполадок
-
-| Симптом | Действие |
-|---------|----------|
-| Симуляция работает, гарнитура нет | Выключить Tasker / другое медиа-приложение |
-| Capture OFF | Переключиться на вкладку BT Play заново |
-| Счётчик не растёт | Проверить уведомление foreground-сервиса |
-| Двойной STOP в логах | Нормально при выходе с экрана (stop + DisposableEffect) |
-
----
-
-## См. также
-
-- [AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md](AndroidEnglishTutor-Bluetooth-Headset-Report-From-AndroidChat.md) — полный отчёт по BT из AndroidChat
-- [AndroidChat-BT-Headset-Testing-Report.md](AndroidChat-BT-Headset-Testing-Report.md) — полный разбор AndroidChat
-- `TaskerToWpf/Docs/Known-Issues.md` — конфликты MediaSession с Tasker
+- [x] Физический Play → HARDWARE + счётчик (подтверждено 2026-09-06)
+- [x] Simulate → SIMULATED
+- [x] Reassert + USAGE_MEDIA pulse
+- [x] dumpsys: Media button session = `com.englishtutor`
+- [x] Isolation не ломает lesson flow вне теста
+- [ ] Notification Access (опционально, для UI #1)
+- [ ] POST_NOTIFICATIONS выдан (рекомендуется на API 33+)

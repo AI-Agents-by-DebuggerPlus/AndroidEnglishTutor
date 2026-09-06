@@ -87,7 +87,6 @@ class LogsViewModel @Inject constructor(
             uploadState.update {
                 it.copy(isUploading = true, status = "Отправка на сервер…", error = null)
             }
-            logger.i("Supabase", "Manual upload start, entries=${entries.size}")
             supabaseLogRepository.sendBuffer(entries)
                 .onSuccess { result ->
                     uploadState.update {

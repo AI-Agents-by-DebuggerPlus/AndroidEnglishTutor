@@ -10,15 +10,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,8 +46,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishtutor.R
+import com.englishtutor.bluetooth.ActiveMediaSessionRow
 import com.englishtutor.bluetooth.ActiveBluetoothDevice
 import com.englishtutor.bluetooth.ConnectedBluetoothDevice
+import com.englishtutor.bluetooth.DiagnosticLevel
+import com.englishtutor.bluetooth.HeadsetDiagnosticLine
 import com.englishtutor.ui.components.BuildVersionSubtitle
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,12 +65,15 @@ fun VoiceTestScreen(
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions(),
     ) { grants ->
-        viewModel.onMicPermission(grants[Manifest.permission.RECORD_AUDIO] == true)
+        viewModel.onPermissionsResult(grants)
     }
 
     LaunchedEffect(Unit) {
         val permissions = buildList {
             add(Manifest.permission.RECORD_AUDIO)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                add(Manifest.permission.BLUETOOTH_CONNECT)
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 add(Manifest.permission.POST_NOTIFICATIONS)
             }
@@ -96,6 +102,15 @@ fun VoiceTestScreen(
                     }
                 },
                 actions = {
+                    IconButton(
+                        onClick = viewModel::closeApp,
+                        enabled = !state.isClosing,
+                    ) {
+                        Icon(
+                            Icons.Default.Stop,
+                            contentDescription = stringResource(R.string.action_close_app),
+                        )
+                    }
                     when (state.selectedTab) {
                         2 -> {
                             IconButton(onClick = viewModel::resetBtPlayCounter) {
@@ -113,6 +128,8 @@ fun VoiceTestScreen(
             )
         },
     ) { padding ->
+        val scrollState = rememberScrollState()
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -146,36 +163,72 @@ fun VoiceTestScreen(
                 }
             }
 
-            when (state.selectedTab) {
-                0 -> TtsTestSection(
-                    speakText = state.speakText,
-                    languageCode = state.languageCode,
-                    isSpeaking = state.isSpeaking,
-                    isBusy = state.isBusy,
-                    statusMessage = state.statusMessage,
-                    errorMessage = state.errorMessage,
-                    onSpeakTextChanged = viewModel::onSpeakTextChanged,
-                    onLanguageChanged = viewModel::onLanguageChanged,
-                    onSpeak = viewModel::speak,
-                )
-                1 -> SttTestSection(
-                    languageCode = state.languageCode,
-                    isRecording = state.isRecording,
-                    isBusy = state.isBusy,
-                    recognizedText = state.recognizedText,
-                    statusMessage = state.statusMessage,
-                    errorMessage = state.errorMessage,
-                    onLanguageChanged = viewModel::onLanguageChanged,
-                    onRecognize = viewModel::recognize,
-                    onSpeakThenRecognize = viewModel::speakThenRecognize,
-                )
-                else -> BtPlayTestSection(
-                    pressCount = state.btPressCount,
-                    lastEventLabel = state.btLastEventLabel,
-                    lastEventAt = state.btLastEventAt,
-                    nativeCaptureOn = state.nativeCaptureOn,
-                    eventLog = state.btEventLog,
-                    onSimulate = viewModel::simulateBtPlay,
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .verticalScroll(scrollState)
+                    .padding(bottom = 8.dp),
+            ) {
+                when (state.selectedTab) {
+                    0 -> TtsTestSection(
+                        speakText = state.speakText,
+                        languageCode = state.languageCode,
+                        isSpeaking = state.isSpeaking,
+                        isBusy = state.isBusy,
+                        statusMessage = state.statusMessage,
+                        errorMessage = state.errorMessage,
+                        onSpeakTextChanged = viewModel::onSpeakTextChanged,
+                        onLanguageChanged = viewModel::onLanguageChanged,
+                        onSpeak = viewModel::speak,
+                    )
+                    1 -> SttTestSection(
+                        languageCode = state.languageCode,
+                        isRecording = state.isRecording,
+                        isBusy = state.isBusy,
+                        recognizedText = state.recognizedText,
+                        statusMessage = state.statusMessage,
+                        errorMessage = state.errorMessage,
+                        onLanguageChanged = viewModel::onLanguageChanged,
+                        onRecognize = viewModel::recognize,
+                        onSpeakThenRecognize = viewModel::speakThenRecognize,
+                    )
+                    else -> BtPlayTestSection(
+                        pressCount = state.btPressCount,
+                        lastEventLabel = state.btLastEventLabel,
+                        lastEventAt = state.btLastEventAt,
+                        nativeCaptureOn = state.nativeCaptureOn,
+                        taskerMayConflict = state.taskerMayConflict,
+                        eventLog = state.btEventLog,
+                        onSimulate = viewModel::simulateBtPlay,
+                        onReassert = { viewModel.reassertBtPlayCapture(speakCue = true) },
+                    )
+                }
+
+                Button(
+                    onClick = viewModel::closeApp,
+                    enabled = !state.isClosing,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.error,
+                    ),
+                ) {
+                    Text(stringResource(R.string.action_close_app))
+                }
+
+                HeadsetDiagnosticsSection(
+                    summary = state.diagnosticsSummary,
+                    mediaButtonPathReady = state.mediaButtonPathReady,
+                    lines = state.diagnosticLines,
+                    activeSessions = state.activeMediaSessions,
+                    notificationAccessEnabled = state.notificationAccessEnabled,
+                    onRefresh = viewModel::refreshDiagnostics,
+                    onOpenNotificationAccess = viewModel::openNotificationAccessSettings,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
                 )
             }
         }
@@ -267,8 +320,7 @@ private fun TtsTestSection(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
@@ -316,7 +368,7 @@ private fun SttTestSection(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -382,12 +434,14 @@ private fun BtPlayTestSection(
     lastEventLabel: String,
     lastEventAt: String,
     nativeCaptureOn: Boolean,
+    taskerMayConflict: Boolean,
     eventLog: List<String>,
     onSimulate: () -> Unit,
+    onReassert: () -> Unit,
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -411,6 +465,14 @@ private fun BtPlayTestSection(
                 MaterialTheme.colorScheme.error
             },
         )
+        if (taskerMayConflict) {
+            Text(
+                text = stringResource(R.string.bt_play_tasker_conflict),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+                textAlign = TextAlign.Center,
+            )
+        }
         Text(
             text = pressCount.toString(),
             fontSize = 72.sp,
@@ -431,6 +493,12 @@ private fun BtPlayTestSection(
             textAlign = TextAlign.Center,
         )
         OutlinedButton(
+            onClick = onReassert,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.bt_play_test_reassert))
+        }
+        OutlinedButton(
             onClick = onSimulate,
             modifier = Modifier.fillMaxWidth(),
         ) {
@@ -446,30 +514,119 @@ private fun BtPlayTestSection(
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.fillMaxWidth(),
         )
-        LazyColumn(
+        if (eventLog.isEmpty()) {
+            Text(
+                text = stringResource(R.string.bt_play_test_log_empty),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        } else {
+            eventLog.forEach { line ->
+                Text(
+                    text = line,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontFamily = FontFamily.Monospace,
+                    ),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun HeadsetDiagnosticsSection(
+    summary: String,
+    mediaButtonPathReady: Boolean,
+    lines: List<HeadsetDiagnosticLine>,
+    activeSessions: List<ActiveMediaSessionRow>,
+    notificationAccessEnabled: Boolean,
+    onRefresh: () -> Unit,
+    onOpenNotificationAccess: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+    ) {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+                .padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            if (eventLog.isEmpty()) {
-                item {
-                    Text(
-                        text = stringResource(R.string.bt_play_test_log_empty),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = stringResource(R.string.headset_diagnostics_title),
+                    style = MaterialTheme.typography.titleSmall,
+                )
+                IconButton(onClick = onRefresh) {
+                    Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.headset_diagnostics_refresh))
                 }
-            } else {
-                items(eventLog) { line ->
+            }
+            Text(
+                text = summary.ifBlank { stringResource(R.string.headset_diagnostics_pending) },
+                style = MaterialTheme.typography.bodyMedium,
+                color = if (mediaButtonPathReady) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.error
+                },
+            )
+            lines.forEach { line ->
+                DiagnosticLineRow(line)
+            }
+            if (!notificationAccessEnabled) {
+                OutlinedButton(
+                    onClick = onOpenNotificationAccess,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.headset_diagnostics_notification_access))
+                }
+            } else if (activeSessions.isNotEmpty()) {
+                Text(
+                    text = stringResource(R.string.headset_diagnostics_sessions_title),
+                    style = MaterialTheme.typography.labelLarge,
+                )
+                activeSessions.take(6).forEach { row ->
                     Text(
-                        text = line,
+                        text = row.displayLine(),
                         style = MaterialTheme.typography.bodySmall.copy(
                             fontFamily = FontFamily.Monospace,
                         ),
+                        color = when {
+                            row.receivesButton && row.isSelf -> MaterialTheme.colorScheme.primary
+                            row.receivesButton -> MaterialTheme.colorScheme.error
+                            row.isKnownCompetitor -> MaterialTheme.colorScheme.tertiary
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        },
                     )
                 }
             }
         }
     }
+}
+
+@Composable
+private fun DiagnosticLineRow(line: HeadsetDiagnosticLine) {
+    val marker = when (line.level) {
+        DiagnosticLevel.OK -> "✓"
+        DiagnosticLevel.WARN -> "!"
+        DiagnosticLevel.FAIL -> "✗"
+    }
+    val color = when (line.level) {
+        DiagnosticLevel.OK -> MaterialTheme.colorScheme.primary
+        DiagnosticLevel.WARN -> MaterialTheme.colorScheme.tertiary
+        DiagnosticLevel.FAIL -> MaterialTheme.colorScheme.error
+    }
+    Text(
+        text = "$marker ${line.label}: ${line.detail}",
+        style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+        color = color,
+    )
 }

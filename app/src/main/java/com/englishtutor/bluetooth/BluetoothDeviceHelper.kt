@@ -165,7 +165,7 @@ class BluetoothDeviceHelper @Inject constructor(
             logger.w(TAG, "getConnectedDevices denied for profile=$profile")
             emptyList()
         } catch (error: IllegalArgumentException) {
-            logger.w(TAG, "Profile $profile unavailable")
+            logger.d(TAG, "Profile $profile unavailable on this API level")
             emptyList()
         }
 
