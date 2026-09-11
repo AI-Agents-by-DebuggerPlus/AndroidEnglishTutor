@@ -25,6 +25,12 @@ object HeadsetButtonNames {
             n == "PLAY"
     }
 
+    /** Play stem gesture: Play/Pause/Hook — successive taps often alternate PLAY then PAUSE. */
+    fun isBtPlayGestureLabel(label: String): Boolean {
+        val n = normalize(label)
+        return isBtPlayLabel(n) || n == "MEDIA_PAUSE" || n == "PAUSE"
+    }
+
     fun displayLabel(label: String): String = when (normalize(label)) {
         "MEDIA_PLAY", "PLAY" -> "Play"
         "MEDIA_PAUSE", "PAUSE" -> "Pause"

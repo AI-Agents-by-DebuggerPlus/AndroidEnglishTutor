@@ -4,7 +4,7 @@
 
 **Отображаемое имя:** AndEngTutor (иконка с буквой **E**)  
 **Пакет:** `com.englishtutor`  
-**Текущая сборка:** v1.5.1 (versionCode 22)
+**Текущая сборка:** v1.5.6 (versionCode 27)
 
 ## Возможности
 
@@ -13,20 +13,22 @@
 - Урок eyes-free: `LessonSessionService` + `EnglishTutorPlayHandler` (pause/resume TTS, STT + SCO)
 - Определение BT-гарнитуры, ACL-анонсы, кнопка Stop / закрытие приложения
 - **Окно тестов** (TTS / STT / BT Play) по образцу BT_Play / AndroidChatBtTest95
-- **BT Play:** HARDWARE/SIMULATED, Reassert, USAGE_MEDIA pulse, диагностика ActiveSessions
+- **BT Play:** HARDWARE/SIMULATED, Play/Next, debounce + интервал Next, Reassert, USAGE_MEDIA pulse, диагностика ActiveSessions
 - **Экран логов** → Supabase (`[LOG:category] message`)
 
 ## Окно тестов → BT Play
 
 1. Главная → **Окно тестов**
 2. Вкладка **BT Play** (по умолчанию) — reassert + cue *«BT test ready»* + pulse
-3. Play на гарнитуре → счётчик + `[HARDWARE]` в журнале
-4. **Симулировать Play** → `[SIMULATED]`
-5. После YouTube / другого плеера → **Reassert MediaSession**
+3. Одиночный Play → счётчик **Play** + `[HARDWARE]`
+4. Двойной жест (Next на Buds) → счётчик **Next** (companion Play подавляется)
+5. **Симулировать Play** → `[SIMULATED]`
+6. После YouTube / другого плеера → **Reassert MediaSession**
 
 Перед тестом закройте YouTube и другие media-приложения.
 
 Подробнее: [Docs/headset-testing.md](Docs/headset-testing.md)  
+Порт / проблемы и решения: [Docs/Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md](Docs/Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md)  
 Отчёты: [Docs/Reports/](Docs/Reports/)
 
 ## Настройка Supabase (логи)
@@ -52,8 +54,9 @@ app/src/main/java/com/englishtutor/
 ├── session/
 │   ├── HeadsetMonitorService.kt   # FGS + MediaSession + AudioFocus + pulse
 │   ├── MediaPlaybackPulse.kt      # USAGE_MEDIA claim (UID приложения)
-│   ├── HeadsetButtonNotifier.kt   # Debounce, isolation, HARDWARE/SIMULATED
-│   ├── HeadsetTestController.kt   # Счётчик + журнал BT Play
+│   ├── HeadsetButtonNotifier.kt   # Debounce, Next, suppress, isolation
+│   ├── HeadsetButtonPreferences.kt # Debounce / Next interval prefs
+│   ├── HeadsetTestController.kt   # Счётчики Play/Next + журнал
 │   ├── EnglishTutorPlayHandler.kt # BT Play → урок
 │   └── LessonSessionService.kt    # Урок FGS (audio focus для TTS/STT)
 ├── bluetooth/                     # Devices, ACL, diagnostics, ActiveSessions

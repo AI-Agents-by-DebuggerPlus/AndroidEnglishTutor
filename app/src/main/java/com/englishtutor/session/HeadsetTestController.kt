@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.update
 data class HeadsetTestState(
     val nativeCaptureOn: Boolean = false,
     val pressCount: Int = 0,
+    val nextCount: Int = 0,
     val lastEventLabel: String = "",
     val lastEventAt: String = "",
     val lastEventKind: String = "",
@@ -22,7 +23,7 @@ data class HeadsetTestState(
 )
 
 /**
- * UI state for BT Play test tab — counter and HARDWARE/SIMULATED event log.
+ * UI state for BT Play test tab — Play/Next counters and HARDWARE/SIMULATED event log.
  */
 @Singleton
 class HeadsetTestController @Inject constructor(
@@ -73,17 +74,42 @@ class HeadsetTestController @Inject constructor(
         }
     }
 
+    fun recordBtNextEvent(
+        source: String = "native",
+        kind: String = HeadsetButtonNotifier.eventKind(source),
+        viaDoublePlay: Boolean = true,
+    ) {
+        val display = if (viaDoublePlay) "Next (2×Play)" else "Next"
+        val now = System.currentTimeMillis()
+        val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
+        logger.i(TAG, "BT button $display via $source ($kind)")
+
+        _state.update { current ->
+            val nextCount = current.nextCount + 1
+            val line = "$at  [$kind]  $display  (#$nextCount)"
+            current.copy(
+                nextCount = nextCount,
+                lastEventLabel = "$display · $kind",
+                lastEventAt = at,
+                lastEventKind = kind,
+                eventLog = (listOf(line) + current.eventLog).take(MAX_EVENTS),
+                statusMessage = "Получено: $display ($kind) · $at",
+            )
+        }
+    }
+
     fun resetCounter() {
         _state.update {
             it.copy(
                 pressCount = 0,
+                nextCount = 0,
                 lastEventLabel = "",
                 lastEventAt = "",
                 lastEventKind = "",
                 eventLog = emptyList(),
             )
         }
-        logger.i(TAG, "BT Play counter reset")
+        logger.i(TAG, "BT Play/Next counters reset")
     }
 
     companion object {

@@ -6,8 +6,12 @@
     <string name="tests_tab_tts">TTS</string>
     <string name="tests_tab_stt">STT</string>
     <string name="tests_tab_bt_play">BT Play</string>
-    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Счётчик растёт на каждое событие Play (HARDWARE). Simulate = SIMULATED. Перед тестом закройте YouTube.</string>
-    <string name="bt_play_test_count_label">нажатий BT Play</string>
+    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Одиночный жест → Play; второй жест (Play или Pause) за интервал Next → Next. Simulate = SIMULATED. Перед тестом закройте YouTube.</string>
+    <string name="bt_play_test_count_label">Play</string>
+    <string name="bt_play_test_next_count_label">Next</string>
+    <string name="bt_play_test_debounce_enable">Защита от повторного нажатия</string>
+    <string name="bt_play_test_debounce_interval">Интервал защиты, мс</string>
+    <string name="bt_play_test_next_interval">Интервал Next (двойной Play), мс</string>
     <string name="bt_play_test_last_event">Последнее: %1$s · %2$s</string>
     <string name="bt_play_test_simulate">Симулировать Play</string>
     <string name="bt_play_test_reassert">Reassert MediaSession</string>
@@ -17,6 +21,7 @@
     <string name="bt_play_test_log_empty">Пока нет событий</string>
     <string name="action_stop">Stop</string>
     <string name="action_close_app">Закрыть приложение</string>
+    <string name="action_power_off">Выключить приложение</string>
     <string name="bluetooth_status_prefix">Bluetooth</string>
     <string name="bt_devices_section_title">Bluetooth-устройства</string>
     <string name="bt_devices_connected_title">Подключённые</string>

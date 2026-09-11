@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -30,6 +32,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -38,8 +41,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -195,11 +201,20 @@ fun VoiceTestScreen(
                     )
                     else -> BtPlayTestSection(
                         pressCount = state.btPressCount,
+                        nextCount = state.btNextCount,
                         lastEventLabel = state.btLastEventLabel,
                         lastEventAt = state.btLastEventAt,
                         nativeCaptureOn = state.nativeCaptureOn,
                         taskerMayConflict = state.taskerMayConflict,
+                        debounceEnabled = state.debounceEnabled,
+                        debounceIntervalText = state.debounceIntervalText,
+                        nextDoubleTapText = state.nextDoubleTapText,
                         eventLog = state.btEventLog,
+                        onDebounceEnabledChange = viewModel::setDebounceEnabled,
+                        onDebounceIntervalTextChange = viewModel::onDebounceIntervalTextChanged,
+                        onDebounceIntervalCommit = viewModel::commitDebounceInterval,
+                        onNextDoubleTapTextChange = viewModel::onNextDoubleTapTextChanged,
+                        onNextDoubleTapCommit = viewModel::commitNextDoubleTapInterval,
                         onSimulate = viewModel::simulateBtPlay,
                         onReassert = { viewModel.reassertBtPlayCapture(speakCue = true) },
                     )
@@ -431,14 +446,24 @@ private fun SttTestSection(
 @Composable
 private fun BtPlayTestSection(
     pressCount: Int,
+    nextCount: Int,
     lastEventLabel: String,
     lastEventAt: String,
     nativeCaptureOn: Boolean,
     taskerMayConflict: Boolean,
+    debounceEnabled: Boolean,
+    debounceIntervalText: String,
+    nextDoubleTapText: String,
     eventLog: List<String>,
+    onDebounceEnabledChange: (Boolean) -> Unit,
+    onDebounceIntervalTextChange: (String) -> Unit,
+    onDebounceIntervalCommit: () -> Unit,
+    onNextDoubleTapTextChange: (String) -> Unit,
+    onNextDoubleTapCommit: () -> Unit,
     onSimulate: () -> Unit,
     onReassert: () -> Unit,
 ) {
+    val focusManager = LocalFocusManager.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -473,16 +498,86 @@ private fun BtPlayTestSection(
                 textAlign = TextAlign.Center,
             )
         }
-        Text(
-            text = pressCount.toString(),
-            fontSize = 72.sp,
-            style = MaterialTheme.typography.displayLarge,
-            color = MaterialTheme.colorScheme.primary,
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(
+                text = stringResource(R.string.bt_play_test_debounce_enable),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.weight(1f),
+            )
+            Switch(
+                checked = debounceEnabled,
+                onCheckedChange = onDebounceEnabledChange,
+            )
+        }
+        OutlinedTextField(
+            value = debounceIntervalText,
+            onValueChange = onDebounceIntervalTextChange,
+            enabled = debounceEnabled,
+            label = { Text(stringResource(R.string.bt_play_test_debounce_interval)) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next,
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    onDebounceIntervalCommit()
+                    focusManager.clearFocus()
+                },
+            ),
+            modifier = Modifier.fillMaxWidth(),
         )
-        Text(
-            text = stringResource(R.string.bt_play_test_count_label),
-            style = MaterialTheme.typography.titleMedium,
+        OutlinedTextField(
+            value = nextDoubleTapText,
+            onValueChange = onNextDoubleTapTextChange,
+            label = { Text(stringResource(R.string.bt_play_test_next_interval)) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done,
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    onNextDoubleTapCommit()
+                    focusManager.clearFocus()
+                },
+            ),
+            modifier = Modifier.fillMaxWidth(),
         )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = pressCount.toString(),
+                    fontSize = 64.sp,
+                    style = MaterialTheme.typography.displayLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                Text(
+                    text = stringResource(R.string.bt_play_test_count_label),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = nextCount.toString(),
+                    fontSize = 64.sp,
+                    style = MaterialTheme.typography.displayLarge,
+                    color = MaterialTheme.colorScheme.secondary,
+                )
+                Text(
+                    text = stringResource(R.string.bt_play_test_next_count_label),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
+        }
         Text(
             text = stringResource(
                 R.string.bt_play_test_last_event,

@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -83,6 +84,24 @@ fun HomeScreen(
                 },
             )
         },
+        bottomBar = {
+            Button(
+                onClick = viewModel::stopApp,
+                enabled = !state.isStopping,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error,
+                ),
+            ) {
+                Icon(Icons.Default.Stop, contentDescription = null)
+                Text(
+                    text = stringResource(R.string.action_power_off),
+                    modifier = Modifier.padding(start = 8.dp),
+                )
+            }
+        },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -126,19 +145,6 @@ fun HomeScreen(
                     ) {
                         Text("Прогресс")
                     }
-                }
-            }
-            item {
-                OutlinedButton(
-                    onClick = viewModel::stopApp,
-                    enabled = !state.isStopping,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Icon(Icons.Default.Stop, contentDescription = null)
-                    Text(
-                        text = stringResource(R.string.action_close_app),
-                        modifier = Modifier.padding(start = 8.dp),
-                    )
                 }
             }
             items(state.lessons, key = { it.id }) { lesson ->
