@@ -15,10 +15,13 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,6 +40,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishtutor.R
 import com.englishtutor.domain.model.Lesson
+import com.englishtutor.session.VoiceQuizPhase
 import com.englishtutor.ui.components.BuildVersionLabel
 import com.englishtutor.ui.components.BuildVersionSubtitle
 
@@ -46,6 +50,10 @@ fun HomeScreen(
     onOpenLesson: (String) -> Unit,
     onOpenProgress: () -> Unit,
     onOpenVoiceTest: () -> Unit,
+    onOpenVoiceQuiz: () -> Unit,
+    onOpenQuizStats: () -> Unit,
+    onOpenVoicePicker: () -> Unit,
+    onOpenWordStudy: () -> Unit,
     onOpenLogs: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
@@ -121,11 +129,114 @@ fun HomeScreen(
                 )
             }
             item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    ),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.voice_quiz_home_card_title),
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                        Text(
+                            text = stringResource(R.string.voice_quiz_home_card_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        if (state.quiz.promptRu.isNotBlank()) {
+                            Text(
+                                text = state.quiz.promptRu,
+                                style = MaterialTheme.typography.titleLarge,
+                            )
+                        }
+                        Text(
+                            text = state.quiz.statusMessage,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Text(
+                text = stringResource(
+                    R.string.voice_quiz_guessed_total,
+                    state.quiz.totalGuessedWords,
+                    state.quiz.remainingWords,
+                    state.quiz.estimatedLevel,
+                ),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            Button(
+                                onClick = viewModel::onQuizNext,
+                                modifier = Modifier.weight(1f),
+                                enabled = state.quiz.phase != VoiceQuizPhase.Listening,
+                            ) {
+                                Icon(Icons.Default.SkipNext, contentDescription = null)
+                                Text(
+                                    text = "Next",
+                                    modifier = Modifier.padding(start = 4.dp),
+                                )
+                            }
+                            OutlinedButton(
+                                onClick = viewModel::onQuizPlay,
+                                modifier = Modifier.weight(1f),
+                                enabled = state.quiz.phase == VoiceQuizPhase.AskQuestion ||
+                                    state.quiz.phase == VoiceQuizPhase.WrongFeedback ||
+                                    state.quiz.phase == VoiceQuizPhase.Listening,
+                            ) {
+                                Icon(Icons.Default.PlayArrow, contentDescription = null)
+                                Text(
+                                    text = "Play",
+                                    modifier = Modifier.padding(start = 4.dp),
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            item {
                 Button(
                     onClick = onOpenVoiceTest,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
                     Text("Окно тестов (речь + гарнитура)")
+                }
+            }
+            item {
+                Button(
+                    onClick = onOpenWordStudy,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.word_study_home_button))
+                }
+            }
+            item {
+                Button(
+                    onClick = onOpenVoiceQuiz,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.voice_quiz_home_button))
+                }
+            }
+            item {
+                OutlinedButton(
+                    onClick = onOpenQuizStats,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.quiz_stats_home_button))
+                }
+            }
+            item {
+                OutlinedButton(
+                    onClick = onOpenVoicePicker,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.voice_picker_home_button))
                 }
             }
             item {

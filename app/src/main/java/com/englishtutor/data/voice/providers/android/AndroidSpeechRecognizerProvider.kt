@@ -13,6 +13,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
@@ -30,11 +31,14 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
     override fun isAvailable(): Boolean = SpeechRecognizer.isRecognitionAvailable(context)
 
     override fun cancel() {
-        logger.i(TAG, "STT cancel requested")
+        val wasListening = activeRecognizer != null
         activeRecognizer?.cancel()
         activeRecognizer?.destroy()
         activeRecognizer = null
         bluetoothScoHelper.disable()
+        if (wasListening) {
+            logger.i(TAG, "STT cancel (was listening)")
+        }
     }
 
     override suspend fun recognize(languageCode: String): Result<String> = withContext(Dispatchers.Main) {
@@ -43,8 +47,13 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
             return@withContext Result.failure(IllegalStateException("Speech recognition is not available"))
         }
 
-        bluetoothScoHelper.enable()
-        logger.i(TAG, "STT listen lang=$languageCode offlinePrefer=true sco=true")
+        val scoReady = bluetoothScoHelper.enableAndWait()
+        if (!scoReady) {
+            logger.w(TAG, "SCO not ready — STT may use phone mic/speaker")
+        }
+        // Let routing settle so the system mic cue goes to the headset.
+        delay(250)
+        logger.i(TAG, "STT listen lang=$languageCode offlinePrefer=true scoReady=$scoReady")
         try {
             suspendCancellableCoroutine { continuation ->
                 val speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
@@ -57,24 +66,19 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
                 }
 
                 val listener = object : RecognitionListener {
-                    override fun onReadyForSpeech(params: Bundle?) {
-                        logger.d(TAG, "onReadyForSpeech")
-                    }
-                    override fun onBeginningOfSpeech() {
-                        logger.d(TAG, "onBeginningOfSpeech")
-                    }
+                    override fun onReadyForSpeech(params: Bundle?) = Unit
+                    override fun onBeginningOfSpeech() = Unit
                     override fun onRmsChanged(rmsdB: Float) = Unit
                     override fun onBufferReceived(buffer: ByteArray?) = Unit
-                    override fun onEndOfSpeech() {
-                        logger.d(TAG, "onEndOfSpeech")
-                    }
+                    override fun onEndOfSpeech() = Unit
                     override fun onEvent(eventType: Int, params: Bundle?) = Unit
                     override fun onPartialResults(partialResults: Bundle?) = Unit
 
                     override fun onResults(results: Bundle?) {
                         speechRecognizer.destroy()
                         activeRecognizer = null
-                        bluetoothScoHelper.disable()
+                        // Do not disable SCO here — await media route after recognize() returns
+                        // so feedback TTS can play on A2DP headset, not phone speaker.
                         if (continuation.isActive) {
                             val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                             val text = matches?.firstOrNull().orEmpty()
@@ -86,7 +90,6 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
                     override fun onError(error: Int) {
                         speechRecognizer.destroy()
                         activeRecognizer = null
-                        bluetoothScoHelper.disable()
                         if (continuation.isActive) {
                             logger.e(TAG, "STT error code=$error")
                             continuation.resume(Result.failure(Exception("Speech recognition error: $error")))
@@ -95,7 +98,6 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
                 }
 
                 continuation.invokeOnCancellation {
-                    logger.w(TAG, "STT cancelled")
                     speechRecognizer.cancel()
                     speechRecognizer.destroy()
                     activeRecognizer = null
@@ -104,9 +106,9 @@ class AndroidSpeechRecognizerProvider @Inject constructor(
                 speechRecognizer.setRecognitionListener(listener)
                 speechRecognizer.startListening(intent)
             }
-        } catch (error: Exception) {
-            bluetoothScoHelper.disable()
-            Result.failure(error)
+        } finally {
+            val mediaReady = bluetoothScoHelper.disableAndAwaitMedia()
+            logger.i(TAG, "STT finished · mediaRouteReady=$mediaReady")
         }
     }
 

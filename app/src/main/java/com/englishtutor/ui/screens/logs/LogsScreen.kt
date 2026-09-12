@@ -119,6 +119,24 @@ fun LogsScreen(
                         enabled = !state.isUploading,
                     )
                 }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Очищать логи при перезапуске",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f).padding(end = 12.dp),
+                    )
+                    Switch(
+                        checked = state.clearOnRestart,
+                        onCheckedChange = viewModel::setClearOnRestart,
+                        enabled = !state.isUploading,
+                    )
+                }
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = viewModel::sendToServer,

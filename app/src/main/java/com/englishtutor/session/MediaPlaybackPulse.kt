@@ -1,21 +1,25 @@
 package com.englishtutor.session
 
+import android.content.Context
 import android.media.AudioAttributes
+import android.media.AudioDeviceInfo
 import android.media.AudioFormat
+import android.media.AudioManager
 import android.media.AudioTrack
+import android.os.Build
 import com.englishtutor.util.AppLogger
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.sin
 
 /**
- * Short USAGE_MEDIA playback under this app's UID.
- * Google TTS cue alone attributes audio to com.google.android.tts, so Android
- * may leave Media button session null — BtTest95 wins because its UID plays media.
- * See Docs/Tasks/Cursor/AndEngTutor_BT_Play_Hardware_Fix_Agent_Instruction.md §4 C3.1
+ * Short USAGE_MEDIA playback under this app's UID, preferably on BT A2DP.
+ * Pulls media routing to the headset after SCO teardown so TTS follows A2DP.
  */
 @Singleton
 class MediaPlaybackPulse @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val logger: AppLogger,
 ) {
     fun pulse() {
@@ -25,7 +29,6 @@ class MediaPlaybackPulse @Inject constructor(
             val durationMs = 180
             val numSamples = sampleRate * durationMs / 1000
             val buffer = ShortArray(numSamples)
-            // Very quiet 440 Hz tone — enough for system to count "real" media playback.
             val amplitude = 400
             for (i in 0 until numSamples) {
                 val t = i.toDouble() / sampleRate
@@ -52,10 +55,22 @@ class MediaPlaybackPulse @Inject constructor(
                 .setBufferSizeInBytes(maxOf(minBuf, buffer.size * 2))
                 .setTransferMode(AudioTrack.MODE_STATIC)
                 .build()
+
+            val a2dp = findA2dpOutput()
+            if (a2dp != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val ok = track.setPreferredDevice(a2dp)
+                logger.i(
+                    TAG,
+                    "pulse preferred A2DP ok=$ok name=${a2dp.productName}",
+                )
+            } else {
+                logger.w(TAG, "pulse: no A2DP output to prefer")
+            }
+
             track.write(buffer, 0, buffer.size)
             track.play()
             Thread.sleep(durationMs.toLong() + 40L)
-            logger.i(TAG, "USAGE_MEDIA pulse done (${durationMs}ms)")
+            logger.i(TAG, "USAGE_MEDIA pulse ${durationMs}ms")
         } catch (error: Exception) {
             logger.w(TAG, "USAGE_MEDIA pulse failed: ${error.message}")
         } finally {
@@ -64,6 +79,13 @@ class MediaPlaybackPulse @Inject constructor(
                 track?.release()
             }
         }
+    }
+
+    private fun findA2dpOutput(): AudioDeviceInfo? {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return null
+        val am = context.getSystemService(AudioManager::class.java) ?: return null
+        return am.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+            .firstOrNull { it.type == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP }
     }
 
     companion object {

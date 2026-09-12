@@ -9,6 +9,7 @@ import com.englishtutor.bluetooth.BluetoothConnectionMonitor
 import com.englishtutor.bluetooth.ConnectedBluetoothDevice
 import com.englishtutor.bluetooth.ActiveMediaSessionRow
 import com.englishtutor.bluetooth.ActiveSessionsHelper
+import com.englishtutor.bluetooth.BluetoothScoHelper
 import com.englishtutor.bluetooth.DiagnosticLevel
 import com.englishtutor.bluetooth.HeadsetDiagnosticLine
 import com.englishtutor.bluetooth.HeadsetDiagnosticsHelper
@@ -34,6 +35,18 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+
+data class AudioRouteUiState(
+    val a2dpOn: Boolean = false,
+    val readyForMediaTts: Boolean = false,
+    val modeLabel: String = "—",
+    val scoOn: Boolean = false,
+    val communicationDevice: String = "—",
+    val a2dpOutputs: String = "—",
+    val scoOutputs: String = "—",
+    val playbackDevice: String = "—",
+    val compact: String = "",
+)
 
 data class VoiceTestUiState(
     val versionLabel: String = AppVersion.label,
@@ -69,6 +82,7 @@ data class VoiceTestUiState(
     val mediaButtonPathReady: Boolean = false,
     val notificationAccessEnabled: Boolean = false,
     val activeMediaSessions: List<ActiveMediaSessionRow> = emptyList(),
+    val audioRoute: AudioRouteUiState = AudioRouteUiState(),
     val isClosing: Boolean = false,
 ) {
     val isBusy: Boolean get() = isSpeaking || isRecording
@@ -83,6 +97,7 @@ class VoiceTestViewModel @Inject constructor(
     private val headsetButtonNotifier: HeadsetButtonNotifier,
     private val headsetButtonPreferences: HeadsetButtonPreferences,
     private val bluetoothConnectionMonitor: BluetoothConnectionMonitor,
+    private val bluetoothScoHelper: BluetoothScoHelper,
     private val headsetDiagnosticsHelper: HeadsetDiagnosticsHelper,
     private val activeSessionsHelper: ActiveSessionsHelper,
     private val appSessionManager: AppSessionManager,
@@ -136,8 +151,12 @@ class VoiceTestViewModel @Inject constructor(
             while (isActive) {
                 delay(BLUETOOTH_REFRESH_MS)
                 bluetoothConnectionMonitor.refresh(appContext)
-                if (localState.value.selectedTab == 2) {
-                    refreshDiagnostics()
+                when (localState.value.selectedTab) {
+                    2 -> refreshDiagnostics()
+                    3 -> {
+                        refreshAudioRoute()
+                        refreshDiagnostics()
+                    }
                 }
             }
         }
@@ -146,6 +165,7 @@ class VoiceTestViewModel @Inject constructor(
         viewModelScope.launch {
             delay(SERVICE_START_GRACE_MS)
             refreshDiagnostics()
+            refreshAudioRoute()
         }
     }
 
@@ -182,6 +202,7 @@ class VoiceTestViewModel @Inject constructor(
     private fun refreshIsolatedHandler() {
         headsetButtonNotifier.isolatedBtPlayHandler = when (localState.value.selectedTab) {
             1 -> ({ recognize() })
+            3 -> ({ recognizeAndSpeak() })
             else -> null
         }
     }
@@ -206,11 +227,42 @@ class VoiceTestViewModel @Inject constructor(
     }
 
     fun selectTab(index: Int) {
-        localState.update { it.copy(selectedTab = index.coerceIn(0, 2)) }
+        val tab = index.coerceIn(0, 3)
+        localState.update { it.copy(selectedTab = tab) }
         refreshIsolatedHandler()
-        if (index == 2) {
-            reassertBtPlayCapture(speakCue = true)
-            refreshDiagnostics()
+        when (tab) {
+            2 -> {
+                reassertBtPlayCapture(speakCue = true)
+                refreshDiagnostics()
+            }
+            3 -> {
+                refreshAudioRoute()
+                refreshDiagnostics()
+            }
+        }
+    }
+
+    fun refreshAudioRoute() {
+        val snap = bluetoothScoHelper.snapshot()
+        val activeName = bluetoothConnectionMonitor.snapshot.value.activeDevice?.name
+        val playback = snap.a2dpOutputs.firstOrNull()
+            ?: activeName
+            ?: snap.communicationDevice
+            ?: "—"
+        localState.update {
+            it.copy(
+                audioRoute = AudioRouteUiState(
+                    a2dpOn = snap.a2dpOn,
+                    readyForMediaTts = snap.readyForMediaTts,
+                    modeLabel = snap.modeLabel,
+                    scoOn = snap.scoOn,
+                    communicationDevice = snap.communicationDevice ?: "—",
+                    a2dpOutputs = snap.a2dpOutputs.joinToString(", ").ifBlank { "—" },
+                    scoOutputs = snap.scoOutputs.joinToString(", ").ifBlank { "—" },
+                    playbackDevice = playback,
+                    compact = snap.compact(),
+                ),
+            )
         }
     }
 
@@ -387,6 +439,64 @@ class VoiceTestViewModel @Inject constructor(
                         )
                     }
                 }
+        }
+    }
+
+    /** Play: record → STT → TTS of recognized text (answer speak-back / A2DP check). */
+    fun recognizeAndSpeak() {
+        if (localState.value.isBusy) return
+        if (!localState.value.micGranted) {
+            localState.update { it.copy(errorMessage = "Нет доступа к микрофону") }
+            logger.w(TAG, "Recognize+speak blocked: no mic")
+            return
+        }
+        if (!speechRecognizer.isAvailable()) {
+            localState.update { it.copy(errorMessage = "Распознавание недоступно") }
+            return
+        }
+        val lang = localState.value.languageCode.trim().ifBlank { "en-US" }
+        viewModelScope.launch {
+            refreshAudioRoute()
+            localState.update {
+                it.copy(
+                    isRecording = true,
+                    isSpeaking = false,
+                    errorMessage = null,
+                    statusMessage = "Говорите…",
+                    recognizedText = null,
+                )
+            }
+            logger.i(TAG, "Recognize+speak start · ${localState.value.audioRoute.compact}")
+            val spoken = speechRecognizer.recognize(lang).getOrElse { error ->
+                logger.e(TAG, "STT error: ${error.message}")
+                localState.update {
+                    it.copy(
+                        isRecording = false,
+                        errorMessage = error.message ?: "Ошибка STT",
+                    )
+                }
+                return@launch
+            }.trim()
+            localState.update {
+                it.copy(
+                    isRecording = false,
+                    recognizedText = spoken,
+                    statusMessage = if (spoken.isEmpty()) "Пусто" else "Озвучка…",
+                    isSpeaking = spoken.isNotEmpty(),
+                )
+            }
+            if (spoken.isEmpty()) return@launch
+            refreshAudioRoute()
+            try {
+                textToSpeech.speak(spoken, lang)
+                localState.update { it.copy(statusMessage = "Озвучка завершена") }
+            } catch (error: Exception) {
+                logger.e(TAG, "TTS after STT error: ${error.message}")
+                localState.update { it.copy(errorMessage = error.message ?: "Ошибка TTS") }
+            } finally {
+                localState.update { it.copy(isSpeaking = false) }
+                refreshAudioRoute()
+            }
         }
     }
 

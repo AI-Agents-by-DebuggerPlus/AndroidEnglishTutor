@@ -91,6 +91,7 @@ fun VoiceTestScreen(
         stringResource(R.string.tests_tab_tts),
         stringResource(R.string.tests_tab_stt),
         stringResource(R.string.tests_tab_bt_play),
+        stringResource(R.string.tests_tab_audio_route),
     )
 
     Scaffold(
@@ -123,6 +124,14 @@ fun VoiceTestScreen(
                                 Icon(
                                     Icons.Default.Refresh,
                                     contentDescription = "Сбросить счётчик",
+                                )
+                            }
+                        }
+                        3 -> {
+                            IconButton(onClick = viewModel::refreshAudioRoute) {
+                                Icon(
+                                    Icons.Default.Refresh,
+                                    contentDescription = stringResource(R.string.tests_audio_route_refresh),
                                 )
                             }
                         }
@@ -199,7 +208,7 @@ fun VoiceTestScreen(
                         onRecognize = viewModel::recognize,
                         onSpeakThenRecognize = viewModel::speakThenRecognize,
                     )
-                    else -> BtPlayTestSection(
+                    2 -> BtPlayTestSection(
                         pressCount = state.btPressCount,
                         nextCount = state.btNextCount,
                         lastEventLabel = state.btLastEventLabel,
@@ -217,6 +226,19 @@ fun VoiceTestScreen(
                         onNextDoubleTapCommit = viewModel::commitNextDoubleTapInterval,
                         onSimulate = viewModel::simulateBtPlay,
                         onReassert = { viewModel.reassertBtPlayCapture(speakCue = true) },
+                    )
+                    else -> AudioRouteTestSection(
+                        languageCode = state.languageCode,
+                        isRecording = state.isRecording,
+                        isSpeaking = state.isSpeaking,
+                        isBusy = state.isBusy,
+                        recognizedText = state.recognizedText,
+                        statusMessage = state.statusMessage,
+                        errorMessage = state.errorMessage,
+                        audioRoute = state.audioRoute,
+                        onLanguageChanged = viewModel::onLanguageChanged,
+                        onPlay = viewModel::recognizeAndSpeak,
+                        onRefreshRoute = viewModel::refreshAudioRoute,
                     )
                 }
 
@@ -624,6 +646,155 @@ private fun BtPlayTestSection(
                     ),
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun AudioRouteTestSection(
+    languageCode: String,
+    isRecording: Boolean,
+    isSpeaking: Boolean,
+    isBusy: Boolean,
+    recognizedText: String?,
+    statusMessage: String?,
+    errorMessage: String?,
+    audioRoute: AudioRouteUiState,
+    onLanguageChanged: (String) -> Unit,
+    onPlay: () -> Unit,
+    onRefreshRoute: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = stringResource(R.string.tests_audio_route_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+        )
+        OutlinedTextField(
+            value = languageCode,
+            onValueChange = onLanguageChanged,
+            label = { Text("Код языка (en-US / ru-RU)") },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+        )
+        Text(
+            text = statusMessage ?: if (isRecording) {
+                "Слушаю…"
+            } else if (isSpeaking) {
+                "Озвучка…"
+            } else {
+                "Готов"
+            },
+            style = MaterialTheme.typography.titleMedium,
+            color = when {
+                isRecording || isSpeaking -> MaterialTheme.colorScheme.primary
+                else -> MaterialTheme.colorScheme.onSurface
+            },
+            textAlign = TextAlign.Center,
+        )
+        Text(
+            text = stringResource(
+                R.string.tests_audio_recognized,
+                recognizedText?.ifBlank { "—" } ?: "—",
+            ),
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Button(
+            onClick = onPlay,
+            enabled = !isBusy,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Icon(Icons.Default.PlayArrow, contentDescription = null)
+            Text(
+                text = stringResource(R.string.tests_audio_route_play),
+                modifier = Modifier.padding(start = 8.dp),
+            )
+        }
+        OutlinedButton(
+            onClick = onRefreshRoute,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.tests_audio_route_refresh))
+        }
+        HorizontalDivider()
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = if (audioRoute.a2dpOn) {
+                        stringResource(R.string.tests_audio_a2dp_on)
+                    } else {
+                        stringResource(R.string.tests_audio_a2dp_off)
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = if (audioRoute.a2dpOn) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.error
+                    },
+                )
+                Text(
+                    text = if (audioRoute.readyForMediaTts) {
+                        stringResource(R.string.tests_audio_ready)
+                    } else {
+                        stringResource(R.string.tests_audio_not_ready)
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = if (audioRoute.readyForMediaTts) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.error
+                    },
+                )
+                Text(
+                    text = stringResource(R.string.tests_audio_playback_device, audioRoute.playbackDevice),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+                Text(
+                    text = stringResource(R.string.tests_audio_mode, audioRoute.modeLabel),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+                Text(
+                    text = stringResource(
+                        R.string.tests_audio_sco,
+                        if (audioRoute.scoOn) "on" else "off",
+                    ),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+                Text(
+                    text = stringResource(R.string.tests_audio_comm, audioRoute.communicationDevice),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+                Text(
+                    text = stringResource(R.string.tests_audio_a2dp_out, audioRoute.a2dpOutputs),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+                Text(
+                    text = stringResource(R.string.tests_audio_sco_out, audioRoute.scoOutputs),
+                    style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
+                )
+            }
+        }
+        errorMessage?.let {
+            Text(it, color = MaterialTheme.colorScheme.error)
         }
     }
 }

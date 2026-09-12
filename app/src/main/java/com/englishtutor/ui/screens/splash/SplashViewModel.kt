@@ -38,8 +38,15 @@ class SplashViewModel @Inject constructor(
             appSessionManager.playStartupGreetingIfNeeded()
             lessonRepository.ensureContentLoaded()
             val profile = progressRepository.getUserProfile()
-            val destination = if (profile.placementCompleted) NavRoutes.HOME else NavRoutes.PLACEMENT
-            _startDestination.value = destination
+            if (!profile.placementCompleted) {
+                // Placement UI removed — default to A1 and go Home.
+                progressRepository.savePlacementResult(
+                    level = "A1",
+                    score = 0,
+                    details = "skipped-auto",
+                )
+            }
+            _startDestination.value = NavRoutes.HOME
         }
     }
 }

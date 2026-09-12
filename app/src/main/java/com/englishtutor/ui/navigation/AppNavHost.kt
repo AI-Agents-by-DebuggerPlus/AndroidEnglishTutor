@@ -12,7 +12,11 @@ import com.englishtutor.ui.screens.logs.LogsScreen
 import com.englishtutor.ui.screens.placement.PlacementTestScreen
 import com.englishtutor.ui.screens.progress.ProgressScreen
 import com.englishtutor.ui.screens.splash.SplashScreen
+import com.englishtutor.ui.screens.quizstats.QuizStatsScreen
+import com.englishtutor.ui.screens.voicepicker.VoicePickerScreen
 import com.englishtutor.ui.screens.voicetest.VoiceTestScreen
+import com.englishtutor.ui.screens.voicequiz.VoiceQuizScreen
+import com.englishtutor.ui.screens.wordstudy.WordStudyScreen
 
 @Composable
 fun AppNavHost() {
@@ -59,6 +63,18 @@ fun AppNavHost() {
                 onOpenVoiceTest = {
                     navController.navigate(NavRoutes.VOICE_TEST)
                 },
+                onOpenVoiceQuiz = {
+                    navController.navigate(NavRoutes.VOICE_QUIZ)
+                },
+                onOpenQuizStats = {
+                    navController.navigate(NavRoutes.QUIZ_STATS)
+                },
+                onOpenVoicePicker = {
+                    navController.navigate(NavRoutes.VOICE_PICKER)
+                },
+                onOpenWordStudy = {
+                    navController.navigate(NavRoutes.WORD_STUDY)
+                },
                 onOpenLogs = {
                     navController.navigate(NavRoutes.LOGS)
                 },
@@ -86,6 +102,30 @@ fun AppNavHost() {
             VoiceTestScreen(
                 onBack = { navController.popBackStack() },
                 onOpenLogs = { navController.navigate(NavRoutes.LOGS) },
+            )
+        }
+
+        composable(NavRoutes.VOICE_QUIZ) {
+            VoiceQuizScreen(
+                onBack = { navController.popBackStack() },
+            )
+        }
+
+        composable(NavRoutes.QUIZ_STATS) {
+            QuizStatsScreen(
+                onBack = { navController.popBackStack() },
+            )
+        }
+
+        composable(NavRoutes.VOICE_PICKER) {
+            VoicePickerScreen(
+                onBack = { navController.popBackStack() },
+            )
+        }
+
+        composable(NavRoutes.WORD_STUDY) {
+            WordStudyScreen(
+                onBack = { navController.popBackStack() },
             )
         }
 

@@ -1,6 +1,7 @@
 package com.englishtutor.ui.screens.home
 
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.englishtutor.bluetooth.BluetoothConnectionMonitor
@@ -8,6 +9,12 @@ import com.englishtutor.domain.model.Lesson
 import com.englishtutor.domain.repository.LessonRepository
 import com.englishtutor.domain.repository.ProgressRepository
 import com.englishtutor.session.AppSessionManager
+import com.englishtutor.session.HeadsetButtonNotifier
+import com.englishtutor.session.HeadsetMonitorService
+import com.englishtutor.session.LessonSessionService
+import com.englishtutor.session.VoiceQuizController
+import com.englishtutor.session.VoiceQuizState
+import com.englishtutor.util.AppLogger
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -26,6 +33,7 @@ data class HomeUiState(
     val completedLessonIds: Set<String> = emptySet(),
     val bluetoothStatus: String = "Bluetooth: …",
     val isStopping: Boolean = false,
+    val quiz: VoiceQuizState = VoiceQuizState(),
 )
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -36,21 +44,24 @@ class HomeViewModel @Inject constructor(
     private val progressRepository: ProgressRepository,
     private val bluetoothConnectionMonitor: BluetoothConnectionMonitor,
     private val appSessionManager: AppSessionManager,
+    private val voiceQuizController: VoiceQuizController,
+    private val headsetButtonNotifier: HeadsetButtonNotifier,
+    private val logger: AppLogger,
 ) : ViewModel() {
 
-    private val lessonState = MutableStateFlow(
-        HomeUiState(),
-    )
+    private val lessonState = MutableStateFlow(HomeUiState())
     private val isStopping = MutableStateFlow(false)
 
     val uiState: StateFlow<HomeUiState> = combine(
         lessonState,
         bluetoothConnectionMonitor.snapshot,
         isStopping,
-    ) { local, bt, stopping ->
+        voiceQuizController.state,
+    ) { local, bt, stopping, quiz ->
         local.copy(
             bluetoothStatus = "Bluetooth: ${bt.statusLabel}",
             isStopping = stopping,
+            quiz = quiz,
         )
     }.stateIn(
         scope = viewModelScope,
@@ -83,7 +94,19 @@ class HomeViewModel @Inject constructor(
 
     fun onScreenVisible() {
         bluetoothConnectionMonitor.ensureStarted(appContext)
+        stopLessonSession()
+        headsetButtonNotifier.btPlayTestIsolation = false
+        headsetButtonNotifier.isolatedBtPlayHandler = null
+        HeadsetMonitorService.reassert(appContext)
+        if (!voiceQuizController.isActive) {
+            voiceQuizController.activate()
+            logger.i(TAG, "Voice quiz armed on Home — waiting for Next")
+        }
     }
+
+    fun onQuizNext() = voiceQuizController.onNext(source = "ui")
+
+    fun onQuizPlay() = voiceQuizController.onPlay(source = "ui")
 
     fun stopApp() {
         if (isStopping.value) {
@@ -91,7 +114,22 @@ class HomeViewModel @Inject constructor(
         }
         viewModelScope.launch {
             isStopping.value = true
+            voiceQuizController.deactivate()
             appSessionManager.stopApp()
         }
+    }
+
+    private fun stopLessonSession() {
+        runCatching {
+            appContext.startService(
+                Intent(appContext, LessonSessionService::class.java).apply {
+                    action = LessonSessionService.ACTION_STOP
+                },
+            )
+        }
+    }
+
+    companion object {
+        private const val TAG = "Home"
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.englishtutor.data.supabase.SupabaseLogRepository
 import com.englishtutor.data.supabase.SupabaseSettingsRepository
+import com.englishtutor.data.voice.LogPreferences
 import com.englishtutor.util.AppLogger
 import com.englishtutor.util.AppVersion
 import com.englishtutor.util.LogEntry
@@ -22,6 +23,7 @@ data class LogsUiState(
     val versionLabel: String = AppVersion.label,
     val entries: List<LogEntry> = emptyList(),
     val showDebug: Boolean = false,
+    val clearOnRestart: Boolean = false,
     val isUploading: Boolean = false,
     val uploadStatus: String? = null,
     val uploadError: String? = null,
@@ -31,6 +33,7 @@ data class LogsUiState(
 @HiltViewModel
 class LogsViewModel @Inject constructor(
     private val logger: AppLogger,
+    private val logPreferences: LogPreferences,
     private val supabaseLogRepository: SupabaseLogRepository,
     settingsRepository: SupabaseSettingsRepository,
 ) : ViewModel() {
@@ -41,13 +44,15 @@ class LogsViewModel @Inject constructor(
     val uiState: StateFlow<LogsUiState> = combine(
         logger.entries,
         showDebug,
+        logPreferences.clearOnRestart,
         uploadState,
-    ) { entries, debug, upload ->
+    ) { entries, debug, clearOnRestart, upload ->
         val minLevel = if (debug) LogLevel.DEBUG else LogLevel.INFO
         LogsUiState(
             versionLabel = AppVersion.label,
             entries = entries.filter { it.level.ordinal >= minLevel.ordinal },
             showDebug = debug,
+            clearOnRestart = clearOnRestart,
             isUploading = upload.isUploading,
             uploadStatus = upload.status,
             uploadError = upload.error,
@@ -59,6 +64,7 @@ class LogsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = LogsUiState(
             entries = logger.entries.value,
+            clearOnRestart = logPreferences.getClearOnRestart(),
             recipientLabel = settingsRepository.getSettings().logRecipientName.ifBlank { "WpfChat" },
         ),
     )
@@ -72,6 +78,10 @@ class LogsViewModel @Inject constructor(
     fun setShowDebug(enabled: Boolean) {
         showDebug.value = enabled
         logger.minBufferLevel = if (enabled) LogLevel.DEBUG else LogLevel.INFO
+    }
+
+    fun setClearOnRestart(enabled: Boolean) {
+        logPreferences.setClearOnRestart(enabled)
     }
 
     fun sendToServer() {

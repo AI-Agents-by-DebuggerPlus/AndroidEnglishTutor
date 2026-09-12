@@ -50,7 +50,7 @@ class HeadsetButtonNotifier @Inject constructor(
             val kind = eventKind(source)
             val now = System.currentTimeMillis()
             val delta = if (lastGestureAtMs == 0L) -1L else now - lastGestureAtMs
-            logger.i(TAG, "$kind in: $label via $source · Δ=${if (delta < 0) "—" else "${delta}ms"}")
+            logger.d(TAG, "$kind in: $label via $source · Δ=${if (delta < 0) "—" else "${delta}ms"}")
 
             if (HeadsetButtonNames.isBtPlayGestureLabel(label)) {
                 handlePlayGesture(label, source, now)
@@ -155,10 +155,10 @@ class HeadsetButtonNotifier @Inject constructor(
 
         when (action) {
             PlayAction.Debounce -> {
-                logger.i(TAG, "Debounced: $label ($source)")
+                logger.d(TAG, "Debounced: $label ($source)")
             }
             PlayAction.SuppressedAfterNext -> {
-                logger.i(TAG, "Suppressed Play after Next: $label ($source)")
+                logger.d(TAG, "Suppressed Play after Next: $label ($source)")
             }
             PlayAction.CommitNext -> {
                 logger.i(
@@ -171,7 +171,7 @@ class HeadsetButtonNotifier @Inject constructor(
                 }
             }
             is PlayAction.WaitForDouble -> {
-                logger.i(TAG, "Play pending (${action.windowMs}ms) for double-tap: $label ($source)")
+                logger.d(TAG, "Play pending (${action.windowMs}ms) for double-tap: $label ($source)")
             }
         }
     }
@@ -195,7 +195,7 @@ class HeadsetButtonNotifier @Inject constructor(
             }
             return
         }
-        logger.i(TAG, "$kind: $label via $source → lesson handler")
+        logger.d(TAG, "$kind: $label via $source → lesson handler")
         englishTutorPlayHandler.handleBtPlay(source)
     }
 
