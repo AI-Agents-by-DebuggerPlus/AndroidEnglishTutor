@@ -32,6 +32,15 @@ class EnglishTutorPlayHandler @Inject constructor(
         logger.i(TAG, "BT Play ($source) ignored — press Next to start voice quiz")
     }
 
+    fun handleBtNextTopic(source: String = "native") {
+        if (wordStudyController.isActive) {
+            logger.i(TAG, "BT 3×Play ($source) → next study topic")
+            wordStudyController.nextTopic(source)
+            return
+        }
+        logger.i(TAG, "BT 3×Play ($source) ignored — word study not active")
+    }
+
     fun onMediaButton(buttonLabel: String, source: String = "native") {
         val label = HeadsetButtonNames.normalize(buttonLabel)
         val studyActive = wordStudyController.isActive
@@ -58,6 +67,8 @@ class EnglishTutorPlayHandler @Inject constructor(
                         lessonSessionController.onNext()
                     }
                     else -> {
+                        // Do not auto-start quiz if study controller still owns a session
+                        // that was only paused (should be active). Fallback: quiz on Home.
                         logger.i(TAG, "BT Next ($source) → start voice quiz")
                         voiceQuizController.activate()
                         voiceQuizController.onNext(source)

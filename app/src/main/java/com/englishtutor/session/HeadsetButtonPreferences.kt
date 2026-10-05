@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.update
 
 data class HeadsetButtonPrefs(
     val debounceEnabled: Boolean = true,
-    val debounceIntervalMs: Long = 500L,
-    val nextDoubleTapMs: Long = 400L,
+    val debounceIntervalMs: Long = HeadsetButtonPreferences.DEFAULT_DEBOUNCE_MS,
+    val nextDoubleTapMs: Long = HeadsetButtonPreferences.DEFAULT_NEXT_DOUBLE_TAP_MS,
 )
 
 /**
@@ -59,7 +59,8 @@ class HeadsetButtonPreferences @Inject constructor(
 
     companion object {
         const val DEFAULT_DEBOUNCE_MS = 500L
-        const val DEFAULT_NEXT_DOUBLE_TAP_MS = 400L
+        /** Gap / settle for 2×→Next and 3×→Stop; 400ms was too tight for triple on buds. */
+        const val DEFAULT_NEXT_DOUBLE_TAP_MS = 650L
         const val MIN_INTERVAL_MS = 50L
         const val MAX_INTERVAL_MS = 5_000L
         private const val PREFS_NAME = "headset_button_prefs"

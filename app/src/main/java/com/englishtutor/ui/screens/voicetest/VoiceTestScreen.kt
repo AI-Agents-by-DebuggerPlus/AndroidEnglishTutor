@@ -211,6 +211,7 @@ fun VoiceTestScreen(
                     2 -> BtPlayTestSection(
                         pressCount = state.btPressCount,
                         nextCount = state.btNextCount,
+                        stopCount = state.btStopCount,
                         lastEventLabel = state.btLastEventLabel,
                         lastEventAt = state.btLastEventAt,
                         nativeCaptureOn = state.nativeCaptureOn,
@@ -469,6 +470,7 @@ private fun SttTestSection(
 private fun BtPlayTestSection(
     pressCount: Int,
     nextCount: Int,
+    stopCount: Int,
     lastEventLabel: String,
     lastEventAt: String,
     nativeCaptureOn: Boolean,
@@ -578,7 +580,7 @@ private fun BtPlayTestSection(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = pressCount.toString(),
-                    fontSize = 64.sp,
+                    fontSize = 48.sp,
                     style = MaterialTheme.typography.displayLarge,
                     color = MaterialTheme.colorScheme.primary,
                 )
@@ -590,12 +592,24 @@ private fun BtPlayTestSection(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = nextCount.toString(),
-                    fontSize = 64.sp,
+                    fontSize = 48.sp,
                     style = MaterialTheme.typography.displayLarge,
                     color = MaterialTheme.colorScheme.secondary,
                 )
                 Text(
                     text = stringResource(R.string.bt_play_test_next_count_label),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = stopCount.toString(),
+                    fontSize = 48.sp,
+                    style = MaterialTheme.typography.displayLarge,
+                    color = MaterialTheme.colorScheme.tertiary,
+                )
+                Text(
+                    text = stringResource(R.string.bt_play_test_stop_count_label),
                     style = MaterialTheme.typography.titleMedium,
                 )
             }

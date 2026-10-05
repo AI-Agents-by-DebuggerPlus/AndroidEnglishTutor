@@ -21,12 +21,13 @@
     <string name="tests_audio_sco_out">SCO outputs: %1$s</string>
     <string name="tests_audio_playback_device">Устройство озвучки (ожидаемое): %1$s</string>
     <string name="tests_audio_recognized">Распознано: %1$s</string>
-    <string name="bt_play_test_hint">Нажмите Play на гарнитуре. Одиночный жест → Play; второй жест (Play или Pause) за интервал Next → Next. Simulate = SIMULATED. Перед тестом закройте YouTube.</string>
+    <string name="bt_play_test_hint">1× Play → Play. Жест Buds: double → Next, triple → Stop (Previous). Либо 2×/3× Play-Pause подряд. Перед тестом поставьте на паузу Spotify/YouTube.</string>
     <string name="bt_play_test_count_label">Play</string>
     <string name="bt_play_test_next_count_label">Next</string>
+    <string name="bt_play_test_stop_count_label">Stop</string>
     <string name="bt_play_test_debounce_enable">Защита от повторного нажатия</string>
     <string name="bt_play_test_debounce_interval">Интервал защиты, мс</string>
-    <string name="bt_play_test_next_interval">Интервал Next (двойной Play), мс</string>
+    <string name="bt_play_test_next_interval">Интервал Next/Stop / серии Play, мс</string>
     <string name="bt_play_test_last_event">Последнее: %1$s · %2$s</string>
     <string name="bt_play_test_simulate">Симулировать Play</string>
     <string name="bt_play_test_reassert">Reassert MediaSession</string>
@@ -95,8 +96,29 @@
     <string name="word_study_waiting">Next — показать следующее слово</string>
     <string name="word_study_font_en">Размер английского: %1$d</string>
     <string name="word_study_font_ru">Размер русского: %1$d</string>
+    <string name="word_study_font_en_label">English — размер</string>
+    <string name="word_study_font_ru_label">Russian — размер (цель)</string>
+    <string name="word_study_ru_smaller">Russian меньше на %1$d%% (≈ %2$d sp)</string>
+    <string name="word_study_en_top_pad">English — отступ сверху %1$d dp</string>
+    <string name="word_study_en_ru_gap">Между EN и RU %1$d dp</string>
+    <string name="word_study_blank_after">Тёмный экран через %1$d с</string>
+    <string name="word_study_color_en">Цвет English</string>
+    <string name="word_study_color_ru">Цвет Russian</string>
+    <string name="word_study_color_bg">Фон</string>
+    <string name="word_study_card_progress">%1$d/%2$d · %3$d/%4$d</string>
+    <string name="word_study_card_progress_topic">%1$s · %2$s %3$d/%4$d</string>
     <string name="word_study_next">Next</string>
     <string name="word_study_play">Play — повторить</string>
+    <string name="word_study_topics">Выбор темы</string>
+    <string name="word_study_topics_title">Тема изучения</string>
+    <string name="word_study_voices">Голоса озвучки RU/EN</string>
+    <string name="word_study_triple_play_hint">3× Play на гарнитуре — следующая тема</string>
+    <string name="word_study_settings">Настройки карточек</string>
+    <string name="word_study_settings_title">Настройки карточек</string>
+    <string name="word_study_settings_close">Закрыть настройки</string>
+    <string name="word_study_settings_reset">Сброс</string>
+    <string name="word_study_settings_done">Готово</string>
     <string name="word_study_fullscreen">Полноэкранный режим</string>
     <string name="word_study_exit_fullscreen">Выйти из полноэкранного режима</string>
+    <string name="action_back">Назад</string>
 </resources>

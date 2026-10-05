@@ -14,17 +14,19 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 /**
- * Routes headset media buttons — AndroidChatBtTest95 HeadsetButtonNotifier pattern.
+ * Routes headset media buttons — AHCC HeadsetButtonHub burst pattern.
  * HARDWARE vs SIMULATED labels for BT Play test journal.
- * Optional debounce + double Play/Pause gesture → Next.
- *
- * Pixel Buds double-tap often emits MEDIA_NEXT and MEDIA_PLAY together; after Next,
- * companion Play is suppressed for the Next window.
+ * Multi Play gesture (Play↔Pause toggles, echoes filtered):
+ *  - 1×Play → Play
+ *  - 2×Play → Next
+ *  - 3×Play → Stop (BT test) / next topic (word study)
+ * Buds often emit double→MEDIA_NEXT, triple→MEDIA_PREVIOUS (mapped to Stop).
  */
 @Singleton
 class HeadsetButtonNotifier @Inject constructor(
     private val headsetTestController: HeadsetTestController,
     private val englishTutorPlayHandler: EnglishTutorPlayHandler,
+    private val wordStudyController: WordStudyController,
     private val buttonPreferences: HeadsetButtonPreferences,
     private val logger: AppLogger,
 ) {
@@ -34,9 +36,11 @@ class HeadsetButtonNotifier @Inject constructor(
     private var lastCommittedAtMs: Long = 0L
     private var lastGestureAtMs: Long = 0L
     private var suppressPlayUntilMs: Long = 0L
-    private var pendingPlayJob: Job? = null
-    private var pendingPlaySource: String? = null
-    private var pendingPlayLabel: String? = null
+    private var burstCount: Int = 0
+    private var burstJob: Job? = null
+    private var burstGeneration: Int = 0
+    private var pendingPlaySource: String = "hardware"
+    private var pendingPlayLabel: String = "MEDIA_PLAY"
 
     @Volatile
     var btPlayTestIsolation: Boolean = false
@@ -62,6 +66,15 @@ class HeadsetButtonNotifier @Inject constructor(
                 return@launch
             }
 
+            // Buds: single=Play/Pause, double=Next, triple=Previous — map Previous → Stop.
+            if (
+                label == "MEDIA_PREVIOUS" || label == "PREVIOUS" ||
+                label == "MEDIA_STOP" || label == "STOP"
+            ) {
+                handleHardwareStop(label, source, now, kind)
+                return@launch
+            }
+
             mutex.withLock { cancelPendingPlayLocked() }
 
             if (btPlayTestIsolation) {
@@ -79,16 +92,15 @@ class HeadsetButtonNotifier @Inject constructor(
         now: Long,
         kind: String,
     ) {
-        val prefs = buttonPreferences.state.value
+        val suppressMs = btSeriesWindowMs()
         mutex.withLock {
             cancelPendingPlayLocked()
             lastGestureAtMs = 0L
             lastCommittedKey = BT_NEXT_KEY
             lastCommittedAtMs = now
-            // Drop companion MEDIA_PLAY that Pixel Buds often send with NEXT.
-            suppressPlayUntilMs = now + prefs.nextDoubleTapMs
+            suppressPlayUntilMs = now + suppressMs
         }
-        logger.i(TAG, "$kind: $label via $source → Next (suppress Play ${prefs.nextDoubleTapMs}ms)")
+        logger.i(TAG, "$kind: $label via $source → Next (suppress Play ${suppressMs}ms)")
         headsetTestController.recordBtNextEvent(
             source = source,
             kind = kind,
@@ -99,84 +111,188 @@ class HeadsetButtonNotifier @Inject constructor(
         }
     }
 
-    private suspend fun handlePlayGesture(label: String, source: String, now: Long) {
-        val prefs = buttonPreferences.state.value
-        val doubleTapMs = prefs.nextDoubleTapMs
-        val kind = eventKind(source)
+    private suspend fun handleHardwareStop(
+        label: String,
+        source: String,
+        now: Long,
+        kind: String,
+    ) {
+        val suppressMs = btSeriesWindowMs()
+        mutex.withLock {
+            cancelPendingPlayLocked()
+            lastGestureAtMs = 0L
+            lastCommittedKey = BT_STOP_KEY
+            lastCommittedAtMs = now
+            suppressPlayUntilMs = now + suppressMs
+        }
+        logger.i(TAG, "$kind: $label via $source → Stop (suppress Play ${suppressMs}ms)")
+        headsetTestController.recordBtStopEvent(
+            source = source,
+            kind = kind,
+            viaTriplePlay = false,
+            hardwareLabel = label,
+        )
+        if (!btPlayTestIsolation && wordStudyController.isActive) {
+            englishTutorPlayHandler.handleBtNextTopic(source)
+        }
+    }
 
-        val action = mutex.withLock {
+    private suspend fun handlePlayGesture(label: String, source: String, now: Long) {
+        val kind = eventKind(source)
+        val windowMs = btSeriesWindowMs()
+        val update = mutex.withLock {
             if (now < suppressPlayUntilMs) {
-                PlayAction.SuppressedAfterNext
-            } else if (
-                pendingPlayJob != null &&
-                lastGestureAtMs > 0L &&
-                now - lastGestureAtMs <= doubleTapMs
-            ) {
-                cancelPendingPlayLocked()
-                lastGestureAtMs = 0L
-                lastCommittedKey = BT_NEXT_KEY
-                lastCommittedAtMs = now
-                suppressPlayUntilMs = now + doubleTapMs
-                PlayAction.CommitNext
-            } else if (
-                prefs.debounceEnabled &&
-                (lastCommittedKey == BT_PLAY_KEY || lastCommittedKey == BT_NEXT_KEY) &&
-                now - lastCommittedAtMs < prefs.debounceIntervalMs
-            ) {
-                PlayAction.Debounce
+                BurstUpdate.Suppressed
+            } else if (isSamePressEcho(label, source, now)) {
+                BurstUpdate.Echo
             } else {
-                lastGestureAtMs = now
+                val closed = if (burstCount > 0 && now - lastGestureAtMs > windowMs) {
+                    finishBurstLocked()
+                } else {
+                    null
+                }
+                burstCount = if (closed != null || burstCount == 0) 1 else burstCount + 1
                 pendingPlaySource = source
                 pendingPlayLabel = label
-                val generation = ++pendingGeneration
-                pendingPlayJob = scope.launch {
-                    delay(doubleTapMs)
-                    val commit = mutex.withLock {
-                        if (generation != pendingGeneration || pendingPlaySource == null) {
-                            null
-                        } else {
-                            val commitSource = pendingPlaySource!!
-                            val commitLabel = pendingPlayLabel!!
-                            pendingPlayJob = null
-                            pendingPlaySource = null
-                            pendingPlayLabel = null
-                            lastCommittedKey = BT_PLAY_KEY
-                            lastCommittedAtMs = System.currentTimeMillis()
-                            commitLabel to commitSource
-                        }
-                    }
-                    if (commit != null) {
-                        dispatchPlay(commit.first, commit.second)
-                    }
+                lastGestureAtMs = now
+                val triple = if (burstCount >= 3) {
+                    burstGeneration++
+                    burstJob?.cancel()
+                    burstJob = null
+                    finishBurstLocked()
+                } else {
+                    armSettleTimerLocked()
+                    null
                 }
-                PlayAction.WaitForDouble(doubleTapMs)
+                BurstUpdate.Counted(closed, burstCount, triple)
             }
         }
-
-        when (action) {
-            PlayAction.Debounce -> {
-                logger.d(TAG, "Debounced: $label ($source)")
-            }
-            PlayAction.SuppressedAfterNext -> {
-                logger.d(TAG, "Suppressed Play after Next: $label ($source)")
-            }
-            PlayAction.CommitNext -> {
-                logger.i(
-                    TAG,
-                    "$kind: double gesture ($label) via $source → Next (window ${prefs.nextDoubleTapMs}ms)",
-                )
-                headsetTestController.recordBtNextEvent(source = source, kind = kind, viaDoublePlay = true)
-                if (!btPlayTestIsolation) {
-                    englishTutorPlayHandler.onMediaButton("MEDIA_NEXT", source)
+        when (update) {
+            BurstUpdate.Suppressed ->
+                logger.d(TAG, "Suppressed Play: $label ($source)")
+            BurstUpdate.Echo ->
+                logger.d(TAG, "Companion Play ignored: $label ($source)")
+            is BurstUpdate.Counted -> {
+                update.closed?.let { (count, commitSource) ->
+                    logger.i(TAG, "window closed → ${count}× via $commitSource")
+                    commitBurstResult(count, commitSource)
                 }
-            }
-            is PlayAction.WaitForDouble -> {
-                logger.d(TAG, "Play pending (${action.windowMs}ms) for double-tap: $label ($source)")
+                update.triple?.let { (count, commitSource) ->
+                    logger.i(TAG, "triple now → ${count}× via $commitSource")
+                    commitBurstResult(count, commitSource)
+                }
+                logger.d(TAG, "$kind: multiplicity ${update.multiplicity} via $source")
             }
         }
     }
 
-    private var pendingGeneration: Int = 0
+    /** Gap / settle for 2×→Next and 3×→Stop; 400ms is too tight for triple on buds. */
+    private fun btSeriesWindowMs(): Long =
+        buttonPreferences.nextDoubleTapMs.coerceAtLeast(MIN_BT_SERIES_MS)
+
+    private fun armSettleTimerLocked() {
+        val generation = ++burstGeneration
+        val wait = btSeriesWindowMs()
+        burstJob?.cancel()
+        burstJob = scope.launch {
+            delay(wait)
+            val commit = mutex.withLock {
+                if (generation != burstGeneration || burstCount == 0) {
+                    null
+                } else {
+                    finishBurstLocked()
+                }
+            }
+            if (commit != null) {
+                logger.i(TAG, "settle → ${commit.first}× via ${commit.second}")
+                commitBurstResult(commit.first, commit.second)
+            }
+        }
+    }
+
+    private fun finishBurstLocked(): Pair<Int, String>? {
+        if (burstCount == 0) return null
+        val count = burstCount
+        val source = pendingPlaySource
+        burstCount = 0
+        lastCommittedKey = when {
+            count >= 3 -> if (wordStudyController.isActive) BT_TOPIC_KEY else BT_STOP_KEY
+            count == 2 -> BT_NEXT_KEY
+            else -> BT_PLAY_KEY
+        }
+        lastCommittedAtMs = System.currentTimeMillis()
+        return count to source
+    }
+
+    private suspend fun commitBurstResult(tapCount: Int, source: String) {
+        val kind = eventKind(source)
+        when {
+            tapCount >= 3 && wordStudyController.isActive -> {
+                logger.i(TAG, "$kind: 3×Play via $source → next topic")
+                suppressPlayBriefly()
+                if (!btPlayTestIsolation) {
+                    englishTutorPlayHandler.handleBtNextTopic(source)
+                } else {
+                    headsetTestController.recordBtStopEvent(
+                        source = source,
+                        kind = kind,
+                        viaTriplePlay = true,
+                    )
+                }
+            }
+            tapCount >= 3 -> {
+                logger.i(TAG, "$kind: 3×Play via $source → Stop")
+                headsetTestController.recordBtStopEvent(
+                    source = source,
+                    kind = kind,
+                    viaTriplePlay = true,
+                )
+                suppressPlayBriefly()
+            }
+            tapCount == 2 -> {
+                logger.i(TAG, "$kind: 2×Play via $source → Next")
+                headsetTestController.recordBtNextEvent(
+                    source = source,
+                    kind = kind,
+                    viaDoublePlay = true,
+                )
+                suppressPlayBriefly()
+                if (!btPlayTestIsolation) {
+                    englishTutorPlayHandler.onMediaButton("MEDIA_NEXT", source)
+                }
+            }
+            else -> dispatchPlay("MEDIA_PLAY", source)
+        }
+    }
+
+    private suspend fun suppressPlayBriefly() {
+        val ms = btSeriesWindowMs()
+        mutex.withLock {
+            suppressPlayUntilMs = System.currentTimeMillis() + ms
+        }
+    }
+
+    /**
+     * One physical click often arrives twice (PLAY+PAUSE, or mediaButton + onPlay).
+     * Headset toggles alternate PLAY / PAUSE per physical press — a PAUSE ~300–600ms after
+     * PLAY is a new press (tap 2), not an echo. Only tight PLAY↔PAUSE pairs are echoes.
+     */
+    private fun isSamePressEcho(label: String, source: String, now: Long): Boolean {
+        if (lastGestureAtMs == 0L) return false
+        val delta = now - lastGestureAtMs
+        val playPausePair = isPauseLabel(label) != isPauseLabel(pendingPlayLabel)
+        if (playPausePair) return delta < TOGGLE_ECHO_MS
+        if (delta >= ECHO_MS) return false
+        if (source != pendingPlaySource) return true
+        if (!isPauseLabel(label) && !isPauseLabel(pendingPlayLabel)) return false
+        if (isPauseLabel(label) && isPauseLabel(pendingPlayLabel)) return delta < DUPLICATE_MS
+        return false
+    }
+
+    private fun isPauseLabel(label: String): Boolean {
+        val n = HeadsetButtonNames.normalize(label)
+        return n == "MEDIA_PAUSE" || n == "PAUSE"
+    }
 
     private suspend fun dispatchPlay(label: String, source: String) {
         val kind = eventKind(source)
@@ -200,24 +316,35 @@ class HeadsetButtonNotifier @Inject constructor(
     }
 
     private fun cancelPendingPlayLocked() {
-        pendingGeneration++
-        pendingPlayJob?.cancel()
-        pendingPlayJob = null
-        pendingPlaySource = null
-        pendingPlayLabel = null
+        burstGeneration++
+        burstJob?.cancel()
+        burstJob = null
+        burstCount = 0
+        lastGestureAtMs = 0L
+        pendingPlaySource = "hardware"
+        pendingPlayLabel = "MEDIA_PLAY"
     }
 
-    private sealed class PlayAction {
-        data object Debounce : PlayAction()
-        data object SuppressedAfterNext : PlayAction()
-        data object CommitNext : PlayAction()
-        data class WaitForDouble(val windowMs: Long) : PlayAction()
+    private sealed class BurstUpdate {
+        data object Suppressed : BurstUpdate()
+        data object Echo : BurstUpdate()
+        data class Counted(
+            val closed: Pair<Int, String>?,
+            val multiplicity: Int,
+            val triple: Pair<Int, String>? = null,
+        ) : BurstUpdate()
     }
 
     companion object {
         private const val TAG = "Headset"
         private const val BT_PLAY_KEY = "BT_PLAY"
         private const val BT_NEXT_KEY = "BT_NEXT"
+        private const val BT_STOP_KEY = "BT_STOP"
+        private const val BT_TOPIC_KEY = "BT_TOPIC"
+        private const val DUPLICATE_MS = 45L
+        private const val ECHO_MS = 220L
+        private const val TOGGLE_ECHO_MS = 180L
+        private const val MIN_BT_SERIES_MS = 900L
 
         fun eventKind(source: String): String {
             val s = source.lowercase()

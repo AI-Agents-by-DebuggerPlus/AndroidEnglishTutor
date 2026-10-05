@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
@@ -44,6 +45,7 @@ fun VoicePickerScreen(
     viewModel: VoicePickerViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val listState = rememberLazyListState()
 
     LaunchedEffect(Unit) {
         viewModel.load()
@@ -74,127 +76,135 @@ fun VoicePickerScreen(
             )
         },
     ) { padding ->
-        Column(
+        // Single LazyColumn so mouse-wheel / trackpad scroll works over the whole screen.
+        LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(horizontal = 16.dp),
+            contentPadding = PaddingValues(bottom = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 12.dp),
-                color = MaterialTheme.colorScheme.primaryContainer,
-                shape = MaterialTheme.shapes.medium,
-            ) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text(
-                        text = stringResource(R.string.voice_picker_selected_title),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    )
-                    Text(
-                        text = stringResource(
-                            R.string.voice_picker_selected_ru,
-                            state.selectedRuDisplayName
-                                ?: stringResource(R.string.voice_picker_use_default),
-                        ),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.padding(top = 6.dp),
-                    )
-                    Text(
-                        text = stringResource(
-                            R.string.voice_picker_selected_en,
-                            state.selectedEnDisplayName
-                                ?: stringResource(R.string.voice_picker_use_default),
-                        ),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.padding(top = 4.dp),
-                    )
-                }
-            }
-            Text(
-                text = stringResource(R.string.voice_picker_hint),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = 8.dp),
-            )
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(bottom = 8.dp),
-            ) {
-                FilterChip(
-                    selected = state.languageFilter == "ru",
-                    onClick = { viewModel.setLanguageFilter("ru") },
-                    label = { Text("RU") },
-                )
-                FilterChip(
-                    selected = state.languageFilter == "en",
-                    onClick = { viewModel.setLanguageFilter("en") },
-                    label = { Text("EN") },
-                )
-                FilterChip(
-                    selected = state.languageFilter == null,
-                    onClick = { viewModel.setLanguageFilter(null) },
-                    label = { Text(stringResource(R.string.voice_picker_all)) },
-                )
-            }
-            state.statusMessage?.let { message ->
-                Text(
-                    text = message,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(bottom = 8.dp),
-                )
-            }
-            LazyColumn(
-                contentPadding = PaddingValues(bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.weight(1f),
-            ) {
-                items(state.voices, key = { it.id }) { voice ->
-                    val selected = voice.id == state.selectedRuVoiceId ||
-                        voice.id == state.selectedEnVoiceId
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { viewModel.selectVoice(voice.id) }
-                            .padding(vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        RadioButton(
-                            selected = selected,
-                            onClick = { viewModel.selectVoice(voice.id) },
+            item(key = "selected") {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp, top = 4.dp),
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    shape = MaterialTheme.shapes.medium,
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text(
+                            text = stringResource(R.string.voice_picker_selected_title),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                         )
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(voice.displayName, style = MaterialTheme.typography.bodyLarge)
-                            Text(
-                                text = stringResource(
-                                    R.string.voice_picker_voice_meta,
-                                    voice.languageTag,
-                                    voice.quality,
-                                ),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                        IconButton(onClick = { viewModel.preview(voice.id) }) {
-                            Icon(
-                                Icons.Default.PlayArrow,
-                                contentDescription = stringResource(R.string.voice_picker_preview),
-                            )
-                        }
+                        Text(
+                            text = stringResource(
+                                R.string.voice_picker_selected_ru,
+                                state.selectedRuDisplayName
+                                    ?: stringResource(R.string.voice_picker_use_default),
+                            ),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.padding(top = 6.dp),
+                        )
+                        Text(
+                            text = stringResource(
+                                R.string.voice_picker_selected_en,
+                                state.selectedEnDisplayName
+                                    ?: stringResource(R.string.voice_picker_use_default),
+                            ),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.padding(top = 4.dp),
+                        )
                     }
                 }
             }
-            OutlinedButton(
-                onClick = viewModel::clearPreferred,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-            ) {
-                Text(stringResource(R.string.voice_picker_use_default))
+            item(key = "hint") {
+                Text(
+                    text = stringResource(R.string.voice_picker_hint),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 4.dp),
+                )
+            }
+            item(key = "filters") {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.padding(bottom = 4.dp),
+                ) {
+                    FilterChip(
+                        selected = state.languageFilter == "ru",
+                        onClick = { viewModel.setLanguageFilter("ru") },
+                        label = { Text("RU") },
+                    )
+                    FilterChip(
+                        selected = state.languageFilter == "en",
+                        onClick = { viewModel.setLanguageFilter("en") },
+                        label = { Text("EN") },
+                    )
+                    FilterChip(
+                        selected = state.languageFilter == null,
+                        onClick = { viewModel.setLanguageFilter(null) },
+                        label = { Text(stringResource(R.string.voice_picker_all)) },
+                    )
+                }
+            }
+            state.statusMessage?.let { message ->
+                item(key = "status") {
+                    Text(
+                        text = message,
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(bottom = 4.dp),
+                    )
+                }
+            }
+            items(state.voices, key = { it.id }) { voice ->
+                val selected = voice.id == state.selectedRuVoiceId ||
+                    voice.id == state.selectedEnVoiceId
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { viewModel.selectVoice(voice.id) }
+                        .padding(vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    RadioButton(
+                        selected = selected,
+                        onClick = { viewModel.selectVoice(voice.id) },
+                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(voice.displayName, style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            text = stringResource(
+                                R.string.voice_picker_voice_meta,
+                                voice.languageTag,
+                                voice.quality,
+                            ),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    IconButton(onClick = { viewModel.preview(voice.id) }) {
+                        Icon(
+                            Icons.Default.PlayArrow,
+                            contentDescription = stringResource(R.string.voice_picker_preview),
+                        )
+                    }
+                }
+            }
+            item(key = "default_btn") {
+                OutlinedButton(
+                    onClick = viewModel::clearPreferred,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 12.dp),
+                ) {
+                    Text(stringResource(R.string.voice_picker_use_default))
+                }
             }
         }
     }

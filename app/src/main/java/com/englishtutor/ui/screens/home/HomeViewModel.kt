@@ -14,6 +14,7 @@ import com.englishtutor.session.HeadsetMonitorService
 import com.englishtutor.session.LessonSessionService
 import com.englishtutor.session.VoiceQuizController
 import com.englishtutor.session.VoiceQuizState
+import com.englishtutor.session.WordStudyController
 import com.englishtutor.util.AppLogger
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -45,6 +46,7 @@ class HomeViewModel @Inject constructor(
     private val bluetoothConnectionMonitor: BluetoothConnectionMonitor,
     private val appSessionManager: AppSessionManager,
     private val voiceQuizController: VoiceQuizController,
+    private val wordStudyController: WordStudyController,
     private val headsetButtonNotifier: HeadsetButtonNotifier,
     private val logger: AppLogger,
 ) : ViewModel() {
@@ -95,6 +97,11 @@ class HomeViewModel @Inject constructor(
     fun onScreenVisible() {
         bluetoothConnectionMonitor.ensureStarted(appContext)
         stopLessonSession()
+        // Leaving word-study / lessons → release study so headset Next can arm the quiz.
+        if (wordStudyController.isActive) {
+            wordStudyController.deactivate()
+            logger.i(TAG, "Word study disarmed on Home")
+        }
         headsetButtonNotifier.btPlayTestIsolation = false
         headsetButtonNotifier.isolatedBtPlayHandler = null
         HeadsetMonitorService.reassert(appContext)
@@ -114,6 +121,7 @@ class HomeViewModel @Inject constructor(
         }
         viewModelScope.launch {
             isStopping.value = true
+            wordStudyController.deactivate()
             voiceQuizController.deactivate()
             appSessionManager.stopApp()
         }

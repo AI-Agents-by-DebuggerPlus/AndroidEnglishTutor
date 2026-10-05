@@ -126,6 +126,7 @@ fun AppNavHost() {
         composable(NavRoutes.WORD_STUDY) {
             WordStudyScreen(
                 onBack = { navController.popBackStack() },
+                onOpenVoicePicker = { navController.navigate(NavRoutes.VOICE_PICKER) },
             )
         }
 

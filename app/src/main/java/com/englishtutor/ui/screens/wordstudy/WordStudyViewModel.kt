@@ -6,6 +6,7 @@ import com.englishtutor.data.voice.StudyFontPreferences
 import com.englishtutor.session.VoiceQuizController
 import com.englishtutor.session.WordStudyController
 import com.englishtutor.session.WordStudyState
+import com.englishtutor.ui.flashcards.FlashcardDisplaySettings
 import com.englishtutor.util.AppLogger
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,8 +17,7 @@ import kotlinx.coroutines.flow.stateIn
 
 data class WordStudyUiState(
     val study: WordStudyState = WordStudyState(),
-    val enSp: Float = StudyFontPreferences.DEFAULT_EN_SP,
-    val ruSp: Float = StudyFontPreferences.DEFAULT_RU_SP,
+    val display: FlashcardDisplaySettings = FlashcardDisplaySettings(),
 )
 
 @HiltViewModel
@@ -30,36 +30,71 @@ class WordStudyViewModel @Inject constructor(
 
     val uiState: StateFlow<WordStudyUiState> = combine(
         wordStudyController.state,
-        fontPreferences.enSp,
-        fontPreferences.ruSp,
-    ) { study, en, ru ->
-        WordStudyUiState(study = study, enSp = en, ruSp = ru)
+        fontPreferences.display,
+    ) { study, display ->
+        WordStudyUiState(study = study, display = display)
     }.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = WordStudyUiState(),
+        started = SharingStarted.Eagerly,
+        initialValue = WordStudyUiState(
+            study = wordStudyController.state.value,
+            display = fontPreferences.getDisplay(),
+        ),
     )
 
     fun onScreenVisible() {
+        // Home arms the quiz — reclaim headset routing for study.
         if (voiceQuizController.isActive) {
             voiceQuizController.deactivate()
+            logger.i(TAG, "Quiz disarmed for word study")
         }
-        wordStudyController.activate()
-        logger.i(TAG, "Word study screen visible")
+        // Auto-speak current card when opening lessons from Home.
+        wordStudyController.activate(autoSpeak = true)
+        logger.i(TAG, "Word study screen visible · active=${wordStudyController.isActive}")
     }
 
     fun onScreenHidden() {
-        // Keep study armed only while this screen is open.
+        // Keep study armed so Play/Next still work when opening voices/settings overlays.
+        // Home explicitly deactivates study when it becomes visible again.
+        wordStudyController.pauseSpeaking()
+        logger.i(TAG, "Word study screen hidden · study stays active=${wordStudyController.isActive}")
+    }
+
+    fun endStudySession() {
         wordStudyController.deactivate()
     }
 
-    fun onNext() = wordStudyController.onNext("ui")
+    fun onNext() {
+        ensureStudyActive()
+        wordStudyController.onNext("ui")
+    }
 
-    fun onPlay() = wordStudyController.onPlay("ui")
+    fun onPlay() {
+        ensureStudyActive()
+        wordStudyController.onPlay("ui")
+    }
 
-    fun setEnSp(value: Float) = fontPreferences.setEnSp(value)
+    fun selectTopic(topicId: String) {
+        ensureStudyActive()
+        wordStudyController.selectTopic(topicId)
+    }
 
-    fun setRuSp(value: Float) = fontPreferences.setRuSp(value)
+    fun nextTopic() {
+        ensureStudyActive()
+        wordStudyController.nextTopic("ui")
+    }
+
+    fun updateDisplay(settings: FlashcardDisplaySettings) =
+        fontPreferences.updateDisplay(settings)
+
+    private fun ensureStudyActive() {
+        if (voiceQuizController.isActive) {
+            voiceQuizController.deactivate()
+        }
+        if (!wordStudyController.isActive) {
+            wordStudyController.activate()
+        }
+    }
 
     companion object {
         private const val TAG = "WordStudyUI"

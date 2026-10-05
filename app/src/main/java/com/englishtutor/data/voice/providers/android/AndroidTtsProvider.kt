@@ -67,6 +67,7 @@ class AndroidTtsProvider @Inject constructor(
                 }
                 .sortedWith(
                     compareByDescending<Voice> { it.quality }
+                        .thenBy { if (it.isNetworkConnectionRequired) 1 else 0 }
                         .thenBy { it.locale.toLanguageTag() }
                         .thenBy { it.name },
                 )
@@ -79,7 +80,8 @@ class AndroidTtsProvider @Inject constructor(
                         isNetwork = voice.isNetworkConnectionRequired,
                     )
                 }
-                .let { makeDisplayNamesUnique(it) }
+                // One entry per visible label (keep highest quality — already sorted).
+                .distinctBy { it.displayName.lowercase() }
         }
     }
 
@@ -92,26 +94,17 @@ class AndroidTtsProvider @Inject constructor(
             voice.quality >= Voice.QUALITY_NORMAL -> "обычный"
             else -> "базовый"
         }
-        val distinct = voice.name
-            .replace(tag, "", ignoreCase = true)
-            .replace(voice.locale.language, "", ignoreCase = true)
+        // Collapse engine-internal name noise so near-identical voices share one label.
+        val shortName = voice.name
+            .substringAfterLast('/')
+            .substringAfterLast('#')
+            .replace(Regex("(?i)${Regex.escape(tag)}"), "")
+            .replace(Regex("(?i)${Regex.escape(voice.locale.language)}"), "")
+            .replace(Regex("(?i)(x-)|(_|-)(local|network|i|f|m)\\d*"), "")
             .trim('-', '_', ' ', '.')
-            .ifBlank { voice.name.takeLast(10) }
-        return "$tag · $kind · $qualityLabel · $distinct"
-    }
-
-    private fun makeDisplayNamesUnique(voices: List<TtsVoiceOption>): List<TtsVoiceOption> {
-        val counts = mutableMapOf<String, Int>()
-        return voices.map { voice ->
-            val base = voice.displayName
-            val seen = (counts[base] ?: 0) + 1
-            counts[base] = seen
-            if (seen == 1) {
-                voice
-            } else {
-                voice.copy(displayName = "$base (#$seen)")
-            }
-        }
+            .ifBlank { "default" }
+            .lowercase()
+        return "$tag · $kind · $qualityLabel · $shortName"
     }
 
     override suspend fun speak(text: String, languageCode: String) {
