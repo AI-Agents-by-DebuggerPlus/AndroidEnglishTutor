@@ -66,6 +66,7 @@ data class VoiceTestUiState(
     val btNextCount: Int = 0,
     val btStopCount: Int = 0,
     val btQuadCount: Int = 0,
+    val btDoubleNextCount: Int = 0,
     val btPendingBurstCount: Int = 0,
     val btAwaitingSecondDouble: Boolean = false,
     val btLastEventLabel: String = "",
@@ -76,6 +77,9 @@ data class VoiceTestUiState(
     val debounceIntervalText: String = HeadsetButtonPreferences.DEFAULT_DEBOUNCE_MS.toString(),
     val nextDoubleTapMs: Long = HeadsetButtonPreferences.DEFAULT_NEXT_DOUBLE_TAP_MS,
     val nextDoubleTapText: String = HeadsetButtonPreferences.DEFAULT_NEXT_DOUBLE_TAP_MS.toString(),
+    val doubleNextIntervalMs: Long = HeadsetButtonPreferences.DEFAULT_DOUBLE_NEXT_INTERVAL_MS,
+    val doubleNextIntervalText: String =
+        HeadsetButtonPreferences.DEFAULT_DOUBLE_NEXT_INTERVAL_MS.toString(),
     val headsetStatus: String? = null,
     val bluetoothPermissionGranted: Boolean = true,
     val connectedBluetoothDevices: List<ConnectedBluetoothDevice> = emptyList(),
@@ -117,6 +121,8 @@ class VoiceTestViewModel @Inject constructor(
             debounceIntervalText = headsetButtonPreferences.debounceIntervalMs.toString(),
             nextDoubleTapMs = headsetButtonPreferences.nextDoubleTapMs,
             nextDoubleTapText = headsetButtonPreferences.nextDoubleTapMs.toString(),
+            doubleNextIntervalMs = headsetButtonPreferences.doubleNextIntervalMs,
+            doubleNextIntervalText = headsetButtonPreferences.doubleNextIntervalMs.toString(),
         ),
     )
 
@@ -132,6 +138,7 @@ class VoiceTestViewModel @Inject constructor(
             btNextCount = headset.nextCount,
             btStopCount = headset.stopCount,
             btQuadCount = headset.quadCount,
+            btDoubleNextCount = headset.doubleNextCount,
             btPendingBurstCount = headset.pendingBurstCount,
             btAwaitingSecondDouble = headset.awaitingSecondDouble,
             btLastEventLabel = headset.lastEventLabel,
@@ -140,6 +147,7 @@ class VoiceTestViewModel @Inject constructor(
             debounceEnabled = buttonPrefs.debounceEnabled,
             debounceIntervalMs = buttonPrefs.debounceIntervalMs,
             nextDoubleTapMs = buttonPrefs.nextDoubleTapMs,
+            doubleNextIntervalMs = buttonPrefs.doubleNextIntervalMs,
             headsetStatus = headset.statusMessage,
             bluetoothPermissionGranted = bluetooth.permissionGranted,
             connectedBluetoothDevices = bluetooth.devices,
@@ -383,6 +391,25 @@ class VoiceTestViewModel @Inject constructor(
         val applied = headsetButtonPreferences.nextDoubleTapMs
         localState.update { it.copy(nextDoubleTapText = applied.toString()) }
         logger.i(TAG, "Next double-tap interval: ${applied}ms")
+    }
+
+    fun onDoubleNextIntervalTextChanged(value: String) {
+        val filtered = value.filter { it.isDigit() }.take(5)
+        localState.update { it.copy(doubleNextIntervalText = filtered) }
+        filtered.toLongOrNull()?.let { parsed ->
+            if (parsed >= HeadsetButtonPreferences.MIN_INTERVAL_MS) {
+                headsetButtonPreferences.setDoubleNextIntervalMs(parsed)
+            }
+        }
+    }
+
+    fun commitDoubleNextInterval() {
+        val parsed = localState.value.doubleNextIntervalText.toLongOrNull()
+            ?: HeadsetButtonPreferences.DEFAULT_DOUBLE_NEXT_INTERVAL_MS
+        headsetButtonPreferences.setDoubleNextIntervalMs(parsed)
+        val applied = headsetButtonPreferences.doubleNextIntervalMs
+        localState.update { it.copy(doubleNextIntervalText = applied.toString()) }
+        logger.i(TAG, "2Next interval: ${applied}ms")
     }
 
     fun simulateBtPlay() = headsetButtonNotifier.notifyButton("MEDIA_PLAY", source = "ui-simulate")

@@ -17,9 +17,11 @@ data class HeadsetTestState(
     val nextCount: Int = 0,
     val stopCount: Int = 0,
     val quadCount: Int = 0,
-    /** Current unfinished Play burst (1..3) while waiting for settle. */
+    /** Two Next within the double-Next interval. */
+    val doubleNextCount: Int = 0,
+    /** Current unfinished Play burst (1..4) while waiting for settle. */
     val pendingBurstCount: Int = 0,
-    /** BT test: first 2× settled; waiting for another 2× → Quad. */
+    /** BT test: first 2× settled; waiting for another 2× → Quad (legacy UI flag). */
     val awaitingSecondDouble: Boolean = false,
     val lastEventLabel: String = "",
     val lastEventAt: String = "",
@@ -29,10 +31,11 @@ data class HeadsetTestState(
 )
 
 /**
- * UI state for BT Play test tab — Play/Next/Stop/4× counters and HARDWARE/SIMULATED event log.
+ * UI state for BT Play test tab — Play/Next/Stop/4×/2Next counters and HARDWARE/SIMULATED event log.
  */
 @Singleton
 class HeadsetTestController @Inject constructor(
+    private val buttonPreferences: HeadsetButtonPreferences,
     private val logger: AppLogger,
 ) {
     private val _state = MutableStateFlow(HeadsetTestState())
@@ -40,6 +43,8 @@ class HeadsetTestController @Inject constructor(
     private var lastLoggedCaptureOn: Boolean? = null
     /** Wall-clock of last Play counter increment (for retracting echo Play after Quad). */
     private var lastPlayAtMs: Long = 0L
+    /** Wall-clock of last Next counter increment (for 2Next pairing). */
+    private var lastNextAtMs: Long = 0L
 
     fun setCaptureStatus(nativeCaptureOn: Boolean) {
         _state.update {
@@ -69,6 +74,7 @@ class HeadsetTestController @Inject constructor(
         logger.i(TAG, "BT button $display via $source ($kind)")
 
         lastPlayAtMs = now
+        lastNextAtMs = 0L
         _state.update { current ->
             val playCount = current.pressCount + 1
             val line = "$at  [$kind]  $display  (#$playCount)"
@@ -110,16 +116,31 @@ class HeadsetTestController @Inject constructor(
         val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
         logger.i(TAG, "BT button $display via $source ($kind)")
 
+        val windowMs = buttonPreferences.doubleNextIntervalMs
+        val paired = lastNextAtMs > 0L && now - lastNextAtMs <= windowMs
+        lastNextAtMs = if (paired) 0L else now
+
         _state.update { current ->
             val nextCount = current.nextCount + 1
-            val line = "$at  [$kind]  $display  (#$nextCount)"
+            val lines = mutableListOf("$at  [$kind]  $display  (#$nextCount)")
+            var doubleNextCount = current.doubleNextCount
+            if (paired) {
+                doubleNextCount += 1
+                lines.add(0, "$at  [$kind]  2Next  (#$doubleNextCount)")
+                logger.i(TAG, "BT button 2Next via $source ($kind) within ${windowMs}ms")
+            }
             current.copy(
                 nextCount = nextCount,
-                lastEventLabel = "$display · $kind",
+                doubleNextCount = doubleNextCount,
+                lastEventLabel = if (paired) "2Next · $kind" else "$display · $kind",
                 lastEventAt = at,
                 lastEventKind = kind,
-                eventLog = (listOf(line) + current.eventLog).take(MAX_EVENTS),
-                statusMessage = "Получено: $display ($kind) · $at",
+                eventLog = (lines + current.eventLog).take(MAX_EVENTS),
+                statusMessage = if (paired) {
+                    "Получено: 2Next ($kind) · $at"
+                } else {
+                    "Получено: $display ($kind) · $at"
+                },
             )
         }
     }
@@ -139,6 +160,7 @@ class HeadsetTestController @Inject constructor(
         val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
         logger.i(TAG, "BT button $display via $source ($kind)")
 
+        lastNextAtMs = 0L
         _state.update { current ->
             val stopCount = current.stopCount + 1
             val line = "$at  [$kind]  $display  (#$stopCount)"
@@ -162,6 +184,7 @@ class HeadsetTestController @Inject constructor(
         val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
         logger.i(TAG, "BT button $display via $source ($kind)")
 
+        lastNextAtMs = 0L
         _state.update { current ->
             val quadCount = current.quadCount + 1
             val line = "$at  [$kind]  $display  (#$quadCount)"
@@ -186,12 +209,14 @@ class HeadsetTestController @Inject constructor(
 
     fun resetCounter() {
         lastPlayAtMs = 0L
+        lastNextAtMs = 0L
         _state.update {
             it.copy(
                 pressCount = 0,
                 nextCount = 0,
                 stopCount = 0,
                 quadCount = 0,
+                doubleNextCount = 0,
                 pendingBurstCount = 0,
                 awaitingSecondDouble = false,
                 lastEventLabel = "",
@@ -200,7 +225,7 @@ class HeadsetTestController @Inject constructor(
                 eventLog = emptyList(),
             )
         }
-        logger.i(TAG, "BT Play/Next/Stop/4× counters reset")
+        logger.i(TAG, "BT Play/Next/Stop/4×/2Next counters reset")
     }
 
     companion object {

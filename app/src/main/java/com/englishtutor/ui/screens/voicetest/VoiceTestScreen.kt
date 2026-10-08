@@ -209,6 +209,7 @@ fun VoiceTestScreen(
                     nextCount = state.btNextCount,
                     stopCount = state.btStopCount,
                     quadCount = state.btQuadCount,
+                    doubleNextCount = state.btDoubleNextCount,
                     pendingBurstCount = state.btPendingBurstCount,
                     awaitingSecondDouble = state.btAwaitingSecondDouble,
                     lastEventLabel = state.btLastEventLabel,
@@ -218,12 +219,15 @@ fun VoiceTestScreen(
                     debounceEnabled = state.debounceEnabled,
                     debounceIntervalText = state.debounceIntervalText,
                     nextDoubleTapText = state.nextDoubleTapText,
+                    doubleNextIntervalText = state.doubleNextIntervalText,
                     eventLog = state.btEventLog,
                     onDebounceEnabledChange = viewModel::setDebounceEnabled,
                     onDebounceIntervalTextChange = viewModel::onDebounceIntervalTextChanged,
                     onDebounceIntervalCommit = viewModel::commitDebounceInterval,
                     onNextDoubleTapTextChange = viewModel::onNextDoubleTapTextChanged,
                     onNextDoubleTapCommit = viewModel::commitNextDoubleTapInterval,
+                    onDoubleNextIntervalTextChange = viewModel::onDoubleNextIntervalTextChanged,
+                    onDoubleNextIntervalCommit = viewModel::commitDoubleNextInterval,
                     onSimulate = viewModel::simulateBtPlay,
                     onSimulateQuad = { viewModel.simulateBtPlayBurst(4) },
                     onResetCounters = viewModel::resetBtPlayCounter,
@@ -492,6 +496,7 @@ private fun BtPlayTestSection(
     nextCount: Int,
     stopCount: Int,
     quadCount: Int,
+    doubleNextCount: Int,
     pendingBurstCount: Int,
     awaitingSecondDouble: Boolean,
     lastEventLabel: String,
@@ -501,12 +506,15 @@ private fun BtPlayTestSection(
     debounceEnabled: Boolean,
     debounceIntervalText: String,
     nextDoubleTapText: String,
+    doubleNextIntervalText: String,
     eventLog: List<String>,
     onDebounceEnabledChange: (Boolean) -> Unit,
     onDebounceIntervalTextChange: (String) -> Unit,
     onDebounceIntervalCommit: () -> Unit,
     onNextDoubleTapTextChange: (String) -> Unit,
     onNextDoubleTapCommit: () -> Unit,
+    onDoubleNextIntervalTextChange: (String) -> Unit,
+    onDoubleNextIntervalCommit: () -> Unit,
     onSimulate: () -> Unit,
     onSimulateQuad: () -> Unit,
     onResetCounters: () -> Unit,
@@ -587,11 +595,28 @@ private fun BtPlayTestSection(
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done,
+                imeAction = ImeAction.Next,
             ),
             keyboardActions = KeyboardActions(
                 onDone = {
                     onNextDoubleTapCommit()
+                    focusManager.clearFocus()
+                },
+            ),
+            modifier = Modifier.fillMaxWidth(),
+        )
+        OutlinedTextField(
+            value = doubleNextIntervalText,
+            onValueChange = onDoubleNextIntervalTextChange,
+            label = { Text(stringResource(R.string.bt_play_test_double_next_interval)) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done,
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    onDoubleNextIntervalCommit()
                     focusManager.clearFocus()
                 },
             ),
@@ -621,6 +646,17 @@ private fun BtPlayTestSection(
                 value = quadCount,
                 label = stringResource(R.string.bt_play_test_quad_count_label),
                 color = MaterialTheme.colorScheme.error,
+            )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            BtPlayCounter(
+                value = doubleNextCount,
+                label = stringResource(R.string.bt_play_test_double_next_count_label),
+                color = MaterialTheme.colorScheme.primary,
             )
         }
         if (pendingBurstCount > 0) {

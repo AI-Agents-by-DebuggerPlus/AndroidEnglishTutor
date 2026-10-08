@@ -5,8 +5,8 @@
 **Экран:** Тесты → вкладка BT Play  
 **Эталон:** AHCC «Тест BT-кнопок» (`HeadsetButtonHub`)
 
-> **Обновление 2026-10-07:** актуальная модель 1×/2×/3×/4×, интервал серии и ограничения Buds Pro 2 / Grind —  
-> [AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md](./AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md) (сборка v1.6.33).
+> **Обновление 2026-10-07:** актуальная модель 1×/2×/3×/4× + 2Next, интервалы и ограничения Buds Pro 2 / Grind —  
+> [AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md](./AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md) (сборка v1.6.34).
 
 ---
 

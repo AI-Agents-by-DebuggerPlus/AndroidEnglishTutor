@@ -13,6 +13,8 @@ data class HeadsetButtonPrefs(
     val debounceEnabled: Boolean = true,
     val debounceIntervalMs: Long = HeadsetButtonPreferences.DEFAULT_DEBOUNCE_MS,
     val nextDoubleTapMs: Long = HeadsetButtonPreferences.DEFAULT_NEXT_DOUBLE_TAP_MS,
+    /** Max gap between two consecutive Next events to count as 2Next. */
+    val doubleNextIntervalMs: Long = HeadsetButtonPreferences.DEFAULT_DOUBLE_NEXT_INTERVAL_MS,
 )
 
 /**
@@ -29,6 +31,7 @@ class HeadsetButtonPreferences @Inject constructor(
     val debounceEnabled: Boolean get() = _state.value.debounceEnabled
     val debounceIntervalMs: Long get() = _state.value.debounceIntervalMs
     val nextDoubleTapMs: Long get() = _state.value.nextDoubleTapMs
+    val doubleNextIntervalMs: Long get() = _state.value.doubleNextIntervalMs
 
     fun setDebounceEnabled(enabled: Boolean) {
         prefs.edit().putBoolean(KEY_DEBOUNCE_ENABLED, enabled).apply()
@@ -47,6 +50,12 @@ class HeadsetButtonPreferences @Inject constructor(
         _state.update { it.copy(nextDoubleTapMs = clamped) }
     }
 
+    fun setDoubleNextIntervalMs(intervalMs: Long) {
+        val clamped = intervalMs.coerceIn(MIN_INTERVAL_MS, MAX_DOUBLE_NEXT_INTERVAL_MS)
+        prefs.edit().putLong(KEY_DOUBLE_NEXT_INTERVAL_MS, clamped).apply()
+        _state.update { it.copy(doubleNextIntervalMs = clamped) }
+    }
+
     private fun load(): HeadsetButtonPrefs {
         return HeadsetButtonPrefs(
             debounceEnabled = prefs.getBoolean(KEY_DEBOUNCE_ENABLED, true),
@@ -54,6 +63,10 @@ class HeadsetButtonPreferences @Inject constructor(
                 .coerceIn(MIN_INTERVAL_MS, MAX_INTERVAL_MS),
             nextDoubleTapMs = prefs.getLong(KEY_NEXT_DOUBLE_TAP_MS, DEFAULT_NEXT_DOUBLE_TAP_MS)
                 .coerceIn(MIN_INTERVAL_MS, MAX_INTERVAL_MS),
+            doubleNextIntervalMs = prefs.getLong(
+                KEY_DOUBLE_NEXT_INTERVAL_MS,
+                DEFAULT_DOUBLE_NEXT_INTERVAL_MS,
+            ).coerceIn(MIN_INTERVAL_MS, MAX_DOUBLE_NEXT_INTERVAL_MS),
         )
     }
 
@@ -61,11 +74,15 @@ class HeadsetButtonPreferences @Inject constructor(
         const val DEFAULT_DEBOUNCE_MS = 500L
         /** Gap / settle for 2×→Next and 3×→Stop; 400ms was too tight for triple on buds. */
         const val DEFAULT_NEXT_DOUBLE_TAP_MS = 650L
+        /** Two Next within this window → 2Next counter. */
+        const val DEFAULT_DOUBLE_NEXT_INTERVAL_MS = 2_000L
         const val MIN_INTERVAL_MS = 50L
         const val MAX_INTERVAL_MS = 5_000L
+        const val MAX_DOUBLE_NEXT_INTERVAL_MS = 10_000L
         private const val PREFS_NAME = "headset_button_prefs"
         private const val KEY_DEBOUNCE_ENABLED = "debounce_enabled"
         private const val KEY_DEBOUNCE_INTERVAL_MS = "debounce_interval_ms"
         private const val KEY_NEXT_DOUBLE_TAP_MS = "next_double_tap_ms"
+        private const val KEY_DOUBLE_NEXT_INTERVAL_MS = "double_next_interval_ms"
     }
 }
