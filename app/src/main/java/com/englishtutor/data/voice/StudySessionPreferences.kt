@@ -56,6 +56,44 @@ class StudySessionPreferences @Inject constructor(
 
     fun studiedCount(): Int = studiedKeys().size
 
+    fun studiedWordsCount(): Int =
+        studiedKeys().count { it.contains("|${StudyStage.Words.name}|") }
+
+    fun studiedPhrasesCount(): Int =
+        studiedKeys().count { it.contains("|${StudyStage.Phrases.name}|") }
+
+    fun studiedSentencesCount(): Int =
+        studiedKeys().count { it.contains("|${StudyStage.Sentences.name}|") }
+
+    fun viewedTopicIds(): Set<String> =
+        prefs.getStringSet(KEY_VIEWED_TOPICS, emptySet())?.toSet().orEmpty()
+
+    fun markTopicViewed(topicId: String) {
+        if (topicId.isBlank()) return
+        val next = viewedTopicIds().toMutableSet().apply { add(topicId) }
+        prefs.edit().putStringSet(KEY_VIEWED_TOPICS, next).apply()
+    }
+
+    fun clearViewedTopics() {
+        prefs.edit().remove(KEY_VIEWED_TOPICS).apply()
+    }
+
+    /**
+     * Prefer topics not yet viewed; after all are viewed, reset the cycle and start from the first.
+     */
+    fun nextTopicId(currentId: String, allIds: List<String>): String? {
+        if (allIds.isEmpty()) return null
+        val viewed = viewedTopicIds()
+        val unviewed = allIds.filter { it !in viewed }
+        if (unviewed.isNotEmpty()) {
+            val cur = allIds.indexOf(currentId)
+            val after = unviewed.filter { allIds.indexOf(it) > cur }
+            return after.firstOrNull() ?: unviewed.first()
+        }
+        clearViewedTopics()
+        return allIds.first()
+    }
+
     companion object {
         private const val PREFS = "study_session_prefs"
         private const val KEY_TOPIC_ID = "topic_id"
@@ -63,5 +101,6 @@ class StudySessionPreferences @Inject constructor(
         private const val KEY_CARD_INDEX = "card_index"
         private const val KEY_BATCH_ENS = "batch_word_ens"
         private const val KEY_STUDIED = "studied_keys"
+        private const val KEY_VIEWED_TOPICS = "viewed_topic_ids"
     }
 }

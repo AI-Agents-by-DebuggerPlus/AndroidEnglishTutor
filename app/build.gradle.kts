@@ -15,8 +15,8 @@ android {
         applicationId = "com.englishtutor"
         minSdk = 26
         targetSdk = 35
-        versionCode = 46
-        versionName = "1.6.18"
+        versionCode = 61
+        versionName = "1.6.33"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

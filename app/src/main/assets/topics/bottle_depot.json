@@ -2,54 +2,2803 @@
   "id": "bottle_depot",
   "titleRu": "Разговор на работе Bottle Depot",
   "words": [
-    {"en": "bottle", "ru": "бутылка"},
-    {"en": "can", "ru": "банка"},
-    {"en": "refund", "ru": "возврат залога"},
-    {"en": "receipt", "ru": "чек"},
-    {"en": "customer", "ru": "клиент"},
-    {"en": "counter", "ru": "стойка"},
-    {"en": "bag", "ru": "пакет"},
-    {"en": "crate", "ru": "ящик"},
-    {"en": "sort", "ru": "сортировать"},
-    {"en": "count", "ru": "считать"},
-    {"en": "cash", "ru": "наличные"},
-    {"en": "card", "ru": "карта"},
-    {"en": "shift", "ru": "смена"},
-    {"en": "break", "ru": "перерыв"},
-    {"en": "manager", "ru": "менеджер"},
-    {"en": "queue", "ru": "очередь"},
-    {"en": "label", "ru": "этикетка"},
-    {"en": "deposit", "ru": "залог"},
-    {"en": "recycle", "ru": "перерабатывать"},
-    {"en": "total", "ru": "итого"}
+    {
+      "en": "bottle",
+      "ru": "бутылка"
+    },
+    {
+      "en": "can",
+      "ru": "банка"
+    },
+    {
+      "en": "refund",
+      "ru": "возврат залога"
+    },
+    {
+      "en": "customer",
+      "ru": "клиент"
+    },
+    {
+      "en": "counter",
+      "ru": "стойка"
+    },
+    {
+      "en": "bag",
+      "ru": "пакет"
+    },
+    {
+      "en": "crate",
+      "ru": "ящик"
+    },
+    {
+      "en": "sort",
+      "ru": "сортировать"
+    },
+    {
+      "en": "count",
+      "ru": "считать"
+    },
+    {
+      "en": "card",
+      "ru": "карта"
+    },
+    {
+      "en": "shift",
+      "ru": "смена"
+    },
+    {
+      "en": "queue",
+      "ru": "очередь"
+    },
+    {
+      "en": "label",
+      "ru": "этикетка"
+    },
+    {
+      "en": "deposit",
+      "ru": "залог"
+    },
+    {
+      "en": "recycle",
+      "ru": "перерабатывать"
+    },
+    {
+      "en": "total",
+      "ru": "итого"
+    },
+    {
+      "en": "bottle depot",
+      "ru": "пункт приёма бутылок"
+    },
+    {
+      "en": "recycling depot",
+      "ru": "пункт переработки"
+    },
+    {
+      "en": "refundable",
+      "ru": "с залогом"
+    },
+    {
+      "en": "non-refundable",
+      "ru": "без залога"
+    },
+    {
+      "en": "barcode",
+      "ru": "штрихкод"
+    },
+    {
+      "en": "scan",
+      "ru": "сканировать"
+    },
+    {
+      "en": "scanner",
+      "ru": "сканер"
+    },
+    {
+      "en": "sticker",
+      "ru": "наклейка"
+    },
+    {
+      "en": "case",
+      "ru": "коробка/ящик"
+    },
+    {
+      "en": "bin",
+      "ru": "контейнер"
+    },
+    {
+      "en": "sorting table",
+      "ru": "стол сортировки"
+    },
+    {
+      "en": "sorting line",
+      "ru": "линия сортировки"
+    },
+    {
+      "en": "stream",
+      "ru": "поток отходов"
+    },
+    {
+      "en": "glass bottle",
+      "ru": "стеклянная бутылка"
+    },
+    {
+      "en": "plastic bottle",
+      "ru": "пластиковая бутылка"
+    },
+    {
+      "en": "aluminum can",
+      "ru": "алюминиевая банка"
+    },
+    {
+      "en": "steel can",
+      "ru": "стальная банка"
+    },
+    {
+      "en": "carton",
+      "ru": "картонная упаковка"
+    },
+    {
+      "en": "pouch",
+      "ru": "пакет-дойпак"
+    },
+    {
+      "en": "cap",
+      "ru": "крышка"
+    },
+    {
+      "en": "lid",
+      "ru": "крышка банки"
+    },
+    {
+      "en": "neck ring",
+      "ru": "кольцо горлышка"
+    },
+    {
+      "en": "crushed",
+      "ru": "смятый"
+    },
+    {
+      "en": "intact",
+      "ru": "целый"
+    },
+    {
+      "en": "contaminated",
+      "ru": "загрязнённый"
+    },
+    {
+      "en": "dirty bottle",
+      "ru": "грязная бутылка"
+    },
+    {
+      "en": "rinse",
+      "ru": "прополоскать"
+    },
+    {
+      "en": "empty",
+      "ru": "пустой"
+    },
+    {
+      "en": "half-full",
+      "ru": "наполовину полный"
+    },
+    {
+      "en": "liquid residue",
+      "ru": "остатки жидкости"
+    },
+    {
+      "en": "foreign object",
+      "ru": "посторонний предмет"
+    },
+    {
+      "en": "accepted",
+      "ru": "принято"
+    },
+    {
+      "en": "rejected",
+      "ru": "отклонено"
+    },
+    {
+      "en": "tally",
+      "ru": "итог подсчёта"
+    },
+    {
+      "en": "quantity",
+      "ru": "количество"
+    },
+    {
+      "en": "weight",
+      "ru": "вес"
+    },
+    {
+      "en": "scale",
+      "ru": "весы"
+    },
+    {
+      "en": "weigh-in",
+      "ru": "взвешивание"
+    },
+    {
+      "en": "receipt printer",
+      "ru": "принтер чеков"
+    },
+    {
+      "en": "voucher",
+      "ru": "ваучер"
+    },
+    {
+      "en": "cash refund",
+      "ru": "возврат наличными"
+    },
+    {
+      "en": "card refund",
+      "ru": "возврат на карту"
+    },
+    {
+      "en": "payout",
+      "ru": "выплата"
+    },
+    {
+      "en": "register",
+      "ru": "касса"
+    },
+    {
+      "en": "drawer",
+      "ru": "денежный ящик"
+    },
+    {
+      "en": "shift lead",
+      "ru": "старший смены"
+    },
+    {
+      "en": "attendant",
+      "ru": "работник пункта"
+    },
+    {
+      "en": "regular customer",
+      "ru": "постоянный клиент"
+    },
+    {
+      "en": "lineup",
+      "ru": "очередь клиентов"
+    },
+    {
+      "en": "take a number",
+      "ru": "взять номерок"
+    },
+    {
+      "en": "service window",
+      "ru": "окно обслуживания"
+    },
+    {
+      "en": "back room",
+      "ru": "подсобка"
+    },
+    {
+      "en": "storage area",
+      "ru": "зона хранения"
+    },
+    {
+      "en": "loading dock",
+      "ru": "погрузочная площадка"
+    },
+    {
+      "en": "pallet",
+      "ru": "поддон"
+    },
+    {
+      "en": "pallet jack",
+      "ru": "рохля"
+    },
+    {
+      "en": "forklift",
+      "ru": "погрузчик"
+    },
+    {
+      "en": "hand cart",
+      "ru": "ручная тележка"
+    },
+    {
+      "en": "tarp",
+      "ru": "тент"
+    },
+    {
+      "en": "spill",
+      "ru": "разлив"
+    },
+    {
+      "en": "cleanup",
+      "ru": "уборка"
+    },
+    {
+      "en": "mop bucket",
+      "ru": "ведро со шваброй"
+    },
+    {
+      "en": "gloves required",
+      "ru": "нужны перчатки"
+    },
+    {
+      "en": "safety vest",
+      "ru": "сигнальный жилет"
+    },
+    {
+      "en": "closed shoes",
+      "ru": "закрытая обувь"
+    },
+    {
+      "en": "hairnet",
+      "ru": "сетка для волос"
+    },
+    {
+      "en": "apron",
+      "ru": "фартук"
+    },
+    {
+      "en": "earplugs",
+      "ru": "беруши"
+    },
+    {
+      "en": "equipment noise",
+      "ru": "шум оборудования"
+    },
+    {
+      "en": "machine jam",
+      "ru": "засор машины"
+    },
+    {
+      "en": "clear the jam",
+      "ru": "устранить засор"
+    },
+    {
+      "en": "conveyor",
+      "ru": "конвейер"
+    },
+    {
+      "en": "hopper",
+      "ru": "бункер"
+    },
+    {
+      "en": "compactor",
+      "ru": "пресс-уплотнитель"
+    },
+    {
+      "en": "baler",
+      "ru": "пресс для кип"
+    },
+    {
+      "en": "bale",
+      "ru": "кипа"
+    },
+    {
+      "en": "bundle",
+      "ru": "связка"
+    },
+    {
+      "en": "stack",
+      "ru": "штабель"
+    },
+    {
+      "en": "overflow",
+      "ru": "переполнение"
+    },
+    {
+      "en": "capacity",
+      "ru": "вместимость"
+    },
+    {
+      "en": "full crate",
+      "ru": "полный ящик"
+    },
+    {
+      "en": "mixed load",
+      "ru": "смешанный груз"
+    },
+    {
+      "en": "sorted load",
+      "ru": "отсортированный груз"
+    },
+    {
+      "en": "glass stream",
+      "ru": "поток стекла"
+    },
+    {
+      "en": "plastic stream",
+      "ru": "поток пластика"
+    },
+    {
+      "en": "metal stream",
+      "ru": "поток металла"
+    },
+    {
+      "en": "color sort",
+      "ru": "сортировка по цвету"
+    },
+    {
+      "en": "clear glass",
+      "ru": "прозрачное стекло"
+    },
+    {
+      "en": "green glass",
+      "ru": "зелёное стекло"
+    },
+    {
+      "en": "brown glass",
+      "ru": "коричневое стекло"
+    },
+    {
+      "en": "pet plastic",
+      "ru": "ПЭТ-пластик"
+    },
+    {
+      "en": "hdpe",
+      "ru": "полиэтилен высокой плотности"
+    },
+    {
+      "en": "ldpe",
+      "ru": "полиэтилен низкой плотности"
+    },
+    {
+      "en": "pp plastic",
+      "ru": "полипропилен"
+    },
+    {
+      "en": "resin code",
+      "ru": "код смолы"
+    },
+    {
+      "en": "recycle symbol",
+      "ru": "символ переработки"
+    },
+    {
+      "en": "deposit mark",
+      "ru": "метка залога"
+    },
+    {
+      "en": "province mark",
+      "ru": "провинциальная метка"
+    },
+    {
+      "en": "eligible",
+      "ru": "подходит для возврата"
+    },
+    {
+      "en": "ineligible",
+      "ru": "не подходит для возврата"
+    },
+    {
+      "en": "out of province",
+      "ru": "из другой провинции"
+    },
+    {
+      "en": "expired program",
+      "ru": "устаревшая программа"
+    },
+    {
+      "en": "brand logo",
+      "ru": "логотип бренда"
+    },
+    {
+      "en": "sku",
+      "ru": "артикул товара"
+    },
+    {
+      "en": "upc",
+      "ru": "универсальный код товара"
+    },
+    {
+      "en": "ean",
+      "ru": "европейский товарный номер"
+    },
+    {
+      "en": "lookup",
+      "ru": "поиск в базе"
+    },
+    {
+      "en": "manual entry",
+      "ru": "ручной ввод"
+    },
+    {
+      "en": "override",
+      "ru": "переопределение"
+    },
+    {
+      "en": "supervisor approval",
+      "ru": "одобрение старшего"
+    },
+    {
+      "en": "price per unit",
+      "ru": "цена за единицу"
+    },
+    {
+      "en": "refund rate",
+      "ru": "ставка возврата"
+    },
+    {
+      "en": "five cent",
+      "ru": "пять центов"
+    },
+    {
+      "en": "ten cent",
+      "ru": "десять центов"
+    },
+    {
+      "en": "twenty cent",
+      "ru": "двадцать центов"
+    },
+    {
+      "en": "total refund",
+      "ru": "общая сумма возврата"
+    },
+    {
+      "en": "partial refund",
+      "ru": "частичный возврат"
+    },
+    {
+      "en": "dispute",
+      "ru": "спор"
+    },
+    {
+      "en": "complaint ticket",
+      "ru": "заявка-жалоба"
+    },
+    {
+      "en": "customer service",
+      "ru": "обслуживание клиентов"
+    },
+    {
+      "en": "be polite",
+      "ru": "быть вежливым"
+    },
+    {
+      "en": "speak clearly",
+      "ru": "говорить ясно"
+    },
+    {
+      "en": "next please",
+      "ru": "следующий, пожалуйста"
+    },
+    {
+      "en": "how many bags",
+      "ru": "сколько мешков"
+    },
+    {
+      "en": "please sort",
+      "ru": "пожалуйста, отсортируйте"
+    },
+    {
+      "en": "separate glass",
+      "ru": "отделите стекло"
+    },
+    {
+      "en": "remove caps",
+      "ru": "снимите крышки"
+    },
+    {
+      "en": "no garbage",
+      "ru": "без мусора"
+    },
+    {
+      "en": "no liquids",
+      "ru": "без жидкостей"
+    },
+    {
+      "en": "no broken glass",
+      "ru": "без битого стекла"
+    },
+    {
+      "en": "broken glass",
+      "ru": "битое стекло"
+    },
+    {
+      "en": "sharp edge",
+      "ru": "острый край"
+    },
+    {
+      "en": "cut risk",
+      "ru": "риск пореза"
+    },
+    {
+      "en": "first aid",
+      "ru": "первая помощь"
+    },
+    {
+      "en": "incident report",
+      "ru": "отчёт об инциденте"
+    },
+    {
+      "en": "opening time",
+      "ru": "время открытия"
+    },
+    {
+      "en": "closing time",
+      "ru": "время закрытия"
+    },
+    {
+      "en": "busy hour",
+      "ru": "час пик"
+    },
+    {
+      "en": "rush",
+      "ru": "наплыв клиентов"
+    },
+    {
+      "en": "slow period",
+      "ru": "тихое время"
+    },
+    {
+      "en": "break room",
+      "ru": "комната отдыха"
+    },
+    {
+      "en": "timecard",
+      "ru": "карточка учёта времени"
+    },
+    {
+      "en": "punch in",
+      "ru": "отметиться на вход"
+    },
+    {
+      "en": "punch out",
+      "ru": "отметиться на выход"
+    },
+    {
+      "en": "overtime",
+      "ru": "сверхурочные"
+    },
+    {
+      "en": "schedule board",
+      "ru": "доска расписания"
+    },
+    {
+      "en": "call out sick",
+      "ru": "сообщить о болезни"
+    },
+    {
+      "en": "cover a shift",
+      "ru": "подменить смену"
+    },
+    {
+      "en": "training",
+      "ru": "обучение"
+    },
+    {
+      "en": "shadowing",
+      "ru": "обучение рядом с наставником"
+    },
+    {
+      "en": "checklist",
+      "ru": "контрольный список"
+    },
+    {
+      "en": "daily count",
+      "ru": "ежедневный подсчёт"
+    },
+    {
+      "en": "end-of-day",
+      "ru": "конец дня"
+    },
+    {
+      "en": "cashout",
+      "ru": "сведение кассы"
+    },
+    {
+      "en": "discrepancy",
+      "ru": "расхождение"
+    },
+    {
+      "en": "shortage",
+      "ru": "недостача"
+    },
+    {
+      "en": "overage",
+      "ru": "излишек"
+    },
+    {
+      "en": "audit",
+      "ru": "проверка"
+    },
+    {
+      "en": "camera",
+      "ru": "камера наблюдения"
+    },
+    {
+      "en": "signage",
+      "ru": "вывески"
+    },
+    {
+      "en": "rules poster",
+      "ru": "плакат с правилами"
+    },
+    {
+      "en": "wait outside",
+      "ru": "подождите снаружи"
+    },
+    {
+      "en": "bring inside",
+      "ru": "принесите внутрь"
+    },
+    {
+      "en": "leave bags here",
+      "ru": "оставьте мешки здесь"
+    },
+    {
+      "en": "tag the bag",
+      "ru": "пометьте мешок"
+    },
+    {
+      "en": "claim ticket",
+      "ru": "талон на получение"
+    },
+    {
+      "en": "pick up later",
+      "ru": "забрать позже"
+    },
+    {
+      "en": "processing time",
+      "ru": "время обработки"
+    },
+    {
+      "en": "same-day refund",
+      "ru": "возврат в тот же день"
+    },
+    {
+      "en": "bulk drop",
+      "ru": "массовая сдача"
+    },
+    {
+      "en": "commercial account",
+      "ru": "коммерческий счёт"
+    },
+    {
+      "en": "residential drop",
+      "ru": "сдача от жителей"
+    },
+    {
+      "en": "charity donation",
+      "ru": "благотворительный взнос"
+    },
+    {
+      "en": "donate refund",
+      "ru": "пожертвовать возврат"
+    },
+    {
+      "en": "fundraiser",
+      "ru": "сбор средств"
+    },
+    {
+      "en": "community bin",
+      "ru": "общественный контейнер"
+    },
+    {
+      "en": "drive-through",
+      "ru": "окно без выхода из машины"
+    },
+    {
+      "en": "parking spot",
+      "ru": "парковочное место"
+    },
+    {
+      "en": "loading zone",
+      "ru": "зона погрузки"
+    },
+    {
+      "en": "traffic cone",
+      "ru": "дорожный конус"
+    },
+    {
+      "en": "wet floor",
+      "ru": "мокрый пол"
+    },
+    {
+      "en": "caution sign",
+      "ru": "знак осторожности"
+    },
+    {
+      "en": "sanitize",
+      "ru": "продезинфицировать"
+    },
+    {
+      "en": "hand wash",
+      "ru": "мытьё рук"
+    }
   ],
   "phrases": [
-    {"en": "empty bottle", "ru": "пустая бутылка", "uses": ["bottle"]},
-    {"en": "aluminum can", "ru": "алюминиевая банка", "uses": ["can"]},
-    {"en": "bottle refund", "ru": "возврат за бутылки", "uses": ["bottle", "refund"]},
-    {"en": "print a receipt", "ru": "распечатать чек", "uses": ["receipt"]},
-    {"en": "next customer", "ru": "следующий клиент", "uses": ["customer"]},
-    {"en": "at the counter", "ru": "у стойки", "uses": ["counter"]},
-    {"en": "plastic bag", "ru": "пластиковый пакет", "uses": ["bag"]},
-    {"en": "full crate", "ru": "полный ящик", "uses": ["crate"]},
-    {"en": "sort bottles", "ru": "сортировать бутылки", "uses": ["sort", "bottle"]},
-    {"en": "count the cans", "ru": "посчитать банки", "uses": ["count", "can"]},
-    {"en": "pay by cash", "ru": "оплатить наличными", "uses": ["cash"]},
-    {"en": "pay by card", "ru": "оплатить картой", "uses": ["card"]},
-    {"en": "morning shift", "ru": "утренняя смена", "uses": ["shift"]},
-    {"en": "short break", "ru": "короткий перерыв", "uses": ["break"]},
-    {"en": "ask the manager", "ru": "спросить менеджера", "uses": ["manager"]}
+    {
+      "en": "bottle depot",
+      "ru": "пункт приёма тары",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "empty beverage containers",
+      "ru": "пустая тара из-под напитков",
+      "uses": [
+        "empty"
+      ]
+    },
+    {
+      "en": "refundable deposit",
+      "ru": "возвращаемый залог",
+      "uses": [
+        "refundable",
+        "deposit"
+      ]
+    },
+    {
+      "en": "ten cent deposit",
+      "ru": "залог в десять центов",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "twenty five cent deposit",
+      "ru": "залог в двадцать пять центов",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "non refundable item",
+      "ru": "товар без залога",
+      "uses": [
+        "refundable"
+      ]
+    },
+    {
+      "en": "aluminum cans",
+      "ru": "алюминиевые банки",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "plastic bottles",
+      "ru": "пластиковые бутылки",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "glass bottles",
+      "ru": "стеклянные бутылки",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "milk cartons",
+      "ru": "молочные пакеты",
+      "uses": [
+        "carton"
+      ]
+    },
+    {
+      "en": "beer bottles",
+      "ru": "пивные бутылки",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "wine bottles",
+      "ru": "винные бутылки",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "liquor bottles",
+      "ru": "бутылки из-под крепкого алкоголя",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "bag in box wine",
+      "ru": "вино в коробке с пакетом внутри",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "pop cans",
+      "ru": "банки из-под газировки",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "energy drink cans",
+      "ru": "банки из-под энергетиков",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "a bag of empties",
+      "ru": "мешок пустой тары",
+      "uses": [
+        "bag",
+        "empty"
+      ]
+    },
+    {
+      "en": "a truckload of empties",
+      "ru": "полный грузовик тары",
+      "uses": [
+        "empty"
+      ]
+    },
+    {
+      "en": "clear plastic bags",
+      "ru": "прозрачные пластиковые пакеты",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "blue recycling bins",
+      "ru": "синие баки для вторсырья",
+      "uses": [
+        "bin"
+      ]
+    },
+    {
+      "en": "the drop off counter",
+      "ru": "стойка приёма тары",
+      "uses": [
+        "counter"
+      ]
+    },
+    {
+      "en": "the sorting table",
+      "ru": "стол для сортировки",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "the sorting line",
+      "ru": "линия сортировки",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "sort by material",
+      "ru": "сортировать по материалу",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "sort by size",
+      "ru": "сортировать по размеру",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "count the containers",
+      "ru": "пересчитать тару",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "weigh the bags",
+      "ru": "взвесить мешки",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "write down the count",
+      "ru": "записать количество",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "hand the customer cash",
+      "ru": "выдать клиенту наличные",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "sports team fundraiser",
+      "ru": "сбор средств для спортивной команды",
+      "uses": [
+        "fundraiser"
+      ]
+    },
+    {
+      "en": "the refund amount",
+      "ru": "сумма возврата",
+      "uses": [
+        "refund"
+      ]
+    },
+    {
+      "en": "the total payout",
+      "ru": "общая сумма выплаты",
+      "uses": [
+        "total",
+        "payout"
+      ]
+    },
+    {
+      "en": "the deposit program",
+      "ru": "программа залога за тару",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "reusable bottle",
+      "ru": "многоразовая бутылка",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "baled aluminum",
+      "ru": "прессованный алюминий",
+      "uses": [
+        "bale"
+      ]
+    },
+    {
+      "en": "a bale of plastic",
+      "ru": "кипа пластика",
+      "uses": [
+        "bale"
+      ]
+    },
+    {
+      "en": "a pallet of cans",
+      "ru": "поддон с банками",
+      "uses": [
+        "pallet",
+        "can"
+      ]
+    },
+    {
+      "en": "a bulk bag",
+      "ru": "мягкий контейнер для сыпучих грузов",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "a pallet jack",
+      "ru": "ручная гидравлическая тележка",
+      "uses": [
+        "pallet"
+      ]
+    },
+    {
+      "en": "a forklift operator",
+      "ru": "оператор вилочного погрузчика",
+      "uses": [
+        "forklift"
+      ]
+    },
+    {
+      "en": "a weigh scale",
+      "ru": "весы для взвешивания",
+      "uses": [
+        "scale"
+      ]
+    },
+    {
+      "en": "a can baler",
+      "ru": "пресс для банок",
+      "uses": [
+        "can",
+        "baler"
+      ]
+    },
+    {
+      "en": "a conveyor belt",
+      "ru": "ленточный конвейер",
+      "uses": [
+        "conveyor"
+      ]
+    },
+    {
+      "en": "a bag of dirty bottles",
+      "ru": "мешок грязных бутылок",
+      "uses": [
+        "bag",
+        "bottle"
+      ]
+    },
+    {
+      "en": "a broken bottle",
+      "ru": "разбитая бутылка",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "a spilled drink",
+      "ru": "пролитый напиток",
+      "uses": [
+        "spill"
+      ]
+    },
+    {
+      "en": "wipe down the counter",
+      "ru": "протереть стойку",
+      "uses": [
+        "counter"
+      ]
+    },
+    {
+      "en": "tie up the bags",
+      "ru": "завязать мешки",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "stack the pallets",
+      "ru": "сложить поддоны штабелем",
+      "uses": [
+        "stack",
+        "pallet"
+      ]
+    },
+    {
+      "en": "a morning shift",
+      "ru": "утренняя смена",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "an afternoon shift",
+      "ru": "дневная смена",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "a weekend shift",
+      "ru": "смена в выходные",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "a split shift",
+      "ru": "разделённая смена",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "cover my shift",
+      "ru": "подменить меня на смене",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "work overtime",
+      "ru": "работать сверхурочно",
+      "uses": [
+        "overtime"
+      ]
+    },
+    {
+      "en": "direct deposit",
+      "ru": "прямой перевод зарплаты на счёт",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "regular customer",
+      "ru": "постоянный клиент",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "first time customer",
+      "ru": "новый клиент",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "good customer service",
+      "ru": "хорошее обслуживание клиентов",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "calm an angry customer",
+      "ru": "успокоить рассерженного клиента",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "this item is not eligible",
+      "ru": "этот товар не подлежит возврату залога",
+      "uses": [
+        "eligible"
+      ]
+    },
+    {
+      "en": "the label is missing",
+      "ru": "этикетка отсутствует",
+      "uses": [
+        "label"
+      ]
+    },
+    {
+      "en": "the barcode is damaged",
+      "ru": "штрих-код повреждён",
+      "uses": [
+        "barcode"
+      ]
+    },
+    {
+      "en": "the bottle is crushed",
+      "ru": "бутылка смята",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "the can is dented",
+      "ru": "банка помята",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "please empty the bottles first",
+      "ru": "пожалуйста, сначала опустошите бутылки",
+      "uses": [
+        "empty",
+        "bottle"
+      ]
+    },
+    {
+      "en": "please remove the lids",
+      "ru": "пожалуйста, снимите крышки",
+      "uses": [
+        "lid"
+      ]
+    },
+    {
+      "en": "please bring them in bags",
+      "ru": "пожалуйста, принесите их в мешках",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "next customer please",
+      "ru": "следующий клиент, пожалуйста",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "a long lineup",
+      "ru": "длинная очередь",
+      "uses": [
+        "lineup"
+      ]
+    },
+    {
+      "en": "the security camera",
+      "ru": "камера видеонаблюдения",
+      "uses": [
+        "camera"
+      ]
+    },
+    {
+      "en": "cash drawer",
+      "ru": "денежный ящик",
+      "uses": [
+        "drawer"
+      ]
+    },
+    {
+      "en": "daily count",
+      "ru": "ежедневный подсчёт",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "end of day cleanup",
+      "ru": "уборка в конце дня",
+      "uses": [
+        "cleanup"
+      ]
+    },
+    {
+      "en": "label the bins",
+      "ru": "подписать баки",
+      "uses": [
+        "label",
+        "bin"
+      ]
+    },
+    {
+      "en": "check the weight",
+      "ru": "проверить вес",
+      "uses": [
+        "weight"
+      ]
+    },
+    {
+      "en": "recycle responsibly",
+      "ru": "перерабатывать ответственно",
+      "uses": [
+        "recycle"
+      ]
+    },
+    {
+      "en": "reduce, reuse, recycle",
+      "ru": "сокращай, используй повторно, перерабатывай",
+      "uses": [
+        "recycle"
+      ]
+    },
+    {
+      "en": "recycling facility",
+      "ru": "перерабатывающее предприятие",
+      "uses": [
+        "recycling",
+        "facility"
+      ]
+    },
+    {
+      "en": "juice boxes",
+      "ru": "пакеты из-под сока",
+      "uses": [
+        "juice",
+        "box"
+      ]
+    },
+    {
+      "en": "water jugs",
+      "ru": "большие бутыли для воды",
+      "uses": [
+        "water",
+        "jug"
+      ]
+    },
+    {
+      "en": "tetra pak",
+      "ru": "картонная упаковка типа тетра пак",
+      "uses": [
+        "tetra",
+        "pak"
+      ]
+    },
+    {
+      "en": "separate the glass",
+      "ru": "отделить стекло",
+      "uses": [
+        "separate",
+        "glass"
+      ]
+    },
+    {
+      "en": "print the receipt",
+      "ru": "распечатать чек",
+      "uses": [
+        "print",
+        "receipt"
+      ]
+    },
+    {
+      "en": "pay by e-transfer",
+      "ru": "заплатить электронным переводом",
+      "uses": [
+        "pay",
+        "transfer"
+      ]
+    },
+    {
+      "en": "donate to charity",
+      "ru": "пожертвовать на благотворительность",
+      "uses": [
+        "donate",
+        "charity"
+      ]
+    },
+    {
+      "en": "the handling fee",
+      "ru": "плата за обработку",
+      "uses": [
+        "handle",
+        "fee"
+      ]
+    },
+    {
+      "en": "the environmental fee",
+      "ru": "экологический сбор",
+      "uses": [
+        "environmental",
+        "fee"
+      ]
+    },
+    {
+      "en": "provincial regulations",
+      "ru": "провинциальные правила",
+      "uses": [
+        "provincial",
+        "regulation"
+      ]
+    },
+    {
+      "en": "beverage container recycling",
+      "ru": "переработка тары из-под напитков",
+      "uses": [
+        "beverage",
+        "container",
+        "recycling"
+      ]
+    },
+    {
+      "en": "single use plastic",
+      "ru": "одноразовый пластик",
+      "uses": [
+        "single",
+        "use",
+        "plastic"
+      ]
+    },
+    {
+      "en": "closed loop recycling",
+      "ru": "переработка по замкнутому циклу",
+      "uses": [
+        "closed",
+        "loop",
+        "recycling"
+      ]
+    },
+    {
+      "en": "recycled content",
+      "ru": "доля вторичного сырья",
+      "uses": [
+        "recycled",
+        "content"
+      ]
+    },
+    {
+      "en": "raw material",
+      "ru": "сырьё",
+      "uses": [
+        "raw",
+        "material"
+      ]
+    },
+    {
+      "en": "scrap metal",
+      "ru": "металлолом",
+      "uses": [
+        "scrap",
+        "metal"
+      ]
+    },
+    {
+      "en": "crushed glass",
+      "ru": "дроблёное стекло",
+      "uses": [
+        "crush",
+        "glass"
+      ]
+    },
+    {
+      "en": "shredded plastic",
+      "ru": "измельчённый пластик",
+      "uses": [
+        "shred",
+        "plastic"
+      ]
+    },
+    {
+      "en": "a large cardboard box",
+      "ru": "большая картонная коробка",
+      "uses": [
+        "large",
+        "cardboard",
+        "box"
+      ]
+    },
+    {
+      "en": "a rolling cart",
+      "ru": "тележка на колёсах",
+      "uses": [
+        "roll",
+        "cart"
+      ]
+    },
+    {
+      "en": "a loading dock",
+      "ru": "погрузочная рампа",
+      "uses": [
+        "load",
+        "dock"
+      ]
+    },
+    {
+      "en": "a shipping container",
+      "ru": "морской контейнер",
+      "uses": [
+        "ship",
+        "container"
+      ]
+    },
+    {
+      "en": "a delivery truck",
+      "ru": "грузовик доставки",
+      "uses": [
+        "delivery",
+        "truck"
+      ]
+    },
+    {
+      "en": "a container crusher",
+      "ru": "дробилка тары",
+      "uses": [
+        "container",
+        "crusher"
+      ]
+    },
+    {
+      "en": "sticky and wet containers",
+      "ru": "липкая и мокрая тара",
+      "uses": [
+        "sticky",
+        "wet",
+        "container"
+      ]
+    },
+    {
+      "en": "leftover liquid",
+      "ru": "остатки жидкости",
+      "uses": [
+        "leftover",
+        "liquid"
+      ]
+    },
+    {
+      "en": "sharp glass",
+      "ru": "острое стекло",
+      "uses": [
+        "sharp",
+        "glass"
+      ]
+    },
+    {
+      "en": "mop the floor",
+      "ru": "помыть пол шваброй",
+      "uses": [
+        "mop",
+        "floor"
+      ]
+    },
+    {
+      "en": "take out the garbage",
+      "ru": "вынести мусор",
+      "uses": [
+        "garbage"
+      ]
+    },
+    {
+      "en": "lift with your legs",
+      "ru": "поднимай ногами, а не спиной",
+      "uses": [
+        "lift",
+        "leg"
+      ]
+    },
+    {
+      "en": "heavy lifting",
+      "ru": "тяжёлые подъёмы",
+      "uses": [
+        "heavy",
+        "lift"
+      ]
+    },
+    {
+      "en": "wear cut resistant gloves",
+      "ru": "носить перчатки от порезов",
+      "uses": [
+        "wear",
+        "cut",
+        "resistant",
+        "glove"
+      ]
+    },
+    {
+      "en": "wear closed toe shoes",
+      "ru": "носить закрытую обувь",
+      "uses": [
+        "wear",
+        "closed",
+        "toe",
+        "shoe"
+      ]
+    },
+    {
+      "en": "slip resistant boots",
+      "ru": "нескользящие ботинки",
+      "uses": [
+        "slip",
+        "resistant",
+        "boot"
+      ]
+    },
+    {
+      "en": "watch for broken glass",
+      "ru": "остерегайся битого стекла",
+      "uses": [
+        "watch",
+        "broken",
+        "glass"
+      ]
+    },
+    {
+      "en": "report an injury",
+      "ru": "сообщить о травме",
+      "uses": [
+        "report",
+        "injury"
+      ]
+    },
+    {
+      "en": "fill out an incident report",
+      "ru": "заполнить акт о происшествии",
+      "uses": [
+        "fill",
+        "incident",
+        "report"
+      ]
+    },
+    {
+      "en": "safety orientation",
+      "ru": "вводный инструктаж по безопасности",
+      "uses": [
+        "safety",
+        "orientation"
+      ]
+    },
+    {
+      "en": "workplace hazard",
+      "ru": "опасность на рабочем месте",
+      "uses": [
+        "workplace",
+        "hazard"
+      ]
+    },
+    {
+      "en": "emergency exit",
+      "ru": "аварийный выход",
+      "uses": [
+        "emergency",
+        "exit"
+      ]
+    },
+    {
+      "en": "fire extinguisher location",
+      "ru": "место огнетушителя",
+      "uses": [
+        "fire",
+        "extinguisher",
+        "location"
+      ]
+    },
+    {
+      "en": "first aid kit",
+      "ru": "аптечка",
+      "uses": [
+        "first",
+        "aid",
+        "kit"
+      ]
+    },
+    {
+      "en": "personal protective equipment",
+      "ru": "средства индивидуальной защиты",
+      "uses": [
+        "personal",
+        "protective",
+        "equipment"
+      ]
+    },
+    {
+      "en": "clock in and out",
+      "ru": "отметиться на приход и уход",
+      "uses": [
+        "clock"
+      ]
+    },
+    {
+      "en": "take a lunch break",
+      "ru": "пойти на обеденный перерыв",
+      "uses": [
+        "take",
+        "lunch",
+        "break"
+      ]
+    },
+    {
+      "en": "request time off",
+      "ru": "попросить отгул",
+      "uses": [
+        "request",
+        "time"
+      ]
+    },
+    {
+      "en": "hourly wage",
+      "ru": "почасовая оплата",
+      "uses": [
+        "hourly",
+        "wage"
+      ]
+    },
+    {
+      "en": "minimum wage",
+      "ru": "минимальная зарплата",
+      "uses": [
+        "minimum",
+        "wage"
+      ]
+    },
+    {
+      "en": "pay stub",
+      "ru": "расчётный листок",
+      "uses": [
+        "pay",
+        "stub"
+      ]
+    },
+    {
+      "en": "employee handbook",
+      "ru": "руководство для сотрудников",
+      "uses": [
+        "employee",
+        "handbook"
+      ]
+    },
+    {
+      "en": "team lead",
+      "ru": "руководитель смены",
+      "uses": [
+        "team",
+        "lead"
+      ]
+    },
+    {
+      "en": "depot manager",
+      "ru": "управляющий пункта",
+      "uses": [
+        "depot",
+        "manager"
+      ]
+    },
+    {
+      "en": "co worker",
+      "ru": "коллега",
+      "uses": [
+        "coworker"
+      ]
+    },
+    {
+      "en": "polite greeting",
+      "ru": "вежливое приветствие",
+      "uses": [
+        "polite",
+        "greeting"
+      ]
+    },
+    {
+      "en": "handle a complaint",
+      "ru": "разобраться с жалобой",
+      "uses": [
+        "handle",
+        "complaint"
+      ]
+    },
+    {
+      "en": "explain the policy",
+      "ru": "объяснить правила",
+      "uses": [
+        "explain",
+        "policy"
+      ]
+    },
+    {
+      "en": "we can't accept this",
+      "ru": "мы не можем это принять",
+      "uses": [
+        "accept"
+      ]
+    },
+    {
+      "en": "bought out of province",
+      "ru": "куплено в другой провинции",
+      "uses": [
+        "buy",
+        "province"
+      ]
+    },
+    {
+      "en": "please wait your turn",
+      "ru": "пожалуйста, ждите своей очереди",
+      "uses": [
+        "wait",
+        "turn"
+      ]
+    },
+    {
+      "en": "would you like a receipt",
+      "ru": "вам нужен чек",
+      "uses": [
+        "receipt"
+      ]
+    },
+    {
+      "en": "would you like cash or donation",
+      "ru": "вам наличные или пожертвование",
+      "uses": [
+        "cash",
+        "donation"
+      ]
+    },
+    {
+      "en": "have a nice day",
+      "ru": "хорошего дня",
+      "uses": [
+        "nice",
+        "day"
+      ]
+    },
+    {
+      "en": "we close at six",
+      "ru": "мы закрываемся в шесть",
+      "uses": [
+        "close"
+      ]
+    },
+    {
+      "en": "we're open seven days a week",
+      "ru": "мы открыты семь дней в неделю",
+      "uses": [
+        "open",
+        "day",
+        "week"
+      ]
+    },
+    {
+      "en": "holiday hours",
+      "ru": "праздничный график работы",
+      "uses": [
+        "holiday",
+        "hour"
+      ]
+    },
+    {
+      "en": "peak hours",
+      "ru": "часы пик",
+      "uses": [
+        "peak",
+        "hour"
+      ]
+    },
+    {
+      "en": "a slow day",
+      "ru": "спокойный день",
+      "uses": [
+        "slow",
+        "day"
+      ]
+    },
+    {
+      "en": "a busy Saturday",
+      "ru": "загруженная суббота",
+      "uses": [
+        "busy",
+        "saturday"
+      ]
+    },
+    {
+      "en": "freezing winter weather",
+      "ru": "морозная зимняя погода",
+      "uses": [
+        "freeze",
+        "winter",
+        "weather"
+      ]
+    },
+    {
+      "en": "shovel the snow",
+      "ru": "расчистить снег лопатой",
+      "uses": [
+        "shovel",
+        "snow"
+      ]
+    },
+    {
+      "en": "salt the walkway",
+      "ru": "посыпать дорожку солью",
+      "uses": [
+        "salt",
+        "walkway"
+      ]
+    }
   ],
   "sentences": [
-    {"en": "Please put the bottles on the counter.", "ru": "Положите бутылки на стойку, пожалуйста.", "uses": ["bottle", "counter"]},
-    {"en": "I will count the cans for you.", "ru": "Я посчитаю банки для вас.", "uses": ["count", "can"]},
-    {"en": "Your refund is on this receipt.", "ru": "Ваш возврат указан в этом чеке.", "uses": ["refund", "receipt"]},
-    {"en": "The next customer is waiting in the queue.", "ru": "Следующий клиент ждёт в очереди.", "uses": ["customer", "queue"]},
-    {"en": "We sort glass and plastic separately.", "ru": "Мы отдельно сортируем стекло и пластик.", "uses": ["sort"]},
-    {"en": "Do you want cash or card?", "ru": "Вам наличные или карта?", "uses": ["cash", "card"]},
-    {"en": "My shift ends after the break.", "ru": "Моя смена заканчивается после перерыва.", "uses": ["shift", "break"]},
-    {"en": "Please call the manager.", "ru": "Позовите менеджера, пожалуйста.", "uses": ["manager"]},
-    {"en": "This bag is full of bottles.", "ru": "Этот пакет полный бутылок.", "uses": ["bag", "bottle"]},
-    {"en": "The total deposit is twelve dollars.", "ru": "Общий залог — двенадцать долларов.", "uses": ["total", "deposit"]}
-  ]
+    {
+      "en": "Good morning, how many bags of bottles and cans do you have today?",
+      "ru": "Доброе утро, сколько мешков бутылок и банок у вас сегодня?",
+      "uses": [
+        "bag",
+        "bottle",
+        "can"
+      ]
+    },
+    {
+      "en": "Please place your bags on the counter, and I will start counting.",
+      "ru": "Пожалуйста, поставьте мешки на стойку, и я начну считать.",
+      "uses": [
+        "bag",
+        "counter",
+        "count"
+      ]
+    },
+    {
+      "en": "In Alberta, most beverage containers under one litre carry a ten cent deposit.",
+      "ru": "В Альберте на большинство ёмкостей для напитков меньше литра залог десять центов.",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "Containers over one litre usually have a twenty five cent deposit.",
+      "ru": "На тару больше литра обычно залог двадцать пять центов.",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "We cannot accept bottles that are full of liquid.",
+      "ru": "Мы не можем принимать бутылки, наполненные жидкостью.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "Please empty all the containers before you bring them in.",
+      "ru": "Пожалуйста, опустошите всю тару, прежде чем приносить её.",
+      "uses": [
+        "empty"
+      ]
+    },
+    {
+      "en": "The glass has to be separated from the plastic and the cans.",
+      "ru": "Стекло нужно отделять от пластика и банок.",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "Your refund comes to eighteen dollars and sixty cents.",
+      "ru": "Ваш возврат составляет восемнадцать долларов шестьдесят центов.",
+      "uses": [
+        "refund"
+      ]
+    },
+    {
+      "en": "Our scale weighs each bag so we can calculate the total fairly.",
+      "ru": "Наши весы взвешивают каждый мешок, чтобы мы честно рассчитали итог.",
+      "uses": [
+        "scale",
+        "bag",
+        "total"
+      ]
+    },
+    {
+      "en": "Please wear cut-resistant gloves when you sort the glass.",
+      "ru": "Пожалуйста, надевай перчатки от порезов, когда сортируешь стекло.",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "If a bottle breaks, stop working and tell the team lead immediately.",
+      "ru": "Если бутылка разбилась, прекрати работу и сразу сообщи руководителю смены.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "Never reach into a bag without checking for sharp objects first.",
+      "ru": "Никогда не залезай в мешок, не проверив сначала наличие острых предметов.",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "We recycle aluminum, glass, plastic, and cartons separately.",
+      "ru": "Мы перерабатываем алюминий, стекло, пластик и картон отдельно.",
+      "uses": [
+        "recycle",
+        "carton"
+      ]
+    },
+    {
+      "en": "Recycling aluminum saves about ninety five percent of the energy needed for new metal.",
+      "ru": "Переработка алюминия экономит около девяноста пяти процентов энергии, необходимой для нового металла.",
+      "uses": [
+        "recycle"
+      ]
+    },
+    {
+      "en": "Aluminum cans can be recycled again and again without losing quality.",
+      "ru": "Алюминиевые банки можно перерабатывать снова и снова без потери качества.",
+      "uses": [
+        "can",
+        "recycle"
+      ]
+    },
+    {
+      "en": "A glass bottle can take thousands of years to break down in a landfill.",
+      "ru": "Стеклянная бутылка может разлагаться на свалке тысячи лет.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "Sorting correctly means the material can be turned into new products.",
+      "ru": "Правильная сортировка означает, что материал можно превратить в новые изделия.",
+      "uses": [
+        "sort"
+      ]
+    },
+    {
+      "en": "We bale the aluminum cans and ship them to a processing plant.",
+      "ru": "Мы прессуем алюминиевые банки в кипы и отправляем их на перерабатывающий завод.",
+      "uses": [
+        "bale",
+        "can"
+      ]
+    },
+    {
+      "en": "The forklift can only carry two pallets at a time.",
+      "ru": "Вилочный погрузчик может везти только два поддона за раз.",
+      "uses": [
+        "forklift",
+        "pallet"
+      ]
+    },
+    {
+      "en": "Only trained workers are allowed to operate the forklift.",
+      "ru": "Управлять вилочным погрузчиком разрешено только обученным сотрудникам.",
+      "uses": [
+        "forklift"
+      ]
+    },
+    {
+      "en": "I start my shift at eight and finish at four thirty.",
+      "ru": "Я начинаю смену в восемь и заканчиваю в половине пятого.",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "Could you cover my shift on Saturday? I have a doctor's appointment.",
+      "ru": "Не могли бы вы подменить меня в субботу? У меня приём у врача.",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "We get a big rush on weekends, especially after a holiday.",
+      "ru": "По выходным у нас большой наплыв, особенно после праздников.",
+      "uses": [
+        "rush"
+      ]
+    },
+    {
+      "en": "The lineup was out the door by ten o'clock this morning.",
+      "ru": "К десяти часам утра очередь уже стояла до самой улицы.",
+      "uses": [
+        "lineup"
+      ]
+    },
+    {
+      "en": "This bottle has no refundable deposit, so we can't give you a refund.",
+      "ru": "На этой бутылке нет залога, поэтому мы не можем вернуть деньги.",
+      "uses": [
+        "bottle",
+        "refundable",
+        "deposit",
+        "refund"
+      ]
+    },
+    {
+      "en": "Some juice boxes and milk cartons are included, but not all of them.",
+      "ru": "Некоторые пакеты из-под сока и молока принимаются, но не все.",
+      "uses": [
+        "carton"
+      ]
+    },
+    {
+      "en": "Please bring your bottles in clear bags so we can see what's inside.",
+      "ru": "Приносите бутылки в прозрачных пакетах, чтобы мы видели содержимое.",
+      "uses": [
+        "bottle",
+        "bag"
+      ]
+    },
+    {
+      "en": "Dirty containers attract bugs, so please rinse them if you can.",
+      "ru": "Грязная тара привлекает насекомых, поэтому, пожалуйста, ополаскивайте её, если можете.",
+      "uses": [
+        "rinse"
+      ]
+    },
+    {
+      "en": "The floor gets slippery when drinks spill, so wipe it up right away.",
+      "ru": "Пол становится скользким, когда напитки проливаются, поэтому сразу вытирай его.",
+      "uses": [
+        "spill"
+      ]
+    },
+    {
+      "en": "If a bag is too heavy, ask a co-worker to help you.",
+      "ru": "Если мешок слишком тяжёлый, попроси коллегу помочь тебе.",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "A deposit is added to the price when you buy a drink and refunded when you return the container.",
+      "ru": "Залог добавляется к цене при покупке напитка и возвращается, когда вы сдаёте тару.",
+      "uses": [
+        "deposit",
+        "refund"
+      ]
+    },
+    {
+      "en": "The deposit system helps to keep litter off the roads and out of parks.",
+      "ru": "Залоговая система помогает не допускать мусор на дорогах и в парках.",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "Many schools and sports teams raise money by collecting empties.",
+      "ru": "Многие школы и спортивные команды собирают деньги, сдавая пустую тару.",
+      "uses": [
+        "empty"
+      ]
+    },
+    {
+      "en": "We count by hand when the barcode is damaged and the machine can't read it.",
+      "ru": "Мы считаем вручную, когда штрих-код повреждён и аппарат не может его прочитать.",
+      "uses": [
+        "count",
+        "barcode"
+      ]
+    },
+    {
+      "en": "Please check that the cap is removed from every bottle.",
+      "ru": "Пожалуйста, проверь, что с каждой бутылки снята крышка.",
+      "uses": [
+        "cap",
+        "bottle"
+      ]
+    },
+    {
+      "en": "A crushed can is harder to scan, so we count it manually.",
+      "ru": "Смятую банку сложнее отсканировать, поэтому мы считаем её вручную.",
+      "uses": [
+        "can",
+        "scan",
+        "count"
+      ]
+    },
+    {
+      "en": "During winter, we shovel the walkway to keep customers from slipping.",
+      "ru": "Зимой мы чистим дорожку от снега, чтобы клиенты не поскользнулись.",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "Every morning, the first task is to turn on the machines and check the scale.",
+      "ru": "Каждое утро первая задача — включить аппараты и проверить весы.",
+      "uses": [
+        "scale"
+      ]
+    },
+    {
+      "en": "At the end of the day, we balance the cash drawer and lock up.",
+      "ru": "В конце дня мы сводим кассу и закрываем помещение.",
+      "uses": [
+        "drawer"
+      ]
+    },
+    {
+      "en": "If the customer is upset, listen carefully and stay calm.",
+      "ru": "Если клиент расстроен, слушай внимательно и сохраняй спокойствие.",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "It's important to greet every customer with a smile.",
+      "ru": "Важно приветствовать каждого клиента с улыбкой.",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "The bins are labelled so that each material goes to the right place.",
+      "ru": "Баки подписаны, чтобы каждый материал попадал в нужное место.",
+      "uses": [
+        "bin",
+        "label"
+      ]
+    },
+    {
+      "en": "Contaminated material is harder to recycle and may be rejected.",
+      "ru": "Загрязнённый материал труднее перерабатывать, и его могут отклонить.",
+      "uses": [
+        "contaminated",
+        "recycle"
+      ]
+    },
+    {
+      "en": "Once the pallet is full, wrap it tightly with plastic film.",
+      "ru": "Когда поддон полон, плотно обмотай его плёнкой.",
+      "uses": [
+        "pallet"
+      ]
+    },
+    {
+      "en": "The truck arrives every Tuesday to pick up the full pallets.",
+      "ru": "Грузовик приезжает каждый вторник забирать полные поддоны.",
+      "uses": [
+        "pallet"
+      ]
+    },
+    {
+      "en": "Our conveyor belt moves the containers to the sorting area.",
+      "ru": "Наш конвейер перемещает тару в зону сортировки.",
+      "uses": [
+        "conveyor"
+      ]
+    },
+    {
+      "en": "Plastic bottles are shredded into small flakes and melted into new products.",
+      "ru": "Пластиковые бутылки измельчаются в хлопья и переплавляются в новые изделия.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "Glass is crushed and used to make new bottles and jars.",
+      "ru": "Стекло дробят и используют для изготовления новых бутылок и банок.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "You can drop off your empties anytime during our business hours.",
+      "ru": "Вы можете сдать пустую тару в любое время в наши рабочие часы.",
+      "uses": [
+        "empty"
+      ]
+    },
+    {
+      "en": "I need to restock the plastic bags and the receipt paper.",
+      "ru": "Мне нужно пополнить запас пластиковых пакетов и бумаги для чеков.",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "Our customers range from students to retired people to contractors.",
+      "ru": "Наши клиенты — от студентов до пенсионеров и подрядчиков.",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "It's my job to make sure that the count is accurate and fair.",
+      "ru": "Моя работа — следить, чтобы подсчёт был точным и справедливым.",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "If you notice a mistake in the count, please tell us right away.",
+      "ru": "Если вы заметили ошибку в подсчёте, сразу скажите нам.",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "We pay out the money immediately after the count is finished.",
+      "ru": "Мы выплачиваем деньги сразу после окончания подсчёта.",
+      "uses": [
+        "count"
+      ]
+    },
+    {
+      "en": "My coworker showed me how to use the can crusher safely.",
+      "ru": "Мой коллега показал мне, как безопасно пользоваться дробилкой банок.",
+      "uses": [
+        "can"
+      ]
+    },
+    {
+      "en": "Thank you for recycling; every bottle makes a difference.",
+      "ru": "Спасибо, что сдаёте тару; каждая бутылка имеет значение.",
+      "uses": [
+        "recycle",
+        "bottle"
+      ]
+    },
+    {
+      "en": "Overtime is paid at one and a half times the regular rate.",
+      "ru": "Сверхурочные оплачиваются в полтора раза выше обычной ставки.",
+      "uses": [
+        "overtime"
+      ]
+    },
+    {
+      "en": "I get paid every second Friday by direct deposit.",
+      "ru": "Мне платят каждую вторую пятницу прямым переводом на счёт.",
+      "uses": [
+        "deposit"
+      ]
+    },
+    {
+      "en": "Customers appreciate it when we explain the rules in a friendly way.",
+      "ru": "Клиенты ценят, когда мы дружелюбно объясняем правила.",
+      "uses": [
+        "customer"
+      ]
+    },
+    {
+      "en": "When it is minus thirty outside, the bottles can freeze and burst.",
+      "ru": "Когда на улице минус тридцать, бутылки могут замёрзнуть и лопнуть.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "The glass bin is almost full, so please call the truck.",
+      "ru": "Бак для стекла почти полон, так что вызови грузовик.",
+      "uses": [
+        "bin"
+      ]
+    },
+    {
+      "en": "Never overfill the bags, because they might tear.",
+      "ru": "Никогда не переполняй мешки, потому что они могут порваться.",
+      "uses": [
+        "bag"
+      ]
+    },
+    {
+      "en": "Cardboard boxes should be flattened before we stack them.",
+      "ru": "Картонные коробки нужно сплющить, прежде чем складывать.",
+      "uses": [
+        "stack"
+      ]
+    },
+    {
+      "en": "The depot has a security camera at the entrance for everyone's safety.",
+      "ru": "У входа в пункт установлена камера видеонаблюдения для безопасности всех.",
+      "uses": [
+        "camera"
+      ]
+    },
+    {
+      "en": "Please separate the cans from the glass, and we will count them one by one.",
+      "ru": "Пожалуйста, отделите банки от стекла, и мы пересчитаем их по одной.",
+      "uses": [
+        "can",
+        "count"
+      ]
+    },
+    {
+      "en": "The scanner beeps when it reads a valid barcode on the bottle.",
+      "ru": "Сканер пищит, когда считывает действующий штрих-код на бутылке.",
+      "uses": [
+        "scanner",
+        "barcode",
+        "bottle"
+      ]
+    },
+    {
+      "en": "When the bin is full, I tie the bag and carry it to the back.",
+      "ru": "Когда бак полон, я завязываю мешок и несу его на склад.",
+      "uses": [
+        "bin",
+        "bag"
+      ]
+    },
+    {
+      "en": "My manager showed me how to stack the pallets safely.",
+      "ru": "Мой менеджер показал мне, как безопасно складывать поддоны.",
+      "uses": [
+        "stack",
+        "pallet"
+      ]
+    },
+    {
+      "en": "A customer asked why his refund was lower than he expected.",
+      "ru": "Клиент спросил, почему его возврат оказался меньше ожидаемого.",
+      "uses": [
+        "customer",
+        "refund"
+      ]
+    },
+    {
+      "en": "Large containers carry a bigger deposit than small ones, so the refund is higher.",
+      "ru": "На большую тару залог выше, чем на маленькую, поэтому и возврат больше.",
+      "uses": [
+        "deposit",
+        "refund"
+      ]
+    },
+    {
+      "en": "It was minus twenty this morning, so the bottles were frozen solid.",
+      "ru": "Сегодня утром было минус двадцать, так что бутылки совсем замёрзли.",
+      "uses": [
+        "bottle"
+      ]
+    },
+    {
+      "en": "Would you like cash, an e-transfer, or to donate it to charity?",
+      "ru": "Вам наличные, электронный перевод или пожертвовать на благотворительность?",
+      "uses": [
+        "cash",
+        "transfer",
+        "donate",
+        "charity"
+      ]
+    },
+    {
+      "en": "Please stay clear of the loading dock when the truck is backing up.",
+      "ru": "Пожалуйста, держись подальше от рампы, когда грузовик сдаёт назад.",
+      "uses": [
+        "stay",
+        "clear",
+        "loading",
+        "dock",
+        "truck",
+        "back"
+      ]
+    },
+    {
+      "en": "I'm sorry, but this container was bought in another province.",
+      "ru": "Простите, но эта тара куплена в другой провинции.",
+      "uses": [
+        "sorry",
+        "container",
+        "buy",
+        "province"
+      ]
+    },
+    {
+      "en": "Always lift with your legs and keep your back straight.",
+      "ru": "Всегда поднимай ногами и держи спину прямой.",
+      "uses": [
+        "lift",
+        "leg",
+        "keep",
+        "back",
+        "straight"
+      ]
+    },
+    {
+      "en": "Our depot is part of a provincial program that encourages recycling.",
+      "ru": "Наш пункт входит в провинциальную программу, поощряющую переработку.",
+      "uses": [
+        "depot",
+        "part",
+        "provincial",
+        "program",
+        "encourage",
+        "recycling"
+      ]
+    },
+    {
+      "en": "We apologize for the wait; we are a bit short-staffed today.",
+      "ru": "Приносим извинения за ожидание; сегодня у нас немного не хватает персонала.",
+      "uses": [
+        "apologize",
+        "wait",
+        "short",
+        "staff",
+        "today"
+      ]
+    },
+    {
+      "en": "Our hours are nine to five, Monday through Saturday.",
+      "ru": "Мы работаем с девяти до пяти, с понедельника по субботу.",
+      "uses": [
+        "hour",
+        "nine",
+        "five",
+        "monday",
+        "saturday"
+      ]
+    },
+    {
+      "en": "The depot is closed on statutory holidays.",
+      "ru": "Пункт закрыт в официальные праздничные дни.",
+      "uses": [
+        "depot",
+        "close",
+        "statutory",
+        "holiday"
+      ]
+    },
+    {
+      "en": "Please keep your pets outside or on a short leash.",
+      "ru": "Пожалуйста, оставляйте питомцев на улице или держите на коротком поводке.",
+      "uses": [
+        "keep",
+        "pet",
+        "outside",
+        "short",
+        "leash"
+      ]
+    },
+    {
+      "en": "The new employee needs to finish the safety orientation on the first day.",
+      "ru": "Новый сотрудник должен пройти вводный инструктаж по безопасности в первый день.",
+      "uses": [
+        "new",
+        "employee",
+        "finish",
+        "safety",
+        "orientation",
+        "first",
+        "day"
+      ]
+    },
+    {
+      "en": "Report any injury to your supervisor, even if it seems minor.",
+      "ru": "Сообщай руководителю о любой травме, даже если она кажется незначительной.",
+      "uses": [
+        "report",
+        "injury",
+        "supervisor",
+        "seem",
+        "minor"
+      ]
+    },
+    {
+      "en": "Safety boots with slip-resistant soles are required on the floor.",
+      "ru": "На рабочем полу обязательны ботинки с нескользящей подошвой.",
+      "uses": [
+        "safety",
+        "boot",
+        "slip",
+        "resistant",
+        "sole",
+        "require",
+        "floor"
+      ]
+    },
+    {
+      "en": "Please don't mix glass with plastic, or it will contaminate the load.",
+      "ru": "Пожалуйста, не смешивай стекло с пластиком, иначе это загрязнит партию.",
+      "uses": [
+        "mix",
+        "glass",
+        "plastic",
+        "contaminate",
+        "load"
+      ]
+    },
+    {
+      "en": "Recycled plastic can become clothing, carpets, or new containers.",
+      "ru": "Переработанный пластик может стать одеждой, коврами или новой тарой.",
+      "uses": [
+        "recycled",
+        "plastic",
+        "become",
+        "clothing",
+        "carpet",
+        "container"
+      ]
+    },
+    {
+      "en": "Every container we process keeps waste out of the landfill.",
+      "ru": "Каждая обработанная нами ёмкость не даёт мусору попасть на свалку.",
+      "uses": [
+        "container",
+        "process",
+        "keep",
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "en": "If you have more than a hundred containers, please use the bulk drop-off.",
+      "ru": "Если у вас больше ста единиц тары, пожалуйста, воспользуйтесь зоной крупной сдачи.",
+      "uses": [
+        "container",
+        "please",
+        "use",
+        "bulk",
+        "drop"
+      ]
+    },
+    {
+      "en": "The printer is jammed, so I will write the receipt by hand.",
+      "ru": "Принтер замялся, поэтому я напишу чек от руки.",
+      "uses": [
+        "printer",
+        "jam",
+        "write",
+        "receipt",
+        "hand"
+      ]
+    },
+    {
+      "en": "Please sign here to confirm that you received your payment.",
+      "ru": "Пожалуйста, распишитесь здесь, подтверждая получение оплаты.",
+      "uses": [
+        "sign",
+        "confirm",
+        "receive",
+        "payment"
+      ]
+    },
+    {
+      "en": "Some people bring in an entire truckload after a big party.",
+      "ru": "Некоторые люди привозят целый грузовик после большой вечеринки.",
+      "uses": [
+        "people",
+        "bring",
+        "entire",
+        "truckload",
+        "party"
+      ]
+    },
+    {
+      "en": "Let me double-check the numbers before I print your receipt.",
+      "ru": "Дайте я перепроверю цифры, прежде чем распечатаю чек.",
+      "uses": [
+        "double",
+        "check",
+        "number",
+        "print",
+        "receipt"
+      ]
+    },
+    {
+      "en": "Keep your hands away from the machine while it is running.",
+      "ru": "Держи руки подальше от машины, пока она работает.",
+      "uses": [
+        "keep",
+        "hand",
+        "away",
+        "machine",
+        "run"
+      ]
+    },
+    {
+      "en": "Press the red emergency button if something goes wrong.",
+      "ru": "Нажми красную аварийную кнопку, если что-то пойдёт не так.",
+      "uses": [
+        "press",
+        "red",
+        "emergency",
+        "button",
+        "wrong"
+      ]
+    },
+    {
+      "en": "The depot smells like old beer on hot summer days.",
+      "ru": "В жаркие летние дни в пункте пахнет старым пивом.",
+      "uses": [
+        "depot",
+        "smell",
+        "old",
+        "beer",
+        "hot",
+        "summer"
+      ]
+    },
+    {
+      "en": "I wash my hands before lunch because the containers are dirty.",
+      "ru": "Я мою руки перед обедом, потому что тара грязная.",
+      "uses": [
+        "wash",
+        "hand",
+        "lunch",
+        "container",
+        "dirty"
+      ]
+    },
+    {
+      "en": "A tidy workplace is a safe workplace.",
+      "ru": "Чистое рабочее место — это безопасное рабочее место.",
+      "uses": [
+        "tidy",
+        "workplace",
+        "safe"
+      ]
+    },
+    {
+      "en": "Our team gets a fifteen-minute break in the morning and in the afternoon.",
+      "ru": "У нашей команды пятнадцатиминутный перерыв утром и днём.",
+      "uses": [
+        "team",
+        "get",
+        "minute",
+        "break",
+        "morning",
+        "afternoon"
+      ]
+    },
+    {
+      "en": "New hires are usually on probation for the first three months.",
+      "ru": "Новые сотрудники обычно на испытательном сроке первые три месяца.",
+      "uses": [
+        "new",
+        "hire",
+        "probation",
+        "first",
+        "month"
+      ]
+    },
+    {
+      "en": "Please arrive ten minutes early so you can clock in on time.",
+      "ru": "Пожалуйста, приходи на десять минут раньше, чтобы вовремя отметиться.",
+      "uses": [
+        "arrive",
+        "minute",
+        "early",
+        "clock",
+        "time"
+      ]
+    },
+    {
+      "en": "The depot owner is planning to buy a faster sorting machine.",
+      "ru": "Владелец пункта планирует купить более быструю сортировочную машину.",
+      "uses": [
+        "depot",
+        "owner",
+        "plan",
+        "buy",
+        "fast",
+        "sorting",
+        "machine"
+      ]
+    }
+  ],
+  "notes": "Готовые словосочетания и предложения без шаблонной автоподстановки."
 }

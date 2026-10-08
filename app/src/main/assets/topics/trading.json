@@ -2,54 +2,2882 @@
   "id": "trading",
   "titleRu": "Трейдинг",
   "words": [
-    {"en": "stock", "ru": "акция"},
-    {"en": "market", "ru": "рынок"},
-    {"en": "price", "ru": "цена"},
-    {"en": "buy", "ru": "покупать"},
-    {"en": "sell", "ru": "продавать"},
-    {"en": "order", "ru": "ордер"},
-    {"en": "chart", "ru": "график"},
-    {"en": "trend", "ru": "тренд"},
-    {"en": "volume", "ru": "объём"},
-    {"en": "risk", "ru": "риск"},
-    {"en": "profit", "ru": "прибыль"},
-    {"en": "loss", "ru": "убыток"},
-    {"en": "portfolio", "ru": "портфель"},
-    {"en": "broker", "ru": "брокер"},
-    {"en": "candle", "ru": "свеча"},
-    {"en": "support", "ru": "поддержка"},
-    {"en": "resistance", "ru": "сопротивление"},
-    {"en": "volatility", "ru": "волатильность"},
-    {"en": "leverage", "ru": "плечо"},
-    {"en": "position", "ru": "позиция"}
+    {
+      "en": "stock",
+      "ru": "акция"
+    },
+    {
+      "en": "buy",
+      "ru": "покупать"
+    },
+    {
+      "en": "sell",
+      "ru": "продавать"
+    },
+    {
+      "en": "order",
+      "ru": "ордер"
+    },
+    {
+      "en": "chart",
+      "ru": "график"
+    },
+    {
+      "en": "trend",
+      "ru": "тренд"
+    },
+    {
+      "en": "volume",
+      "ru": "объём"
+    },
+    {
+      "en": "risk",
+      "ru": "риск"
+    },
+    {
+      "en": "profit",
+      "ru": "прибыль"
+    },
+    {
+      "en": "loss",
+      "ru": "убыток"
+    },
+    {
+      "en": "portfolio",
+      "ru": "портфель"
+    },
+    {
+      "en": "broker",
+      "ru": "брокер"
+    },
+    {
+      "en": "candle",
+      "ru": "свеча"
+    },
+    {
+      "en": "support",
+      "ru": "поддержка"
+    },
+    {
+      "en": "resistance",
+      "ru": "сопротивление"
+    },
+    {
+      "en": "volatility",
+      "ru": "волатильность"
+    },
+    {
+      "en": "leverage",
+      "ru": "плечо"
+    },
+    {
+      "en": "position",
+      "ru": "позиция"
+    },
+    {
+      "en": "common share",
+      "ru": "обыкновенная акция"
+    },
+    {
+      "en": "equity",
+      "ru": "акционерный капитал"
+    },
+    {
+      "en": "bond",
+      "ru": "облигация"
+    },
+    {
+      "en": "treasury",
+      "ru": "гособлигация"
+    },
+    {
+      "en": "commodity",
+      "ru": "товарный актив"
+    },
+    {
+      "en": "forex",
+      "ru": "валютный рынок"
+    },
+    {
+      "en": "crypto",
+      "ru": "криптовалюта"
+    },
+    {
+      "en": "derivative",
+      "ru": "производный инструмент"
+    },
+    {
+      "en": "option",
+      "ru": "опцион"
+    },
+    {
+      "en": "futures",
+      "ru": "фьючерсы"
+    },
+    {
+      "en": "swap",
+      "ru": "своп"
+    },
+    {
+      "en": "ticker",
+      "ru": "биржевой тикер — короткий код актива"
+    },
+    {
+      "en": "symbol",
+      "ru": "торговый символ"
+    },
+    {
+      "en": "etf",
+      "ru": "биржевой инвестиционный фонд"
+    },
+    {
+      "en": "index fund",
+      "ru": "индексный фонд"
+    },
+    {
+      "en": "mutual fund",
+      "ru": "паевой фонд"
+    },
+    {
+      "en": "hedge fund",
+      "ru": "хедж-фонд"
+    },
+    {
+      "en": "allocation",
+      "ru": "распределение активов"
+    },
+    {
+      "en": "diversification",
+      "ru": "диверсификация"
+    },
+    {
+      "en": "rebalance",
+      "ru": "ребалансировка"
+    },
+    {
+      "en": "long position",
+      "ru": "длинная позиция"
+    },
+    {
+      "en": "short position",
+      "ru": "короткая позиция"
+    },
+    {
+      "en": "market order",
+      "ru": "рыночная заявка"
+    },
+    {
+      "en": "limit order",
+      "ru": "лимитная заявка"
+    },
+    {
+      "en": "stop order",
+      "ru": "стоп-заявка"
+    },
+    {
+      "en": "stop loss",
+      "ru": "стоп-лосс — защита от убытка"
+    },
+    {
+      "en": "take profit",
+      "ru": "тейк-профит — фиксация прибыли"
+    },
+    {
+      "en": "trailing stop",
+      "ru": "скользящий стоп"
+    },
+    {
+      "en": "bid",
+      "ru": "цена спроса"
+    },
+    {
+      "en": "ask",
+      "ru": "цена предложения"
+    },
+    {
+      "en": "spread",
+      "ru": "спред между bid и ask"
+    },
+    {
+      "en": "liquidity",
+      "ru": "ликвидность"
+    },
+    {
+      "en": "slippage",
+      "ru": "проскальзывание цены"
+    },
+    {
+      "en": "fill",
+      "ru": "исполнение заявки"
+    },
+    {
+      "en": "partial fill",
+      "ru": "частичное исполнение"
+    },
+    {
+      "en": "order book",
+      "ru": "книга заявок"
+    },
+    {
+      "en": "level two",
+      "ru": "стакан котировок второго уровня"
+    },
+    {
+      "en": "market depth",
+      "ru": "глубина рынка"
+    },
+    {
+      "en": "candlestick",
+      "ru": "японская свеча"
+    },
+    {
+      "en": "timeframe",
+      "ru": "таймфрейм"
+    },
+    {
+      "en": "uptrend",
+      "ru": "восходящий тренд"
+    },
+    {
+      "en": "downtrend",
+      "ru": "нисходящий тренд"
+    },
+    {
+      "en": "sideways",
+      "ru": "боковик"
+    },
+    {
+      "en": "breakout",
+      "ru": "пробой уровня"
+    },
+    {
+      "en": "support level",
+      "ru": "уровень поддержки"
+    },
+    {
+      "en": "moving average",
+      "ru": "скользящая средняя"
+    },
+    {
+      "en": "ema",
+      "ru": "экспоненциальная скользящая средняя"
+    },
+    {
+      "en": "sma",
+      "ru": "простая скользящая средняя"
+    },
+    {
+      "en": "rsi",
+      "ru": "индекс относительной силы"
+    },
+    {
+      "en": "macd",
+      "ru": "схождение-расхождение скользящих средних"
+    },
+    {
+      "en": "bollinger bands",
+      "ru": "полосы Боллинджера"
+    },
+    {
+      "en": "fibonacci",
+      "ru": "уровни Фибоначчи"
+    },
+    {
+      "en": "pivot point",
+      "ru": "точка разворота"
+    },
+    {
+      "en": "indicator",
+      "ru": "индикатор"
+    },
+    {
+      "en": "oscillator",
+      "ru": "осциллятор"
+    },
+    {
+      "en": "trade signal",
+      "ru": "торговый сигнал"
+    },
+    {
+      "en": "confirmation",
+      "ru": "подтверждение сигнала"
+    },
+    {
+      "en": "false breakout",
+      "ru": "ложный пробой"
+    },
+    {
+      "en": "bull market",
+      "ru": "бычий рынок"
+    },
+    {
+      "en": "bear market",
+      "ru": "медвежий рынок"
+    },
+    {
+      "en": "bullish",
+      "ru": "бычий настрой"
+    },
+    {
+      "en": "bearish",
+      "ru": "медвежий настрой"
+    },
+    {
+      "en": "rally",
+      "ru": "рост котировок"
+    },
+    {
+      "en": "selloff",
+      "ru": "массовые продажи"
+    },
+    {
+      "en": "correction",
+      "ru": "коррекция"
+    },
+    {
+      "en": "crash",
+      "ru": "обвал рынка"
+    },
+    {
+      "en": "drawdown",
+      "ru": "просадка"
+    },
+    {
+      "en": "recovery",
+      "ru": "восстановление"
+    },
+    {
+      "en": "ath",
+      "ru": "исторический максимум цены"
+    },
+    {
+      "en": "atl",
+      "ru": "исторический минимум цены"
+    },
+    {
+      "en": "high of day",
+      "ru": "максимум дня"
+    },
+    {
+      "en": "low of day",
+      "ru": "минимум дня"
+    },
+    {
+      "en": "open price",
+      "ru": "цена открытия"
+    },
+    {
+      "en": "close price",
+      "ru": "цена закрытия"
+    },
+    {
+      "en": "gap",
+      "ru": "ценовой разрыв"
+    },
+    {
+      "en": "gap fill",
+      "ru": "закрытие гэпа"
+    },
+    {
+      "en": "earnings",
+      "ru": "отчёт о прибыли"
+    },
+    {
+      "en": "revenue",
+      "ru": "выручка"
+    },
+    {
+      "en": "eps",
+      "ru": "прибыль на акцию"
+    },
+    {
+      "en": "pe ratio",
+      "ru": "отношение цены к прибыли"
+    },
+    {
+      "en": "pb ratio",
+      "ru": "отношение цены к балансовой стоимости"
+    },
+    {
+      "en": "dividend",
+      "ru": "дивиденд"
+    },
+    {
+      "en": "yield",
+      "ru": "доходность"
+    },
+    {
+      "en": "coupon",
+      "ru": "купон облигации"
+    },
+    {
+      "en": "maturity",
+      "ru": "срок погашения"
+    },
+    {
+      "en": "par value",
+      "ru": "номинальная стоимость"
+    },
+    {
+      "en": "interest rate",
+      "ru": "процентная ставка"
+    },
+    {
+      "en": "fed rate",
+      "ru": "ставка ФРС"
+    },
+    {
+      "en": "inflation",
+      "ru": "инфляция"
+    },
+    {
+      "en": "deflation",
+      "ru": "дефляция"
+    },
+    {
+      "en": "gdp",
+      "ru": "валовой внутренний продукт"
+    },
+    {
+      "en": "cpi",
+      "ru": "индекс потребительских цен"
+    },
+    {
+      "en": "ppi",
+      "ru": "индекс цен производителей"
+    },
+    {
+      "en": "unemployment",
+      "ru": "безработица"
+    },
+    {
+      "en": "sentiment",
+      "ru": "настроение рынка"
+    },
+    {
+      "en": "risk on",
+      "ru": "режим принятия риска"
+    },
+    {
+      "en": "risk off",
+      "ru": "режим избегания риска"
+    },
+    {
+      "en": "risk management",
+      "ru": "управление рисками"
+    },
+    {
+      "en": "position size",
+      "ru": "размер позиции"
+    },
+    {
+      "en": "margin",
+      "ru": "маржа"
+    },
+    {
+      "en": "margin call",
+      "ru": "маржин-колл"
+    },
+    {
+      "en": "liquidation",
+      "ru": "принудительное закрытие"
+    },
+    {
+      "en": "collateral",
+      "ru": "обеспечение"
+    },
+    {
+      "en": "stock exchange",
+      "ru": "биржа"
+    },
+    {
+      "en": "clearing",
+      "ru": "клиринг"
+    },
+    {
+      "en": "settlement",
+      "ru": "расчёты по сделке"
+    },
+    {
+      "en": "t+1",
+      "ru": "расчёты на следующий день"
+    },
+    {
+      "en": "custody",
+      "ru": "кастодиальное хранение"
+    },
+    {
+      "en": "account balance",
+      "ru": "баланс счёта"
+    },
+    {
+      "en": "buying power",
+      "ru": "покупательная способность"
+    },
+    {
+      "en": "cash balance",
+      "ru": "денежный остаток"
+    },
+    {
+      "en": "paper trading",
+      "ru": "демо-торговля"
+    },
+    {
+      "en": "live trading",
+      "ru": "реальная торговля"
+    },
+    {
+      "en": "day trading",
+      "ru": "внутридневная торговля"
+    },
+    {
+      "en": "swing trading",
+      "ru": "свинг-трейдинг"
+    },
+    {
+      "en": "scalping",
+      "ru": "скальпинг"
+    },
+    {
+      "en": "position trading",
+      "ru": "позиционная торговля"
+    },
+    {
+      "en": "investing",
+      "ru": "инвестирование"
+    },
+    {
+      "en": "speculating",
+      "ru": "спекуляция"
+    },
+    {
+      "en": "fundamental analysis",
+      "ru": "фундаментальный анализ"
+    },
+    {
+      "en": "technical analysis",
+      "ru": "технический анализ"
+    },
+    {
+      "en": "valuation",
+      "ru": "оценка стоимости"
+    },
+    {
+      "en": "fair value",
+      "ru": "справедливая стоимость"
+    },
+    {
+      "en": "undervalued",
+      "ru": "недооценённый"
+    },
+    {
+      "en": "overvalued",
+      "ru": "переоценённый"
+    },
+    {
+      "en": "blue chip",
+      "ru": "голубая фишка"
+    },
+    {
+      "en": "growth stock",
+      "ru": "акция роста"
+    },
+    {
+      "en": "value stock",
+      "ru": "акция стоимости"
+    },
+    {
+      "en": "penny stock",
+      "ru": "копеечная акция"
+    },
+    {
+      "en": "ipo",
+      "ru": "первичное публичное размещение"
+    },
+    {
+      "en": "spo",
+      "ru": "вторичное публичное размещение"
+    },
+    {
+      "en": "secondary offering",
+      "ru": "вторичное размещение"
+    },
+    {
+      "en": "lockup period",
+      "ru": "период блокировки акций"
+    },
+    {
+      "en": "share float",
+      "ru": "количество акций в свободном обращении"
+    },
+    {
+      "en": "market cap",
+      "ru": "рыночная капитализация"
+    },
+    {
+      "en": "enterprise value",
+      "ru": "стоимость компании"
+    },
+    {
+      "en": "beta",
+      "ru": "бета — мера рыночного риска"
+    },
+    {
+      "en": "alpha",
+      "ru": "альфа — избыточная доходность"
+    },
+    {
+      "en": "sharpe ratio",
+      "ru": "коэффициент Шарпа"
+    },
+    {
+      "en": "roi",
+      "ru": "рентабельность инвестиций"
+    },
+    {
+      "en": "roe",
+      "ru": "рентабельность собственного капитала"
+    },
+    {
+      "en": "roa",
+      "ru": "рентабельность активов"
+    },
+    {
+      "en": "cagr",
+      "ru": "среднегодовой темп роста"
+    },
+    {
+      "en": "ytd",
+      "ru": "с начала года"
+    },
+    {
+      "en": "mtd",
+      "ru": "с начала месяца"
+    },
+    {
+      "en": "qtd",
+      "ru": "с начала квартала"
+    },
+    {
+      "en": "pnl",
+      "ru": "прибыль и убыток"
+    },
+    {
+      "en": "realized pnl",
+      "ru": "реализованный P&L"
+    },
+    {
+      "en": "unrealized pnl",
+      "ru": "нереализованный P&L"
+    },
+    {
+      "en": "breakeven",
+      "ru": "точка безубыточности"
+    },
+    {
+      "en": "commission",
+      "ru": "комиссия"
+    },
+    {
+      "en": "fee",
+      "ru": "плата"
+    },
+    {
+      "en": "expense ratio",
+      "ru": "коэффициент расходов фонда"
+    },
+    {
+      "en": "bid-ask bounce",
+      "ru": "отскок между bid и ask"
+    },
+    {
+      "en": "round trip",
+      "ru": "полный цикл купля-продажа"
+    },
+    {
+      "en": "average down",
+      "ru": "усреднение вниз"
+    },
+    {
+      "en": "average up",
+      "ru": "усреднение вверх"
+    },
+    {
+      "en": "pyramid",
+      "ru": "наращивание позиции"
+    },
+    {
+      "en": "hedge",
+      "ru": "хеджирование"
+    },
+    {
+      "en": "pair trade",
+      "ru": "парная сделка"
+    },
+    {
+      "en": "arbitrage",
+      "ru": "арбитраж"
+    },
+    {
+      "en": "correlation",
+      "ru": "корреляция"
+    },
+    {
+      "en": "covariance",
+      "ru": "ковариация"
+    },
+    {
+      "en": "variance",
+      "ru": "дисперсия"
+    },
+    {
+      "en": "standard deviation",
+      "ru": "стандартное отклонение"
+    },
+    {
+      "en": "probability",
+      "ru": "вероятность"
+    },
+    {
+      "en": "expected value",
+      "ru": "математическое ожидание"
+    },
+    {
+      "en": "edge",
+      "ru": "статистическое преимущество"
+    },
+    {
+      "en": "win rate",
+      "ru": "процент прибыльных сделок"
+    },
+    {
+      "en": "risk reward",
+      "ru": "отношение риска к прибыли"
+    },
+    {
+      "en": "rr ratio",
+      "ru": "отношение риск/прибыль"
+    },
+    {
+      "en": "max drawdown",
+      "ru": "максимальная просадка"
+    },
+    {
+      "en": "exposure",
+      "ru": "экспозиция к риску"
+    },
+    {
+      "en": "sector",
+      "ru": "сектор экономики"
+    },
+    {
+      "en": "industry",
+      "ru": "отрасль"
+    },
+    {
+      "en": "rotation",
+      "ru": "ротация секторов"
+    },
+    {
+      "en": "catalyst",
+      "ru": "катализатор движения цены"
+    },
+    {
+      "en": "newsflow",
+      "ru": "поток новостей"
+    },
+    {
+      "en": "rumor mill",
+      "ru": "слухи рынка"
+    },
+    {
+      "en": "guidance",
+      "ru": "прогноз компании"
+    },
+    {
+      "en": "beat estimates",
+      "ru": "превзойти ожидания"
+    },
+    {
+      "en": "miss estimates",
+      "ru": "не оправдать ожидания"
+    }
   ],
   "phrases": [
-    {"en": "stock market", "ru": "фондовый рынок", "uses": ["stock", "market"]},
-    {"en": "current price", "ru": "текущая цена", "uses": ["price"]},
-    {"en": "buy order", "ru": "ордер на покупку", "uses": ["buy", "order"]},
-    {"en": "sell order", "ru": "ордер на продажу", "uses": ["sell", "order"]},
-    {"en": "price chart", "ru": "график цены", "uses": ["price", "chart"]},
-    {"en": "uptrend", "ru": "восходящий тренд", "uses": ["trend"]},
-    {"en": "trading volume", "ru": "торговый объём", "uses": ["volume"]},
-    {"en": "risk management", "ru": "управление риском", "uses": ["risk"]},
-    {"en": "take profit", "ru": "зафиксировать прибыль", "uses": ["profit"]},
-    {"en": "stop loss", "ru": "стоп-лосс", "uses": ["loss"]},
-    {"en": "diversified portfolio", "ru": "диверсифицированный портфель", "uses": ["portfolio"]},
-    {"en": "online broker", "ru": "онлайн-брокер", "uses": ["broker"]},
-    {"en": "candlestick chart", "ru": "свечной график", "uses": ["candle", "chart"]},
-    {"en": "support level", "ru": "уровень поддержки", "uses": ["support"]},
-    {"en": "resistance level", "ru": "уровень сопротивления", "uses": ["resistance"]}
+    {
+      "en": "stock market",
+      "ru": "фондовый рынок",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "common stock",
+      "ru": "обыкновенная акция",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "blue chip stock",
+      "ru": "акция крупной надёжной компании",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "growth stock",
+      "ru": "акция растущей компании",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "value stock",
+      "ru": "недооценённая акция",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "penny stock",
+      "ru": "дешёвая рискованная акция",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "initial public offering",
+      "ru": "IPO: первичное публичное размещение акций",
+      "uses": [
+        "ipo"
+      ]
+    },
+    {
+      "en": "stock exchange",
+      "ru": "фондовая биржа",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "ticker symbol",
+      "ru": "тикер: короткий код акции",
+      "uses": [
+        "ticker",
+        "symbol"
+      ]
+    },
+    {
+      "en": "trading volume",
+      "ru": "объём торгов",
+      "uses": [
+        "volume"
+      ]
+    },
+    {
+      "en": "daily volume",
+      "ru": "дневной объём торгов",
+      "uses": [
+        "volume"
+      ]
+    },
+    {
+      "en": "bid and ask",
+      "ru": "цена покупки и цена продажи",
+      "uses": [
+        "bid",
+        "ask"
+      ]
+    },
+    {
+      "en": "bid ask spread",
+      "ru": "спред: разница между ценами покупки и продажи",
+      "uses": [
+        "bid",
+        "ask",
+        "spread"
+      ]
+    },
+    {
+      "en": "market order",
+      "ru": "рыночный ордер: исполнить сразу по текущей цене",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "limit order",
+      "ru": "лимитный ордер: по заданной цене или лучше",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "stop loss order",
+      "ru": "стоп-лосс: автоматический выход при падении цены",
+      "uses": [
+        "loss",
+        "order"
+      ]
+    },
+    {
+      "en": "take profit order",
+      "ru": "тейк-профит: фиксация прибыли по цене",
+      "uses": [
+        "profit",
+        "order"
+      ]
+    },
+    {
+      "en": "day order",
+      "ru": "ордер, действующий один день",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "order book",
+      "ru": "книга ордеров: заявки на покупку и продажу",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "price slippage",
+      "ru": "проскальзывание: исполнение хуже ожидаемой цены",
+      "uses": [
+        "slippage"
+      ]
+    },
+    {
+      "en": "trading fee",
+      "ru": "комиссия за сделку",
+      "uses": [
+        "fee"
+      ]
+    },
+    {
+      "en": "margin account",
+      "ru": "маржинальный счёт: торговля в долг",
+      "uses": [
+        "margin"
+      ]
+    },
+    {
+      "en": "margin call",
+      "ru": "маржин-колл: требование внести средства",
+      "uses": [
+        "margin"
+      ]
+    },
+    {
+      "en": "leverage ratio",
+      "ru": "кредитное плечо",
+      "uses": [
+        "leverage"
+      ]
+    },
+    {
+      "en": "long position",
+      "ru": "длинная позиция: покупка в расчёте на рост",
+      "uses": [
+        "position"
+      ]
+    },
+    {
+      "en": "short position",
+      "ru": "короткая позиция: расчёт на падение",
+      "uses": [
+        "position"
+      ]
+    },
+    {
+      "en": "open a position",
+      "ru": "открыть позицию",
+      "uses": [
+        "position"
+      ]
+    },
+    {
+      "en": "close a position",
+      "ru": "закрыть позицию",
+      "uses": [
+        "position"
+      ]
+    },
+    {
+      "en": "position size",
+      "ru": "размер позиции",
+      "uses": [
+        "position"
+      ]
+    },
+    {
+      "en": "risk reward ratio",
+      "ru": "соотношение риска и прибыли",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "risk management",
+      "ru": "управление рисками",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "risk tolerance",
+      "ru": "готовность принимать риск",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "maximum drawdown",
+      "ru": "максимальная просадка капитала",
+      "uses": [
+        "drawdown"
+      ]
+    },
+    {
+      "en": "realized loss",
+      "ru": "зафиксированный убыток",
+      "uses": [
+        "loss"
+      ]
+    },
+    {
+      "en": "dividend yield",
+      "ru": "дивидендная доходность",
+      "uses": [
+        "dividend",
+        "yield"
+      ]
+    },
+    {
+      "en": "dividend payout",
+      "ru": "выплата дивидендов",
+      "uses": [
+        "dividend"
+      ]
+    },
+    {
+      "en": "ex dividend date",
+      "ru": "дата, после которой дивиденд не получить",
+      "uses": [
+        "dividend"
+      ]
+    },
+    {
+      "en": "earnings per share",
+      "ru": "прибыль на акцию (EPS)",
+      "uses": [
+        "eps"
+      ]
+    },
+    {
+      "en": "profit margin",
+      "ru": "рентабельность, маржа прибыли",
+      "uses": [
+        "profit",
+        "margin"
+      ]
+    },
+    {
+      "en": "revenue growth",
+      "ru": "рост выручки",
+      "uses": [
+        "revenue"
+      ]
+    },
+    {
+      "en": "debt to equity",
+      "ru": "отношение долга к собственному капиталу",
+      "uses": [
+        "equity"
+      ]
+    },
+    {
+      "en": "return on equity",
+      "ru": "рентабельность собственного капитала (ROE)",
+      "uses": [
+        "equity",
+        "roe"
+      ]
+    },
+    {
+      "en": "margin of safety",
+      "ru": "запас прочности при покупке",
+      "uses": [
+        "margin"
+      ]
+    },
+    {
+      "en": "candlestick chart",
+      "ru": "японские свечи на графике",
+      "uses": [
+        "candlestick",
+        "chart"
+      ]
+    },
+    {
+      "en": "support level",
+      "ru": "уровень поддержки: цена, где падение часто останавливается",
+      "uses": [
+        "support"
+      ]
+    },
+    {
+      "en": "resistance level",
+      "ru": "уровень сопротивления: цена, где рост часто останавливается",
+      "uses": [
+        "resistance"
+      ]
+    },
+    {
+      "en": "price breakout",
+      "ru": "пробой уровня цены",
+      "uses": [
+        "breakout"
+      ]
+    },
+    {
+      "en": "false breakout",
+      "ru": "ложный пробой",
+      "uses": [
+        "breakout"
+      ]
+    },
+    {
+      "en": "uptrend and downtrend",
+      "ru": "восходящий и нисходящий тренд",
+      "uses": [
+        "uptrend",
+        "downtrend"
+      ]
+    },
+    {
+      "en": "sideways market",
+      "ru": "боковой рынок без тренда",
+      "uses": [
+        "sideways"
+      ]
+    },
+    {
+      "en": "relative strength index",
+      "ru": "RSI: индекс относительной силы",
+      "uses": [
+        "rsi"
+      ]
+    },
+    {
+      "en": "trend line",
+      "ru": "линия тренда",
+      "uses": [
+        "trend"
+      ]
+    },
+    {
+      "en": "volume spike",
+      "ru": "всплеск объёма",
+      "uses": [
+        "volume"
+      ]
+    },
+    {
+      "en": "price gap",
+      "ru": "гэп: разрыв в цене между сессиями",
+      "uses": [
+        "gap"
+      ]
+    },
+    {
+      "en": "buy and hold",
+      "ru": "купить и держать",
+      "uses": [
+        "buy"
+      ]
+    },
+    {
+      "en": "inflation rate",
+      "ru": "уровень инфляции",
+      "uses": [
+        "inflation"
+      ]
+    },
+    {
+      "en": "yield curve",
+      "ru": "кривая доходности облигаций",
+      "uses": [
+        "yield"
+      ]
+    },
+    {
+      "en": "government bond",
+      "ru": "государственная облигация",
+      "uses": [
+        "bond"
+      ]
+    },
+    {
+      "en": "corporate bond",
+      "ru": "корпоративная облигация",
+      "uses": [
+        "bond"
+      ]
+    },
+    {
+      "en": "bond yield",
+      "ru": "доходность облигации",
+      "uses": [
+        "bond",
+        "yield"
+      ]
+    },
+    {
+      "en": "coupon payment",
+      "ru": "купонный платёж по облигации",
+      "uses": [
+        "coupon"
+      ]
+    },
+    {
+      "en": "maturity date",
+      "ru": "дата погашения",
+      "uses": [
+        "maturity"
+      ]
+    },
+    {
+      "en": "exchange traded fund",
+      "ru": "ETF: биржевой инвестиционный фонд",
+      "uses": [
+        "etf"
+      ]
+    },
+    {
+      "en": "stock index",
+      "ru": "фондовый индекс",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "sector rotation",
+      "ru": "ротация между отраслями",
+      "uses": [
+        "sector",
+        "rotation"
+      ]
+    },
+    {
+      "en": "asset allocation",
+      "ru": "распределение активов",
+      "uses": [
+        "allocation"
+      ]
+    },
+    {
+      "en": "portfolio diversification",
+      "ru": "диверсификация портфеля",
+      "uses": [
+        "portfolio",
+        "diversification"
+      ]
+    },
+    {
+      "en": "portfolio rebalancing",
+      "ru": "ребалансировка портфеля",
+      "uses": [
+        "portfolio"
+      ]
+    },
+    {
+      "en": "correlation between assets",
+      "ru": "корреляция между активами",
+      "uses": [
+        "correlation"
+      ]
+    },
+    {
+      "en": "hedge against risk",
+      "ru": "защититься от риска",
+      "uses": [
+        "hedge",
+        "risk"
+      ]
+    },
+    {
+      "en": "commodity prices",
+      "ru": "цены на сырьевые товары",
+      "uses": [
+        "commodity"
+      ]
+    },
+    {
+      "en": "foreign exchange",
+      "ru": "валютный рынок (форекс)",
+      "uses": [
+        "forex"
+      ]
+    },
+    {
+      "en": "stock option",
+      "ru": "опцион на акции",
+      "uses": [
+        "stock",
+        "option"
+      ]
+    },
+    {
+      "en": "call option",
+      "ru": "опцион колл: право купить",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "put option",
+      "ru": "опцион пут: право продать",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "option premium",
+      "ru": "премия по опциону",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "implied volatility",
+      "ru": "подразумеваемая волатильность",
+      "uses": [
+        "volatility"
+      ]
+    },
+    {
+      "en": "market volatility",
+      "ru": "волатильность рынка: размах колебаний цен",
+      "uses": [
+        "volatility"
+      ]
+    },
+    {
+      "en": "volatility index",
+      "ru": "индекс волатильности (VIX), «индекс страха»",
+      "uses": [
+        "volatility"
+      ]
+    },
+    {
+      "en": "market correction",
+      "ru": "коррекция: падение на десять процентов и больше",
+      "uses": [
+        "correction"
+      ]
+    },
+    {
+      "en": "market crash",
+      "ru": "обвал рынка",
+      "uses": [
+        "crash"
+      ]
+    },
+    {
+      "en": "market sentiment",
+      "ru": "настроение рынка",
+      "uses": [
+        "sentiment"
+      ]
+    },
+    {
+      "en": "panic selling",
+      "ru": "панические продажи",
+      "uses": [
+        "sell"
+      ]
+    },
+    {
+      "en": "liquidity risk",
+      "ru": "риск ликвидности: трудно быстро продать",
+      "uses": [
+        "liquidity",
+        "risk"
+      ]
+    },
+    {
+      "en": "counterparty risk",
+      "ru": "риск контрагента",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "share price",
+      "ru": "цена акции",
+      "uses": [
+        "share",
+        "price"
+      ]
+    },
+    {
+      "en": "preferred shares",
+      "ru": "привилегированные акции",
+      "uses": [
+        "preferred",
+        "share"
+      ]
+    },
+    {
+      "en": "market capitalization",
+      "ru": "рыночная капитализация: цена акции × число акций",
+      "uses": [
+        "market",
+        "capitalization"
+      ]
+    },
+    {
+      "en": "trailing stop",
+      "ru": "скользящий стоп, следующий за ценой",
+      "uses": [
+        "trail",
+        "stop"
+      ]
+    },
+    {
+      "en": "good till cancelled",
+      "ru": "ордер действует до отмены (GTC)",
+      "uses": [
+        "good",
+        "till",
+        "cancel",
+        "gtc"
+      ]
+    },
+    {
+      "en": "brokerage account",
+      "ru": "брокерский счёт",
+      "uses": [
+        "brokerage",
+        "account"
+      ]
+    },
+    {
+      "en": "short selling",
+      "ru": "короткая продажа: ставка на падение цены",
+      "uses": [
+        "short",
+        "selling"
+      ]
+    },
+    {
+      "en": "entry price",
+      "ru": "цена входа",
+      "uses": [
+        "entry",
+        "price"
+      ]
+    },
+    {
+      "en": "exit strategy",
+      "ru": "стратегия выхода из сделки",
+      "uses": [
+        "exit",
+        "strategy"
+      ]
+    },
+    {
+      "en": "break even point",
+      "ru": "точка безубыточности",
+      "uses": [
+        "break",
+        "even",
+        "point"
+      ]
+    },
+    {
+      "en": "capital preservation",
+      "ru": "сохранение капитала",
+      "uses": [
+        "capital",
+        "preservation"
+      ]
+    },
+    {
+      "en": "unrealized gain",
+      "ru": "нереализованная прибыль",
+      "uses": [
+        "unrealized",
+        "gain"
+      ]
+    },
+    {
+      "en": "capital gain",
+      "ru": "прирост капитала",
+      "uses": [
+        "capital",
+        "gain"
+      ]
+    },
+    {
+      "en": "capital gains tax",
+      "ru": "налог на прирост капитала",
+      "uses": [
+        "capital",
+        "gain",
+        "tax"
+      ]
+    },
+    {
+      "en": "price to earnings ratio",
+      "ru": "P/E: цена акции к прибыли на акцию",
+      "uses": [
+        "price",
+        "earning",
+        "ratio",
+        "pe"
+      ]
+    },
+    {
+      "en": "earnings report",
+      "ru": "отчёт о прибыли компании",
+      "uses": [
+        "earning",
+        "report"
+      ]
+    },
+    {
+      "en": "earnings season",
+      "ru": "сезон публикации отчётов",
+      "uses": [
+        "earning",
+        "season"
+      ]
+    },
+    {
+      "en": "balance sheet",
+      "ru": "бухгалтерский баланс",
+      "uses": [
+        "balance",
+        "sheet"
+      ]
+    },
+    {
+      "en": "income statement",
+      "ru": "отчёт о прибылях и убытках",
+      "uses": [
+        "income",
+        "statement"
+      ]
+    },
+    {
+      "en": "cash flow",
+      "ru": "денежный поток",
+      "uses": [
+        "cash",
+        "flow"
+      ]
+    },
+    {
+      "en": "free cash flow",
+      "ru": "свободный денежный поток",
+      "uses": [
+        "free",
+        "cash",
+        "flow"
+      ]
+    },
+    {
+      "en": "book value",
+      "ru": "балансовая стоимость",
+      "uses": [
+        "book",
+        "value"
+      ]
+    },
+    {
+      "en": "intrinsic value",
+      "ru": "внутренняя стоимость актива",
+      "uses": [
+        "intrinsic",
+        "value"
+      ]
+    },
+    {
+      "en": "fundamental analysis",
+      "ru": "фундаментальный анализ",
+      "uses": [
+        "fundamental",
+        "analysis"
+      ]
+    },
+    {
+      "en": "technical analysis",
+      "ru": "технический анализ по графикам",
+      "uses": [
+        "technical",
+        "analysis"
+      ]
+    },
+    {
+      "en": "moving average",
+      "ru": "скользящая средняя",
+      "uses": [
+        "move",
+        "average"
+      ]
+    },
+    {
+      "en": "fifty day average",
+      "ru": "пятидесятидневная средняя",
+      "uses": [
+        "fifty",
+        "day",
+        "average"
+      ]
+    },
+    {
+      "en": "golden cross",
+      "ru": "золотой крест: быстрая средняя пересекает медленную вверх",
+      "uses": [
+        "golden",
+        "cross"
+      ]
+    },
+    {
+      "en": "death cross",
+      "ru": "крест смерти: пересечение вниз",
+      "uses": [
+        "death",
+        "cross"
+      ]
+    },
+    {
+      "en": "overbought and oversold",
+      "ru": "перекупленность и перепроданность",
+      "uses": [
+        "overbought",
+        "oversold"
+      ]
+    },
+    {
+      "en": "intraday trading",
+      "ru": "внутридневная торговля",
+      "uses": [
+        "intraday",
+        "trading"
+      ]
+    },
+    {
+      "en": "day trader",
+      "ru": "дейтрейдер: торгует внутри дня",
+      "uses": [
+        "day",
+        "trader"
+      ]
+    },
+    {
+      "en": "swing trading",
+      "ru": "свинг-трейдинг: сделки на несколько дней",
+      "uses": [
+        "swing",
+        "trading"
+      ]
+    },
+    {
+      "en": "long term investor",
+      "ru": "долгосрочный инвестор",
+      "uses": [
+        "long",
+        "term",
+        "investor"
+      ]
+    },
+    {
+      "en": "dollar cost averaging",
+      "ru": "усреднение: покупки на равную сумму регулярно",
+      "uses": [
+        "dollar",
+        "cost",
+        "average"
+      ]
+    },
+    {
+      "en": "compound interest",
+      "ru": "сложный процент",
+      "uses": [
+        "compound",
+        "interest"
+      ]
+    },
+    {
+      "en": "rate of return",
+      "ru": "норма доходности",
+      "uses": [
+        "rate",
+        "return"
+      ]
+    },
+    {
+      "en": "annual return",
+      "ru": "годовая доходность",
+      "uses": [
+        "annual",
+        "return"
+      ]
+    },
+    {
+      "en": "real return",
+      "ru": "реальная доходность за вычетом инфляции",
+      "uses": [
+        "real",
+        "return"
+      ]
+    },
+    {
+      "en": "interest rate",
+      "ru": "процентная ставка",
+      "uses": [
+        "interest",
+        "rate"
+      ]
+    },
+    {
+      "en": "central bank",
+      "ru": "центральный банк",
+      "uses": [
+        "central",
+        "bank"
+      ]
+    },
+    {
+      "en": "rate hike",
+      "ru": "повышение ставки",
+      "uses": [
+        "rate",
+        "hike"
+      ]
+    },
+    {
+      "en": "rate cut",
+      "ru": "снижение ставки",
+      "uses": [
+        "rate",
+        "cut"
+      ]
+    },
+    {
+      "en": "credit rating",
+      "ru": "кредитный рейтинг",
+      "uses": [
+        "credit",
+        "rating"
+      ]
+    },
+    {
+      "en": "index fund",
+      "ru": "индексный фонд",
+      "uses": [
+        "index",
+        "fund"
+      ]
+    },
+    {
+      "en": "mutual fund",
+      "ru": "паевой инвестиционный фонд",
+      "uses": [
+        "mutual",
+        "fund"
+      ]
+    },
+    {
+      "en": "expense ratio",
+      "ru": "годовая комиссия фонда",
+      "uses": [
+        "expense",
+        "ratio"
+      ]
+    },
+    {
+      "en": "S and P 500",
+      "ru": "индекс 500 крупнейших компаний США",
+      "uses": [
+        "index"
+      ]
+    },
+    {
+      "en": "TSX composite index",
+      "ru": "основной индекс Торонтской биржи",
+      "uses": [
+        "tsx",
+        "composite",
+        "index"
+      ]
+    },
+    {
+      "en": "safe haven asset",
+      "ru": "защитный актив",
+      "uses": [
+        "safe",
+        "haven",
+        "asset"
+      ]
+    },
+    {
+      "en": "gold and silver",
+      "ru": "золото и серебро",
+      "uses": [
+        "gold",
+        "silver"
+      ]
+    },
+    {
+      "en": "crude oil",
+      "ru": "сырая нефть",
+      "uses": [
+        "crude",
+        "oil"
+      ]
+    },
+    {
+      "en": "exchange rate",
+      "ru": "обменный курс",
+      "uses": [
+        "exchange",
+        "rate"
+      ]
+    },
+    {
+      "en": "currency pair",
+      "ru": "валютная пара",
+      "uses": [
+        "currency",
+        "pair"
+      ]
+    },
+    {
+      "en": "pip value",
+      "ru": "стоимость пункта (пипса) в валюте",
+      "uses": [
+        "pip",
+        "value"
+      ]
+    },
+    {
+      "en": "strike price",
+      "ru": "цена исполнения опциона",
+      "uses": [
+        "strike",
+        "price"
+      ]
+    },
+    {
+      "en": "expiration date",
+      "ru": "дата истечения опциона",
+      "uses": [
+        "expiration",
+        "date"
+      ]
+    },
+    {
+      "en": "bull market",
+      "ru": "бычий рынок: период роста",
+      "uses": [
+        "bull",
+        "market"
+      ]
+    },
+    {
+      "en": "bear market",
+      "ru": "медвежий рынок: период падения",
+      "uses": [
+        "bear",
+        "market"
+      ]
+    },
+    {
+      "en": "economic recession",
+      "ru": "экономическая рецессия",
+      "uses": [
+        "economic",
+        "recession"
+      ]
+    },
+    {
+      "en": "fear and greed",
+      "ru": "страх и жадность",
+      "uses": [
+        "fear",
+        "greed"
+      ]
+    },
+    {
+      "en": "herd mentality",
+      "ru": "стадное поведение",
+      "uses": [
+        "herd",
+        "mentality"
+      ]
+    },
+    {
+      "en": "emotional trading",
+      "ru": "торговля на эмоциях",
+      "uses": [
+        "emotional",
+        "trading"
+      ]
+    },
+    {
+      "en": "revenge trading",
+      "ru": "торговля из мести после убытка",
+      "uses": [
+        "revenge",
+        "trading"
+      ]
+    },
+    {
+      "en": "trading journal",
+      "ru": "торговый дневник",
+      "uses": [
+        "trading",
+        "journal"
+      ]
+    }
   ],
   "sentences": [
-    {"en": "The stock price is rising today.", "ru": "Цена акции сегодня растёт.", "uses": ["stock", "price"]},
-    {"en": "I want to buy this stock.", "ru": "Я хочу купить эту акцию.", "uses": ["buy", "stock"]},
-    {"en": "Place a sell order near resistance.", "ru": "Поставь ордер на продажу у сопротивления.", "uses": ["sell", "order", "resistance"]},
-    {"en": "Look at the chart and the trend.", "ru": "Посмотри на график и тренд.", "uses": ["chart", "trend"]},
-    {"en": "High volume confirms the move.", "ru": "Высокий объём подтверждает движение.", "uses": ["volume"]},
-    {"en": "Always manage your risk.", "ru": "Всегда управляй своим риском.", "uses": ["risk"]},
-    {"en": "Lock in profit before the close.", "ru": "Зафиксируй прибыль до закрытия.", "uses": ["profit"]},
-    {"en": "A big loss can ruin the portfolio.", "ru": "Большой убыток может испортить портфель.", "uses": ["loss", "portfolio"]},
-    {"en": "My broker shows high volatility.", "ru": "Мой брокер показывает высокую волатильность.", "uses": ["broker", "volatility"]},
-    {"en": "I closed the position at support.", "ru": "Я закрыл позицию на поддержке.", "uses": ["position", "support"]}
-  ]
+    {
+      "en": "A stock represents a small ownership share in a company.",
+      "ru": "Акция представляет собой небольшую долю владения в компании.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "The bid is the highest price a buyer will pay, and the ask is the lowest price a seller will accept.",
+      "ru": "Бид — это наивысшая цена, которую готов заплатить покупатель, а аск — наименьшая цена, которую примет продавец.",
+      "uses": [
+        "bid",
+        "ask"
+      ]
+    },
+    {
+      "en": "The spread is the gap between the bid and the ask, and it is a hidden cost of trading.",
+      "ru": "Спред — это разница между бидом и аском, и он является скрытой издержкой торговли.",
+      "uses": [
+        "spread",
+        "gap",
+        "bid",
+        "ask"
+      ]
+    },
+    {
+      "en": "A market order executes immediately, but you may not get the price you expected.",
+      "ru": "Рыночный ордер исполняется немедленно, но вы можете получить не ту цену, которую ожидали.",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "A limit order lets you set the maximum price you are willing to pay.",
+      "ru": "Лимитный ордер позволяет задать максимальную цену, которую вы готовы заплатить.",
+      "uses": [
+        "order"
+      ]
+    },
+    {
+      "en": "A stop-loss order sells your position automatically if the price falls to a chosen level.",
+      "ru": "Стоп-лосс автоматически продаёт вашу позицию, если цена падает до выбранного уровня.",
+      "uses": [
+        "loss",
+        "order",
+        "sell",
+        "position"
+      ]
+    },
+    {
+      "en": "Never risk more than one or two percent of your account on a single trade.",
+      "ru": "Никогда не рискуйте более чем одним-двумя процентами счёта в одной сделке.",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "Position sizing means deciding how much to buy based on how much you can afford to lose.",
+      "ru": "Определение размера позиции означает решение, сколько купить, исходя из того, сколько вы можете позволить себе потерять.",
+      "uses": [
+        "position",
+        "buy"
+      ]
+    },
+    {
+      "en": "The risk-reward ratio compares the potential loss with the potential gain of a trade.",
+      "ru": "Соотношение риск/прибыль сравнивает возможный убыток с возможной прибылью по сделке.",
+      "uses": [
+        "risk",
+        "loss"
+      ]
+    },
+    {
+      "en": "Diversification spreads your money across different assets to reduce risk.",
+      "ru": "Диверсификация распределяет ваши деньги по разным активам, чтобы снизить риск.",
+      "uses": [
+        "diversification",
+        "spread",
+        "risk"
+      ]
+    },
+    {
+      "en": "An ETF (Exchange-Traded Fund) is a basket of investments that trades like a single stock.",
+      "ru": "ETF (биржевой фонд) — корзина инвестиций, которая торгуется как одна акция.",
+      "uses": [
+        "etf",
+        "stock"
+      ]
+    },
+    {
+      "en": "Low fees matter because they compound over decades just like returns do.",
+      "ru": "Низкие комиссии важны, потому что за десятилетия они накапливаются так же, как и доходность.",
+      "uses": [
+        "fee"
+      ]
+    },
+    {
+      "en": "A dividend is a share of company profit paid out to its shareholders.",
+      "ru": "Дивиденд — часть прибыли компании, выплачиваемая её акционерам.",
+      "uses": [
+        "dividend",
+        "profit"
+      ]
+    },
+    {
+      "en": "Dividend yield is the yearly dividend divided by the share price.",
+      "ru": "Дивидендная доходность — это годовой дивиденд, делённый на цену акции.",
+      "uses": [
+        "dividend",
+        "yield",
+        "dividend"
+      ]
+    },
+    {
+      "en": "The price-to-earnings ratio shows how much investors pay for each dollar of profit.",
+      "ru": "Коэффициент P/E показывает, сколько инвесторы платят за каждый доллар прибыли.",
+      "uses": [
+        "profit"
+      ]
+    },
+    {
+      "en": "A low P/E ratio does not always mean that a stock is cheap.",
+      "ru": "Низкий P/E не всегда означает, что акция дешёвая.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "Earnings reports can move a stock price sharply in either direction.",
+      "ru": "Отчёты о прибыли могут резко двигать цену акции в любую сторону.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "Volume tells you how many shares changed hands during a given period.",
+      "ru": "Объём показывает, сколько акций сменило владельца за определённый период.",
+      "uses": [
+        "volume"
+      ]
+    },
+    {
+      "en": "A price move on high volume is usually more meaningful than one on low volume.",
+      "ru": "Движение цены на высоком объёме обычно значимее, чем на низком.",
+      "uses": [
+        "volume"
+      ]
+    },
+    {
+      "en": "Support is a price level where buyers often step in and stop a decline.",
+      "ru": "Поддержка — это уровень цены, где покупатели часто входят в рынок и останавливают падение.",
+      "uses": [
+        "support"
+      ]
+    },
+    {
+      "en": "Resistance is a level where sellers often appear and stop a rally.",
+      "ru": "Сопротивление — уровень, где часто появляются продавцы и останавливают рост.",
+      "uses": [
+        "resistance",
+        "rally"
+      ]
+    },
+    {
+      "en": "A moving average smooths out price data to show the overall trend.",
+      "ru": "Скользящая средняя сглаживает данные о цене, показывая общий тренд.",
+      "uses": [
+        "trend"
+      ]
+    },
+    {
+      "en": "The RSI (Relative Strength Index) above seventy often signals an overbought market.",
+      "ru": "RSI (индекс относительной силы) выше семидесяти часто сигнализирует о перекупленном рынке.",
+      "uses": [
+        "rsi"
+      ]
+    },
+    {
+      "en": "The trend is your friend until it bends at the end.",
+      "ru": "Тренд — твой друг, пока он не развернётся.",
+      "uses": [
+        "trend"
+      ]
+    },
+    {
+      "en": "Don't chase a stock that has already jumped twenty percent in one day.",
+      "ru": "Не гонись за акцией, которая уже выросла на двадцать процентов за один день.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "A false breakout happens when the price moves past a level and then quickly reverses.",
+      "ru": "Ложный пробой происходит, когда цена выходит за уровень и быстро разворачивается.",
+      "uses": [
+        "breakout"
+      ]
+    },
+    {
+      "en": "Volatility measures how widely and quickly prices move.",
+      "ru": "Волатильность измеряет, насколько широко и быстро движутся цены.",
+      "uses": [
+        "volatility"
+      ]
+    },
+    {
+      "en": "A correction is usually defined as a drop of ten percent or more from a recent high.",
+      "ru": "Коррекцией обычно считают падение на десять процентов и более от недавнего максимума.",
+      "uses": [
+        "correction"
+      ]
+    },
+    {
+      "en": "Bond prices and interest rates usually move in opposite directions.",
+      "ru": "Цены облигаций и процентные ставки обычно движутся в противоположных направлениях.",
+      "uses": [
+        "bond"
+      ]
+    },
+    {
+      "en": "Inflation reduces the purchasing power of your savings over time.",
+      "ru": "Инфляция со временем снижает покупательную способность ваших сбережений.",
+      "uses": [
+        "inflation"
+      ]
+    },
+    {
+      "en": "Real return is your investment return after subtracting inflation.",
+      "ru": "Реальная доходность — это доходность ваших инвестиций за вычетом инфляции.",
+      "uses": [
+        "inflation"
+      ]
+    },
+    {
+      "en": "A bond pays regular interest and returns the face value at maturity.",
+      "ru": "Облигация выплачивает регулярные проценты и возвращает номинал при погашении.",
+      "uses": [
+        "bond",
+        "maturity"
+      ]
+    },
+    {
+      "en": "A higher yield usually comes with a higher risk.",
+      "ru": "Более высокая доходность обычно сопровождается более высоким риском.",
+      "uses": [
+        "yield",
+        "risk"
+      ]
+    },
+    {
+      "en": "Short selling means borrowing shares, selling them, and hoping to buy them back cheaper.",
+      "ru": "Короткая продажа означает занять акции, продать их и надеяться выкупить дешевле.",
+      "uses": [
+        "sell",
+        "buy"
+      ]
+    },
+    {
+      "en": "Short selling has unlimited risk because a stock price can keep rising without a ceiling.",
+      "ru": "Короткая продажа имеет неограниченный риск, потому что цена акции может расти без потолка.",
+      "uses": [
+        "risk",
+        "stock"
+      ]
+    },
+    {
+      "en": "Leverage magnifies both gains and losses.",
+      "ru": "Кредитное плечо увеличивает как прибыль, так и убытки.",
+      "uses": [
+        "leverage",
+        "loss"
+      ]
+    },
+    {
+      "en": "A margin call forces you to deposit more money or sell positions when your account falls too low.",
+      "ru": "Маржин-колл заставляет вас внести больше денег или продать позиции, когда счёт падает слишком низко.",
+      "uses": [
+        "margin",
+        "sell",
+        "position"
+      ]
+    },
+    {
+      "en": "A call option gives you the right, but not the obligation, to buy a stock at a set price.",
+      "ru": "Опцион колл даёт вам право, но не обязанность, купить акцию по заданной цене.",
+      "uses": [
+        "option",
+        "buy",
+        "stock"
+      ]
+    },
+    {
+      "en": "A put option gives you the right to sell a stock at the strike price.",
+      "ru": "Опцион пут даёт вам право продать акцию по цене исполнения.",
+      "uses": [
+        "option",
+        "sell",
+        "stock"
+      ]
+    },
+    {
+      "en": "Options lose value as the expiration date gets closer, which is called time decay.",
+      "ru": "Опционы теряют стоимость по мере приближения даты истечения; это называется временным распадом.",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "Beginners should learn how options work before risking real money.",
+      "ru": "Новичкам стоит изучить, как работают опционы, прежде чем рисковать реальными деньгами.",
+      "uses": [
+        "option",
+        "risk"
+      ]
+    },
+    {
+      "en": "Panic selling at the bottom turns a temporary loss into a permanent one.",
+      "ru": "Панические продажи на дне превращают временный убыток в постоянный.",
+      "uses": [
+        "sell",
+        "loss"
+      ]
+    },
+    {
+      "en": "Revenge trading means taking reckless trades to win back a loss quickly.",
+      "ru": "Торговля из мести — это безрассудные сделки, чтобы быстро отыграть убыток.",
+      "uses": [
+        "loss"
+      ]
+    },
+    {
+      "en": "Liquidity means how quickly you can sell an asset without moving its price.",
+      "ru": "Ликвидность означает, как быстро можно продать актив, не сдвинув его цену.",
+      "uses": [
+        "liquidity",
+        "sell"
+      ]
+    },
+    {
+      "en": "Thinly traded stocks can have wide spreads and sudden price jumps.",
+      "ru": "Малоликвидные акции могут иметь широкие спреды и внезапные скачки цены.",
+      "uses": [
+        "stock",
+        "spread"
+      ]
+    },
+    {
+      "en": "A penny stock is a low-priced share that is often illiquid and highly speculative.",
+      "ru": "Пенни-акция — дешёвая акция, которая часто неликвидна и крайне спекулятивна.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "A pump-and-dump scheme inflates a stock price with hype and then sells to unsuspecting buyers.",
+      "ru": "Схема pump-and-dump раздувает цену акции шумихой, а затем продаёт её ничего не подозревающим покупателям.",
+      "uses": [
+        "stock",
+        "sell"
+      ]
+    },
+    {
+      "en": "Always check that your broker is registered with the securities regulator.",
+      "ru": "Всегда проверяйте, что ваш брокер зарегистрирован в регуляторе рынка ценных бумаг.",
+      "uses": [
+        "broker"
+      ]
+    },
+    {
+      "en": "Rebalancing brings your portfolio back to your target allocation.",
+      "ru": "Ребалансировка возвращает ваш портфель к целевому распределению.",
+      "uses": [
+        "portfolio",
+        "allocation"
+      ]
+    },
+    {
+      "en": "A balanced portfolio often holds both stocks and bonds.",
+      "ru": "Сбалансированный портфель часто содержит и акции, и облигации.",
+      "uses": [
+        "portfolio",
+        "stock",
+        "bond"
+      ]
+    },
+    {
+      "en": "Younger investors can usually take more risk because they have more time to recover.",
+      "ru": "Молодые инвесторы обычно могут рисковать больше, потому что у них больше времени на восстановление.",
+      "uses": [
+        "risk"
+      ]
+    },
+    {
+      "en": "Maximum drawdown measures the largest drop from a peak to a bottom.",
+      "ru": "Максимальная просадка измеряет наибольшее падение от пика до дна.",
+      "uses": [
+        "drawdown"
+      ]
+    },
+    {
+      "en": "Warren Buffett advises buying wonderful companies at a fair price.",
+      "ru": "Уоррен Баффетт советует покупать замечательные компании по справедливой цене.",
+      "uses": [
+        "buy"
+      ]
+    },
+    {
+      "en": "A margin of safety protects you if your estimate of a company's value is wrong.",
+      "ru": "Запас прочности защищает вас, если ваша оценка стоимости компании окажется неверной.",
+      "uses": [
+        "margin"
+      ]
+    },
+    {
+      "en": "You only realize a gain or a loss when you actually sell the asset.",
+      "ru": "Вы фиксируете прибыль или убыток только тогда, когда действительно продаёте актив.",
+      "uses": [
+        "loss",
+        "sell"
+      ]
+    },
+    {
+      "en": "Trading fees can quietly eat up the profits of an active trader.",
+      "ru": "Торговые комиссии могут незаметно съедать прибыль активного трейдера.",
+      "uses": [
+        "fee",
+        "profit"
+      ]
+    },
+    {
+      "en": "A candlestick shows the open, high, low, and close of a price during one period.",
+      "ru": "Свеча показывает цену открытия, максимум, минимум и закрытия за один период.",
+      "uses": [
+        "candlestick"
+      ]
+    },
+    {
+      "en": "A gap up happens when a stock opens much higher than its previous close.",
+      "ru": "Гэп вверх случается, когда акция открывается значительно выше предыдущего закрытия.",
+      "uses": [
+        "gap",
+        "stock"
+      ]
+    },
+    {
+      "en": "Trading against the trend is much harder than trading with it.",
+      "ru": "Торговать против тренда намного сложнее, чем по тренду.",
+      "uses": [
+        "trend"
+      ]
+    },
+    {
+      "en": "The stock market is closed on weekends and on public holidays.",
+      "ru": "Фондовый рынок закрыт по выходным и в праздничные дни.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "Regular trading hours on the Toronto Stock Exchange run from nine thirty to four.",
+      "ru": "Основные торговые часы на Торонтской бирже — с девяти тридцати до шестнадцати часов.",
+      "uses": [
+        "stock"
+      ]
+    },
+    {
+      "en": "After-hours trading has lower volume and wider spreads than the regular session.",
+      "ru": "Торги после закрытия имеют меньший объём и более широкие спреды, чем основная сессия.",
+      "uses": [
+        "volume",
+        "spread"
+      ]
+    },
+    {
+      "en": "A stop-loss does not protect you from a sudden gap that jumps past your price.",
+      "ru": "Стоп-лосс не защищает от внезапного гэпа, перескочившего вашу цену.",
+      "uses": [
+        "loss",
+        "gap"
+      ]
+    },
+    {
+      "en": "An inverted yield curve has often appeared before past recessions.",
+      "ru": "Инвертированная кривая доходности часто появлялась перед прошлыми рецессиями.",
+      "uses": [
+        "yield"
+      ]
+    },
+    {
+      "en": "Your biggest edge as an investor is time and discipline, not secret information.",
+      "ru": "Ваше главное преимущество как инвестора — время и дисциплина, а не секретная информация.",
+      "uses": [
+        "edge"
+      ]
+    },
+    {
+      "en": "An index fund tries to copy the performance of a market index instead of beating it.",
+      "ru": "Индексный фонд пытается повторить результат рыночного индекса, а не обогнать его.",
+      "uses": [
+        "index",
+        "fund",
+        "try",
+        "copy",
+        "performance",
+        "market",
+        "index",
+        "beat"
+      ]
+    },
+    {
+      "en": "The expense ratio is the yearly percentage that a fund charges to manage your money.",
+      "ru": "Коэффициент расходов — это годовой процент, который фонд берёт за управление вашими деньгами.",
+      "uses": [
+        "expense",
+        "ratio",
+        "yearly",
+        "percentage",
+        "fund",
+        "charge",
+        "manage",
+        "money"
+      ]
+    },
+    {
+      "en": "Compound interest means you earn interest on your interest.",
+      "ru": "Сложный процент означает, что вы получаете проценты на свои проценты.",
+      "uses": [
+        "compound",
+        "interest",
+        "mean",
+        "earn",
+        "interest"
+      ]
+    },
+    {
+      "en": "Starting to invest early gives your money more time to grow.",
+      "ru": "Если начать инвестировать рано, у денег будет больше времени для роста.",
+      "uses": [
+        "start",
+        "invest",
+        "early",
+        "give",
+        "money",
+        "time",
+        "grow"
+      ]
+    },
+    {
+      "en": "Dollar-cost averaging means investing a fixed amount at regular intervals, regardless of the price.",
+      "ru": "Усреднение стоимости означает вложение фиксированной суммы через равные промежутки времени независимо от цены.",
+      "uses": [
+        "dollar",
+        "cost",
+        "averaging",
+        "mean",
+        "invest",
+        "fixed",
+        "amount",
+        "regular",
+        "interval",
+        "price"
+      ]
+    },
+    {
+      "en": "Market capitalization equals the share price multiplied by the number of shares outstanding.",
+      "ru": "Рыночная капитализация равна цене акции, умноженной на количество акций в обращении.",
+      "uses": [
+        "market",
+        "capitalization",
+        "equal",
+        "share",
+        "price",
+        "multiply",
+        "number",
+        "share",
+        "outstanding"
+      ]
+    },
+    {
+      "en": "The VIX is often called the fear index because it rises when investors are nervous.",
+      "ru": "VIX часто называют индексом страха, потому что он растёт, когда инвесторы нервничают.",
+      "uses": [
+        "vix",
+        "call",
+        "fear",
+        "index",
+        "rise",
+        "investor",
+        "nervous"
+      ]
+    },
+    {
+      "en": "A bull market means prices are rising, while a bear market means they are falling.",
+      "ru": "Бычий рынок — это когда цены растут, а медвежий — когда падают.",
+      "uses": [
+        "bull",
+        "market",
+        "mean",
+        "price",
+        "rise",
+        "bear",
+        "fall"
+      ]
+    },
+    {
+      "en": "When the central bank raises interest rates, borrowing becomes more expensive.",
+      "ru": "Когда центральный банк повышает процентные ставки, заимствование дорожает.",
+      "uses": [
+        "central",
+        "bank",
+        "raise",
+        "interest",
+        "rate",
+        "borrowing",
+        "expensive"
+      ]
+    },
+    {
+      "en": "In Canada, a TFSA lets your investment gains grow free of tax.",
+      "ru": "В Канаде TFSA позволяет вашей инвестиционной прибыли расти без налогов.",
+      "uses": [
+        "canada",
+        "tfsa",
+        "let",
+        "investment",
+        "gain",
+        "grow",
+        "free",
+        "tax"
+      ]
+    },
+    {
+      "en": "Contributions to an RRSP reduce your taxable income for the year.",
+      "ru": "Взносы в RRSP уменьшают ваш налогооблагаемый доход за год.",
+      "uses": [
+        "contribution",
+        "rrsp",
+        "reduce",
+        "taxable",
+        "income",
+        "year"
+      ]
+    },
+    {
+      "en": "Always keep an emergency fund before you start investing.",
+      "ru": "Всегда иметь резервный фонд, прежде чем начинать инвестировать.",
+      "uses": [
+        "keep",
+        "emergency",
+        "fund",
+        "start",
+        "invest"
+      ]
+    },
+    {
+      "en": "Never invest money that you may need within the next few years.",
+      "ru": "Никогда не инвестируйте деньги, которые могут понадобиться в ближайшие несколько лет.",
+      "uses": [
+        "invest",
+        "money",
+        "need",
+        "next",
+        "year"
+      ]
+    },
+    {
+      "en": "The exchange rate tells you how much one currency is worth in another.",
+      "ru": "Обменный курс показывает, сколько стоит одна валюта в другой.",
+      "uses": [
+        "exchange",
+        "rate",
+        "tell",
+        "currency",
+        "worth"
+      ]
+    },
+    {
+      "en": "A pip is the smallest standard price move in most currency pairs.",
+      "ru": "Пипс — наименьшее стандартное движение цены в большинстве валютных пар.",
+      "uses": [
+        "pip",
+        "small",
+        "standard",
+        "price",
+        "move",
+        "currency",
+        "pair"
+      ]
+    },
+    {
+      "en": "Gold is often seen as a safe haven when markets are uncertain.",
+      "ru": "Золото часто считают защитным активом, когда на рынках неопределённость.",
+      "uses": [
+        "gold",
+        "see",
+        "safe",
+        "haven",
+        "market",
+        "uncertain"
+      ]
+    },
+    {
+      "en": "Oil prices can affect the Canadian dollar because Canada exports a lot of crude.",
+      "ru": "Цены на нефть могут влиять на канадский доллар, потому что Канада экспортирует много сырой нефти.",
+      "uses": [
+        "oil",
+        "price",
+        "affect",
+        "canadian",
+        "dollar",
+        "canada",
+        "export",
+        "crude"
+      ]
+    },
+    {
+      "en": "Fear and greed drive many bad investment decisions.",
+      "ru": "Страх и жадность стоят за многими плохими инвестиционными решениями.",
+      "uses": [
+        "fear",
+        "greed",
+        "drive",
+        "bad",
+        "investment",
+        "decision"
+      ]
+    },
+    {
+      "en": "Keep a trading journal to review your mistakes and improve your discipline.",
+      "ru": "Ведите торговый дневник, чтобы анализировать ошибки и улучшать дисциплину.",
+      "uses": [
+        "keep",
+        "trading",
+        "journal",
+        "review",
+        "mistake",
+        "improve",
+        "discipline"
+      ]
+    },
+    {
+      "en": "Write a trading plan before you enter a trade, not after.",
+      "ru": "Напишите торговый план до входа в сделку, а не после.",
+      "uses": [
+        "write",
+        "trading",
+        "plan",
+        "enter",
+        "trade"
+      ]
+    },
+    {
+      "en": "Backtesting shows how a strategy would have performed on historical data.",
+      "ru": "Бэктестинг показывает, как стратегия сработала бы на исторических данных.",
+      "uses": [
+        "backtesting",
+        "show",
+        "strategy",
+        "perform",
+        "historical",
+        "data"
+      ]
+    },
+    {
+      "en": "Past performance does not guarantee future results.",
+      "ru": "Прошлые результаты не гарантируют будущих.",
+      "uses": [
+        "past",
+        "performance",
+        "guarantee",
+        "future",
+        "result"
+      ]
+    },
+    {
+      "en": "Paper trading lets you practise with fake money before using real funds.",
+      "ru": "Учебная торговля позволяет практиковаться на условных деньгах, прежде чем использовать реальные средства.",
+      "uses": [
+        "paper",
+        "trading",
+        "let",
+        "practise",
+        "fake",
+        "money",
+        "real",
+        "fund"
+      ]
+    },
+    {
+      "en": "If an investment promises guaranteed high returns, it is probably a scam.",
+      "ru": "Если инвестиция обещает гарантированно высокую доходность, это, вероятно, мошенничество.",
+      "uses": [
+        "investment",
+        "promise",
+        "guarantee",
+        "high",
+        "return",
+        "scam"
+      ]
+    },
+    {
+      "en": "Insider trading is illegal because it gives some people an unfair advantage.",
+      "ru": "Инсайдерская торговля незаконна, потому что даёт некоторым людям несправедливое преимущество.",
+      "uses": [
+        "insider",
+        "trading",
+        "illegal",
+        "give",
+        "people",
+        "unfair",
+        "advantage"
+      ]
+    },
+    {
+      "en": "The balance sheet shows what a company owns and what it owes.",
+      "ru": "Баланс показывает, чем компания владеет и что она должна.",
+      "uses": [
+        "balance",
+        "sheet",
+        "show",
+        "company",
+        "own",
+        "owe"
+      ]
+    },
+    {
+      "en": "Free cash flow is the cash left after a company pays for its operations and investments.",
+      "ru": "Свободный денежный поток — это деньги, оставшиеся после оплаты компанией операций и инвестиций.",
+      "uses": [
+        "free",
+        "cash",
+        "flow",
+        "cash",
+        "left",
+        "company",
+        "pay",
+        "operation",
+        "investment"
+      ]
+    },
+    {
+      "en": "A company with too much debt can struggle when interest rates rise.",
+      "ru": "Компания со слишком большим долгом может испытывать трудности, когда ставки растут.",
+      "uses": [
+        "company",
+        "debt",
+        "struggle",
+        "interest",
+        "rate",
+        "rise"
+      ]
+    },
+    {
+      "en": "Taxes on capital gains depend on how long you hold the investment.",
+      "ru": "Налоги на прирост капитала зависят от того, как долго вы держите инвестицию.",
+      "uses": [
+        "tax",
+        "capital",
+        "gain",
+        "depend",
+        "long",
+        "hold",
+        "investment"
+      ]
+    },
+    {
+      "en": "Patience is a skill that separates successful investors from impulsive ones.",
+      "ru": "Терпение — навык, отличающий успешных инвесторов от импульсивных.",
+      "uses": [
+        "patience",
+        "skill",
+        "separate",
+        "successful",
+        "investor",
+        "impulsive"
+      ]
+    },
+    {
+      "en": "It is better to be consistently profitable than to chase one big win.",
+      "ru": "Лучше быть стабильно прибыльным, чем гнаться за одной крупной победой.",
+      "uses": [
+        "good",
+        "consistently",
+        "profitable",
+        "chase",
+        "big",
+        "win"
+      ]
+    },
+    {
+      "en": "Understand what you own, and why you own it.",
+      "ru": "Понимайте, чем вы владеете и почему.",
+      "uses": [
+        "understand",
+        "own"
+      ]
+    },
+    {
+      "en": "Cryptocurrency prices can swing by twenty percent in a single day.",
+      "ru": "Цены криптовалют могут колебаться на двадцать процентов за один день.",
+      "uses": [
+        "cryptocurrency",
+        "price",
+        "swing",
+        "percent",
+        "single",
+        "day"
+      ]
+    },
+    {
+      "en": "Never invest in something that you do not understand.",
+      "ru": "Никогда не инвестируйте во что-то, чего вы не понимаете.",
+      "uses": [
+        "invest",
+        "understand"
+      ]
+    },
+    {
+      "en": "Recessions are usually defined by a sustained decline in economic activity.",
+      "ru": "Рецессии обычно определяются устойчивым снижением экономической активности.",
+      "uses": [
+        "recession",
+        "define",
+        "sustained",
+        "decline",
+        "economic",
+        "activity"
+      ]
+    }
+  ],
+  "notes": "Готовые фразы и предложения по трейдингу и инвестициям с полезным смыслом по теме."
 }

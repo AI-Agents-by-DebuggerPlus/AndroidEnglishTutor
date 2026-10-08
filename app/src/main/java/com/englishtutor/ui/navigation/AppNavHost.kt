@@ -16,6 +16,7 @@ import com.englishtutor.ui.screens.quizstats.QuizStatsScreen
 import com.englishtutor.ui.screens.voicepicker.VoicePickerScreen
 import com.englishtutor.ui.screens.voicetest.VoiceTestScreen
 import com.englishtutor.ui.screens.voicequiz.VoiceQuizScreen
+import com.englishtutor.ui.screens.studystats.StudyStatsScreen
 import com.englishtutor.ui.screens.wordstudy.WordStudyScreen
 
 @Composable
@@ -127,6 +128,13 @@ fun AppNavHost() {
             WordStudyScreen(
                 onBack = { navController.popBackStack() },
                 onOpenVoicePicker = { navController.navigate(NavRoutes.VOICE_PICKER) },
+                onOpenStudyStats = { navController.navigate(NavRoutes.STUDY_STATS) },
+            )
+        }
+
+        composable(NavRoutes.STUDY_STATS) {
+            StudyStatsScreen(
+                onBack = { navController.popBackStack() },
             )
         }
 

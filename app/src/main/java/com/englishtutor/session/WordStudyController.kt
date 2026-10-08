@@ -47,6 +47,11 @@ data class WordStudyState(
     val unguessedWords: Int = 0,
     val estimatedLevel: String = "A1",
     val studiedCount: Int = 0,
+    val studiedWordsCount: Int = 0,
+    val studiedPhrasesCount: Int = 0,
+    val studiedSentencesCount: Int = 0,
+    val viewedTopicCount: Int = 0,
+    val topicCount: Int = 0,
     /** Bumped on every show/replay so UI can un-blank. */
     val displayEpoch: Long = 0L,
 )
@@ -84,6 +89,19 @@ class WordStudyController @Inject constructor(
         currentTopicId = sessionPrefs.topicId(topicRepository.defaultTopicId())
         currentStage = sessionPrefs.stage()
         batchWordEns = sessionPrefs.batchWordEns()
+        // Prefer not-yet-viewed topics on a fresh start of a topic.
+        val viewed = sessionPrefs.viewedTopicIds()
+        val unviewedIds = topics.map { it.id }.filter { it !in viewed }
+        if (
+            unviewedIds.isNotEmpty() &&
+            currentTopicId !in unviewedIds &&
+            currentStage == StudyStage.Words &&
+            sessionPrefs.cardIndex() == 0 &&
+            sessionPrefs.batchWordEns().isEmpty()
+        ) {
+            currentTopicId = unviewedIds.first()
+            logger.i(TAG, "Activate → first unviewed topic $currentTopicId")
+        }
         rebuildQueue()
         val savedIndex = sessionPrefs.cardIndex().coerceIn(0, (queue.size - 1).coerceAtLeast(0))
         val topic = topicRepository.getTopic(currentTopicId)
@@ -114,9 +132,15 @@ class WordStudyController @Inject constructor(
             unguessedWords = VoiceQuizBank.studyPool(statsStore.guessedWords(), level).size,
             estimatedLevel = level,
             studiedCount = sessionPrefs.studiedCount(),
+            studiedWordsCount = sessionPrefs.studiedWordsCount(),
+            studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+            studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+            viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+            topicCount = topics.size,
         )
         val card = queue.getOrNull(savedIndex)
         if (card != null) {
+            sessionPrefs.markTopicViewed(currentTopicId)
             _state.update {
                 it.copy(
                     phase = WordStudyPhase.ShowingWord,
@@ -125,6 +149,7 @@ class WordStudyController @Inject constructor(
                     wordIndex = savedIndex,
                     displayEpoch = it.displayEpoch + 1,
                     statusMessage = statusFor(card, savedIndex),
+                    viewedTopicCount = sessionPrefs.viewedTopicIds().size,
                 )
             }
             if (autoSpeak) {
@@ -149,7 +174,26 @@ class WordStudyController @Inject constructor(
             topicTitle = topicRepository.getTopic(currentTopicId)?.info?.titleRu.orEmpty(),
             estimatedLevel = statsStore.estimatedLevel(),
             studiedCount = sessionPrefs.studiedCount(),
+            studiedWordsCount = sessionPrefs.studiedWordsCount(),
+            studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+            studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+            viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+            topicCount = topicRepository.listTopics().size,
         )
+    }
+
+    fun refreshStudyStats() {
+        _state.update {
+            it.copy(
+                studiedCount = sessionPrefs.studiedCount(),
+                studiedWordsCount = sessionPrefs.studiedWordsCount(),
+                studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+                studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+                viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+                topicCount = topicRepository.listTopics().size,
+                topics = topicRepository.listTopics(),
+            )
+        }
     }
 
     /** Stop TTS only — keep study armed (e.g. while opening voice picker). */
@@ -174,10 +218,14 @@ class WordStudyController @Inject constructor(
         enqueue {
             val topics = topicRepository.listTopics()
             if (topics.isEmpty()) return@enqueue
-            val idx = topics.indexOfFirst { it.id == currentTopicId }.coerceAtLeast(0)
-            val next = topics[(idx + 1) % topics.size]
-            logger.i(TAG, "Next topic ($source) → ${next.id}")
-            selectTopicLocked(next.id, autoShow = true)
+            val ids = topics.map { it.id }
+            sessionPrefs.markTopicViewed(currentTopicId)
+            val nextId = sessionPrefs.nextTopicId(currentTopicId, ids) ?: ids.first()
+            logger.i(
+                TAG,
+                "Next topic ($source) → $nextId · viewed=${sessionPrefs.viewedTopicIds().size}/${ids.size}",
+            )
+            selectTopicLocked(nextId, autoShow = true)
         }
     }
 
@@ -256,6 +304,7 @@ class WordStudyController @Inject constructor(
         batchWordEns = emptyList()
         rebuildQueue()
         persistPosition(index = 0)
+        sessionPrefs.markTopicViewed(currentTopicId)
         _state.update {
             it.copy(
                 topicId = currentTopicId,
@@ -269,6 +318,9 @@ class WordStudyController @Inject constructor(
                 statusMessage = "Тема: ${topic.info.titleRu}. Next — первое слово.",
                 displayEpoch = it.displayEpoch + 1,
                 topics = topicRepository.listTopics(),
+                viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+                topicCount = topicRepository.listTopics().size,
+                studiedWordsCount = sessionPrefs.studiedWordsCount(),
             )
         }
         speakRu("Тема ${topic.info.titleRu}")
@@ -320,6 +372,7 @@ class WordStudyController @Inject constructor(
         batchWordEns = emptyList()
         rebuildQueue()
         if (queue.isEmpty()) {
+            sessionPrefs.markTopicViewed(currentTopicId)
             _state.update {
                 it.copy(
                     phase = WordStudyPhase.AllComplete,
@@ -327,6 +380,7 @@ class WordStudyController @Inject constructor(
                     russian = "",
                     statusMessage = "Тема пройдена. 3×Play — следующая тема, или выберите тему.",
                     displayEpoch = it.displayEpoch + 1,
+                    viewedTopicCount = sessionPrefs.viewedTopicIds().size,
                 )
             }
             persistPosition(index = 0)
@@ -346,27 +400,44 @@ class WordStudyController @Inject constructor(
         currentTopicId = topic.info.id
         queue = when (currentStage) {
             StudyStage.Words -> {
-                val unstudied = topic.words.filterNot { sessionPrefs.isStudied(it.progressKey) }
-                val source = unstudied.ifEmpty { topic.words }
-                val batch = source.take(BATCH_SIZE)
+                val batch = pickUnstudiedFirst(topic.words, preferredUses = emptySet(), matchUses = false)
                 batchWordEns = batch.mapNotNull { it.uses.firstOrNull() }.distinct()
                 batch
             }
             StudyStage.Phrases -> {
-                val ens = batchWordEns.toSet()
-                val matched = topic.phrases.filter { card ->
-                    card.uses.any { it in ens }
-                }
-                matched.take(BATCH_SIZE).ifEmpty { topic.phrases.take(BATCH_SIZE) }
+                pickUnstudiedFirst(topic.phrases, preferredUses = batchWordEns.toSet(), matchUses = true)
             }
             StudyStage.Sentences -> {
-                val ens = batchWordEns.toSet()
-                val matched = topic.sentences.filter { card ->
-                    card.uses.any { it in ens }
-                }
-                matched.take(BATCH_SIZE).ifEmpty { topic.sentences.take(BATCH_SIZE) }
+                pickUnstudiedFirst(topic.sentences, preferredUses = batchWordEns.toSet(), matchUses = true)
             }
         }
+    }
+
+    /**
+     * Prefer cards not yet marked studied. For phrases/sentences, also prefer those
+     * linked to the current word batch via [StudyCard.uses]; fall back to any unstudied,
+     * then finally recycle already-studied cards.
+     */
+    private fun pickUnstudiedFirst(
+        cards: List<StudyCard>,
+        preferredUses: Set<String>,
+        matchUses: Boolean,
+    ): List<StudyCard> {
+        if (cards.isEmpty()) return emptyList()
+        val unstudied = cards.filterNot { sessionPrefs.isStudied(it.progressKey) }
+        val pool = unstudied.ifEmpty { cards }
+        if (!matchUses || preferredUses.isEmpty()) {
+            return pool.take(BATCH_SIZE)
+        }
+        val matchedUnstudied = unstudied.filter { card -> card.uses.any { it in preferredUses } }
+        if (matchedUnstudied.isNotEmpty()) {
+            return matchedUnstudied.take(BATCH_SIZE)
+        }
+        val matchedAny = pool.filter { card -> card.uses.any { it in preferredUses } }
+        if (matchedAny.isNotEmpty()) {
+            return matchedAny.take(BATCH_SIZE)
+        }
+        return pool.take(BATCH_SIZE)
     }
 
     private suspend fun showCard(index: Int, markStudied: Boolean = true) {
@@ -404,11 +475,20 @@ class WordStudyController @Inject constructor(
         speakEn(card.en)
         delay(GAP_MS)
         speakEn(card.en)
+        sessionPrefs.markTopicViewed(currentTopicId)
         if (markStudied) {
             sessionPrefs.markStudied(card.progressKey)
             statsStore.markPlayed(card.ru)
             logger.i(TAG, "Studied «${card.ru}» (${card.stage}) · total=${sessionPrefs.studiedCount()}")
-            _state.update { it.copy(studiedCount = sessionPrefs.studiedCount()) }
+            _state.update {
+                it.copy(
+                    studiedCount = sessionPrefs.studiedCount(),
+                    studiedWordsCount = sessionPrefs.studiedWordsCount(),
+                    studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+                    studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+                    viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+                )
+            }
         }
     }
 

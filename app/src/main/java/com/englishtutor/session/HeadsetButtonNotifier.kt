@@ -20,7 +20,11 @@ import kotlinx.coroutines.withContext
  *  - 1×Play → Play
  *  - 2×Play → Next
  *  - 3×Play → Stop (BT test) / next topic (word study)
+ *  - 4×Play → Quad (BT test only; one continuous burst, same as 3×)
  * Buds often emit double→MEDIA_NEXT, triple→MEDIA_PREVIOUS (mapped to Stop).
+ *
+ * Counters are mutually exclusive: one settled gesture increments exactly one of
+ * Play / Next / Stop / Quad.
  */
 @Singleton
 class HeadsetButtonNotifier @Inject constructor(
@@ -139,23 +143,25 @@ class HeadsetButtonNotifier @Inject constructor(
 
     private suspend fun handlePlayGesture(label: String, source: String, now: Long) {
         val kind = eventKind(source)
-        val windowMs = btSeriesWindowMs()
+        val maxBurst = if (btPlayTestIsolation) MAX_BURST_BT_TEST else MAX_BURST_NORMAL
         val update = mutex.withLock {
             if (now < suppressPlayUntilMs) {
                 BurstUpdate.Suppressed
             } else if (isSamePressEcho(label, source, now)) {
                 BurstUpdate.Echo
             } else {
+                val windowMs = btSeriesWindowMs()
                 val closed = if (burstCount > 0 && now - lastGestureAtMs > windowMs) {
                     finishBurstLocked()
                 } else {
                     null
                 }
-                burstCount = if (closed != null || burstCount == 0) 1 else burstCount + 1
+                val startingFresh = closed != null || burstCount == 0
+                burstCount = if (startingFresh) 1 else burstCount + 1
                 pendingPlaySource = source
                 pendingPlayLabel = label
                 lastGestureAtMs = now
-                val triple = if (burstCount >= 3) {
+                val immediate = if (burstCount >= maxBurst) {
                     burstGeneration++
                     burstJob?.cancel()
                     burstJob = null
@@ -164,7 +170,7 @@ class HeadsetButtonNotifier @Inject constructor(
                     armSettleTimerLocked()
                     null
                 }
-                BurstUpdate.Counted(closed, burstCount, triple)
+                BurstUpdate.Counted(closed, burstCount, immediate)
             }
         }
         when (update) {
@@ -177,22 +183,40 @@ class HeadsetButtonNotifier @Inject constructor(
                     logger.i(TAG, "window closed → ${count}× via $commitSource")
                     commitBurstResult(count, commitSource)
                 }
-                update.triple?.let { (count, commitSource) ->
-                    logger.i(TAG, "triple now → ${count}× via $commitSource")
+                update.immediate?.let { (count, commitSource) ->
+                    logger.i(TAG, "burst complete → ${count}× via $commitSource")
                     commitBurstResult(count, commitSource)
+                }
+                if (update.immediate == null) {
+                    headsetTestController.setPendingBurstCount(update.multiplicity)
                 }
                 logger.d(TAG, "$kind: multiplicity ${update.multiplicity} via $source")
             }
         }
     }
 
-    /** Gap / settle for 2×→Next and 3×→Stop; 400ms is too tight for triple on buds. */
-    private fun btSeriesWindowMs(): Long =
-        buttonPreferences.nextDoubleTapMs.coerceAtLeast(MIN_BT_SERIES_MS)
+    private fun btSeriesWindowMs(): Long {
+        val base = buttonPreferences.nextDoubleTapMs.coerceAtLeast(MIN_BT_SERIES_MS)
+        return if (btPlayTestIsolation) {
+            base.coerceAtLeast(MIN_BT_TEST_SERIES_MS)
+        } else {
+            base
+        }
+    }
+
+    /** After 3 taps in BT test, wait a bit longer so a 4th can join the same burst. */
+    private fun settleWaitMsLocked(): Long {
+        val base = btSeriesWindowMs()
+        return if (btPlayTestIsolation && burstCount >= 3) {
+            base.coerceAtLeast(MIN_BT_TEST_AFTER_TRIPLE_MS)
+        } else {
+            base
+        }
+    }
 
     private fun armSettleTimerLocked() {
         val generation = ++burstGeneration
-        val wait = btSeriesWindowMs()
+        val wait = settleWaitMsLocked()
         burstJob?.cancel()
         burstJob = scope.launch {
             delay(wait)
@@ -215,7 +239,9 @@ class HeadsetButtonNotifier @Inject constructor(
         val count = burstCount
         val source = pendingPlaySource
         burstCount = 0
+        headsetTestController.setPendingBurstCount(0)
         lastCommittedKey = when {
+            count >= 4 -> BT_QUAD_KEY
             count >= 3 -> if (wordStudyController.isActive) BT_TOPIC_KEY else BT_STOP_KEY
             count == 2 -> BT_NEXT_KEY
             else -> BT_PLAY_KEY
@@ -224,21 +250,29 @@ class HeadsetButtonNotifier @Inject constructor(
         return count to source
     }
 
+    /** UI helper: emit [taps] Play events in one burst (gap between presses only). */
+    fun simulatePlayBurst(taps: Int) {
+        val count = taps.coerceIn(1, 4)
+        scope.launch {
+            repeat(count) { index ->
+                notifyButton("MEDIA_PLAY", source = "ui-simulate")
+                if (index < count - 1) delay(SIMULATE_BURST_GAP_MS)
+            }
+        }
+    }
+
     private suspend fun commitBurstResult(tapCount: Int, source: String) {
         val kind = eventKind(source)
         when {
-            tapCount >= 3 && wordStudyController.isActive -> {
+            tapCount >= 4 -> {
+                logger.i(TAG, "$kind: 4×Play via $source → Quad")
+                headsetTestController.recordBtQuadEvent(source = source, kind = kind)
+                suppressPlayBriefly()
+            }
+            tapCount >= 3 && wordStudyController.isActive && !btPlayTestIsolation -> {
                 logger.i(TAG, "$kind: 3×Play via $source → next topic")
                 suppressPlayBriefly()
-                if (!btPlayTestIsolation) {
-                    englishTutorPlayHandler.handleBtNextTopic(source)
-                } else {
-                    headsetTestController.recordBtStopEvent(
-                        source = source,
-                        kind = kind,
-                        viaTriplePlay = true,
-                    )
-                }
+                englishTutorPlayHandler.handleBtNextTopic(source)
             }
             tapCount >= 3 -> {
                 logger.i(TAG, "$kind: 3×Play via $source → Stop")
@@ -261,13 +295,17 @@ class HeadsetButtonNotifier @Inject constructor(
                     englishTutorPlayHandler.onMediaButton("MEDIA_NEXT", source)
                 }
             }
-            else -> dispatchPlay("MEDIA_PLAY", source)
+            else -> {
+                dispatchPlay("MEDIA_PLAY", source)
+            }
         }
     }
 
     private suspend fun suppressPlayBriefly() {
         val ms = btSeriesWindowMs()
         mutex.withLock {
+            // Drop echo taps after a committed multi-gesture so they cannot settle as Play.
+            cancelBurstOnlyLocked()
             suppressPlayUntilMs = System.currentTimeMillis() + ms
         }
     }
@@ -315,7 +353,7 @@ class HeadsetButtonNotifier @Inject constructor(
         englishTutorPlayHandler.handleBtPlay(source)
     }
 
-    private fun cancelPendingPlayLocked() {
+    private fun cancelBurstOnlyLocked() {
         burstGeneration++
         burstJob?.cancel()
         burstJob = null
@@ -323,6 +361,25 @@ class HeadsetButtonNotifier @Inject constructor(
         lastGestureAtMs = 0L
         pendingPlaySource = "hardware"
         pendingPlayLabel = "MEDIA_PLAY"
+        headsetTestController.setPendingBurstCount(0)
+    }
+
+    private fun cancelPendingPlayLocked() {
+        cancelBurstOnlyLocked()
+        headsetTestController.setAwaitingSecondDouble(false)
+    }
+
+    /** Clears in-flight burst when the user resets BT test counters. */
+    fun resetTestGestures() {
+        scope.launch {
+            mutex.withLock {
+                cancelPendingPlayLocked()
+                suppressPlayUntilMs = 0L
+                lastCommittedKey = null
+                lastCommittedAtMs = 0L
+            }
+            logger.i(TAG, "BT test gesture state reset")
+        }
     }
 
     private sealed class BurstUpdate {
@@ -331,7 +388,7 @@ class HeadsetButtonNotifier @Inject constructor(
         data class Counted(
             val closed: Pair<Int, String>?,
             val multiplicity: Int,
-            val triple: Pair<Int, String>? = null,
+            val immediate: Pair<Int, String>? = null,
         ) : BurstUpdate()
     }
 
@@ -341,10 +398,17 @@ class HeadsetButtonNotifier @Inject constructor(
         private const val BT_NEXT_KEY = "BT_NEXT"
         private const val BT_STOP_KEY = "BT_STOP"
         private const val BT_TOPIC_KEY = "BT_TOPIC"
+        private const val BT_QUAD_KEY = "BT_QUAD"
         private const val DUPLICATE_MS = 45L
         private const val ECHO_MS = 220L
         private const val TOGGLE_ECHO_MS = 180L
         private const val MIN_BT_SERIES_MS = 900L
+        private const val MIN_BT_TEST_SERIES_MS = 1_200L
+        /** Extra settle time after the 3rd tap so a 4th can still join. */
+        private const val MIN_BT_TEST_AFTER_TRIPLE_MS = 1_800L
+        private const val MAX_BURST_BT_TEST = 4
+        private const val MAX_BURST_NORMAL = 3
+        private const val SIMULATE_BURST_GAP_MS = 280L
 
         fun eventKind(source: String): String {
             val s = source.lowercase()

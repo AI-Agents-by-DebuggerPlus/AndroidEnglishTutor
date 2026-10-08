@@ -41,6 +41,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -148,7 +149,9 @@ fun VoiceTestScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding),
+                .padding(padding)
+                .verticalScroll(scrollState)
+                .padding(bottom = 16.dp),
         ) {
             Text(
                 text = "Сборка: ${state.versionLabel}",
@@ -178,97 +181,94 @@ fun VoiceTestScreen(
                 }
             }
 
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .verticalScroll(scrollState)
-                    .padding(bottom = 8.dp),
-            ) {
-                when (state.selectedTab) {
-                    0 -> TtsTestSection(
-                        speakText = state.speakText,
-                        languageCode = state.languageCode,
-                        isSpeaking = state.isSpeaking,
-                        isBusy = state.isBusy,
-                        statusMessage = state.statusMessage,
-                        errorMessage = state.errorMessage,
-                        onSpeakTextChanged = viewModel::onSpeakTextChanged,
-                        onLanguageChanged = viewModel::onLanguageChanged,
-                        onSpeak = viewModel::speak,
-                    )
-                    1 -> SttTestSection(
-                        languageCode = state.languageCode,
-                        isRecording = state.isRecording,
-                        isBusy = state.isBusy,
-                        recognizedText = state.recognizedText,
-                        statusMessage = state.statusMessage,
-                        errorMessage = state.errorMessage,
-                        onLanguageChanged = viewModel::onLanguageChanged,
-                        onRecognize = viewModel::recognize,
-                        onSpeakThenRecognize = viewModel::speakThenRecognize,
-                    )
-                    2 -> BtPlayTestSection(
-                        pressCount = state.btPressCount,
-                        nextCount = state.btNextCount,
-                        stopCount = state.btStopCount,
-                        lastEventLabel = state.btLastEventLabel,
-                        lastEventAt = state.btLastEventAt,
-                        nativeCaptureOn = state.nativeCaptureOn,
-                        taskerMayConflict = state.taskerMayConflict,
-                        debounceEnabled = state.debounceEnabled,
-                        debounceIntervalText = state.debounceIntervalText,
-                        nextDoubleTapText = state.nextDoubleTapText,
-                        eventLog = state.btEventLog,
-                        onDebounceEnabledChange = viewModel::setDebounceEnabled,
-                        onDebounceIntervalTextChange = viewModel::onDebounceIntervalTextChanged,
-                        onDebounceIntervalCommit = viewModel::commitDebounceInterval,
-                        onNextDoubleTapTextChange = viewModel::onNextDoubleTapTextChanged,
-                        onNextDoubleTapCommit = viewModel::commitNextDoubleTapInterval,
-                        onSimulate = viewModel::simulateBtPlay,
-                        onReassert = { viewModel.reassertBtPlayCapture(speakCue = true) },
-                    )
-                    else -> AudioRouteTestSection(
-                        languageCode = state.languageCode,
-                        isRecording = state.isRecording,
-                        isSpeaking = state.isSpeaking,
-                        isBusy = state.isBusy,
-                        recognizedText = state.recognizedText,
-                        statusMessage = state.statusMessage,
-                        errorMessage = state.errorMessage,
-                        audioRoute = state.audioRoute,
-                        onLanguageChanged = viewModel::onLanguageChanged,
-                        onPlay = viewModel::recognizeAndSpeak,
-                        onRefreshRoute = viewModel::refreshAudioRoute,
-                    )
-                }
-
-                Button(
-                    onClick = viewModel::closeApp,
-                    enabled = !state.isClosing,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.error,
-                    ),
-                ) {
-                    Text(stringResource(R.string.action_close_app))
-                }
-
-                HeadsetDiagnosticsSection(
-                    summary = state.diagnosticsSummary,
-                    mediaButtonPathReady = state.mediaButtonPathReady,
-                    lines = state.diagnosticLines,
-                    activeSessions = state.activeMediaSessions,
-                    notificationAccessEnabled = state.notificationAccessEnabled,
-                    onRefresh = viewModel::refreshDiagnostics,
-                    onOpenNotificationAccess = viewModel::openNotificationAccessSettings,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
+            when (state.selectedTab) {
+                0 -> TtsTestSection(
+                    speakText = state.speakText,
+                    languageCode = state.languageCode,
+                    isSpeaking = state.isSpeaking,
+                    isBusy = state.isBusy,
+                    statusMessage = state.statusMessage,
+                    errorMessage = state.errorMessage,
+                    onSpeakTextChanged = viewModel::onSpeakTextChanged,
+                    onLanguageChanged = viewModel::onLanguageChanged,
+                    onSpeak = viewModel::speak,
+                )
+                1 -> SttTestSection(
+                    languageCode = state.languageCode,
+                    isRecording = state.isRecording,
+                    isBusy = state.isBusy,
+                    recognizedText = state.recognizedText,
+                    statusMessage = state.statusMessage,
+                    errorMessage = state.errorMessage,
+                    onLanguageChanged = viewModel::onLanguageChanged,
+                    onRecognize = viewModel::recognize,
+                    onSpeakThenRecognize = viewModel::speakThenRecognize,
+                )
+                2 -> BtPlayTestSection(
+                    pressCount = state.btPressCount,
+                    nextCount = state.btNextCount,
+                    stopCount = state.btStopCount,
+                    quadCount = state.btQuadCount,
+                    pendingBurstCount = state.btPendingBurstCount,
+                    awaitingSecondDouble = state.btAwaitingSecondDouble,
+                    lastEventLabel = state.btLastEventLabel,
+                    lastEventAt = state.btLastEventAt,
+                    nativeCaptureOn = state.nativeCaptureOn,
+                    taskerMayConflict = state.taskerMayConflict,
+                    debounceEnabled = state.debounceEnabled,
+                    debounceIntervalText = state.debounceIntervalText,
+                    nextDoubleTapText = state.nextDoubleTapText,
+                    eventLog = state.btEventLog,
+                    onDebounceEnabledChange = viewModel::setDebounceEnabled,
+                    onDebounceIntervalTextChange = viewModel::onDebounceIntervalTextChanged,
+                    onDebounceIntervalCommit = viewModel::commitDebounceInterval,
+                    onNextDoubleTapTextChange = viewModel::onNextDoubleTapTextChanged,
+                    onNextDoubleTapCommit = viewModel::commitNextDoubleTapInterval,
+                    onSimulate = viewModel::simulateBtPlay,
+                    onSimulateQuad = { viewModel.simulateBtPlayBurst(4) },
+                    onResetCounters = viewModel::resetBtPlayCounter,
+                    onReassert = { viewModel.reassertBtPlayCapture(speakCue = true) },
+                )
+                else -> AudioRouteTestSection(
+                    languageCode = state.languageCode,
+                    isRecording = state.isRecording,
+                    isSpeaking = state.isSpeaking,
+                    isBusy = state.isBusy,
+                    recognizedText = state.recognizedText,
+                    statusMessage = state.statusMessage,
+                    errorMessage = state.errorMessage,
+                    audioRoute = state.audioRoute,
+                    onLanguageChanged = viewModel::onLanguageChanged,
+                    onPlay = viewModel::recognizeAndSpeak,
+                    onRefreshRoute = viewModel::refreshAudioRoute,
                 )
             }
+
+            Button(
+                onClick = viewModel::closeApp,
+                enabled = !state.isClosing,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error,
+                ),
+            ) {
+                Text(stringResource(R.string.action_close_app))
+            }
+
+            HeadsetDiagnosticsSection(
+                summary = state.diagnosticsSummary,
+                mediaButtonPathReady = state.mediaButtonPathReady,
+                lines = state.diagnosticLines,
+                activeSessions = state.activeMediaSessions,
+                notificationAccessEnabled = state.notificationAccessEnabled,
+                onRefresh = viewModel::refreshDiagnostics,
+                onOpenNotificationAccess = viewModel::openNotificationAccessSettings,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+            )
         }
     }
 }
@@ -467,10 +467,33 @@ private fun SttTestSection(
 }
 
 @Composable
+private fun BtPlayCounter(
+    value: Int,
+    label: String,
+    color: Color,
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = value.toString(),
+            fontSize = 36.sp,
+            style = MaterialTheme.typography.displayLarge,
+            color = color,
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.titleSmall,
+        )
+    }
+}
+
+@Composable
 private fun BtPlayTestSection(
     pressCount: Int,
     nextCount: Int,
     stopCount: Int,
+    quadCount: Int,
+    pendingBurstCount: Int,
+    awaitingSecondDouble: Boolean,
     lastEventLabel: String,
     lastEventAt: String,
     nativeCaptureOn: Boolean,
@@ -485,6 +508,8 @@ private fun BtPlayTestSection(
     onNextDoubleTapTextChange: (String) -> Unit,
     onNextDoubleTapCommit: () -> Unit,
     onSimulate: () -> Unit,
+    onSimulateQuad: () -> Unit,
+    onResetCounters: () -> Unit,
     onReassert: () -> Unit,
 ) {
     val focusManager = LocalFocusManager.current
@@ -577,42 +602,34 @@ private fun BtPlayTestSection(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = pressCount.toString(),
-                    fontSize = 48.sp,
-                    style = MaterialTheme.typography.displayLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-                Text(
-                    text = stringResource(R.string.bt_play_test_count_label),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-            }
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = nextCount.toString(),
-                    fontSize = 48.sp,
-                    style = MaterialTheme.typography.displayLarge,
-                    color = MaterialTheme.colorScheme.secondary,
-                )
-                Text(
-                    text = stringResource(R.string.bt_play_test_next_count_label),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-            }
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = stopCount.toString(),
-                    fontSize = 48.sp,
-                    style = MaterialTheme.typography.displayLarge,
-                    color = MaterialTheme.colorScheme.tertiary,
-                )
-                Text(
-                    text = stringResource(R.string.bt_play_test_stop_count_label),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-            }
+            BtPlayCounter(
+                value = pressCount,
+                label = stringResource(R.string.bt_play_test_count_label),
+                color = MaterialTheme.colorScheme.primary,
+            )
+            BtPlayCounter(
+                value = nextCount,
+                label = stringResource(R.string.bt_play_test_next_count_label),
+                color = MaterialTheme.colorScheme.secondary,
+            )
+            BtPlayCounter(
+                value = stopCount,
+                label = stringResource(R.string.bt_play_test_stop_count_label),
+                color = MaterialTheme.colorScheme.tertiary,
+            )
+            BtPlayCounter(
+                value = quadCount,
+                label = stringResource(R.string.bt_play_test_quad_count_label),
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
+        if (pendingBurstCount > 0) {
+            Text(
+                text = stringResource(R.string.bt_play_test_pending_burst, pendingBurstCount),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center,
+            )
         }
         Text(
             text = stringResource(
@@ -636,6 +653,22 @@ private fun BtPlayTestSection(
             Icon(Icons.Default.PlayArrow, contentDescription = null)
             Text(
                 text = stringResource(R.string.bt_play_test_simulate),
+                modifier = Modifier.padding(start = 8.dp),
+            )
+        }
+        OutlinedButton(
+            onClick = onSimulateQuad,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(stringResource(R.string.bt_play_test_simulate_quad))
+        }
+        OutlinedButton(
+            onClick = onResetCounters,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Icon(Icons.Default.Refresh, contentDescription = null)
+            Text(
+                text = stringResource(R.string.bt_play_test_reset_counters),
                 modifier = Modifier.padding(start = 8.dp),
             )
         }

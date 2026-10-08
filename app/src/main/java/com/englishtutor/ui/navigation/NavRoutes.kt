@@ -11,6 +11,7 @@ object NavRoutes {
     const val QUIZ_STATS = "quiz_stats"
     const val VOICE_PICKER = "voice_picker"
     const val WORD_STUDY = "word_study"
+    const val STUDY_STATS = "study_stats"
     const val LOGS = "logs"
 
     fun lesson(lessonId: String): String = "lesson/$lessonId"

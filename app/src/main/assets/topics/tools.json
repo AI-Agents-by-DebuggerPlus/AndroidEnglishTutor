@@ -2,54 +2,2812 @@
   "id": "tools",
   "titleRu": "Инструменты",
   "words": [
-    {"en": "hammer", "ru": "молоток"},
-    {"en": "screwdriver", "ru": "отвёртка"},
-    {"en": "wrench", "ru": "гаечный ключ"},
-    {"en": "pliers", "ru": "плоскогубцы"},
-    {"en": "drill", "ru": "дрель"},
-    {"en": "saw", "ru": "пила"},
-    {"en": "nail", "ru": "гвоздь"},
-    {"en": "screw", "ru": "шуруп"},
-    {"en": "tape measure", "ru": "рулетка"},
-    {"en": "level", "ru": "уровень"},
-    {"en": "toolbox", "ru": "ящик для инструментов"},
-    {"en": "ladder", "ru": "лестница"},
-    {"en": "knife", "ru": "нож"},
-    {"en": "scissors", "ru": "ножницы"},
-    {"en": "glue", "ru": "клей"},
-    {"en": "paint", "ru": "краска"},
-    {"en": "brush", "ru": "кисть"},
-    {"en": "wire", "ru": "провод"},
-    {"en": "battery", "ru": "батарейка"},
-    {"en": "flashlight", "ru": "фонарик"}
+    {
+      "en": "hammer",
+      "ru": "молоток"
+    },
+    {
+      "en": "screwdriver",
+      "ru": "отвёртка"
+    },
+    {
+      "en": "wrench",
+      "ru": "гаечный ключ"
+    },
+    {
+      "en": "pliers",
+      "ru": "плоскогубцы"
+    },
+    {
+      "en": "drill",
+      "ru": "дрель"
+    },
+    {
+      "en": "saw",
+      "ru": "пила"
+    },
+    {
+      "en": "nail",
+      "ru": "гвоздь"
+    },
+    {
+      "en": "screw",
+      "ru": "шуруп"
+    },
+    {
+      "en": "tape measure",
+      "ru": "рулетка"
+    },
+    {
+      "en": "level",
+      "ru": "уровень"
+    },
+    {
+      "en": "toolbox",
+      "ru": "ящик для инструментов"
+    },
+    {
+      "en": "ladder",
+      "ru": "лестница"
+    },
+    {
+      "en": "knife",
+      "ru": "нож"
+    },
+    {
+      "en": "scissors",
+      "ru": "ножницы"
+    },
+    {
+      "en": "glue",
+      "ru": "клей"
+    },
+    {
+      "en": "paint",
+      "ru": "краска"
+    },
+    {
+      "en": "brush",
+      "ru": "кисть"
+    },
+    {
+      "en": "wire",
+      "ru": "провод"
+    },
+    {
+      "en": "flashlight",
+      "ru": "фонарик"
+    },
+    {
+      "en": "mallet",
+      "ru": "киянка"
+    },
+    {
+      "en": "sledgehammer",
+      "ru": "кувалда"
+    },
+    {
+      "en": "bolt",
+      "ru": "болт"
+    },
+    {
+      "en": "nut",
+      "ru": "гайка"
+    },
+    {
+      "en": "washer",
+      "ru": "шайба"
+    },
+    {
+      "en": "phillips screwdriver",
+      "ru": "крестовая отвёртка"
+    },
+    {
+      "en": "flathead screwdriver",
+      "ru": "шлицевая отвёртка"
+    },
+    {
+      "en": "adjustable wrench",
+      "ru": "разводной ключ"
+    },
+    {
+      "en": "socket wrench",
+      "ru": "торцевой ключ"
+    },
+    {
+      "en": "allen key",
+      "ru": "шестигранный ключ"
+    },
+    {
+      "en": "needle-nose pliers",
+      "ru": "длинногубцы"
+    },
+    {
+      "en": "locking pliers",
+      "ru": "струбцинные клещи"
+    },
+    {
+      "en": "wire cutters",
+      "ru": "кусачки"
+    },
+    {
+      "en": "cable cutters",
+      "ru": "кабелерезы"
+    },
+    {
+      "en": "utility knife",
+      "ru": "строительный нож"
+    },
+    {
+      "en": "box cutter",
+      "ru": "канцелярский нож"
+    },
+    {
+      "en": "chisel",
+      "ru": "стамеска"
+    },
+    {
+      "en": "metal file",
+      "ru": "напильник"
+    },
+    {
+      "en": "rasp",
+      "ru": "рашпиль"
+    },
+    {
+      "en": "sandpaper",
+      "ru": "наждачная бумага"
+    },
+    {
+      "en": "sanding block",
+      "ru": "шлифовальный брусок"
+    },
+    {
+      "en": "spirit level",
+      "ru": "пузырьковый уровень"
+    },
+    {
+      "en": "ruler",
+      "ru": "линейка"
+    },
+    {
+      "en": "square",
+      "ru": "угольник"
+    },
+    {
+      "en": "caliper",
+      "ru": "штангенциркуль"
+    },
+    {
+      "en": "clamp",
+      "ru": "струбцина"
+    },
+    {
+      "en": "vise",
+      "ru": "тиски"
+    },
+    {
+      "en": "crowbar",
+      "ru": "лом"
+    },
+    {
+      "en": "pry bar",
+      "ru": "монтировка"
+    },
+    {
+      "en": "axe",
+      "ru": "топор"
+    },
+    {
+      "en": "hatchet",
+      "ru": "топорик"
+    },
+    {
+      "en": "handsaw",
+      "ru": "ножовка"
+    },
+    {
+      "en": "hacksaw",
+      "ru": "ножовка по металлу"
+    },
+    {
+      "en": "coping saw",
+      "ru": "лобзик ручной"
+    },
+    {
+      "en": "circular saw",
+      "ru": "циркулярная пила"
+    },
+    {
+      "en": "jigsaw",
+      "ru": "электролобзик"
+    },
+    {
+      "en": "reciprocating saw",
+      "ru": "сабельная пила"
+    },
+    {
+      "en": "miter saw",
+      "ru": "торцовочная пила"
+    },
+    {
+      "en": "table saw",
+      "ru": "распиловочный станок"
+    },
+    {
+      "en": "band saw",
+      "ru": "ленточная пила"
+    },
+    {
+      "en": "chainsaw",
+      "ru": "бензопила"
+    },
+    {
+      "en": "drill bit",
+      "ru": "сверло"
+    },
+    {
+      "en": "impact driver",
+      "ru": "ударный шуруповёрт"
+    },
+    {
+      "en": "cordless drill",
+      "ru": "аккумуляторная дрель"
+    },
+    {
+      "en": "hammer drill",
+      "ru": "ударная дрель"
+    },
+    {
+      "en": "rotary tool",
+      "ru": "ротационный инструмент"
+    },
+    {
+      "en": "grinder",
+      "ru": "шлифмашина"
+    },
+    {
+      "en": "angle grinder",
+      "ru": "болгарка"
+    },
+    {
+      "en": "belt sander",
+      "ru": "ленточная шлифмашина"
+    },
+    {
+      "en": "orbital sander",
+      "ru": "эксцентриковая шлифмашина"
+    },
+    {
+      "en": "router",
+      "ru": "фрезер"
+    },
+    {
+      "en": "planer",
+      "ru": "рубанок"
+    },
+    {
+      "en": "heat gun",
+      "ru": "строительный фен"
+    },
+    {
+      "en": "soldering iron",
+      "ru": "паяльник"
+    },
+    {
+      "en": "solder",
+      "ru": "припой"
+    },
+    {
+      "en": "multimeter",
+      "ru": "мультиметр"
+    },
+    {
+      "en": "voltage tester",
+      "ru": "индикатор напряжения"
+    },
+    {
+      "en": "wire stripper",
+      "ru": "съёмник изоляции"
+    },
+    {
+      "en": "crimping tool",
+      "ru": "обжимной инструмент"
+    },
+    {
+      "en": "fish tape",
+      "ru": "протяжка для кабеля"
+    },
+    {
+      "en": "conduit",
+      "ru": "кабель-канал"
+    },
+    {
+      "en": "extension cord",
+      "ru": "удлинитель"
+    },
+    {
+      "en": "power strip",
+      "ru": "сетевой фильтр"
+    },
+    {
+      "en": "generator",
+      "ru": "генератор"
+    },
+    {
+      "en": "air compressor",
+      "ru": "воздушный компрессор"
+    },
+    {
+      "en": "nail gun",
+      "ru": "гвоздезабивной пистолет"
+    },
+    {
+      "en": "staple gun",
+      "ru": "степлер строительный"
+    },
+    {
+      "en": "caulk gun",
+      "ru": "пистолет для герметика"
+    },
+    {
+      "en": "glue gun",
+      "ru": "клеевой пистолет"
+    },
+    {
+      "en": "paintbrush",
+      "ru": "кисть"
+    },
+    {
+      "en": "roller",
+      "ru": "валик"
+    },
+    {
+      "en": "paint tray",
+      "ru": "кювета для краски"
+    },
+    {
+      "en": "spray gun",
+      "ru": "краскопульт"
+    },
+    {
+      "en": "step stool",
+      "ru": "стремянка-табурет"
+    },
+    {
+      "en": "scaffolding",
+      "ru": "леса"
+    },
+    {
+      "en": "wheelbarrow",
+      "ru": "тачка"
+    },
+    {
+      "en": "hand truck",
+      "ru": "тележка двухколёсная"
+    },
+    {
+      "en": "dolly",
+      "ru": "транспортная тележка"
+    },
+    {
+      "en": "tool belt",
+      "ru": "пояс для инструментов"
+    },
+    {
+      "en": "workbench",
+      "ru": "верстак"
+    },
+    {
+      "en": "safety glasses",
+      "ru": "защитные очки"
+    },
+    {
+      "en": "goggles",
+      "ru": "плотные очки"
+    },
+    {
+      "en": "work gloves",
+      "ru": "рабочие перчатки"
+    },
+    {
+      "en": "ear protection",
+      "ru": "защита слуха"
+    },
+    {
+      "en": "hard hat",
+      "ru": "каска"
+    },
+    {
+      "en": "dust mask",
+      "ru": "маска от пыли"
+    },
+    {
+      "en": "respirator",
+      "ru": "респиратор"
+    },
+    {
+      "en": "knee pads",
+      "ru": "наколенники"
+    },
+    {
+      "en": "steel-toe boots",
+      "ru": "ботинки с металлоподноском"
+    },
+    {
+      "en": "headlamp",
+      "ru": "налобный фонарь"
+    },
+    {
+      "en": "work light",
+      "ru": "рабочий светильник"
+    },
+    {
+      "en": "duct tape",
+      "ru": "армированная лента"
+    },
+    {
+      "en": "masking tape",
+      "ru": "малярная лента"
+    },
+    {
+      "en": "electrical tape",
+      "ru": "изолента"
+    },
+    {
+      "en": "zip tie",
+      "ru": "стяжка"
+    },
+    {
+      "en": "rope",
+      "ru": "верёвка"
+    },
+    {
+      "en": "chain",
+      "ru": "цепь"
+    },
+    {
+      "en": "hook",
+      "ru": "крюк"
+    },
+    {
+      "en": "hinge",
+      "ru": "петля"
+    },
+    {
+      "en": "latch",
+      "ru": "защёлка"
+    },
+    {
+      "en": "padlock",
+      "ru": "висячий замок"
+    },
+    {
+      "en": "bracket",
+      "ru": "кронштейн"
+    },
+    {
+      "en": "wall anchor",
+      "ru": "анкер"
+    },
+    {
+      "en": "dowel",
+      "ru": "шкант"
+    },
+    {
+      "en": "rivet",
+      "ru": "заклёпка"
+    },
+    {
+      "en": "spring",
+      "ru": "пружина"
+    },
+    {
+      "en": "bearing",
+      "ru": "подшипник"
+    },
+    {
+      "en": "gear",
+      "ru": "шестерня"
+    },
+    {
+      "en": "pulley",
+      "ru": "блок"
+    },
+    {
+      "en": "drive belt",
+      "ru": "приводной ремень"
+    },
+    {
+      "en": "hose",
+      "ru": "шланг"
+    },
+    {
+      "en": "valve",
+      "ru": "клапан"
+    },
+    {
+      "en": "pipe",
+      "ru": "труба"
+    },
+    {
+      "en": "fitting",
+      "ru": "фитинг"
+    },
+    {
+      "en": "elbow joint",
+      "ru": "угол трубы"
+    },
+    {
+      "en": "coupling",
+      "ru": "муфта"
+    },
+    {
+      "en": "gasket",
+      "ru": "прокладка"
+    },
+    {
+      "en": "sealant",
+      "ru": "герметик"
+    },
+    {
+      "en": "adhesive",
+      "ru": "клей"
+    },
+    {
+      "en": "epoxy",
+      "ru": "эпоксидная смола"
+    },
+    {
+      "en": "lubricant",
+      "ru": "смазка"
+    },
+    {
+      "en": "grease",
+      "ru": "консистентная смазка"
+    },
+    {
+      "en": "oil can",
+      "ru": "маслёнка"
+    },
+    {
+      "en": "solvent",
+      "ru": "растворитель"
+    },
+    {
+      "en": "thinner",
+      "ru": "разбавитель"
+    },
+    {
+      "en": "primer",
+      "ru": "грунтовка"
+    },
+    {
+      "en": "varnish",
+      "ru": "лак"
+    },
+    {
+      "en": "wood stain",
+      "ru": "морилка"
+    },
+    {
+      "en": "wood filler",
+      "ru": "шпаклёвка по дереву"
+    },
+    {
+      "en": "putty",
+      "ru": "шпаклёвка"
+    },
+    {
+      "en": "plaster",
+      "ru": "штукатурка"
+    },
+    {
+      "en": "cement",
+      "ru": "цемент"
+    },
+    {
+      "en": "concrete",
+      "ru": "бетон"
+    },
+    {
+      "en": "mortar",
+      "ru": "раствор"
+    },
+    {
+      "en": "brick",
+      "ru": "кирпич"
+    },
+    {
+      "en": "tile",
+      "ru": "плитка"
+    },
+    {
+      "en": "grout",
+      "ru": "затирка"
+    },
+    {
+      "en": "drywall",
+      "ru": "гипсокартон"
+    },
+    {
+      "en": "plywood",
+      "ru": "фанера"
+    },
+    {
+      "en": "lumber",
+      "ru": "пиломатериал"
+    },
+    {
+      "en": "stud",
+      "ru": "стойка каркаса"
+    },
+    {
+      "en": "joist",
+      "ru": "балка"
+    },
+    {
+      "en": "beam",
+      "ru": "брус"
+    },
+    {
+      "en": "rebar",
+      "ru": "арматура"
+    },
+    {
+      "en": "insulation",
+      "ru": "утеплитель"
+    },
+    {
+      "en": "vapor barrier",
+      "ru": "пароизоляция"
+    },
+    {
+      "en": "shingle",
+      "ru": "гибкая черепица"
+    },
+    {
+      "en": "flashing",
+      "ru": "гидроизоляционный фартук"
+    },
+    {
+      "en": "gutter",
+      "ru": "водосток"
+    },
+    {
+      "en": "downspout",
+      "ru": "водосточная труба"
+    },
+    {
+      "en": "faucet",
+      "ru": "кран"
+    },
+    {
+      "en": "showerhead",
+      "ru": "лейка душа"
+    },
+    {
+      "en": "toilet plunger",
+      "ru": "вантуз"
+    },
+    {
+      "en": "pipe wrench",
+      "ru": "трубный ключ"
+    },
+    {
+      "en": "auger",
+      "ru": "сантехнический бур"
+    },
+    {
+      "en": "tin snips",
+      "ru": "ножницы по жести"
+    },
+    {
+      "en": "aviation snips",
+      "ru": "усиленные ножницы"
+    },
+    {
+      "en": "masonry bit",
+      "ru": "сверло по бетону"
+    },
+    {
+      "en": "hole saw",
+      "ru": "кольцевая пила"
+    },
+    {
+      "en": "countersink",
+      "ru": "зенковка"
+    },
+    {
+      "en": "tap and die",
+      "ru": "метчик и плашка"
+    },
+    {
+      "en": "thread locker",
+      "ru": "фиксатор резьбы"
+    },
+    {
+      "en": "torque wrench",
+      "ru": "динамометрический ключ"
+    },
+    {
+      "en": "laser level",
+      "ru": "лазерный уровень"
+    },
+    {
+      "en": "stud finder",
+      "ru": "искатель стоек"
+    },
+    {
+      "en": "moisture meter",
+      "ru": "влагомер"
+    },
+    {
+      "en": "infrared thermometer",
+      "ru": "инфракрасный термометр"
+    },
+    {
+      "en": "inspection camera",
+      "ru": "инспекционная камера"
+    },
+    {
+      "en": "shop vac",
+      "ru": "строительный пылесос"
+    },
+    {
+      "en": "broom",
+      "ru": "метла"
+    },
+    {
+      "en": "dustpan",
+      "ru": "совок"
+    },
+    {
+      "en": "mop",
+      "ru": "швабра"
+    },
+    {
+      "en": "bucket",
+      "ru": "ведро"
+    },
+    {
+      "en": "funnel",
+      "ru": "воронка"
+    },
+    {
+      "en": "grease syringe",
+      "ru": "шприц для смазки"
+    },
+    {
+      "en": "magnet pickup",
+      "ru": "магнитный захват"
+    },
+    {
+      "en": "tweezers",
+      "ru": "пинцет"
+    },
+    {
+      "en": "awl",
+      "ru": "шило"
+    },
+    {
+      "en": "center punch",
+      "ru": "кернер"
+    },
+    {
+      "en": "marking gauge",
+      "ru": "рейсмус"
+    },
+    {
+      "en": "chalk line",
+      "ru": "отбивочный шнур"
+    }
   ],
   "phrases": [
-    {"en": "claw hammer", "ru": "молоток с гвоздодёром", "uses": ["hammer"]},
-    {"en": "Phillips screwdriver", "ru": "крестцовая отвёртка", "uses": ["screwdriver"]},
-    {"en": "adjustable wrench", "ru": "разводной ключ", "uses": ["wrench"]},
-    {"en": "needle-nose pliers", "ru": "длинногубцы", "uses": ["pliers"]},
-    {"en": "cordless drill", "ru": "аккумуляторная дрель", "uses": ["drill"]},
-    {"en": "hand saw", "ru": "ручная пила", "uses": ["saw"]},
-    {"en": "steel nail", "ru": "стальной гвоздь", "uses": ["nail"]},
-    {"en": "wood screw", "ru": "шуруп по дереву", "uses": ["screw"]},
-    {"en": "metal tape measure", "ru": "металлическая рулетка", "uses": ["tape measure"]},
-    {"en": "spirit level", "ru": "строительный уровень", "uses": ["level"]},
-    {"en": "full toolbox", "ru": "полный ящик инструментов", "uses": ["toolbox"]},
-    {"en": "step ladder", "ru": "стремянка", "uses": ["ladder"]},
-    {"en": "utility knife", "ru": "строительный нож", "uses": ["knife"]},
-    {"en": "strong glue", "ru": "крепкий клей", "uses": ["glue"]},
-    {"en": "LED flashlight", "ru": "светодиодный фонарик", "uses": ["flashlight"]}
+    {
+      "en": "a claw hammer",
+      "ru": "гвоздодёр-молоток",
+      "uses": [
+        "hammer"
+      ]
+    },
+    {
+      "en": "a rubber mallet",
+      "ru": "резиновая киянка",
+      "uses": [
+        "mallet"
+      ]
+    },
+    {
+      "en": "a Phillips screwdriver",
+      "ru": "крестовая отвёртка",
+      "uses": [
+        "screwdriver"
+      ]
+    },
+    {
+      "en": "a flathead screwdriver",
+      "ru": "плоская отвёртка",
+      "uses": [
+        "screwdriver"
+      ]
+    },
+    {
+      "en": "an adjustable wrench",
+      "ru": "разводной ключ",
+      "uses": [
+        "wrench"
+      ]
+    },
+    {
+      "en": "wire cutters",
+      "ru": "кусачки по проводу",
+      "uses": [
+        "wire"
+      ]
+    },
+    {
+      "en": "a spirit level",
+      "ru": "строительный уровень",
+      "uses": [
+        "level"
+      ]
+    },
+    {
+      "en": "a carpenter's square",
+      "ru": "столярный угольник",
+      "uses": [
+        "square"
+      ]
+    },
+    {
+      "en": "a utility knife",
+      "ru": "строительный нож",
+      "uses": [
+        "knife"
+      ]
+    },
+    {
+      "en": "a hand saw",
+      "ru": "ручная пила",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "a hacksaw blade",
+      "ru": "полотно по металлу",
+      "uses": [
+        "hacksaw"
+      ]
+    },
+    {
+      "en": "a circular saw",
+      "ru": "циркулярная пила",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "a jigsaw",
+      "ru": "электролобзик",
+      "uses": [
+        "jigsaw"
+      ]
+    },
+    {
+      "en": "a cordless drill",
+      "ru": "аккумуляторная дрель",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "a drill bit",
+      "ru": "свёрло",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "an angle grinder",
+      "ru": "болгарка",
+      "uses": [
+        "grinder"
+      ]
+    },
+    {
+      "en": "a sheet of sandpaper",
+      "ru": "лист наждачной бумаги",
+      "uses": [
+        "sandpaper"
+      ]
+    },
+    {
+      "en": "a wood chisel",
+      "ru": "стамеска по дереву",
+      "uses": [
+        "chisel"
+      ]
+    },
+    {
+      "en": "a bench vise",
+      "ru": "верстачные тиски",
+      "uses": [
+        "vise"
+      ]
+    },
+    {
+      "en": "a C clamp",
+      "ru": "струбцина",
+      "uses": [
+        "clamp"
+      ]
+    },
+    {
+      "en": "a crowbar",
+      "ru": "лом",
+      "uses": [
+        "crowbar"
+      ]
+    },
+    {
+      "en": "a sledgehammer",
+      "ru": "кувалда",
+      "uses": [
+        "sledgehammer"
+      ]
+    },
+    {
+      "en": "a wheelbarrow",
+      "ru": "садовая тачка",
+      "uses": [
+        "wheelbarrow"
+      ]
+    },
+    {
+      "en": "a garden hose",
+      "ru": "садовый шланг",
+      "uses": [
+        "hose"
+      ]
+    },
+    {
+      "en": "an extension ladder",
+      "ru": "раздвижная лестница",
+      "uses": [
+        "ladder"
+      ]
+    },
+    {
+      "en": "a digital multimeter",
+      "ru": "цифровой мультиметр",
+      "uses": [
+        "multimeter"
+      ]
+    },
+    {
+      "en": "a soldering iron",
+      "ru": "паяльник",
+      "uses": [
+        "solder"
+      ]
+    },
+    {
+      "en": "a glue gun",
+      "ru": "клеевой пистолет",
+      "uses": [
+        "glue"
+      ]
+    },
+    {
+      "en": "a nail gun",
+      "ru": "гвоздезабивной пистолет",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "a paint roller",
+      "ru": "малярный валик",
+      "uses": [
+        "paint",
+        "roller"
+      ]
+    },
+    {
+      "en": "a paintbrush",
+      "ru": "малярная кисть",
+      "uses": [
+        "paintbrush"
+      ]
+    },
+    {
+      "en": "a putty knife",
+      "ru": "шпатель",
+      "uses": [
+        "putty",
+        "knife"
+      ]
+    },
+    {
+      "en": "a box of screws",
+      "ru": "коробка шурупов",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "a handful of nails",
+      "ru": "горсть гвоздей",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "a washer and a nut",
+      "ru": "шайба и гайка",
+      "uses": [
+        "washer",
+        "nut"
+      ]
+    },
+    {
+      "en": "a bolt and a nut",
+      "ru": "болт с гайкой",
+      "uses": [
+        "bolt",
+        "nut"
+      ]
+    },
+    {
+      "en": "a wood screw",
+      "ru": "шуруп по дереву",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "a drywall anchor",
+      "ru": "дюбель для гипсокартона",
+      "uses": [
+        "drywall"
+      ]
+    },
+    {
+      "en": "a hose clamp",
+      "ru": "хомут для шланга",
+      "uses": [
+        "hose",
+        "clamp"
+      ]
+    },
+    {
+      "en": "a pipe wrench",
+      "ru": "трубный ключ",
+      "uses": [
+        "pipe",
+        "wrench"
+      ]
+    },
+    {
+      "en": "a toolbox",
+      "ru": "ящик для инструментов",
+      "uses": [
+        "toolbox"
+      ]
+    },
+    {
+      "en": "a workbench",
+      "ru": "рабочий верстак",
+      "uses": [
+        "workbench"
+      ]
+    },
+    {
+      "en": "a flashlight",
+      "ru": "карманный фонарь",
+      "uses": [
+        "flashlight"
+      ]
+    },
+    {
+      "en": "a headlamp",
+      "ru": "налобный фонарь",
+      "uses": [
+        "headlamp"
+      ]
+    },
+    {
+      "en": "a pressure washer",
+      "ru": "мойка высокого давления",
+      "uses": [
+        "washer"
+      ]
+    },
+    {
+      "en": "a torque wrench",
+      "ru": "динамометрический ключ",
+      "uses": [
+        "wrench"
+      ]
+    },
+    {
+      "en": "an oil filter wrench",
+      "ru": "съёмник масляного фильтра",
+      "uses": [
+        "wrench"
+      ]
+    },
+    {
+      "en": "a funnel",
+      "ru": "воронка",
+      "uses": [
+        "funnel"
+      ]
+    },
+    {
+      "en": "a bucket and a mop",
+      "ru": "ведро и швабра",
+      "uses": [
+        "bucket",
+        "mop"
+      ]
+    },
+    {
+      "en": "a can of WD-40",
+      "ru": "баллончик WD-40",
+      "uses": [
+        "lubricant"
+      ]
+    },
+    {
+      "en": "a bag of cement",
+      "ru": "мешок цемента",
+      "uses": [
+        "cement"
+      ]
+    },
+    {
+      "en": "a sheet of plywood",
+      "ru": "лист фанеры",
+      "uses": [
+        "plywood"
+      ]
+    },
+    {
+      "en": "pressure treated lumber",
+      "ru": "обработанные пиломатериалы",
+      "uses": [
+        "lumber"
+      ]
+    },
+    {
+      "en": "drill a pilot hole",
+      "ru": "просверлить направляющее отверстие",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "tighten the bolt",
+      "ru": "затянуть болт",
+      "uses": [
+        "bolt"
+      ]
+    },
+    {
+      "en": "loosen the nut",
+      "ru": "ослабить гайку",
+      "uses": [
+        "nut"
+      ]
+    },
+    {
+      "en": "remove the screw",
+      "ru": "выкрутить шуруп",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "hammer in a nail",
+      "ru": "забить гвоздь",
+      "uses": [
+        "hammer",
+        "nail"
+      ]
+    },
+    {
+      "en": "pull out a nail",
+      "ru": "вытащить гвоздь",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "apply a coat of paint",
+      "ru": "нанести слой краски",
+      "uses": [
+        "paint"
+      ]
+    },
+    {
+      "en": "clamp the board",
+      "ru": "зажать доску",
+      "uses": [
+        "clamp"
+      ]
+    },
+    {
+      "en": "level the shelf",
+      "ru": "выровнять полку",
+      "uses": [
+        "level"
+      ]
+    },
+    {
+      "en": "fix a leaky faucet",
+      "ru": "починить текущий кран",
+      "uses": [
+        "faucet"
+      ]
+    },
+    {
+      "en": "check the oil level",
+      "ru": "проверить уровень масла",
+      "uses": [
+        "level"
+      ]
+    },
+    {
+      "en": "grease the chain",
+      "ru": "смазать цепь",
+      "uses": [
+        "grease",
+        "chain"
+      ]
+    },
+    {
+      "en": "the bolt is rusty",
+      "ru": "болт ржавый",
+      "uses": [
+        "bolt"
+      ]
+    },
+    {
+      "en": "a bent nail",
+      "ru": "погнутый гвоздь",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "a socket set",
+      "ru": "набор торцевых головок",
+      "uses": [
+        "socket",
+        "set"
+      ]
+    },
+    {
+      "en": "an Allen key",
+      "ru": "шестигранный ключ",
+      "uses": [
+        "allen",
+        "key"
+      ]
+    },
+    {
+      "en": "needle nose pliers",
+      "ru": "длинногубцы",
+      "uses": [
+        "needle",
+        "nose",
+        "plier"
+      ]
+    },
+    {
+      "en": "locking pliers",
+      "ru": "зажимные плоскогубцы",
+      "uses": [
+        "lock",
+        "plier"
+      ]
+    },
+    {
+      "en": "a tape measure",
+      "ru": "рулетка",
+      "uses": [
+        "tape",
+        "measure"
+      ]
+    },
+    {
+      "en": "an impact driver",
+      "ru": "ударный шуруповёрт",
+      "uses": [
+        "impact",
+        "driver"
+      ]
+    },
+    {
+      "en": "a random orbital sander",
+      "ru": "эксцентриковая шлифмашина",
+      "uses": [
+        "random",
+        "orbital",
+        "sander"
+      ]
+    },
+    {
+      "en": "a block plane",
+      "ru": "малый рубанок",
+      "uses": [
+        "block",
+        "plane"
+      ]
+    },
+    {
+      "en": "a steel file",
+      "ru": "стальной напильник",
+      "uses": [
+        "steel",
+        "file"
+      ]
+    },
+    {
+      "en": "a pry bar",
+      "ru": "монтировка",
+      "uses": [
+        "pry",
+        "bar"
+      ]
+    },
+    {
+      "en": "a shovel and a rake",
+      "ru": "лопата и грабли",
+      "uses": [
+        "shovel",
+        "rake"
+      ]
+    },
+    {
+      "en": "a pair of pruning shears",
+      "ru": "секатор",
+      "uses": [
+        "pair",
+        "prune",
+        "shear"
+      ]
+    },
+    {
+      "en": "a stepladder",
+      "ru": "стремянка",
+      "uses": [
+        "stepladder"
+      ]
+    },
+    {
+      "en": "an extension cord",
+      "ru": "удлинитель",
+      "uses": [
+        "extension",
+        "cord"
+      ]
+    },
+    {
+      "en": "a power strip",
+      "ru": "сетевой фильтр",
+      "uses": [
+        "power",
+        "strip"
+      ]
+    },
+    {
+      "en": "a voltage tester",
+      "ru": "индикатор напряжения",
+      "uses": [
+        "voltage",
+        "tester"
+      ]
+    },
+    {
+      "en": "a heat gun",
+      "ru": "строительный фен",
+      "uses": [
+        "heat",
+        "gun"
+      ]
+    },
+    {
+      "en": "a staple gun",
+      "ru": "строительный степлер",
+      "uses": [
+        "staple",
+        "gun"
+      ]
+    },
+    {
+      "en": "a caulking gun",
+      "ru": "пистолет для герметика",
+      "uses": [
+        "caulk",
+        "gun"
+      ]
+    },
+    {
+      "en": "masking tape",
+      "ru": "малярный скотч",
+      "uses": [
+        "mask",
+        "tape"
+      ]
+    },
+    {
+      "en": "duct tape",
+      "ru": "армированный скотч",
+      "uses": [
+        "duct",
+        "tape"
+      ]
+    },
+    {
+      "en": "electrical tape",
+      "ru": "изолента",
+      "uses": [
+        "electrical",
+        "tape"
+      ]
+    },
+    {
+      "en": "a cable tie",
+      "ru": "кабельная стяжка",
+      "uses": [
+        "cable",
+        "tie"
+      ]
+    },
+    {
+      "en": "a plumber's snake",
+      "ru": "сантехнический трос",
+      "uses": [
+        "plumber",
+        "snake"
+      ]
+    },
+    {
+      "en": "a plunger",
+      "ru": "вантуз",
+      "uses": [
+        "plunger"
+      ]
+    },
+    {
+      "en": "thread seal tape",
+      "ru": "фум-лента",
+      "uses": [
+        "thread",
+        "seal",
+        "tape"
+      ]
+    },
+    {
+      "en": "a tool belt",
+      "ru": "пояс для инструментов",
+      "uses": [
+        "tool",
+        "belt"
+      ]
+    },
+    {
+      "en": "a pegboard wall",
+      "ru": "перфорированная стенка для инструментов",
+      "uses": [
+        "pegboard",
+        "wall"
+      ]
+    },
+    {
+      "en": "safety glasses",
+      "ru": "защитные очки",
+      "uses": [
+        "safety",
+        "glasses"
+      ]
+    },
+    {
+      "en": "work gloves",
+      "ru": "рабочие перчатки",
+      "uses": [
+        "work",
+        "glove"
+      ]
+    },
+    {
+      "en": "ear protection",
+      "ru": "защита для ушей",
+      "uses": [
+        "ear",
+        "protection"
+      ]
+    },
+    {
+      "en": "a dust mask",
+      "ru": "респиратор от пыли",
+      "uses": [
+        "dust",
+        "mask"
+      ]
+    },
+    {
+      "en": "steel toe boots",
+      "ru": "ботинки со стальным носком",
+      "uses": [
+        "steel",
+        "toe",
+        "boot"
+      ]
+    },
+    {
+      "en": "a hard hat",
+      "ru": "каска",
+      "uses": [
+        "hard",
+        "hat"
+      ]
+    },
+    {
+      "en": "a high visibility vest",
+      "ru": "сигнальный жилет",
+      "uses": [
+        "high",
+        "visibility",
+        "vest"
+      ]
+    },
+    {
+      "en": "a first aid kit",
+      "ru": "аптечка первой помощи",
+      "uses": [
+        "first",
+        "aid",
+        "kit"
+      ]
+    },
+    {
+      "en": "a fire extinguisher",
+      "ru": "огнетушитель",
+      "uses": [
+        "fire",
+        "extinguisher"
+      ]
+    },
+    {
+      "en": "a spare battery",
+      "ru": "запасной аккумулятор",
+      "uses": [
+        "spare",
+        "battery"
+      ]
+    },
+    {
+      "en": "a battery charger",
+      "ru": "зарядное устройство",
+      "uses": [
+        "battery",
+        "charger"
+      ]
+    },
+    {
+      "en": "a shop vacuum",
+      "ru": "строительный пылесос",
+      "uses": [
+        "shop",
+        "vacuum"
+      ]
+    },
+    {
+      "en": "a wet dry vac",
+      "ru": "пылесос для сухой и влажной уборки",
+      "uses": [
+        "wet",
+        "dry",
+        "vac"
+      ]
+    },
+    {
+      "en": "a jump starter",
+      "ru": "пусковое устройство для автомобиля",
+      "uses": [
+        "jump",
+        "starter"
+      ]
+    },
+    {
+      "en": "jumper cables",
+      "ru": "провода для прикуривания",
+      "uses": [
+        "jumper",
+        "cable"
+      ]
+    },
+    {
+      "en": "a floor jack",
+      "ru": "подкатной домкрат",
+      "uses": [
+        "floor",
+        "jack"
+      ]
+    },
+    {
+      "en": "a tire pressure gauge",
+      "ru": "манометр для шин",
+      "uses": [
+        "tire",
+        "pressure",
+        "gauge"
+      ]
+    },
+    {
+      "en": "a spray bottle",
+      "ru": "бутылка с распылителем",
+      "uses": [
+        "spray",
+        "bottle"
+      ]
+    },
+    {
+      "en": "a tube of silicone",
+      "ru": "тюбик силикона",
+      "uses": [
+        "tube",
+        "silicone"
+      ]
+    },
+    {
+      "en": "a two by four",
+      "ru": "брус два на четыре дюйма",
+      "uses": [
+        "two",
+        "four"
+      ]
+    },
+    {
+      "en": "a hardware store",
+      "ru": "хозяйственный магазин",
+      "uses": [
+        "hardware",
+        "store"
+      ]
+    },
+    {
+      "en": "a tool rental",
+      "ru": "прокат инструментов",
+      "uses": [
+        "tool",
+        "rental"
+      ]
+    },
+    {
+      "en": "measure twice, cut once",
+      "ru": "семь раз отмерь, один раз отрежь",
+      "uses": [
+        "measure",
+        "cut"
+      ]
+    },
+    {
+      "en": "mark the line",
+      "ru": "отметить линию",
+      "uses": [
+        "mark",
+        "line"
+      ]
+    },
+    {
+      "en": "cut along the line",
+      "ru": "резать по линии",
+      "uses": [
+        "cut",
+        "line"
+      ]
+    },
+    {
+      "en": "sand the surface",
+      "ru": "отшлифовать поверхность",
+      "uses": [
+        "sand",
+        "surface"
+      ]
+    },
+    {
+      "en": "fill the crack",
+      "ru": "заделать трещину",
+      "uses": [
+        "fill",
+        "crack"
+      ]
+    },
+    {
+      "en": "seal the gap",
+      "ru": "заделать зазор",
+      "uses": [
+        "seal",
+        "gap"
+      ]
+    },
+    {
+      "en": "hang a picture",
+      "ru": "повесить картину",
+      "uses": [
+        "hang",
+        "picture"
+      ]
+    },
+    {
+      "en": "mount a shelf",
+      "ru": "закрепить полку",
+      "uses": [
+        "mount",
+        "shelf"
+      ]
+    },
+    {
+      "en": "assemble the furniture",
+      "ru": "собрать мебель",
+      "uses": [
+        "assemble",
+        "furniture"
+      ]
+    },
+    {
+      "en": "unclog the drain",
+      "ru": "прочистить слив",
+      "uses": [
+        "unclog",
+        "drain"
+      ]
+    },
+    {
+      "en": "replace a light bulb",
+      "ru": "заменить лампочку",
+      "uses": [
+        "replace",
+        "light",
+        "bulb"
+      ]
+    },
+    {
+      "en": "change a flat tire",
+      "ru": "поменять пробитое колесо",
+      "uses": [
+        "change",
+        "flat",
+        "tire"
+      ]
+    },
+    {
+      "en": "tune up the bike",
+      "ru": "отрегулировать велосипед",
+      "uses": [
+        "tune",
+        "bike"
+      ]
+    },
+    {
+      "en": "sharpen the blade",
+      "ru": "заточить лезвие",
+      "uses": [
+        "sharpen",
+        "blade"
+      ]
+    },
+    {
+      "en": "dull the edge",
+      "ru": "затупить лезвие",
+      "uses": [
+        "dull",
+        "edge"
+      ]
+    },
+    {
+      "en": "wipe off the dust",
+      "ru": "стереть пыль",
+      "uses": [
+        "wipe",
+        "dust"
+      ]
+    },
+    {
+      "en": "sweep the shop floor",
+      "ru": "подмести пол в мастерской",
+      "uses": [
+        "sweep",
+        "shop",
+        "floor"
+      ]
+    },
+    {
+      "en": "put tools away",
+      "ru": "убрать инструменты",
+      "uses": [
+        "put",
+        "tool",
+        "away"
+      ]
+    },
+    {
+      "en": "borrow a tool",
+      "ru": "одолжить инструмент",
+      "uses": [
+        "borrow",
+        "tool"
+      ]
+    },
+    {
+      "en": "return it clean",
+      "ru": "вернуть чистым",
+      "uses": [
+        "return",
+        "clean"
+      ]
+    },
+    {
+      "en": "unplug the machine",
+      "ru": "отключить станок от сети",
+      "uses": [
+        "unplug",
+        "machine"
+      ]
+    },
+    {
+      "en": "wear eye protection",
+      "ru": "носить защиту для глаз",
+      "uses": [
+        "wear",
+        "eye",
+        "protection"
+      ]
+    },
+    {
+      "en": "keep your fingers clear",
+      "ru": "держи пальцы подальше",
+      "uses": [
+        "keep",
+        "finger",
+        "clear"
+      ]
+    },
+    {
+      "en": "watch your thumb",
+      "ru": "береги большой палец",
+      "uses": [
+        "watch",
+        "thumb"
+      ]
+    },
+    {
+      "en": "the blade is sharp",
+      "ru": "лезвие острое",
+      "uses": [
+        "blade",
+        "sharp"
+      ]
+    },
+    {
+      "en": "the bit is dull",
+      "ru": "свёрло тупое",
+      "uses": [
+        "bit",
+        "dull"
+      ]
+    },
+    {
+      "en": "the battery is flat",
+      "ru": "аккумулятор разряжен",
+      "uses": [
+        "battery",
+        "flat"
+      ]
+    },
+    {
+      "en": "the trigger is stuck",
+      "ru": "курок заедает",
+      "uses": [
+        "trigger",
+        "stuck"
+      ]
+    },
+    {
+      "en": "the thread is stripped",
+      "ru": "резьба сорвана",
+      "uses": [
+        "thread",
+        "strip"
+      ]
+    },
+    {
+      "en": "a loose connection",
+      "ru": "ненадёжное соединение",
+      "uses": [
+        "loose",
+        "connection"
+      ]
+    },
+    {
+      "en": "a tight fit",
+      "ru": "плотная посадка",
+      "uses": [
+        "tight",
+        "fit"
+      ]
+    },
+    {
+      "en": "a rough edge",
+      "ru": "шероховатый край",
+      "uses": [
+        "rough",
+        "edge"
+      ]
+    },
+    {
+      "en": "a smooth finish",
+      "ru": "гладкая отделка",
+      "uses": [
+        "smooth",
+        "finish"
+      ]
+    }
   ],
   "sentences": [
-    {"en": "I need a hammer and a nail.", "ru": "Мне нужны молоток и гвоздь.", "uses": ["hammer", "nail"]},
-    {"en": "Use a screwdriver for this screw.", "ru": "Используй отвёртку для этого шурупа.", "uses": ["screwdriver", "screw"]},
-    {"en": "The wrench is in the toolbox.", "ru": "Гаечный ключ в ящике для инструментов.", "uses": ["wrench", "toolbox"]},
-    {"en": "Hold the wire with pliers.", "ru": "Держи провод плоскогубцами.", "uses": ["wire", "pliers"]},
-    {"en": "Charge the drill battery.", "ru": "Заряди батарею дрели.", "uses": ["drill", "battery"]},
-    {"en": "Cut the board with a saw.", "ru": "Распили доску пилой.", "uses": ["saw"]},
-    {"en": "Measure the wall with a tape measure.", "ru": "Измерь стену рулеткой.", "uses": ["tape measure"]},
-    {"en": "Check it with a level.", "ru": "Проверь это уровнем.", "uses": ["level"]},
-    {"en": "Be careful on the ladder.", "ru": "Будь осторожен на лестнице.", "uses": ["ladder"]},
-    {"en": "Turn on the flashlight, please.", "ru": "Включи фонарик, пожалуйста.", "uses": ["flashlight"]}
-  ]
+    {
+      "en": "Hand me the Phillips screwdriver, please; the flathead won't fit.",
+      "ru": "Подай мне, пожалуйста, крестовую отвёртку; плоская не подходит.",
+      "uses": [
+        "screwdriver"
+      ]
+    },
+    {
+      "en": "Put on your safety glasses before you start the grinder.",
+      "ru": "Надень защитные очки, прежде чем включать болгарку.",
+      "uses": [
+        "grinder"
+      ]
+    },
+    {
+      "en": "The drill battery is dead, so I need to charge it first.",
+      "ru": "Аккумулятор дрели сел, поэтому сначала нужно его зарядить.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "I need a longer drill bit to go through the thick beam.",
+      "ru": "Мне нужно более длинное свёрло, чтобы пройти толстую балку.",
+      "uses": [
+        "drill",
+        "beam"
+      ]
+    },
+    {
+      "en": "Tighten the bolt by hand first, then use the wrench.",
+      "ru": "Сначала затяни болт рукой, потом используй ключ.",
+      "uses": [
+        "bolt",
+        "wrench"
+      ]
+    },
+    {
+      "en": "Be careful with the utility knife; the blade is extremely sharp.",
+      "ru": "Осторожнее с строительным ножом; лезвие очень острое.",
+      "uses": [
+        "knife"
+      ]
+    },
+    {
+      "en": "The hardware store sells screws by the box or by weight.",
+      "ru": "В хозяйственном магазине шурупы продают коробками или на вес.",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "First, mark the spot with a pencil, then drill a small pilot hole.",
+      "ru": "Сначала отметь место карандашом, потом просверли небольшое направляющее отверстие.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "This shelf is not level, so we need to adjust the bracket.",
+      "ru": "Эта полка не ровная, поэтому нужно подвинуть кронштейн.",
+      "uses": [
+        "level",
+        "bracket"
+      ]
+    },
+    {
+      "en": "Use a stud finder to locate the wooden frame behind the wall.",
+      "ru": "Используй детектор стоек, чтобы найти деревянный каркас за стеной.",
+      "uses": [
+        "stud"
+      ]
+    },
+    {
+      "en": "He hit the nail so hard that the board split.",
+      "ru": "Он ударил по гвоздю так сильно, что доска раскололась.",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "I need a pair of pliers to pull out this bent nail.",
+      "ru": "Мне нужны плоскогубцы, чтобы вытащить этот погнутый гвоздь.",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "The saw blade gets dull quickly when you cut metal.",
+      "ru": "Пильное полотно быстро тупится, когда режешь металл.",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "Wear ear protection when you work with the circular saw.",
+      "ru": "Надевай защиту для ушей, когда работаешь с циркулярной пилой.",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "Clamp the board to the bench so it doesn't move while you cut.",
+      "ru": "Зажми доску на верстаке, чтобы она не двигалась, пока ты пилишь.",
+      "uses": [
+        "clamp"
+      ]
+    },
+    {
+      "en": "If the screw is stripped, try a rubber band between the bit and the head.",
+      "ru": "Если шлиц сорван, попробуй вставить резинку между битой и головкой.",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "A torque wrench makes sure that every bolt is tightened evenly.",
+      "ru": "Динамометрический ключ гарантирует, что каждый болт затянут равномерно.",
+      "uses": [
+        "wrench",
+        "bolt"
+      ]
+    },
+    {
+      "en": "We rented a pressure washer to clean the old deck.",
+      "ru": "Мы взяли напрокат мойку высокого давления, чтобы очистить старую террасу.",
+      "uses": [
+        "washer"
+      ]
+    },
+    {
+      "en": "Spray some lubricant on the hinge to stop the squeak.",
+      "ru": "Брызни немного смазки на петлю, чтобы убрать скрип.",
+      "uses": [
+        "lubricant",
+        "hinge"
+      ]
+    },
+    {
+      "en": "The paint roller leaves marks if you press too hard.",
+      "ru": "Малярный валик оставляет следы, если сильно давить.",
+      "uses": [
+        "paint",
+        "roller"
+      ]
+    },
+    {
+      "en": "I can't loosen this nut because it's covered in rust.",
+      "ru": "Я не могу ослабить эту гайку, потому что она вся в ржавчине.",
+      "uses": [
+        "nut"
+      ]
+    },
+    {
+      "en": "A level tells you whether a surface is perfectly flat.",
+      "ru": "Уровень показывает, идеально ли ровная поверхность.",
+      "uses": [
+        "level"
+      ]
+    },
+    {
+      "en": "He keeps all his screws sorted in small plastic drawers.",
+      "ru": "Он хранит все шурупы рассортированными в маленьких пластиковых ящичках.",
+      "uses": [
+        "screw"
+      ]
+    },
+    {
+      "en": "The multimeter shows that there is no voltage in the wire.",
+      "ru": "Мультиметр показывает, что в проводе нет напряжения.",
+      "uses": [
+        "multimeter",
+        "wire"
+      ]
+    },
+    {
+      "en": "My dad taught me how to sharpen a chisel on a stone.",
+      "ru": "Отец научил меня точить стамеску на камне.",
+      "uses": [
+        "chisel"
+      ]
+    },
+    {
+      "en": "The wheelbarrow was full of dirt and heavy to push.",
+      "ru": "Садовая тачка была полна земли, и её было тяжело толкать.",
+      "uses": [
+        "wheelbarrow"
+      ]
+    },
+    {
+      "en": "Make sure the ladder is stable before you climb it.",
+      "ru": "Убедись, что лестница устойчива, прежде чем лезть по ней.",
+      "uses": [
+        "ladder"
+      ]
+    },
+    {
+      "en": "You will need a socket set to remove the wheel nuts.",
+      "ru": "Тебе понадобится набор головок, чтобы снять гайки колеса.",
+      "uses": [
+        "nut"
+      ]
+    },
+    {
+      "en": "The trigger on this drill is very sensitive.",
+      "ru": "Курок этой дрели очень чувствительный.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "A heat gun can soften old paint so it comes off easily.",
+      "ru": "Строительный фен может размягчить старую краску, и она легко отойдёт.",
+      "uses": [
+        "paint"
+      ]
+    },
+    {
+      "en": "Cut the pipe square so the joint fits tightly.",
+      "ru": "Отрежь трубу под прямым углом, чтобы соединение плотно сидело.",
+      "uses": [
+        "pipe",
+        "square"
+      ]
+    },
+    {
+      "en": "The pipe wrench has serrated jaws that grip round surfaces.",
+      "ru": "У трубного ключа зубчатые губки, которые захватывают круглые поверхности.",
+      "uses": [
+        "pipe",
+        "wrench"
+      ]
+    },
+    {
+      "en": "He wrapped thread seal tape around the fitting to stop the leak.",
+      "ru": "Он обмотал фитинг фум-лентой, чтобы остановить течь.",
+      "uses": [
+        "fitting"
+      ]
+    },
+    {
+      "en": "The jigsaw is perfect for cutting curves in thin wood.",
+      "ru": "Электролобзик отлично подходит для резки кривых линий в тонком дереве.",
+      "uses": [
+        "jigsaw"
+      ]
+    },
+    {
+      "en": "I dropped the wrench, and it landed right on my foot.",
+      "ru": "Я уронил ключ, и он упал прямо мне на ногу.",
+      "uses": [
+        "wrench"
+      ]
+    },
+    {
+      "en": "A cordless drill is more convenient than a corded one, but it needs charging.",
+      "ru": "Беспроводная дрель удобнее проводной, но её нужно заряжать.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "The new hammer feels well balanced in my hand.",
+      "ru": "Новый молоток хорошо сбалансирован в руке.",
+      "uses": [
+        "hammer"
+      ]
+    },
+    {
+      "en": "Use a drywall anchor, because a plain screw won't hold in plaster.",
+      "ru": "Используй дюбель для гипсокартона, потому что обычный шуруп не удержится в штукатурке.",
+      "uses": [
+        "drywall",
+        "screw",
+        "plaster"
+      ]
+    },
+    {
+      "en": "She repaired the bike chain with a small tool kit.",
+      "ru": "Она починила велосипедную цепь маленьким набором инструментов.",
+      "uses": [
+        "chain"
+      ]
+    },
+    {
+      "en": "Before painting, fill the holes with putty and let it dry.",
+      "ru": "Перед покраской заполни отверстия шпатлёвкой и дай ей высохнуть.",
+      "uses": [
+        "paint",
+        "putty"
+      ]
+    },
+    {
+      "en": "This saw cuts through plywood like butter.",
+      "ru": "Эта пила режет фанеру как масло.",
+      "uses": [
+        "saw",
+        "plywood"
+      ]
+    },
+    {
+      "en": "I keep a flashlight in the glove box in case of an emergency.",
+      "ru": "Я держу фонарь в бардачке на случай аварии.",
+      "uses": [
+        "flashlight"
+      ]
+    },
+    {
+      "en": "The bolt snapped when I tightened it too much.",
+      "ru": "Болт сломался, когда я затянул его слишком сильно.",
+      "uses": [
+        "bolt"
+      ]
+    },
+    {
+      "en": "He cut the wire with side cutters and stripped the ends.",
+      "ru": "Он перекусил провод бокорезами и зачистил концы.",
+      "uses": [
+        "wire"
+      ]
+    },
+    {
+      "en": "The workbench is cluttered with sawdust and old paint cans.",
+      "ru": "Верстак завален опилками и старыми банками из-под краски.",
+      "uses": [
+        "workbench",
+        "paint"
+      ]
+    },
+    {
+      "en": "It's easier to drive a screw if you drill a pilot hole.",
+      "ru": "Шуруп проще вкрутить, если просверлить направляющее отверстие.",
+      "uses": [
+        "screw",
+        "drill"
+      ]
+    },
+    {
+      "en": "The garden hose has a small leak near the connector.",
+      "ru": "У садового шланга небольшая течь возле соединителя.",
+      "uses": [
+        "hose"
+      ]
+    },
+    {
+      "en": "Let me show you how to use a hacksaw properly.",
+      "ru": "Дай покажу, как правильно пользоваться ножовкой по металлу.",
+      "uses": [
+        "hacksaw"
+      ]
+    },
+    {
+      "en": "He tapped the pipe lightly to check for hollow spots.",
+      "ru": "Он слегка постучал по трубе, чтобы проверить пустоты.",
+      "uses": [
+        "pipe"
+      ]
+    },
+    {
+      "en": "A clamp works like an extra pair of hands.",
+      "ru": "Струбцина работает как дополнительная пара рук.",
+      "uses": [
+        "clamp"
+      ]
+    },
+    {
+      "en": "Don't use a wrench as a hammer; it can damage the tool.",
+      "ru": "Не используй ключ как молоток; он может повредиться.",
+      "uses": [
+        "wrench",
+        "hammer"
+      ]
+    },
+    {
+      "en": "The sandpaper with a finer grit leaves a smoother finish.",
+      "ru": "Наждачная бумага с более мелким зерном оставляет более гладкую поверхность.",
+      "uses": [
+        "sandpaper"
+      ]
+    },
+    {
+      "en": "I'll need a bigger bucket to mix all this cement.",
+      "ru": "Мне понадобится ведро побольше, чтобы замешать весь этот цемент.",
+      "uses": [
+        "bucket",
+        "cement"
+      ]
+    },
+    {
+      "en": "The old screwdriver has a cracked handle and needs replacing.",
+      "ru": "У старой отвёртки треснувшая рукоятка, её нужно заменить.",
+      "uses": [
+        "screwdriver"
+      ]
+    },
+    {
+      "en": "Before you cut, check that there are no nails hidden in the wood.",
+      "ru": "Прежде чем пилить, проверь, нет ли в дереве скрытых гвоздей.",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "A lubricated hinge swings quietly and lasts longer.",
+      "ru": "Смазанная петля двигается бесшумно и служит дольше.",
+      "uses": [
+        "hinge"
+      ]
+    },
+    {
+      "en": "My neighbour lent me a ladder to clean the gutters.",
+      "ru": "Сосед одолжил мне лестницу, чтобы почистить водостоки.",
+      "uses": [
+        "ladder",
+        "gutter"
+      ]
+    },
+    {
+      "en": "A spirit level has a small bubble that shows when a surface is flat.",
+      "ru": "У строительного уровня есть небольшой пузырёк, который показывает ровность поверхности.",
+      "uses": [
+        "level"
+      ]
+    },
+    {
+      "en": "Never leave a hot glue gun plugged in unattended.",
+      "ru": "Никогда не оставляй включённый клеевой пистолет без присмотра.",
+      "uses": [
+        "glue"
+      ]
+    },
+    {
+      "en": "He wiped the grease off the wrench with a rag.",
+      "ru": "Он вытер смазку с ключа тряпкой.",
+      "uses": [
+        "grease",
+        "wrench"
+      ]
+    },
+    {
+      "en": "A sharp drill bit makes cleaner holes and runs cooler.",
+      "ru": "Острое свёрло делает более чистые отверстия и меньше греется.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "The paint on the handle has worn off from years of use.",
+      "ru": "Краска на рукоятке стёрлась за годы использования.",
+      "uses": [
+        "paint"
+      ]
+    },
+    {
+      "en": "I'd like to return this saw because the blade is bent.",
+      "ru": "Я хотел бы вернуть эту пилу, потому что полотно погнуто.",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "The extension ladder must lean at a safe angle against the wall.",
+      "ru": "Раздвижная лестница должна опираться на стену под безопасным углом.",
+      "uses": [
+        "ladder"
+      ]
+    },
+    {
+      "en": "Check that the chuck is tight before you start drilling.",
+      "ru": "Проверь, что патрон плотно затянут, прежде чем начинать сверлить.",
+      "uses": [
+        "drill"
+      ]
+    },
+    {
+      "en": "This multi-tool folds into a pocket-sized knife, pliers, and screwdriver.",
+      "ru": "Этот мультитул складывается в карманный нож, плоскогубцы и отвёртку.",
+      "uses": [
+        "knife",
+        "screwdriver"
+      ]
+    },
+    {
+      "en": "A little oil on the saw blade prevents it from sticking.",
+      "ru": "Немного масла на полотне пилы не даёт ему застревать.",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "Hold the nail firmly with two fingers and tap it gently before you swing hard.",
+      "ru": "Крепко держи гвоздь двумя пальцами и слегка постучи по нему, прежде чем бить сильно.",
+      "uses": [
+        "nail"
+      ]
+    },
+    {
+      "en": "Please check that the guard is in place before you turn on the saw.",
+      "ru": "Пожалуйста, проверь, что защитный кожух на месте, прежде чем включать пилу.",
+      "uses": [
+        "saw"
+      ]
+    },
+    {
+      "en": "Always measure twice and cut once, or you will waste the wood.",
+      "ru": "Всегда семь раз отмерь и один раз отрежь, иначе испортишь древесину.",
+      "uses": [
+        "measure",
+        "cut",
+        "waste",
+        "wood"
+      ]
+    },
+    {
+      "en": "Can I borrow your tape measure for a minute?",
+      "ru": "Можно одолжить у тебя рулетку на минуту?",
+      "uses": [
+        "borrow",
+        "tape",
+        "measure",
+        "minute"
+      ]
+    },
+    {
+      "en": "Never use a power tool with a damaged cord.",
+      "ru": "Никогда не пользуйся электроинструментом с повреждённым шнуром.",
+      "uses": [
+        "use",
+        "power",
+        "tool",
+        "damage",
+        "cord"
+      ]
+    },
+    {
+      "en": "Sand the edges until they feel smooth under your hand.",
+      "ru": "Шлифуй края, пока они не станут гладкими под рукой.",
+      "uses": [
+        "sand",
+        "edge",
+        "smooth",
+        "hand"
+      ]
+    },
+    {
+      "en": "Please put the tools back in the box when you are finished.",
+      "ru": "Пожалуйста, положи инструменты обратно в ящик, когда закончишь.",
+      "uses": [
+        "put",
+        "tool",
+        "back",
+        "box",
+        "finish"
+      ]
+    },
+    {
+      "en": "This extension cord is too short to reach the garage.",
+      "ru": "Этот удлинитель слишком короткий, чтобы дотянуться до гаража.",
+      "uses": [
+        "extension",
+        "cord",
+        "short",
+        "reach",
+        "garage"
+      ]
+    },
+    {
+      "en": "Always unplug the machine before you change the blade.",
+      "ru": "Всегда отключай станок от сети, прежде чем менять лезвие.",
+      "uses": [
+        "unplug",
+        "machine",
+        "change",
+        "blade"
+      ]
+    },
+    {
+      "en": "Apply masking tape along the edge to get a clean line.",
+      "ru": "Наклей малярный скотч вдоль края, чтобы получить чёткую линию.",
+      "uses": [
+        "apply",
+        "masking",
+        "tape",
+        "edge",
+        "clean",
+        "line"
+      ]
+    },
+    {
+      "en": "Don't forget to turn off the power at the breaker first.",
+      "ru": "Не забудь сначала отключить питание на автомате.",
+      "uses": [
+        "forget",
+        "turn",
+        "power",
+        "breaker"
+      ]
+    },
+    {
+      "en": "I spent the whole weekend assembling a bookshelf from a flat box.",
+      "ru": "Я потратил все выходные на сборку книжного шкафа из плоской коробки.",
+      "uses": [
+        "spend",
+        "weekend",
+        "assemble",
+        "bookshelf",
+        "flat",
+        "box"
+      ]
+    },
+    {
+      "en": "Check the user manual if you are not sure how it works.",
+      "ru": "Загляни в руководство пользователя, если не уверен, как это работает.",
+      "uses": [
+        "check",
+        "user",
+        "manual",
+        "sure",
+        "work"
+      ]
+    },
+    {
+      "en": "Please keep the workshop clean and sweep the floor at night.",
+      "ru": "Пожалуйста, содержи мастерскую в чистоте и подметай пол вечером.",
+      "uses": [
+        "keep",
+        "workshop",
+        "clean",
+        "sweep",
+        "floor",
+        "night"
+      ]
+    },
+    {
+      "en": "Always wear gloves when you handle sharp metal.",
+      "ru": "Всегда надевай перчатки, когда работаешь с острым металлом.",
+      "uses": [
+        "wear",
+        "glove",
+        "handle",
+        "sharp",
+        "metal"
+      ]
+    },
+    {
+      "en": "A good tool lasts for decades if you take care of it.",
+      "ru": "Хороший инструмент служит десятилетиями, если за ним ухаживать.",
+      "uses": [
+        "good",
+        "tool",
+        "last",
+        "decade",
+        "care"
+      ]
+    },
+    {
+      "en": "The shop vacuum can pick up both dust and water.",
+      "ru": "Строительный пылесос может собирать и пыль, и воду.",
+      "uses": [
+        "shop",
+        "vacuum",
+        "pick",
+        "dust",
+        "water"
+      ]
+    },
+    {
+      "en": "You need to keep the blade moving or it will burn the wood.",
+      "ru": "Нужно двигать полотно, иначе оно обожжёт древесину.",
+      "uses": [
+        "keep",
+        "blade",
+        "move",
+        "burn",
+        "wood"
+      ]
+    },
+    {
+      "en": "We hung a heavy mirror using two strong anchors.",
+      "ru": "Мы повесили тяжёлое зеркало на два прочных анкера.",
+      "uses": [
+        "hang",
+        "heavy",
+        "mirror",
+        "strong",
+        "anchor"
+      ]
+    },
+    {
+      "en": "Is there a tool rental place near here?",
+      "ru": "Есть ли здесь поблизости пункт проката инструментов?",
+      "uses": [
+        "tool",
+        "rental",
+        "place",
+        "near"
+      ]
+    },
+    {
+      "en": "The jack lifted the car just high enough to remove the tire.",
+      "ru": "Домкрат поднял машину ровно настолько, чтобы снять колесо.",
+      "uses": [
+        "jack",
+        "lift",
+        "car",
+        "high",
+        "remove",
+        "tire"
+      ]
+    },
+    {
+      "en": "He labelled every drawer so he could find things quickly.",
+      "ru": "Он подписал каждый ящик, чтобы быстро находить вещи.",
+      "uses": [
+        "label",
+        "drawer",
+        "find",
+        "thing",
+        "quickly"
+      ]
+    },
+    {
+      "en": "The soldering iron gets extremely hot, so always put it in its stand.",
+      "ru": "Паяльник сильно нагревается, поэтому всегда ставь его на подставку.",
+      "uses": [
+        "soldering",
+        "iron",
+        "hot",
+        "put",
+        "stand"
+      ]
+    },
+    {
+      "en": "I got a set of hex keys for assembling furniture.",
+      "ru": "Я купил набор шестигранников для сборки мебели.",
+      "uses": [
+        "get",
+        "hex",
+        "key",
+        "assemble",
+        "furniture"
+      ]
+    },
+    {
+      "en": "Rubber gloves protect your hands from chemicals.",
+      "ru": "Резиновые перчатки защищают руки от химических веществ.",
+      "uses": [
+        "rubber",
+        "glove",
+        "protect",
+        "hand",
+        "chemical"
+      ]
+    },
+    {
+      "en": "It took three tries to cut the board to the right length.",
+      "ru": "Мне потребовалось три попытки, чтобы отрезать доску нужной длины.",
+      "uses": [
+        "take",
+        "try",
+        "cut",
+        "board",
+        "right",
+        "length"
+      ]
+    },
+    {
+      "en": "The staple gun is handy for fixing fabric to a wooden frame.",
+      "ru": "Строительный степлер удобен, чтобы крепить ткань к деревянной раме.",
+      "uses": [
+        "staple",
+        "gun",
+        "handy",
+        "fix",
+        "fabric",
+        "wooden",
+        "frame"
+      ]
+    },
+    {
+      "en": "The tool belt keeps everything within easy reach.",
+      "ru": "Пояс для инструментов держит всё под рукой.",
+      "uses": [
+        "tool",
+        "belt",
+        "keep",
+        "reach"
+      ]
+    },
+    {
+      "en": "They tore down the old fence and loaded the boards onto a trailer.",
+      "ru": "Они разобрали старый забор и погрузили доски на прицеп.",
+      "uses": [
+        "tear",
+        "old",
+        "fence",
+        "load",
+        "board",
+        "trailer"
+      ]
+    },
+    {
+      "en": "Remember to wipe your tools dry to prevent rust.",
+      "ru": "Не забывай вытирать инструменты насухо, чтобы не было ржавчины.",
+      "uses": [
+        "remember",
+        "wipe",
+        "tool",
+        "dry",
+        "prevent",
+        "rust"
+      ]
+    },
+    {
+      "en": "Safety rules exist to keep every worker out of the hospital.",
+      "ru": "Правила безопасности существуют, чтобы ни один работник не попал в больницу.",
+      "uses": [
+        "safety",
+        "rule",
+        "exist",
+        "keep",
+        "worker",
+        "hospital"
+      ]
+    },
+    {
+      "en": "I recommend buying quality tools instead of cheap ones.",
+      "ru": "Я рекомендую покупать качественные инструменты, а не дешёвые.",
+      "uses": [
+        "recommend",
+        "buy",
+        "quality",
+        "tool",
+        "cheap"
+      ]
+    },
+    {
+      "en": "When the battery light turns red, it's time to recharge.",
+      "ru": "Когда индикатор аккумулятора становится красным, пора заряжать.",
+      "uses": [
+        "battery",
+        "light",
+        "turn",
+        "red",
+        "recharge"
+      ]
+    }
+  ],
+  "notes": "Готовые словосочетания и предложения без шаблонной автоподстановки."
 }

@@ -2,66 +2,3309 @@
   "id": "general_conversation",
   "titleRu": "Общий разговорный",
   "words": [
-    {"en": "hello", "ru": "привет"},
-    {"en": "thank you", "ru": "спасибо"},
-    {"en": "goodbye", "ru": "пока"},
-    {"en": "yes", "ru": "да"},
-    {"en": "no", "ru": "нет"},
-    {"en": "please", "ru": "пожалуйста"},
-    {"en": "sorry", "ru": "извините"},
-    {"en": "good morning", "ru": "доброе утро"},
-    {"en": "good afternoon", "ru": "добрый день"},
-    {"en": "good evening", "ru": "добрый вечер"},
-    {"en": "good night", "ru": "спокойной ночи"},
-    {"en": "water", "ru": "вода"},
-    {"en": "food", "ru": "еда"},
-    {"en": "bread", "ru": "хлеб"},
-    {"en": "milk", "ru": "молоко"},
-    {"en": "coffee", "ru": "кофе"},
-    {"en": "tea", "ru": "чай"},
-    {"en": "house", "ru": "дом"},
-    {"en": "school", "ru": "школа"},
-    {"en": "book", "ru": "книга"},
-    {"en": "one", "ru": "один"},
-    {"en": "two", "ru": "два"},
-    {"en": "three", "ru": "три"},
-    {"en": "friend", "ru": "друг"},
-    {"en": "family", "ru": "семья"},
-    {"en": "today", "ru": "сегодня"},
-    {"en": "tomorrow", "ru": "завтра"},
-    {"en": "yesterday", "ru": "вчера"},
-    {"en": "here", "ru": "здесь"},
-    {"en": "there", "ru": "там"}
+    {
+      "en": "hello",
+      "ru": "привет"
+    },
+    {
+      "en": "thank you",
+      "ru": "спасибо"
+    },
+    {
+      "en": "goodbye",
+      "ru": "пока"
+    },
+    {
+      "en": "yes",
+      "ru": "да"
+    },
+    {
+      "en": "no",
+      "ru": "нет"
+    },
+    {
+      "en": "please",
+      "ru": "пожалуйста"
+    },
+    {
+      "en": "sorry",
+      "ru": "извините"
+    },
+    {
+      "en": "good morning",
+      "ru": "доброе утро"
+    },
+    {
+      "en": "good afternoon",
+      "ru": "добрый день"
+    },
+    {
+      "en": "good evening",
+      "ru": "добрый вечер"
+    },
+    {
+      "en": "good night",
+      "ru": "спокойной ночи"
+    },
+    {
+      "en": "water",
+      "ru": "вода"
+    },
+    {
+      "en": "food",
+      "ru": "еда"
+    },
+    {
+      "en": "bread",
+      "ru": "хлеб"
+    },
+    {
+      "en": "milk",
+      "ru": "молоко"
+    },
+    {
+      "en": "coffee",
+      "ru": "кофе"
+    },
+    {
+      "en": "tea",
+      "ru": "чай"
+    },
+    {
+      "en": "house",
+      "ru": "дом"
+    },
+    {
+      "en": "school",
+      "ru": "школа"
+    },
+    {
+      "en": "book",
+      "ru": "книга"
+    },
+    {
+      "en": "one",
+      "ru": "один"
+    },
+    {
+      "en": "two",
+      "ru": "два"
+    },
+    {
+      "en": "three",
+      "ru": "три"
+    },
+    {
+      "en": "friend",
+      "ru": "друг"
+    },
+    {
+      "en": "family",
+      "ru": "семья"
+    },
+    {
+      "en": "today",
+      "ru": "сегодня"
+    },
+    {
+      "en": "tomorrow",
+      "ru": "завтра"
+    },
+    {
+      "en": "yesterday",
+      "ru": "вчера"
+    },
+    {
+      "en": "here",
+      "ru": "здесь"
+    },
+    {
+      "en": "there",
+      "ru": "там"
+    },
+    {
+      "en": "excuse me",
+      "ru": "простите"
+    },
+    {
+      "en": "maybe",
+      "ru": "может быть"
+    },
+    {
+      "en": "of course",
+      "ru": "конечно"
+    },
+    {
+      "en": "really",
+      "ru": "правда"
+    },
+    {
+      "en": "exactly",
+      "ru": "именно"
+    },
+    {
+      "en": "almost",
+      "ru": "почти"
+    },
+    {
+      "en": "already",
+      "ru": "уже"
+    },
+    {
+      "en": "still",
+      "ru": "всё ещё"
+    },
+    {
+      "en": "never",
+      "ru": "никогда"
+    },
+    {
+      "en": "always",
+      "ru": "всегда"
+    },
+    {
+      "en": "often",
+      "ru": "часто"
+    },
+    {
+      "en": "sometimes",
+      "ru": "иногда"
+    },
+    {
+      "en": "rarely",
+      "ru": "редко"
+    },
+    {
+      "en": "morning",
+      "ru": "утро"
+    },
+    {
+      "en": "afternoon",
+      "ru": "день"
+    },
+    {
+      "en": "evening",
+      "ru": "вечер"
+    },
+    {
+      "en": "night",
+      "ru": "ночь"
+    },
+    {
+      "en": "weekend",
+      "ru": "выходные"
+    },
+    {
+      "en": "weekday",
+      "ru": "будний день"
+    },
+    {
+      "en": "holiday",
+      "ru": "праздник"
+    },
+    {
+      "en": "appointment",
+      "ru": "встреча по записи"
+    },
+    {
+      "en": "schedule",
+      "ru": "расписание"
+    },
+    {
+      "en": "deadline",
+      "ru": "срок"
+    },
+    {
+      "en": "habit",
+      "ru": "привычка"
+    },
+    {
+      "en": "routine",
+      "ru": "распорядок"
+    },
+    {
+      "en": "plan",
+      "ru": "план"
+    },
+    {
+      "en": "goal",
+      "ru": "цель"
+    },
+    {
+      "en": "progress",
+      "ru": "прогресс"
+    },
+    {
+      "en": "mistake",
+      "ru": "ошибка"
+    },
+    {
+      "en": "advice",
+      "ru": "совет"
+    },
+    {
+      "en": "opinion",
+      "ru": "мнение"
+    },
+    {
+      "en": "agreement",
+      "ru": "согласие"
+    },
+    {
+      "en": "disagreement",
+      "ru": "несогласие"
+    },
+    {
+      "en": "promise",
+      "ru": "обещание"
+    },
+    {
+      "en": "suggestion",
+      "ru": "предложение"
+    },
+    {
+      "en": "question",
+      "ru": "вопрос"
+    },
+    {
+      "en": "answer",
+      "ru": "ответ"
+    },
+    {
+      "en": "conversation",
+      "ru": "разговор"
+    },
+    {
+      "en": "discussion",
+      "ru": "обсуждение"
+    },
+    {
+      "en": "argument",
+      "ru": "спор"
+    },
+    {
+      "en": "compliment",
+      "ru": "комплимент"
+    },
+    {
+      "en": "complaint",
+      "ru": "жалоба"
+    },
+    {
+      "en": "request",
+      "ru": "просьба"
+    },
+    {
+      "en": "invitation",
+      "ru": "приглашение"
+    },
+    {
+      "en": "introduction",
+      "ru": "знакомство"
+    },
+    {
+      "en": "farewell",
+      "ru": "прощание"
+    },
+    {
+      "en": "neighbor",
+      "ru": "сосед"
+    },
+    {
+      "en": "colleague",
+      "ru": "коллега"
+    },
+    {
+      "en": "classmate",
+      "ru": "одноклассник"
+    },
+    {
+      "en": "relative",
+      "ru": "родственник"
+    },
+    {
+      "en": "parents",
+      "ru": "родители"
+    },
+    {
+      "en": "children",
+      "ru": "дети"
+    },
+    {
+      "en": "spouse",
+      "ru": "супруг"
+    },
+    {
+      "en": "partner",
+      "ru": "партнёр"
+    },
+    {
+      "en": "guest",
+      "ru": "гость"
+    },
+    {
+      "en": "host",
+      "ru": "хозяин"
+    },
+    {
+      "en": "stranger",
+      "ru": "незнакомец"
+    },
+    {
+      "en": "crowd",
+      "ru": "толпа"
+    },
+    {
+      "en": "alone",
+      "ru": "один"
+    },
+    {
+      "en": "together",
+      "ru": "вместе"
+    },
+    {
+      "en": "busy",
+      "ru": "занятый"
+    },
+    {
+      "en": "free",
+      "ru": "свободный"
+    },
+    {
+      "en": "tired",
+      "ru": "уставший"
+    },
+    {
+      "en": "excited",
+      "ru": "взволнованный"
+    },
+    {
+      "en": "worried",
+      "ru": "обеспокоенный"
+    },
+    {
+      "en": "calm",
+      "ru": "спокойный"
+    },
+    {
+      "en": "happy",
+      "ru": "счастливый"
+    },
+    {
+      "en": "sad",
+      "ru": "грустный"
+    },
+    {
+      "en": "angry",
+      "ru": "злой"
+    },
+    {
+      "en": "surprised",
+      "ru": "удивленный"
+    },
+    {
+      "en": "bored",
+      "ru": "скучающий"
+    },
+    {
+      "en": "curious",
+      "ru": "любопытный"
+    },
+    {
+      "en": "confident",
+      "ru": "уверенный"
+    },
+    {
+      "en": "nervous",
+      "ru": "нервный"
+    },
+    {
+      "en": "proud",
+      "ru": "гордый"
+    },
+    {
+      "en": "ashamed",
+      "ru": "стыдно"
+    },
+    {
+      "en": "grateful",
+      "ru": "благодарный"
+    },
+    {
+      "en": "jealous",
+      "ru": "ревнивый"
+    },
+    {
+      "en": "lonely",
+      "ru": "одинокий"
+    },
+    {
+      "en": "relaxed",
+      "ru": "расслабленный"
+    },
+    {
+      "en": "weather",
+      "ru": "погода"
+    },
+    {
+      "en": "sunny",
+      "ru": "солнечно"
+    },
+    {
+      "en": "cloudy",
+      "ru": "облачно"
+    },
+    {
+      "en": "rainy",
+      "ru": "дождливо"
+    },
+    {
+      "en": "snowy",
+      "ru": "снежно"
+    },
+    {
+      "en": "windy",
+      "ru": "ветрено"
+    },
+    {
+      "en": "foggy",
+      "ru": "туманно"
+    },
+    {
+      "en": "warm",
+      "ru": "тепло"
+    },
+    {
+      "en": "cold",
+      "ru": "холодно"
+    },
+    {
+      "en": "hot",
+      "ru": "жарко"
+    },
+    {
+      "en": "cool",
+      "ru": "прохладно"
+    },
+    {
+      "en": "humid",
+      "ru": "влажно"
+    },
+    {
+      "en": "temperature",
+      "ru": "температура"
+    },
+    {
+      "en": "forecast",
+      "ru": "прогноз"
+    },
+    {
+      "en": "umbrella",
+      "ru": "зонт"
+    },
+    {
+      "en": "jacket",
+      "ru": "куртка"
+    },
+    {
+      "en": "home",
+      "ru": "дом"
+    },
+    {
+      "en": "apartment",
+      "ru": "квартира"
+    },
+    {
+      "en": "room",
+      "ru": "комната"
+    },
+    {
+      "en": "kitchen",
+      "ru": "кухня"
+    },
+    {
+      "en": "bathroom",
+      "ru": "ванная"
+    },
+    {
+      "en": "bedroom",
+      "ru": "спальня"
+    },
+    {
+      "en": "living room",
+      "ru": "гостиная"
+    },
+    {
+      "en": "balcony",
+      "ru": "балкон"
+    },
+    {
+      "en": "door",
+      "ru": "дверь"
+    },
+    {
+      "en": "window",
+      "ru": "окно"
+    },
+    {
+      "en": "floor",
+      "ru": "пол"
+    },
+    {
+      "en": "ceiling",
+      "ru": "потолок"
+    },
+    {
+      "en": "furniture",
+      "ru": "мебель"
+    },
+    {
+      "en": "sofa",
+      "ru": "диван"
+    },
+    {
+      "en": "chair",
+      "ru": "стул"
+    },
+    {
+      "en": "table",
+      "ru": "стол"
+    },
+    {
+      "en": "lamp",
+      "ru": "лампа"
+    },
+    {
+      "en": "mirror",
+      "ru": "зеркало"
+    },
+    {
+      "en": "closet",
+      "ru": "шкаф"
+    },
+    {
+      "en": "shelf",
+      "ru": "полка"
+    },
+    {
+      "en": "laundry",
+      "ru": "стирка"
+    },
+    {
+      "en": "cleaning",
+      "ru": "уборка"
+    },
+    {
+      "en": "trash",
+      "ru": "мусор"
+    },
+    {
+      "en": "recycling bin",
+      "ru": "бак для вторсырья"
+    },
+    {
+      "en": "keys",
+      "ru": "ключи"
+    },
+    {
+      "en": "wallet",
+      "ru": "кошелёк"
+    },
+    {
+      "en": "phone",
+      "ru": "телефон"
+    },
+    {
+      "en": "charger",
+      "ru": "зарядка"
+    },
+    {
+      "en": "message",
+      "ru": "сообщение"
+    },
+    {
+      "en": "call",
+      "ru": "звонок"
+    },
+    {
+      "en": "email",
+      "ru": "электронная почта"
+    },
+    {
+      "en": "notification",
+      "ru": "уведомление"
+    },
+    {
+      "en": "password",
+      "ru": "пароль"
+    },
+    {
+      "en": "account",
+      "ru": "учётная запись"
+    },
+    {
+      "en": "profile",
+      "ru": "профиль"
+    },
+    {
+      "en": "settings",
+      "ru": "настройки"
+    },
+    {
+      "en": "internet",
+      "ru": "интернет"
+    },
+    {
+      "en": "wifi",
+      "ru": "беспроводная сеть"
+    },
+    {
+      "en": "signal",
+      "ru": "сигнал"
+    },
+    {
+      "en": "battery",
+      "ru": "батарейка"
+    },
+    {
+      "en": "commute",
+      "ru": "дорога на работу"
+    },
+    {
+      "en": "traffic",
+      "ru": "пробки"
+    },
+    {
+      "en": "subway",
+      "ru": "метро"
+    },
+    {
+      "en": "bus",
+      "ru": "автобус"
+    },
+    {
+      "en": "taxi",
+      "ru": "такси"
+    },
+    {
+      "en": "bike",
+      "ru": "велосипед"
+    },
+    {
+      "en": "walk",
+      "ru": "прогулка"
+    },
+    {
+      "en": "crosswalk",
+      "ru": "пешеходный переход"
+    },
+    {
+      "en": "ticket",
+      "ru": "билет"
+    },
+    {
+      "en": "passport",
+      "ru": "паспорт"
+    },
+    {
+      "en": "luggage",
+      "ru": "багаж"
+    },
+    {
+      "en": "hotel",
+      "ru": "отель"
+    },
+    {
+      "en": "reservation",
+      "ru": "бронирование"
+    },
+    {
+      "en": "check-in",
+      "ru": "регистрация заезда"
+    },
+    {
+      "en": "check-out",
+      "ru": "выезд"
+    },
+    {
+      "en": "direction",
+      "ru": "направление"
+    },
+    {
+      "en": "map",
+      "ru": "карта"
+    },
+    {
+      "en": "address",
+      "ru": "адрес"
+    },
+    {
+      "en": "landmark",
+      "ru": "ориентир"
+    },
+    {
+      "en": "distance",
+      "ru": "расстояние"
+    },
+    {
+      "en": "near",
+      "ru": "рядом"
+    },
+    {
+      "en": "far",
+      "ru": "далеко"
+    },
+    {
+      "en": "left",
+      "ru": "налево"
+    },
+    {
+      "en": "right",
+      "ru": "направо"
+    },
+    {
+      "en": "straight",
+      "ru": "прямо"
+    },
+    {
+      "en": "corner",
+      "ru": "угол"
+    },
+    {
+      "en": "intersection",
+      "ru": "перекрёсток"
+    },
+    {
+      "en": "store",
+      "ru": "магазин"
+    },
+    {
+      "en": "mall",
+      "ru": "торговый центр"
+    },
+    {
+      "en": "market",
+      "ru": "рынок"
+    },
+    {
+      "en": "pharmacy",
+      "ru": "аптека"
+    },
+    {
+      "en": "bank",
+      "ru": "банк"
+    },
+    {
+      "en": "post office",
+      "ru": "почта"
+    },
+    {
+      "en": "library",
+      "ru": "библиотека"
+    },
+    {
+      "en": "museum",
+      "ru": "музей"
+    },
+    {
+      "en": "park",
+      "ru": "парк"
+    },
+    {
+      "en": "gym",
+      "ru": "спортзал"
+    },
+    {
+      "en": "cinema",
+      "ru": "кинотеатр"
+    },
+    {
+      "en": "theater",
+      "ru": "театр"
+    },
+    {
+      "en": "concert",
+      "ru": "концерт"
+    },
+    {
+      "en": "festival",
+      "ru": "фестиваль"
+    },
+    {
+      "en": "party",
+      "ru": "вечеринка"
+    },
+    {
+      "en": "picnic",
+      "ru": "пикник"
+    },
+    {
+      "en": "hobby",
+      "ru": "хобби"
+    },
+    {
+      "en": "music",
+      "ru": "музыка"
+    },
+    {
+      "en": "movie",
+      "ru": "фильм"
+    },
+    {
+      "en": "game",
+      "ru": "игра"
+    },
+    {
+      "en": "sport",
+      "ru": "спорт"
+    },
+    {
+      "en": "exercise",
+      "ru": "упражнение"
+    },
+    {
+      "en": "stretch",
+      "ru": "растяжка"
+    },
+    {
+      "en": "sleep",
+      "ru": "сон"
+    },
+    {
+      "en": "rest",
+      "ru": "отдых"
+    },
+    {
+      "en": "break",
+      "ru": "перерыв"
+    },
+    {
+      "en": "vacation",
+      "ru": "отпуск"
+    },
+    {
+      "en": "trip",
+      "ru": "поездка"
+    },
+    {
+      "en": "journey",
+      "ru": "путешествие"
+    },
+    {
+      "en": "souvenir",
+      "ru": "сувенир"
+    },
+    {
+      "en": "photo",
+      "ru": "фото"
+    },
+    {
+      "en": "health",
+      "ru": "здоровье"
+    },
+    {
+      "en": "doctor",
+      "ru": "врач"
+    },
+    {
+      "en": "nurse",
+      "ru": "медсестра"
+    },
+    {
+      "en": "appointment slot",
+      "ru": "слот записи"
+    },
+    {
+      "en": "symptom",
+      "ru": "симптом"
+    },
+    {
+      "en": "medicine",
+      "ru": "лекарство"
+    },
+    {
+      "en": "prescription",
+      "ru": "рецепт"
+    },
+    {
+      "en": "allergy",
+      "ru": "аллергия"
+    },
+    {
+      "en": "pain",
+      "ru": "боль"
+    },
+    {
+      "en": "fever",
+      "ru": "жар"
+    },
+    {
+      "en": "cough",
+      "ru": "кашель"
+    },
+    {
+      "en": "headache",
+      "ru": "головная боль"
+    },
+    {
+      "en": "insurance",
+      "ru": "страховка"
+    },
+    {
+      "en": "claim",
+      "ru": "заявление на выплату"
+    },
+    {
+      "en": "policy",
+      "ru": "полис"
+    },
+    {
+      "en": "coverage",
+      "ru": "покрытие"
+    },
+    {
+      "en": "salary",
+      "ru": "зарплата"
+    },
+    {
+      "en": "budget",
+      "ru": "бюджет"
+    },
+    {
+      "en": "expense",
+      "ru": "расход"
+    },
+    {
+      "en": "income",
+      "ru": "доход"
+    },
+    {
+      "en": "bill",
+      "ru": "счёт"
+    },
+    {
+      "en": "receipt",
+      "ru": "чек"
+    },
+    {
+      "en": "discount",
+      "ru": "скидка"
+    },
+    {
+      "en": "sale",
+      "ru": "распродажа"
+    },
+    {
+      "en": "cash",
+      "ru": "наличные"
+    },
+    {
+      "en": "card payment",
+      "ru": "оплата картой"
+    },
+    {
+      "en": "tip",
+      "ru": "чаевые"
+    },
+    {
+      "en": "change",
+      "ru": "сдача"
+    },
+    {
+      "en": "price",
+      "ru": "цена"
+    },
+    {
+      "en": "expensive",
+      "ru": "дорогой"
+    },
+    {
+      "en": "cheap",
+      "ru": "дешёвый"
+    },
+    {
+      "en": "affordable",
+      "ru": "доступный по цене"
+    },
+    {
+      "en": "quality",
+      "ru": "качество"
+    },
+    {
+      "en": "size",
+      "ru": "размер"
+    },
+    {
+      "en": "color",
+      "ru": "цвет"
+    },
+    {
+      "en": "brand",
+      "ru": "бренд"
+    },
+    {
+      "en": "return",
+      "ru": "возврат"
+    },
+    {
+      "en": "exchange",
+      "ru": "обмен"
+    },
+    {
+      "en": "warranty",
+      "ru": "гарантия"
+    },
+    {
+      "en": "shipping",
+      "ru": "доставка"
+    },
+    {
+      "en": "delivery",
+      "ru": "доставка заказа"
+    },
+    {
+      "en": "package",
+      "ru": "посылка"
+    },
+    {
+      "en": "tracking",
+      "ru": "отслеживание"
+    },
+    {
+      "en": "delay",
+      "ru": "задержка"
+    },
+    {
+      "en": "job",
+      "ru": "работа"
+    },
+    {
+      "en": "career",
+      "ru": "карьера"
+    },
+    {
+      "en": "interview",
+      "ru": "собеседование"
+    },
+    {
+      "en": "resume",
+      "ru": "резюме"
+    },
+    {
+      "en": "skill",
+      "ru": "навык"
+    },
+    {
+      "en": "experience",
+      "ru": "опыт"
+    },
+    {
+      "en": "promotion",
+      "ru": "повышение"
+    },
+    {
+      "en": "retirement",
+      "ru": "пенсия"
+    },
+    {
+      "en": "meeting",
+      "ru": "совещание"
+    },
+    {
+      "en": "presentation",
+      "ru": "презентация"
+    },
+    {
+      "en": "deadline pressure",
+      "ru": "давление срока"
+    },
+    {
+      "en": "teamwork",
+      "ru": "командная работа"
+    },
+    {
+      "en": "remote work",
+      "ru": "удалённая работа"
+    },
+    {
+      "en": "office",
+      "ru": "офис"
+    },
+    {
+      "en": "manager",
+      "ru": "руководитель"
+    },
+    {
+      "en": "employee",
+      "ru": "сотрудник"
+    },
+    {
+      "en": "internship",
+      "ru": "стажировка"
+    },
+    {
+      "en": "language",
+      "ru": "язык"
+    },
+    {
+      "en": "accent",
+      "ru": "акцент"
+    },
+    {
+      "en": "pronunciation",
+      "ru": "произношение"
+    },
+    {
+      "en": "vocabulary",
+      "ru": "словарный запас"
+    },
+    {
+      "en": "grammar",
+      "ru": "грамматика"
+    },
+    {
+      "en": "fluency",
+      "ru": "свобода речи"
+    },
+    {
+      "en": "practice",
+      "ru": "практика"
+    },
+    {
+      "en": "homework",
+      "ru": "домашнее задание"
+    },
+    {
+      "en": "exam",
+      "ru": "экзамен"
+    },
+    {
+      "en": "grade",
+      "ru": "оценка"
+    },
+    {
+      "en": "teacher",
+      "ru": "учитель"
+    },
+    {
+      "en": "student",
+      "ru": "студент"
+    },
+    {
+      "en": "classroom",
+      "ru": "класс"
+    },
+    {
+      "en": "lecture",
+      "ru": "лекция"
+    },
+    {
+      "en": "notes",
+      "ru": "заметки"
+    }
   ],
   "phrases": [
-    {"en": "hello friend", "ru": "привет, друг", "uses": ["hello", "friend"]},
-    {"en": "thank you very much", "ru": "большое спасибо", "uses": ["thank you"]},
-    {"en": "say goodbye", "ru": "попрощаться", "uses": ["goodbye"]},
-    {"en": "yes please", "ru": "да, пожалуйста", "uses": ["yes", "please"]},
-    {"en": "no thank you", "ru": "нет, спасибо", "uses": ["no", "thank you"]},
-    {"en": "I am sorry", "ru": "мне жаль", "uses": ["sorry"]},
-    {"en": "good morning everyone", "ru": "доброе утро всем", "uses": ["good morning"]},
-    {"en": "drink water", "ru": "пить воду", "uses": ["water"]},
-    {"en": "fresh bread", "ru": "свежий хлеб", "uses": ["bread"]},
-    {"en": "hot coffee", "ru": "горячий кофе", "uses": ["coffee"]},
-    {"en": "green tea", "ru": "зелёный чай", "uses": ["tea"]},
-    {"en": "my house", "ru": "мой дом", "uses": ["house"]},
-    {"en": "at school", "ru": "в школе", "uses": ["school"]},
-    {"en": "read a book", "ru": "читать книгу", "uses": ["book"]},
-    {"en": "my family", "ru": "моя семья", "uses": ["family"]}
+    {
+      "en": "make yourself at home",
+      "ru": "чувствуй себя как дома",
+      "uses": [
+        "home"
+      ]
+    },
+    {
+      "en": "sorry for the delay",
+      "ru": "извините за задержку",
+      "uses": [
+        "sorry",
+        "delay"
+      ]
+    },
+    {
+      "en": "it depends on the weather",
+      "ru": "это зависит от погоды",
+      "uses": [
+        "weather"
+      ]
+    },
+    {
+      "en": "right on time",
+      "ru": "точно вовремя",
+      "uses": [
+        "right"
+      ]
+    },
+    {
+      "en": "ahead of schedule",
+      "ru": "раньше срока",
+      "uses": [
+        "schedule"
+      ]
+    },
+    {
+      "en": "behind schedule",
+      "ru": "с опозданием от графика",
+      "uses": [
+        "schedule"
+      ]
+    },
+    {
+      "en": "under the weather",
+      "ru": "неважно себя чувствовать",
+      "uses": [
+        "weather"
+      ]
+    },
+    {
+      "en": "break the ice",
+      "ru": "растопить лёд",
+      "uses": [
+        "break"
+      ]
+    },
+    {
+      "en": "call it a day",
+      "ru": "закончить на сегодня",
+      "uses": [
+        "call"
+      ]
+    },
+    {
+      "en": "watch out for traffic",
+      "ru": "осторожнее с машинами",
+      "uses": [
+        "traffic"
+      ]
+    },
+    {
+      "en": "turn left at the corner",
+      "ru": "поверните налево на углу",
+      "uses": [
+        "left",
+        "corner"
+      ]
+    },
+    {
+      "en": "go straight ahead",
+      "ru": "идите прямо",
+      "uses": [
+        "straight"
+      ]
+    },
+    {
+      "en": "it's around the corner",
+      "ru": "это за углом",
+      "uses": [
+        "corner"
+      ]
+    },
+    {
+      "en": "how far is it",
+      "ru": "как далеко это",
+      "uses": [
+        "far"
+      ]
+    },
+    {
+      "en": "I'm looking for a pharmacy",
+      "ru": "я ищу аптеку",
+      "uses": [
+        "pharmacy"
+      ]
+    },
+    {
+      "en": "keep the change",
+      "ru": "сдачи не надо",
+      "uses": [
+        "change"
+      ]
+    },
+    {
+      "en": "split the bill",
+      "ru": "разделить счёт",
+      "uses": [
+        "bill"
+      ]
+    },
+    {
+      "en": "I'd like to book a table",
+      "ru": "я хотел бы забронировать столик",
+      "uses": [
+        "book",
+        "table"
+      ]
+    },
+    {
+      "en": "a table for two",
+      "ru": "столик на двоих",
+      "uses": [
+        "table",
+        "two"
+      ]
+    },
+    {
+      "en": "in my opinion",
+      "ru": "по моему мнению",
+      "uses": [
+        "opinion"
+      ]
+    },
+    {
+      "en": "as far as I know",
+      "ru": "насколько я знаю",
+      "uses": [
+        "far"
+      ]
+    },
+    {
+      "en": "that's a good question",
+      "ru": "хороший вопрос",
+      "uses": [
+        "question"
+      ]
+    },
+    {
+      "en": "congratulations on your promotion",
+      "ru": "поздравляю с повышением",
+      "uses": [
+        "promotion"
+      ]
+    },
+    {
+      "en": "sorry to bother you",
+      "ru": "извините за беспокойство",
+      "uses": [
+        "sorry"
+      ]
+    },
+    {
+      "en": "I'll be right back",
+      "ru": "я сейчас вернусь",
+      "uses": [
+        "right"
+      ]
+    },
+    {
+      "en": "can I leave a message",
+      "ru": "могу я оставить сообщение",
+      "uses": [
+        "message"
+      ]
+    },
+    {
+      "en": "my phone is dead",
+      "ru": "мой телефон разрядился",
+      "uses": [
+        "phone"
+      ]
+    },
+    {
+      "en": "I'm out of battery",
+      "ru": "у меня сел аккумулятор",
+      "uses": [
+        "battery"
+      ]
+    },
+    {
+      "en": "I'm crazy about music",
+      "ru": "я без ума от музыки",
+      "uses": [
+        "music"
+      ]
+    },
+    {
+      "en": "I slept like a log",
+      "ru": "я спал как убитый",
+      "uses": [
+        "sleep"
+      ]
+    },
+    {
+      "en": "I feel a bit tired",
+      "ru": "я немного устал",
+      "uses": [
+        "tired"
+      ]
+    },
+    {
+      "en": "I have a headache",
+      "ru": "у меня болит голова",
+      "uses": [
+        "headache"
+      ]
+    },
+    {
+      "en": "I caught a cold",
+      "ru": "я простудился",
+      "uses": [
+        "cold"
+      ]
+    },
+    {
+      "en": "I need some rest",
+      "ru": "мне нужно отдохнуть",
+      "uses": [
+        "rest"
+      ]
+    },
+    {
+      "en": "go for a walk",
+      "ru": "пойти погулять",
+      "uses": [
+        "walk"
+      ]
+    },
+    {
+      "en": "spend time with family",
+      "ru": "проводить время с семьёй",
+      "uses": [
+        "family"
+      ]
+    },
+    {
+      "en": "do the laundry",
+      "ru": "постирать бельё",
+      "uses": [
+        "laundry"
+      ]
+    },
+    {
+      "en": "take out the trash",
+      "ru": "вынести мусор",
+      "uses": [
+        "trash"
+      ]
+    },
+    {
+      "en": "clean the house",
+      "ru": "убрать дом",
+      "uses": [
+        "house"
+      ]
+    },
+    {
+      "en": "pay the bills",
+      "ru": "оплатить счета",
+      "uses": [
+        "bill"
+      ]
+    },
+    {
+      "en": "miss the bus",
+      "ru": "опоздать на автобус",
+      "uses": [
+        "bus"
+      ]
+    },
+    {
+      "en": "take a taxi",
+      "ru": "взять такси",
+      "uses": [
+        "taxi"
+      ]
+    },
+    {
+      "en": "get stuck in traffic",
+      "ru": "застрять в пробке",
+      "uses": [
+        "traffic"
+      ]
+    },
+    {
+      "en": "face the music",
+      "ru": "отвечать за последствия",
+      "uses": [
+        "music"
+      ]
+    },
+    {
+      "en": "good to see you",
+      "ru": "рад тебя видеть",
+      "uses": [
+        "see"
+      ]
+    },
+    {
+      "en": "how's it going",
+      "ru": "как дела",
+      "uses": [
+        "go"
+      ]
+    },
+    {
+      "en": "nice to meet you",
+      "ru": "приятно познакомиться",
+      "uses": [
+        "nice",
+        "meet"
+      ]
+    },
+    {
+      "en": "long time no see",
+      "ru": "сто лет не виделись",
+      "uses": [
+        "long",
+        "time",
+        "see"
+      ]
+    },
+    {
+      "en": "what have you been up to",
+      "ru": "чем ты занимался",
+      "uses": [
+        "be"
+      ]
+    },
+    {
+      "en": "take your time",
+      "ru": "не торопись",
+      "uses": [
+        "take",
+        "time"
+      ]
+    },
+    {
+      "en": "no worries at all",
+      "ru": "совсем не переживай",
+      "uses": [
+        "worry"
+      ]
+    },
+    {
+      "en": "sounds good to me",
+      "ru": "мне подходит",
+      "uses": [
+        "sound",
+        "good"
+      ]
+    },
+    {
+      "en": "let me think about it",
+      "ru": "дай мне подумать об этом",
+      "uses": [
+        "think"
+      ]
+    },
+    {
+      "en": "I'm running late",
+      "ru": "я опаздываю",
+      "uses": [
+        "run",
+        "late"
+      ]
+    },
+    {
+      "en": "see you around",
+      "ru": "увидимся",
+      "uses": [
+        "see",
+        "around"
+      ]
+    },
+    {
+      "en": "catch you later",
+      "ru": "до скорого",
+      "uses": [
+        "catch",
+        "later"
+      ]
+    },
+    {
+      "en": "thanks for waiting",
+      "ru": "спасибо, что подождали",
+      "uses": [
+        "thanks",
+        "wait"
+      ]
+    },
+    {
+      "en": "could you repeat that",
+      "ru": "не могли бы вы повторить",
+      "uses": [
+        "repeat"
+      ]
+    },
+    {
+      "en": "I didn't catch that",
+      "ru": "я не расслышал",
+      "uses": [
+        "catch"
+      ]
+    },
+    {
+      "en": "speak a little slower",
+      "ru": "говорите чуть медленнее",
+      "uses": [
+        "speak",
+        "slow"
+      ]
+    },
+    {
+      "en": "what do you mean",
+      "ru": "что ты имеешь в виду",
+      "uses": [
+        "mean"
+      ]
+    },
+    {
+      "en": "that makes sense",
+      "ru": "это логично",
+      "uses": [
+        "make",
+        "sense"
+      ]
+    },
+    {
+      "en": "I'm not sure yet",
+      "ru": "я пока не уверен",
+      "uses": [
+        "sure"
+      ]
+    },
+    {
+      "en": "as soon as possible",
+      "ru": "как можно скорее",
+      "uses": [
+        "soon",
+        "possible"
+      ]
+    },
+    {
+      "en": "by the way",
+      "ru": "кстати",
+      "uses": [
+        "way"
+      ]
+    },
+    {
+      "en": "on the other hand",
+      "ru": "с другой стороны",
+      "uses": [
+        "other",
+        "hand"
+      ]
+    },
+    {
+      "en": "in the meantime",
+      "ru": "тем временем",
+      "uses": [
+        "meantime"
+      ]
+    },
+    {
+      "en": "for the time being",
+      "ru": "пока что",
+      "uses": [
+        "time"
+      ]
+    },
+    {
+      "en": "sooner or later",
+      "ru": "рано или поздно",
+      "uses": [
+        "soon",
+        "late"
+      ]
+    },
+    {
+      "en": "once in a while",
+      "ru": "время от времени",
+      "uses": [
+        "once",
+        "while"
+      ]
+    },
+    {
+      "en": "every now and then",
+      "ru": "время от времени",
+      "uses": [
+        "every",
+        "now",
+        "then"
+      ]
+    },
+    {
+      "en": "all of a sudden",
+      "ru": "внезапно",
+      "uses": [
+        "sudden"
+      ]
+    },
+    {
+      "en": "at the last minute",
+      "ru": "в последнюю минуту",
+      "uses": [
+        "last",
+        "minute"
+      ]
+    },
+    {
+      "en": "a piece of cake",
+      "ru": "проще простого",
+      "uses": [
+        "piece",
+        "cake"
+      ]
+    },
+    {
+      "en": "hit the road",
+      "ru": "отправиться в путь",
+      "uses": [
+        "hit",
+        "road"
+      ]
+    },
+    {
+      "en": "give me a hand",
+      "ru": "помоги мне",
+      "uses": [
+        "give",
+        "hand"
+      ]
+    },
+    {
+      "en": "keep me posted",
+      "ru": "держи меня в курсе",
+      "uses": [
+        "keep",
+        "post"
+      ]
+    },
+    {
+      "en": "let's stay in touch",
+      "ru": "давай держать связь",
+      "uses": [
+        "stay",
+        "touch"
+      ]
+    },
+    {
+      "en": "I'll get back to you",
+      "ru": "я вернусь к вам с ответом",
+      "uses": [
+        "get",
+        "back"
+      ]
+    },
+    {
+      "en": "it slipped my mind",
+      "ru": "это вылетело у меня из головы",
+      "uses": [
+        "slip",
+        "mind"
+      ]
+    },
+    {
+      "en": "I lost track of time",
+      "ru": "я потерял счёт времени",
+      "uses": [
+        "lose",
+        "track",
+        "time"
+      ]
+    },
+    {
+      "en": "make up your mind",
+      "ru": "прими решение",
+      "uses": [
+        "make",
+        "mind"
+      ]
+    },
+    {
+      "en": "take it easy",
+      "ru": "не напрягайся",
+      "uses": [
+        "take",
+        "easy"
+      ]
+    },
+    {
+      "en": "hang in there",
+      "ru": "держись",
+      "uses": [
+        "hang"
+      ]
+    },
+    {
+      "en": "mind your step",
+      "ru": "осторожно, под ноги",
+      "uses": [
+        "mind",
+        "step"
+      ]
+    },
+    {
+      "en": "where can I find",
+      "ru": "где я могу найти",
+      "uses": [
+        "find"
+      ]
+    },
+    {
+      "en": "do you take cards",
+      "ru": "вы принимаете карты",
+      "uses": [
+        "take",
+        "card"
+      ]
+    },
+    {
+      "en": "it's on me",
+      "ru": "я угощаю",
+      "uses": [
+        "on"
+      ]
+    },
+    {
+      "en": "can I get a refund",
+      "ru": "могу я получить возврат денег",
+      "uses": [
+        "get",
+        "refund"
+      ]
+    },
+    {
+      "en": "what time does it open",
+      "ru": "во сколько это открывается",
+      "uses": [
+        "time",
+        "open"
+      ]
+    },
+    {
+      "en": "is this seat taken",
+      "ru": "это место занято",
+      "uses": [
+        "seat",
+        "take"
+      ]
+    },
+    {
+      "en": "excuse me for a moment",
+      "ru": "извините, я на минутку",
+      "uses": [
+        "excuse",
+        "moment"
+      ]
+    },
+    {
+      "en": "pardon my English",
+      "ru": "простите мой английский",
+      "uses": [
+        "pardon",
+        "english"
+      ]
+    },
+    {
+      "en": "I'm still learning",
+      "ru": "я всё ещё учусь",
+      "uses": [
+        "learn"
+      ]
+    },
+    {
+      "en": "how do you spell that",
+      "ru": "как это пишется",
+      "uses": [
+        "spell"
+      ]
+    },
+    {
+      "en": "what does it stand for",
+      "ru": "что это означает",
+      "uses": [
+        "stand"
+      ]
+    },
+    {
+      "en": "give me an example",
+      "ru": "приведи пример",
+      "uses": [
+        "give",
+        "example"
+      ]
+    },
+    {
+      "en": "let me rephrase that",
+      "ru": "позвольте перефразировать",
+      "uses": [
+        "rephrase"
+      ]
+    },
+    {
+      "en": "to be honest",
+      "ru": "честно говоря",
+      "uses": [
+        "honest"
+      ]
+    },
+    {
+      "en": "it seems to me",
+      "ru": "мне кажется",
+      "uses": [
+        "seem"
+      ]
+    },
+    {
+      "en": "I couldn't agree more",
+      "ru": "полностью согласен",
+      "uses": [
+        "agree"
+      ]
+    },
+    {
+      "en": "I see your point",
+      "ru": "я понимаю вашу мысль",
+      "uses": [
+        "see",
+        "point"
+      ]
+    },
+    {
+      "en": "fair enough",
+      "ru": "справедливо",
+      "uses": [
+        "fair",
+        "enough"
+      ]
+    },
+    {
+      "en": "no big deal",
+      "ru": "ничего страшного",
+      "uses": [
+        "big",
+        "deal"
+      ]
+    },
+    {
+      "en": "it's up to you",
+      "ru": "решать тебе",
+      "uses": [
+        "up"
+      ]
+    },
+    {
+      "en": "I have no idea",
+      "ru": "понятия не имею",
+      "uses": [
+        "idea"
+      ]
+    },
+    {
+      "en": "I'm all ears",
+      "ru": "я весь внимание",
+      "uses": [
+        "ear"
+      ]
+    },
+    {
+      "en": "you must be joking",
+      "ru": "ты, должно быть, шутишь",
+      "uses": [
+        "must",
+        "joke"
+      ]
+    },
+    {
+      "en": "what a coincidence",
+      "ru": "какое совпадение",
+      "uses": [
+        "coincidence"
+      ]
+    },
+    {
+      "en": "what a relief",
+      "ru": "какое облегчение",
+      "uses": [
+        "relief"
+      ]
+    },
+    {
+      "en": "what a pity",
+      "ru": "как жаль",
+      "uses": [
+        "pity"
+      ]
+    },
+    {
+      "en": "lucky you",
+      "ru": "тебе повезло",
+      "uses": [
+        "lucky"
+      ]
+    },
+    {
+      "en": "good luck with that",
+      "ru": "удачи с этим",
+      "uses": [
+        "good",
+        "luck"
+      ]
+    },
+    {
+      "en": "get well soon",
+      "ru": "скорейшего выздоровления",
+      "uses": [
+        "get",
+        "well",
+        "soon"
+      ]
+    },
+    {
+      "en": "cheer up",
+      "ru": "не унывай",
+      "uses": [
+        "cheer"
+      ]
+    },
+    {
+      "en": "don't worry about it",
+      "ru": "не беспокойся об этом",
+      "uses": [
+        "worry"
+      ]
+    },
+    {
+      "en": "it's not your fault",
+      "ru": "это не твоя вина",
+      "uses": [
+        "fault"
+      ]
+    },
+    {
+      "en": "I owe you one",
+      "ru": "я твой должник",
+      "uses": [
+        "owe"
+      ]
+    },
+    {
+      "en": "my pleasure",
+      "ru": "с удовольствием",
+      "uses": [
+        "pleasure"
+      ]
+    },
+    {
+      "en": "you're very welcome",
+      "ru": "пожалуйста",
+      "uses": [
+        "welcome"
+      ]
+    },
+    {
+      "en": "I appreciate your help",
+      "ru": "я ценю вашу помощь",
+      "uses": [
+        "appreciate",
+        "help"
+      ]
+    },
+    {
+      "en": "my bad",
+      "ru": "моя ошибка",
+      "uses": [
+        "bad"
+      ]
+    },
+    {
+      "en": "let's get started",
+      "ru": "давайте начнём",
+      "uses": [
+        "get",
+        "start"
+      ]
+    },
+    {
+      "en": "let's wrap up",
+      "ru": "давайте подведём итог",
+      "uses": [
+        "wrap"
+      ]
+    },
+    {
+      "en": "let's talk it over",
+      "ru": "давай это обсудим",
+      "uses": [
+        "talk"
+      ]
+    },
+    {
+      "en": "I'm on my way",
+      "ru": "я уже в пути",
+      "uses": [
+        "way"
+      ]
+    },
+    {
+      "en": "hold on a second",
+      "ru": "подожди секунду",
+      "uses": [
+        "hold",
+        "second"
+      ]
+    },
+    {
+      "en": "you have the wrong number",
+      "ru": "вы ошиблись номером",
+      "uses": [
+        "wrong",
+        "number"
+      ]
+    },
+    {
+      "en": "send me a text",
+      "ru": "отправь мне сообщение",
+      "uses": [
+        "send",
+        "text"
+      ]
+    },
+    {
+      "en": "drop me a line",
+      "ru": "напиши мне пару строк",
+      "uses": [
+        "drop",
+        "line"
+      ]
+    },
+    {
+      "en": "I'm in a hurry",
+      "ru": "я спешу",
+      "uses": [
+        "hurry"
+      ]
+    },
+    {
+      "en": "I'm fed up with it",
+      "ru": "мне это надоело",
+      "uses": [
+        "fed"
+      ]
+    },
+    {
+      "en": "I can't stand noise",
+      "ru": "терпеть не могу шум",
+      "uses": [
+        "stand",
+        "noise"
+      ]
+    },
+    {
+      "en": "I'm into hiking",
+      "ru": "я увлекаюсь походами",
+      "uses": [
+        "hiking"
+      ]
+    },
+    {
+      "en": "I'm good at cooking",
+      "ru": "я хорошо готовлю",
+      "uses": [
+        "good",
+        "cook"
+      ]
+    },
+    {
+      "en": "I'm bad at math",
+      "ru": "я плох в математике",
+      "uses": [
+        "bad",
+        "math"
+      ]
+    },
+    {
+      "en": "I look forward to it",
+      "ru": "жду этого с нетерпением",
+      "uses": [
+        "look",
+        "forward"
+      ]
+    },
+    {
+      "en": "I used to live there",
+      "ru": "раньше я там жил",
+      "uses": [
+        "use",
+        "live"
+      ]
+    },
+    {
+      "en": "I'm getting used to it",
+      "ru": "я к этому привыкаю",
+      "uses": [
+        "get",
+        "use"
+      ]
+    },
+    {
+      "en": "I'm about to leave",
+      "ru": "я собираюсь уходить",
+      "uses": [
+        "leave"
+      ]
+    },
+    {
+      "en": "I've made up my mind",
+      "ru": "я принял решение",
+      "uses": [
+        "make",
+        "mind"
+      ]
+    },
+    {
+      "en": "I had a rough day",
+      "ru": "у меня был тяжёлый день",
+      "uses": [
+        "rough",
+        "day"
+      ]
+    },
+    {
+      "en": "I woke up early",
+      "ru": "я проснулся рано",
+      "uses": [
+        "wake",
+        "early"
+      ]
+    },
+    {
+      "en": "I feel much better",
+      "ru": "я чувствую себя гораздо лучше",
+      "uses": [
+        "feel",
+        "better"
+      ]
+    },
+    {
+      "en": "take a deep breath",
+      "ru": "сделай глубокий вдох",
+      "uses": [
+        "take",
+        "deep",
+        "breath"
+      ]
+    },
+    {
+      "en": "get some fresh air",
+      "ru": "подышать свежим воздухом",
+      "uses": [
+        "fresh",
+        "air"
+      ]
+    },
+    {
+      "en": "do the dishes",
+      "ru": "помыть посуду",
+      "uses": [
+        "dish"
+      ]
+    },
+    {
+      "en": "pay the rent",
+      "ru": "заплатить за аренду",
+      "uses": [
+        "pay",
+        "rent"
+      ]
+    },
+    {
+      "en": "save some money",
+      "ru": "накопить немного денег",
+      "uses": [
+        "save",
+        "money"
+      ]
+    },
+    {
+      "en": "run some errands",
+      "ru": "сделать пару дел",
+      "uses": [
+        "run",
+        "errand"
+      ]
+    }
   ],
   "sentences": [
-    {"en": "Hello, my friend.", "ru": "Привет, мой друг.", "uses": ["hello", "friend"]},
-    {"en": "Thank you for the water.", "ru": "Спасибо за воду.", "uses": ["thank you", "water"]},
-    {"en": "Please say goodbye.", "ru": "Пожалуйста, попрощайся.", "uses": ["please", "goodbye"]},
-    {"en": "Yes, I want coffee.", "ru": "Да, я хочу кофе.", "uses": ["yes", "coffee"]},
-    {"en": "No, I drink tea.", "ru": "Нет, я пью чай.", "uses": ["no", "tea"]},
-    {"en": "I am sorry I am late.", "ru": "Извините, я опоздал.", "uses": ["sorry"]},
-    {"en": "Good morning! How are you today?", "ru": "Доброе утро! Как дела сегодня?", "uses": ["good morning", "today"]},
-    {"en": "I need bread and milk.", "ru": "Мне нужны хлеб и молоко.", "uses": ["bread", "milk"]},
-    {"en": "This is my house.", "ru": "Это мой дом.", "uses": ["house"]},
-    {"en": "She reads a book at school.", "ru": "Она читает книгу в школе.", "uses": ["book", "school"]},
-    {"en": "My family is here.", "ru": "Моя семья здесь.", "uses": ["family", "here"]},
-    {"en": "See you tomorrow.", "ru": "Увидимся завтра.", "uses": ["tomorrow"]}
-  ]
+    {
+      "en": "Could you tell me how to get to the nearest subway station?",
+      "ru": "Не подскажете, как добраться до ближайшей станции метро?",
+      "uses": [
+        "near",
+        "subway"
+      ]
+    },
+    {
+      "en": "I usually wake up at seven, but on weekends I sleep until nine.",
+      "ru": "Обычно я просыпаюсь в семь, но по выходным сплю до девяти.",
+      "uses": [
+        "weekend",
+        "sleep"
+      ]
+    },
+    {
+      "en": "She has been learning English for two years, and her pronunciation is getting better.",
+      "ru": "Она учит английский два года, и её произношение улучшается.",
+      "uses": [
+        "pronunciation"
+      ]
+    },
+    {
+      "en": "If it rains tomorrow, we will stay home and watch a movie.",
+      "ru": "Если завтра будет дождь, мы останемся дома и посмотрим фильм.",
+      "uses": [
+        "movie"
+      ]
+    },
+    {
+      "en": "We missed the last bus, so we had to walk home.",
+      "ru": "Мы опоздали на последний автобус, поэтому пришлось идти домой пешком.",
+      "uses": [
+        "bus",
+        "walk"
+      ]
+    },
+    {
+      "en": "He forgot his keys at work and had to call a locksmith.",
+      "ru": "Он забыл ключи на работе и был вынужден вызвать слесаря.",
+      "uses": [
+        "call"
+      ]
+    },
+    {
+      "en": "The meeting has been moved from Monday to Wednesday.",
+      "ru": "Встречу перенесли с понедельника на среду.",
+      "uses": [
+        "meeting"
+      ]
+    },
+    {
+      "en": "I'm thinking about changing jobs, but I haven't decided yet.",
+      "ru": "Я думаю о смене работы, но ещё не решил.",
+      "uses": [
+        "change",
+        "job"
+      ]
+    },
+    {
+      "en": "They moved to a smaller apartment to save money on rent.",
+      "ru": "Они переехали в квартиру поменьше, чтобы сэкономить на аренде.",
+      "uses": [
+        "apartment"
+      ]
+    },
+    {
+      "en": "Would you mind closing the window? It's getting cold in here.",
+      "ru": "Вы не могли бы закрыть окно? Здесь становится холодно.",
+      "uses": [
+        "window",
+        "cold"
+      ]
+    },
+    {
+      "en": "The store closes at nine, so we need to hurry.",
+      "ru": "Магазин закрывается в девять, так что нам нужно поторопиться.",
+      "uses": [
+        "store"
+      ]
+    },
+    {
+      "en": "She apologised for being late and explained that the train was delayed.",
+      "ru": "Она извинилась за опоздание и объяснила, что поезд задержался.",
+      "uses": [
+        "delay"
+      ]
+    },
+    {
+      "en": "After dinner, we usually go for a short walk around the block.",
+      "ru": "После ужина мы обычно ходим на короткую прогулку по кварталу.",
+      "uses": [
+        "walk"
+      ]
+    },
+    {
+      "en": "He promised to call me back as soon as the meeting ended.",
+      "ru": "Он пообещал перезвонить, как только закончится встреча.",
+      "uses": [
+        "promise",
+        "call",
+        "meeting"
+      ]
+    },
+    {
+      "en": "The weather forecast says it will be sunny all week.",
+      "ru": "Прогноз погоды обещает солнце всю неделю.",
+      "uses": [
+        "weather",
+        "forecast",
+        "sunny"
+      ]
+    },
+    {
+      "en": "You can pay by card or in cash, whichever you prefer.",
+      "ru": "Вы можете заплатить картой или наличными, как вам удобнее.",
+      "uses": [
+        "cash"
+      ]
+    },
+    {
+      "en": "My phone battery died right in the middle of our conversation.",
+      "ru": "Аккумулятор телефона сел прямо посреди нашего разговора.",
+      "uses": [
+        "phone",
+        "battery",
+        "conversation"
+      ]
+    },
+    {
+      "en": "We decided to postpone the trip until the weather improves.",
+      "ru": "Мы решили отложить поездку, пока погода не улучшится.",
+      "uses": [
+        "trip",
+        "weather"
+      ]
+    },
+    {
+      "en": "Honestly, I didn't expect the movie to be that good.",
+      "ru": "Честно говоря, я не ожидал, что фильм будет таким хорошим.",
+      "uses": [
+        "movie"
+      ]
+    },
+    {
+      "en": "If you have any questions, don't hesitate to ask.",
+      "ru": "Если у вас есть вопросы, не стесняйтесь спрашивать.",
+      "uses": [
+        "question"
+      ]
+    },
+    {
+      "en": "The doctor told me to drink more water and get more sleep.",
+      "ru": "Врач сказал мне пить больше воды и больше спать.",
+      "uses": [
+        "doctor",
+        "water",
+        "sleep"
+      ]
+    },
+    {
+      "en": "It's important to stay calm when something goes wrong.",
+      "ru": "Важно сохранять спокойствие, когда что-то идёт не так.",
+      "uses": [
+        "calm"
+      ]
+    },
+    {
+      "en": "He speaks three languages fluently, including French.",
+      "ru": "Он свободно говорит на трёх языках, включая французский.",
+      "uses": [
+        "language"
+      ]
+    },
+    {
+      "en": "I'll text you the address as soon as I get there.",
+      "ru": "Я отправлю тебе адрес сообщением, как только доберусь.",
+      "uses": [
+        "address"
+      ]
+    },
+    {
+      "en": "The new coffee shop on Main Street is always crowded in the morning.",
+      "ru": "В новой кофейне на Мейн-стрит утром всегда многолюдно.",
+      "uses": [
+        "coffee",
+        "morning"
+      ]
+    },
+    {
+      "en": "My brother borrowed my car and returned it with an empty tank.",
+      "ru": "Мой брат взял мою машину и вернул её с пустым баком.",
+      "uses": [
+        "return"
+      ]
+    },
+    {
+      "en": "I'm afraid I can't make it to the party this Saturday.",
+      "ru": "Боюсь, я не смогу прийти на вечеринку в эту субботу.",
+      "uses": [
+        "party"
+      ]
+    },
+    {
+      "en": "They've been friends since they were children.",
+      "ru": "Они дружат с самого детства.",
+      "uses": [
+        "friend"
+      ]
+    },
+    {
+      "en": "It's getting late, so I think we should head home.",
+      "ru": "Становится поздно, так что, думаю, нам пора домой.",
+      "uses": [
+        "home"
+      ]
+    },
+    {
+      "en": "She didn't answer her phone because it was on silent.",
+      "ru": "Она не ответила на звонок, потому что телефон был в беззвучном режиме.",
+      "uses": [
+        "answer",
+        "phone"
+      ]
+    },
+    {
+      "en": "Can you recommend a good restaurant near here?",
+      "ru": "Можете порекомендовать хороший ресторан неподалёку?",
+      "uses": [
+        "near"
+      ]
+    },
+    {
+      "en": "He was so tired that he fell asleep on the couch.",
+      "ru": "Он так устал, что уснул на диване.",
+      "uses": [
+        "tired"
+      ]
+    },
+    {
+      "en": "We ran out of milk, so I need to stop by the store.",
+      "ru": "У нас закончилось молоко, так что мне нужно зайти в магазин.",
+      "uses": [
+        "milk",
+        "store"
+      ]
+    },
+    {
+      "en": "I'll have the chicken sandwich and a small coffee, please.",
+      "ru": "Мне куриный сэндвич и маленький кофе, пожалуйста.",
+      "uses": [
+        "coffee"
+      ]
+    },
+    {
+      "en": "I wish I had more free time to read.",
+      "ru": "Хотел бы я иметь больше свободного времени для чтения.",
+      "uses": [
+        "free"
+      ]
+    },
+    {
+      "en": "She asked me whether I wanted tea or coffee.",
+      "ru": "Она спросила меня, хочу ли я чай или кофе.",
+      "uses": [
+        "tea",
+        "coffee"
+      ]
+    },
+    {
+      "en": "He has a habit of tapping his pen during meetings.",
+      "ru": "У него привычка постукивать ручкой во время встреч.",
+      "uses": [
+        "habit",
+        "meeting"
+      ]
+    },
+    {
+      "en": "If I were you, I would talk to your manager first.",
+      "ru": "На твоём месте я бы сначала поговорил с менеджером.",
+      "uses": [
+        "manager"
+      ]
+    },
+    {
+      "en": "I'd like to change my appointment from Tuesday to Thursday.",
+      "ru": "Я хотел бы перенести запись со вторника на четверг.",
+      "uses": [
+        "change",
+        "appointment"
+      ]
+    },
+    {
+      "en": "It's been a long day, and all I want is a hot shower.",
+      "ru": "Это был долгий день, и всё, чего я хочу, — горячий душ.",
+      "uses": [
+        "hot"
+      ]
+    },
+    {
+      "en": "The bus was so crowded that I had to stand the whole way.",
+      "ru": "Автобус был так переполнен, что мне пришлось стоять всю дорогу.",
+      "uses": [
+        "bus"
+      ]
+    },
+    {
+      "en": "Please turn off your phone during the performance.",
+      "ru": "Пожалуйста, выключайте телефон во время представления.",
+      "uses": [
+        "phone"
+      ]
+    },
+    {
+      "en": "My sister works night shifts at the hospital.",
+      "ru": "Моя сестра работает в ночные смены в больнице.",
+      "uses": [
+        "night"
+      ]
+    },
+    {
+      "en": "I've been waiting for this package for over a week.",
+      "ru": "Я жду эту посылку уже больше недели.",
+      "uses": [
+        "package"
+      ]
+    },
+    {
+      "en": "He drives to work even though it's only a ten-minute walk.",
+      "ru": "Он ездит на работу на машине, хотя идти всего десять минут.",
+      "uses": [
+        "walk"
+      ]
+    },
+    {
+      "en": "Thank you for inviting us; we had a wonderful evening.",
+      "ru": "Спасибо, что пригласили нас; мы прекрасно провели вечер.",
+      "uses": [
+        "evening"
+      ]
+    },
+    {
+      "en": "I'm sorry, but this seat is reserved.",
+      "ru": "Извините, но это место зарезервировано.",
+      "uses": [
+        "sorry"
+      ]
+    },
+    {
+      "en": "She picked up the kids from school and took them to the park.",
+      "ru": "Она забрала детей из школы и отвела их в парк.",
+      "uses": [
+        "school",
+        "park"
+      ]
+    },
+    {
+      "en": "Don't forget to lock the door when you leave.",
+      "ru": "Не забудь запереть дверь, когда будешь уходить.",
+      "uses": [
+        "door"
+      ]
+    },
+    {
+      "en": "The library is quiet, which makes it a great place to study.",
+      "ru": "В библиотеке тихо, поэтому там отлично заниматься.",
+      "uses": [
+        "library"
+      ]
+    },
+    {
+      "en": "I'd appreciate it if you could send me the details by email.",
+      "ru": "Буду признателен, если вы пришлёте мне подробности по электронной почте.",
+      "uses": [
+        "email"
+      ]
+    },
+    {
+      "en": "We are out of coffee filters, so I'll make tea instead.",
+      "ru": "У нас закончились фильтры для кофе, так что я заварю чай.",
+      "uses": [
+        "coffee",
+        "tea"
+      ]
+    },
+    {
+      "en": "I'm planning to repaint the kitchen this weekend.",
+      "ru": "Я планирую в эти выходные перекрасить кухню.",
+      "uses": [
+        "plan",
+        "kitchen",
+        "weekend"
+      ]
+    },
+    {
+      "en": "My flight lands at noon, so I'll take a taxi to the hotel.",
+      "ru": "Мой рейс приземляется в полдень, так что я поеду в отель на такси.",
+      "uses": [
+        "taxi",
+        "hotel"
+      ]
+    },
+    {
+      "en": "The company offers free parking for all employees.",
+      "ru": "Компания предоставляет бесплатную парковку всем сотрудникам.",
+      "uses": [
+        "free",
+        "employee"
+      ]
+    },
+    {
+      "en": "You'd better take an umbrella; it looks like rain.",
+      "ru": "Лучше возьми зонт; похоже, будет дождь.",
+      "uses": [
+        "umbrella"
+      ]
+    },
+    {
+      "en": "She's been working from home since the spring.",
+      "ru": "Она работает из дома с весны.",
+      "uses": [
+        "home"
+      ]
+    },
+    {
+      "en": "He asked for directions, but nobody around knew the street.",
+      "ru": "Он спросил дорогу, но никто вокруг не знал эту улицу.",
+      "uses": [
+        "direction"
+      ]
+    },
+    {
+      "en": "The cashier gave me the wrong change by mistake.",
+      "ru": "Кассир по ошибке дал мне неправильную сдачу.",
+      "uses": [
+        "change",
+        "mistake"
+      ]
+    },
+    {
+      "en": "Let's meet in front of the cinema at half past six.",
+      "ru": "Давай встретимся перед кинотеатром в половине седьмого.",
+      "uses": [
+        "cinema"
+      ]
+    },
+    {
+      "en": "My internet has been very slow since this morning.",
+      "ru": "Мой интернет очень медленный с самого утра.",
+      "uses": [
+        "internet",
+        "morning"
+      ]
+    },
+    {
+      "en": "He's the kind of person who always keeps his promises.",
+      "ru": "Он из тех людей, кто всегда держит обещания.",
+      "uses": [
+        "promise"
+      ]
+    },
+    {
+      "en": "It's much cheaper to cook at home than to eat out.",
+      "ru": "Готовить дома намного дешевле, чем есть вне дома.",
+      "uses": [
+        "cheap",
+        "home"
+      ]
+    },
+    {
+      "en": "They apologised for the noise and promised to be quieter.",
+      "ru": "Они извинились за шум и пообещали вести себя тише.",
+      "uses": [
+        "promise"
+      ]
+    },
+    {
+      "en": "I forgot to bring my charger, so my phone is almost dead.",
+      "ru": "Я забыл зарядку, поэтому телефон почти разряжен.",
+      "uses": [
+        "charger",
+        "phone"
+      ]
+    },
+    {
+      "en": "The teacher asked us to hand in our homework on Friday.",
+      "ru": "Учитель попросил нас сдать домашнее задание в пятницу.",
+      "uses": [
+        "teacher",
+        "homework"
+      ]
+    },
+    {
+      "en": "Make sure you drink plenty of water during the hike.",
+      "ru": "Обязательно пей много воды во время похода.",
+      "uses": [
+        "water"
+      ]
+    },
+    {
+      "en": "I'd like a window seat if possible.",
+      "ru": "Я бы хотел место у окна, если возможно.",
+      "uses": [
+        "window"
+      ]
+    },
+    {
+      "en": "The movie was so boring that half the audience left early.",
+      "ru": "Фильм был таким скучным, что половина зрителей ушла раньше.",
+      "uses": [
+        "movie"
+      ]
+    },
+    {
+      "en": "He has to finish the report before the deadline on Friday.",
+      "ru": "Ему нужно закончить отчёт до крайнего срока в пятницу.",
+      "uses": [
+        "deadline"
+      ]
+    },
+    {
+      "en": "I'm not a morning person, so please don't call before nine.",
+      "ru": "Я не жаворонок, так что, пожалуйста, не звони до девяти.",
+      "uses": [
+        "morning",
+        "call"
+      ]
+    },
+    {
+      "en": "We celebrated her birthday with a small party at home.",
+      "ru": "Мы отметили её день рождения небольшой вечеринкой дома.",
+      "uses": [
+        "party",
+        "home"
+      ]
+    },
+    {
+      "en": "They were stuck in traffic for almost two hours.",
+      "ru": "Они простояли в пробке почти два часа.",
+      "uses": [
+        "traffic"
+      ]
+    },
+    {
+      "en": "Learning a language takes time, but it's worth it.",
+      "ru": "Изучение языка требует времени, но оно того стоит.",
+      "uses": [
+        "language"
+      ]
+    },
+    {
+      "en": "I'll call you back in five minutes, because I'm driving right now.",
+      "ru": "Я перезвоню тебе через пять минут, потому что сейчас за рулём.",
+      "uses": [
+        "call"
+      ]
+    },
+    {
+      "en": "She was nervous before the interview, but it went better than expected.",
+      "ru": "Она нервничала перед собеседованием, но оно прошло лучше, чем ожидалось.",
+      "uses": [
+        "nervous",
+        "interview"
+      ]
+    },
+    {
+      "en": "I'd rather walk than wait for the bus in this cold.",
+      "ru": "Я лучше пойду пешком, чем буду ждать автобус на таком холоде.",
+      "uses": [
+        "walk",
+        "bus",
+        "cold"
+      ]
+    },
+    {
+      "en": "The neighbours complained about the noise, so we turned the music down.",
+      "ru": "Соседи пожаловались на шум, поэтому мы сделали музыку тише.",
+      "uses": [
+        "music"
+      ]
+    },
+    {
+      "en": "My neighbour plays the guitar every evening, and I don't mind at all.",
+      "ru": "Мой сосед каждый вечер играет на гитаре, и я не против.",
+      "uses": [
+        "neighbour",
+        "play",
+        "guitar",
+        "mind"
+      ]
+    },
+    {
+      "en": "I would rather stay in tonight because I have an early start tomorrow.",
+      "ru": "Я лучше останусь сегодня дома, потому что завтра рано вставать.",
+      "uses": [
+        "stay",
+        "early",
+        "start"
+      ]
+    },
+    {
+      "en": "Please let me know if you need anything else.",
+      "ru": "Пожалуйста, дайте знать, если вам понадобится что-то ещё.",
+      "uses": [
+        "let",
+        "know",
+        "need"
+      ]
+    },
+    {
+      "en": "It took me almost an hour to find a parking spot downtown.",
+      "ru": "Мне потребовался почти час, чтобы найти парковку в центре.",
+      "uses": [
+        "take",
+        "hour",
+        "find",
+        "parking",
+        "downtown"
+      ]
+    },
+    {
+      "en": "My grandmother always says that patience is a virtue.",
+      "ru": "Моя бабушка всегда говорит, что терпение — это добродетель.",
+      "uses": [
+        "grandmother",
+        "say",
+        "patience",
+        "virtue"
+      ]
+    },
+    {
+      "en": "I've never been to Vancouver, but I'd love to visit someday.",
+      "ru": "Я никогда не был в Ванкувере, но с радостью побываю там когда-нибудь.",
+      "uses": [
+        "vancouver",
+        "visit",
+        "someday"
+      ]
+    },
+    {
+      "en": "I can't hear you very well because the connection is bad.",
+      "ru": "Я вас плохо слышу, потому что плохая связь.",
+      "uses": [
+        "hear",
+        "connection",
+        "bad"
+      ]
+    },
+    {
+      "en": "I'm trying to cut down on sugar, so I'll skip dessert.",
+      "ru": "Я пытаюсь меньше есть сахара, так что десерт пропущу.",
+      "uses": [
+        "cut",
+        "sugar",
+        "skip",
+        "dessert"
+      ]
+    },
+    {
+      "en": "She is much taller than her brother, even though she is younger.",
+      "ru": "Она намного выше своего брата, хотя и младше.",
+      "uses": [
+        "tall",
+        "brother",
+        "young"
+      ]
+    },
+    {
+      "en": "I had to wait twenty minutes before the waiter noticed us.",
+      "ru": "Мне пришлось ждать двадцать минут, прежде чем официант нас заметил.",
+      "uses": [
+        "wait",
+        "minute",
+        "waiter",
+        "notice"
+      ]
+    },
+    {
+      "en": "We have lived in this city for ten years, and we still love it.",
+      "ru": "Мы живём в этом городе десять лет и всё ещё любим его.",
+      "uses": [
+        "live",
+        "city",
+        "love"
+      ]
+    },
+    {
+      "en": "I'm not used to waking up this early.",
+      "ru": "Я не привык просыпаться так рано.",
+      "uses": [
+        "use",
+        "wake",
+        "early"
+      ]
+    },
+    {
+      "en": "The train to the airport leaves every fifteen minutes.",
+      "ru": "Поезд до аэропорта отходит каждые пятнадцать минут.",
+      "uses": [
+        "train",
+        "airport",
+        "leave",
+        "minute"
+      ]
+    },
+    {
+      "en": "The instructions were so confusing that I had to read them twice.",
+      "ru": "Инструкции были такими запутанными, что мне пришлось прочитать их дважды.",
+      "uses": [
+        "instruction",
+        "confusing",
+        "read",
+        "twice"
+      ]
+    },
+    {
+      "en": "It turns out that the shop is closed on Sundays.",
+      "ru": "Оказывается, магазин по воскресеньям закрыт.",
+      "uses": [
+        "turn",
+        "shop",
+        "close",
+        "sunday"
+      ]
+    },
+    {
+      "en": "Our flight was cancelled because of the snowstorm.",
+      "ru": "Наш рейс отменили из-за снежной бури.",
+      "uses": [
+        "flight",
+        "cancel",
+        "snowstorm"
+      ]
+    },
+    {
+      "en": "The kids are playing in the yard until dinner is ready.",
+      "ru": "Дети играют во дворе, пока не будет готов ужин.",
+      "uses": [
+        "kid",
+        "play",
+        "yard",
+        "dinner",
+        "ready"
+      ]
+    },
+    {
+      "en": "We should leave early to avoid the rush hour.",
+      "ru": "Нам стоит выехать пораньше, чтобы избежать часа пик.",
+      "uses": [
+        "leave",
+        "early",
+        "avoid",
+        "rush",
+        "hour"
+      ]
+    },
+    {
+      "en": "The soup is too salty for my taste.",
+      "ru": "Суп слишком солёный на мой вкус.",
+      "uses": [
+        "soup",
+        "salty",
+        "taste"
+      ]
+    },
+    {
+      "en": "I haven't seen him since last summer.",
+      "ru": "Я не видел его с прошлого лета.",
+      "uses": [
+        "see",
+        "summer"
+      ]
+    },
+    {
+      "en": "It's not as difficult as it looks once you get the hang of it.",
+      "ru": "Это не так сложно, как кажется, когда освоишься.",
+      "uses": [
+        "difficult",
+        "look",
+        "hang"
+      ]
+    },
+    {
+      "en": "They're expecting a baby in the spring.",
+      "ru": "Они ждут ребёнка весной.",
+      "uses": [
+        "expect",
+        "baby",
+        "spring"
+      ]
+    },
+    {
+      "en": "He apologised twice, but she was still upset.",
+      "ru": "Он извинился дважды, но она всё равно была расстроена.",
+      "uses": [
+        "apologise",
+        "upset"
+      ]
+    },
+    {
+      "en": "The sun sets around five in the winter here.",
+      "ru": "Зимой здесь солнце садится около пяти.",
+      "uses": [
+        "sun",
+        "set",
+        "winter"
+      ]
+    },
+    {
+      "en": "Would you like to join us for lunch?",
+      "ru": "Хотите присоединиться к нам на обед?",
+      "uses": [
+        "join",
+        "lunch"
+      ]
+    },
+    {
+      "en": "It was so quiet that you could hear a pin drop.",
+      "ru": "Было так тихо, что слышно было, как упадёт булавка.",
+      "uses": [
+        "quiet",
+        "hear",
+        "pin",
+        "drop"
+      ]
+    },
+    {
+      "en": "I haven't decided what to wear to the wedding yet.",
+      "ru": "Я ещё не решил, что надеть на свадьбу.",
+      "uses": [
+        "decide",
+        "wear",
+        "wedding"
+      ]
+    },
+    {
+      "en": "I'm allergic to peanuts, so I have to read every label.",
+      "ru": "У меня аллергия на арахис, поэтому я читаю каждую этикетку.",
+      "uses": [
+        "allergic",
+        "peanut",
+        "read",
+        "label"
+      ]
+    },
+    {
+      "en": "After the long drive, we finally reached the cabin.",
+      "ru": "После долгой поездки мы наконец добрались до домика.",
+      "uses": [
+        "drive",
+        "finally",
+        "reach",
+        "cabin"
+      ]
+    },
+    {
+      "en": "I can't believe how fast this year has gone by.",
+      "ru": "Не могу поверить, как быстро пролетел этот год.",
+      "uses": [
+        "believe",
+        "fast",
+        "year",
+        "go"
+      ]
+    },
+    {
+      "en": "She has a great sense of humour, and everyone likes her.",
+      "ru": "У неё отличное чувство юмора, и она всем нравится.",
+      "uses": [
+        "sense",
+        "humour",
+        "like"
+      ]
+    },
+    {
+      "en": "I've got a lot on my plate this week.",
+      "ru": "У меня на этой неделе очень много дел.",
+      "uses": [
+        "lot",
+        "plate",
+        "week"
+      ]
+    },
+    {
+      "en": "The road is closed for repairs, so we have to take a detour.",
+      "ru": "Дорога закрыта на ремонт, поэтому нам нужно ехать в объезд.",
+      "uses": [
+        "road",
+        "close",
+        "repair",
+        "detour"
+      ]
+    },
+    {
+      "en": "He pretended not to notice that I was upset.",
+      "ru": "Он сделал вид, что не заметил, что я расстроен.",
+      "uses": [
+        "pretend",
+        "notice",
+        "upset"
+      ]
+    },
+    {
+      "en": "We're thinking of adopting a dog from the shelter.",
+      "ru": "Мы думаем взять собаку из приюта.",
+      "uses": [
+        "think",
+        "adopt",
+        "dog",
+        "shelter"
+      ]
+    },
+    {
+      "en": "Whenever I feel stressed, I go for a run.",
+      "ru": "Всякий раз, когда я напряжён, я иду на пробежку.",
+      "uses": [
+        "feel",
+        "stress",
+        "run"
+      ]
+    },
+    {
+      "en": "Her English has improved a lot since she moved to Canada.",
+      "ru": "Её английский сильно улучшился с тех пор, как она переехала в Канаду.",
+      "uses": [
+        "english",
+        "improve",
+        "move",
+        "canada"
+      ]
+    },
+    {
+      "en": "It's easy to get lost in this part of town.",
+      "ru": "В этой части города легко заблудиться.",
+      "uses": [
+        "easy",
+        "lose",
+        "town"
+      ]
+    },
+    {
+      "en": "The elevator is out of order, so we have to use the stairs.",
+      "ru": "Лифт не работает, поэтому нам придётся идти по лестнице.",
+      "uses": [
+        "elevator",
+        "order",
+        "stair",
+        "use"
+      ]
+    },
+    {
+      "en": "I can't find my glasses anywhere.",
+      "ru": "Я нигде не могу найти свои очки.",
+      "uses": [
+        "find",
+        "glasses",
+        "anywhere"
+      ]
+    },
+    {
+      "en": "If you don't understand a word, just ask me.",
+      "ru": "Если вы не понимаете слово, просто спросите меня.",
+      "uses": [
+        "understand",
+        "word",
+        "ask"
+      ]
+    },
+    {
+      "en": "We could take the highway, but the back roads are more scenic.",
+      "ru": "Мы могли бы поехать по шоссе, но просёлочные дороги живописнее.",
+      "uses": [
+        "take",
+        "highway",
+        "road",
+        "scenic"
+      ]
+    }
+  ],
+  "notes": "Готовые словосочетания и предложения без шаблонной автоподстановки."
 }

@@ -16,6 +16,11 @@ data class HeadsetTestState(
     val pressCount: Int = 0,
     val nextCount: Int = 0,
     val stopCount: Int = 0,
+    val quadCount: Int = 0,
+    /** Current unfinished Play burst (1..3) while waiting for settle. */
+    val pendingBurstCount: Int = 0,
+    /** BT test: first 2× settled; waiting for another 2× → Quad. */
+    val awaitingSecondDouble: Boolean = false,
     val lastEventLabel: String = "",
     val lastEventAt: String = "",
     val lastEventKind: String = "",
@@ -24,7 +29,7 @@ data class HeadsetTestState(
 )
 
 /**
- * UI state for BT Play test tab — Play/Next/Stop counters and HARDWARE/SIMULATED event log.
+ * UI state for BT Play test tab — Play/Next/Stop/4× counters and HARDWARE/SIMULATED event log.
  */
 @Singleton
 class HeadsetTestController @Inject constructor(
@@ -33,6 +38,8 @@ class HeadsetTestController @Inject constructor(
     private val _state = MutableStateFlow(HeadsetTestState())
     val state: StateFlow<HeadsetTestState> = _state.asStateFlow()
     private var lastLoggedCaptureOn: Boolean? = null
+    /** Wall-clock of last Play counter increment (for retracting echo Play after Quad). */
+    private var lastPlayAtMs: Long = 0L
 
     fun setCaptureStatus(nativeCaptureOn: Boolean) {
         _state.update {
@@ -61,6 +68,7 @@ class HeadsetTestController @Inject constructor(
         val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
         logger.i(TAG, "BT button $display via $source ($kind)")
 
+        lastPlayAtMs = now
         _state.update { current ->
             val playCount = current.pressCount + 1
             val line = "$at  [$kind]  $display  (#$playCount)"
@@ -71,6 +79,23 @@ class HeadsetTestController @Inject constructor(
                 lastEventKind = kind,
                 eventLog = (listOf(line) + current.eventLog).take(MAX_EVENTS),
                 statusMessage = "Получено: $display ($kind) · $at",
+            )
+        }
+    }
+
+    /**
+     * If a lone Play was counted in [sinceMs]..now (echo after 4×), undo that one increment.
+     */
+    fun retractPlayCountedSince(sinceMs: Long) {
+        if (lastPlayAtMs < sinceMs || lastPlayAtMs == 0L) return
+        _state.update { current ->
+            if (current.pressCount <= 0) return@update current
+            val playCount = current.pressCount - 1
+            logger.i(TAG, "Retract Play after Quad → pressCount=$playCount")
+            lastPlayAtMs = 0L
+            current.copy(
+                pressCount = playCount,
+                statusMessage = "Play отменён (сработал 4×)",
             )
         }
     }
@@ -128,19 +153,54 @@ class HeadsetTestController @Inject constructor(
         }
     }
 
+    fun recordBtQuadEvent(
+        source: String = "native",
+        kind: String = HeadsetButtonNotifier.eventKind(source),
+    ) {
+        val display = "Quad (4×Play)"
+        val now = System.currentTimeMillis()
+        val at = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault()).format(Date(now))
+        logger.i(TAG, "BT button $display via $source ($kind)")
+
+        _state.update { current ->
+            val quadCount = current.quadCount + 1
+            val line = "$at  [$kind]  $display  (#$quadCount)"
+            current.copy(
+                quadCount = quadCount,
+                lastEventLabel = "$display · $kind",
+                lastEventAt = at,
+                lastEventKind = kind,
+                eventLog = (listOf(line) + current.eventLog).take(MAX_EVENTS),
+                statusMessage = "Получено: $display ($kind) · $at",
+            )
+        }
+    }
+
+    fun setPendingBurstCount(count: Int) {
+        _state.update { it.copy(pendingBurstCount = count.coerceAtLeast(0)) }
+    }
+
+    fun setAwaitingSecondDouble(awaiting: Boolean) {
+        _state.update { it.copy(awaitingSecondDouble = awaiting) }
+    }
+
     fun resetCounter() {
+        lastPlayAtMs = 0L
         _state.update {
             it.copy(
                 pressCount = 0,
                 nextCount = 0,
                 stopCount = 0,
+                quadCount = 0,
+                pendingBurstCount = 0,
+                awaitingSecondDouble = false,
                 lastEventLabel = "",
                 lastEventAt = "",
                 lastEventKind = "",
                 eventLog = emptyList(),
             )
         }
-        logger.i(TAG, "BT Play/Next/Stop counters reset")
+        logger.i(TAG, "BT Play/Next/Stop/4× counters reset")
     }
 
     companion object {

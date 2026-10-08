@@ -21,15 +21,20 @@
     <string name="tests_audio_sco_out">SCO outputs: %1$s</string>
     <string name="tests_audio_playback_device">Устройство озвучки (ожидаемое): %1$s</string>
     <string name="tests_audio_recognized">Распознано: %1$s</string>
-    <string name="bt_play_test_hint">1× Play → Play. Жест Buds: double → Next, triple → Stop (Previous). Либо 2×/3× Play-Pause подряд. Перед тестом поставьте на паузу Spotify/YouTube.</string>
+    <string name="bt_play_test_hint">1× → Play · 2× → Next · 3× → Stop · 4× → 4× (одна непрерывная серия, как у 3×). Жест Buds: double → Next, Previous → Stop. Перед тестом поставьте на паузу Spotify/YouTube.</string>
     <string name="bt_play_test_count_label">Play</string>
     <string name="bt_play_test_next_count_label">Next</string>
     <string name="bt_play_test_stop_count_label">Stop</string>
+    <string name="bt_play_test_quad_count_label">4×</string>
+    <string name="bt_play_test_pending_burst">Серия сейчас: %1$d× (ждём продолжения…)</string>
+    <string name="bt_play_test_awaiting_second_double">2× пока не засчитан — ждём второй double (~2.5 с) для 4×…</string>
     <string name="bt_play_test_debounce_enable">Защита от повторного нажатия</string>
     <string name="bt_play_test_debounce_interval">Интервал защиты, мс</string>
-    <string name="bt_play_test_next_interval">Интервал Next/Stop / серии Play, мс</string>
+    <string name="bt_play_test_next_interval">Интервал серии Play (Next/Stop/4×), мс</string>
     <string name="bt_play_test_last_event">Последнее: %1$s · %2$s</string>
     <string name="bt_play_test_simulate">Симулировать Play</string>
+    <string name="bt_play_test_simulate_quad">Симулировать 4× Play</string>
+    <string name="bt_play_test_reset_counters">Сбросить все счётчики</string>
     <string name="bt_play_test_reassert">Reassert MediaSession</string>
     <string name="bt_play_test_capture_on">Native capture: ON (MediaSession)</string>
     <string name="bt_play_test_capture_off">Native capture: OFF</string>
@@ -120,5 +125,11 @@
     <string name="word_study_settings_done">Готово</string>
     <string name="word_study_fullscreen">Полноэкранный режим</string>
     <string name="word_study_exit_fullscreen">Выйти из полноэкранного режима</string>
+    <string name="word_study_stats">Статистика изучения</string>
+    <string name="study_stats_title">Статистика изучения</string>
+    <string name="study_stats_words_viewed">Слов просмотрено: %1$d</string>
+    <string name="study_stats_breakdown">Слова: %1$d · словосочетания: %2$d · предложения: %3$d · всего карточек: %4$d</string>
+    <string name="study_stats_topics">Тем просмотрено: %1$d из %2$d</string>
+    <string name="study_stats_hint">Сначала показываются ещё не просмотренные темы; когда все показаны — цикл начинается сначала.</string>
     <string name="action_back">Назад</string>
 </resources>

@@ -2,54 +2,2775 @@
   "id": "food",
   "titleRu": "Еда",
   "words": [
-    {"en": "apple", "ru": "яблоко"},
-    {"en": "banana", "ru": "банан"},
-    {"en": "cheese", "ru": "сыр"},
-    {"en": "chicken", "ru": "курица"},
-    {"en": "rice", "ru": "рис"},
-    {"en": "soup", "ru": "суп"},
-    {"en": "salad", "ru": "салат"},
-    {"en": "egg", "ru": "яйцо"},
-    {"en": "butter", "ru": "масло"},
-    {"en": "sugar", "ru": "сахар"},
-    {"en": "salt", "ru": "соль"},
-    {"en": "pepper", "ru": "перец"},
-    {"en": "fish", "ru": "рыба"},
-    {"en": "meat", "ru": "мясо"},
-    {"en": "potato", "ru": "картофель"},
-    {"en": "tomato", "ru": "помидор"},
-    {"en": "onion", "ru": "лук"},
-    {"en": "juice", "ru": "сок"},
-    {"en": "breakfast", "ru": "завтрак"},
-    {"en": "dinner", "ru": "ужин"}
+    {
+      "en": "apple",
+      "ru": "яблоко"
+    },
+    {
+      "en": "banana",
+      "ru": "банан"
+    },
+    {
+      "en": "cheese",
+      "ru": "сыр"
+    },
+    {
+      "en": "chicken",
+      "ru": "курица"
+    },
+    {
+      "en": "rice",
+      "ru": "рис"
+    },
+    {
+      "en": "soup",
+      "ru": "суп"
+    },
+    {
+      "en": "salad",
+      "ru": "салат"
+    },
+    {
+      "en": "egg",
+      "ru": "яйцо"
+    },
+    {
+      "en": "butter",
+      "ru": "масло"
+    },
+    {
+      "en": "sugar",
+      "ru": "сахар"
+    },
+    {
+      "en": "salt",
+      "ru": "соль"
+    },
+    {
+      "en": "pepper",
+      "ru": "перец"
+    },
+    {
+      "en": "fish",
+      "ru": "рыба"
+    },
+    {
+      "en": "meat",
+      "ru": "мясо"
+    },
+    {
+      "en": "potato",
+      "ru": "картофель"
+    },
+    {
+      "en": "tomato",
+      "ru": "помидор"
+    },
+    {
+      "en": "onion",
+      "ru": "лук"
+    },
+    {
+      "en": "juice",
+      "ru": "сок"
+    },
+    {
+      "en": "breakfast",
+      "ru": "завтрак"
+    },
+    {
+      "en": "dinner",
+      "ru": "ужин"
+    },
+    {
+      "en": "orange",
+      "ru": "апельсин"
+    },
+    {
+      "en": "lemon",
+      "ru": "лимон"
+    },
+    {
+      "en": "lime",
+      "ru": "лайм"
+    },
+    {
+      "en": "grape",
+      "ru": "виноград"
+    },
+    {
+      "en": "strawberry",
+      "ru": "клубника"
+    },
+    {
+      "en": "blueberry",
+      "ru": "черника"
+    },
+    {
+      "en": "raspberry",
+      "ru": "малина"
+    },
+    {
+      "en": "cherry",
+      "ru": "вишня"
+    },
+    {
+      "en": "peach",
+      "ru": "персик"
+    },
+    {
+      "en": "pear",
+      "ru": "груша"
+    },
+    {
+      "en": "pineapple",
+      "ru": "ананас"
+    },
+    {
+      "en": "mango",
+      "ru": "манго"
+    },
+    {
+      "en": "watermelon",
+      "ru": "арбуз"
+    },
+    {
+      "en": "melon",
+      "ru": "дыня"
+    },
+    {
+      "en": "kiwi",
+      "ru": "киви"
+    },
+    {
+      "en": "plum",
+      "ru": "слива"
+    },
+    {
+      "en": "apricot",
+      "ru": "абрикос"
+    },
+    {
+      "en": "pomegranate",
+      "ru": "гранат"
+    },
+    {
+      "en": "avocado",
+      "ru": "авокадо"
+    },
+    {
+      "en": "cucumber",
+      "ru": "огурец"
+    },
+    {
+      "en": "carrot",
+      "ru": "морковь"
+    },
+    {
+      "en": "garlic",
+      "ru": "чеснок"
+    },
+    {
+      "en": "bell pepper",
+      "ru": "болгарский перец"
+    },
+    {
+      "en": "chili",
+      "ru": "чили"
+    },
+    {
+      "en": "broccoli",
+      "ru": "брокколи"
+    },
+    {
+      "en": "cauliflower",
+      "ru": "цветная капуста"
+    },
+    {
+      "en": "cabbage",
+      "ru": "капуста"
+    },
+    {
+      "en": "lettuce",
+      "ru": "салат-латук"
+    },
+    {
+      "en": "spinach",
+      "ru": "шпинат"
+    },
+    {
+      "en": "kale",
+      "ru": "кейл"
+    },
+    {
+      "en": "celery",
+      "ru": "сельдерей"
+    },
+    {
+      "en": "zucchini",
+      "ru": "цукини"
+    },
+    {
+      "en": "eggplant",
+      "ru": "баклажан"
+    },
+    {
+      "en": "mushroom",
+      "ru": "гриб"
+    },
+    {
+      "en": "corn",
+      "ru": "кукуруза"
+    },
+    {
+      "en": "peas",
+      "ru": "горох"
+    },
+    {
+      "en": "beans",
+      "ru": "фасоль"
+    },
+    {
+      "en": "lentils",
+      "ru": "чечевица"
+    },
+    {
+      "en": "chickpeas",
+      "ru": "нут"
+    },
+    {
+      "en": "pasta",
+      "ru": "паста"
+    },
+    {
+      "en": "noodles",
+      "ru": "лапша"
+    },
+    {
+      "en": "toast",
+      "ru": "тост"
+    },
+    {
+      "en": "bagel",
+      "ru": "бейгл"
+    },
+    {
+      "en": "croissant",
+      "ru": "круассан"
+    },
+    {
+      "en": "bun",
+      "ru": "булочка"
+    },
+    {
+      "en": "flour",
+      "ru": "мука"
+    },
+    {
+      "en": "ground pepper",
+      "ru": "молотый перец"
+    },
+    {
+      "en": "cooking oil",
+      "ru": "растительное масло"
+    },
+    {
+      "en": "vinegar",
+      "ru": "уксус"
+    },
+    {
+      "en": "soy sauce",
+      "ru": "соевый соус"
+    },
+    {
+      "en": "mustard",
+      "ru": "горчица"
+    },
+    {
+      "en": "ketchup",
+      "ru": "кетчуп"
+    },
+    {
+      "en": "mayonnaise",
+      "ru": "майонез"
+    },
+    {
+      "en": "honey",
+      "ru": "мёд"
+    },
+    {
+      "en": "jam",
+      "ru": "варенье"
+    },
+    {
+      "en": "maple syrup",
+      "ru": "кленовый сироп"
+    },
+    {
+      "en": "chocolate",
+      "ru": "шоколад"
+    },
+    {
+      "en": "candy",
+      "ru": "конфета"
+    },
+    {
+      "en": "cookie",
+      "ru": "печенье"
+    },
+    {
+      "en": "cake",
+      "ru": "торт"
+    },
+    {
+      "en": "pie",
+      "ru": "пирог"
+    },
+    {
+      "en": "muffin",
+      "ru": "маффин"
+    },
+    {
+      "en": "ice cream",
+      "ru": "мороженое"
+    },
+    {
+      "en": "pudding",
+      "ru": "пудинг"
+    },
+    {
+      "en": "yogurt",
+      "ru": "йогурт"
+    },
+    {
+      "en": "cream",
+      "ru": "сливки"
+    },
+    {
+      "en": "sour cream",
+      "ru": "сметана"
+    },
+    {
+      "en": "cottage cheese",
+      "ru": "творог"
+    },
+    {
+      "en": "omelette",
+      "ru": "омлет"
+    },
+    {
+      "en": "bacon",
+      "ru": "бекон"
+    },
+    {
+      "en": "sausage",
+      "ru": "колбаса"
+    },
+    {
+      "en": "ham",
+      "ru": "ветчина"
+    },
+    {
+      "en": "turkey",
+      "ru": "индейка"
+    },
+    {
+      "en": "beef",
+      "ru": "говядина"
+    },
+    {
+      "en": "pork",
+      "ru": "свинина"
+    },
+    {
+      "en": "lamb",
+      "ru": "баранина"
+    },
+    {
+      "en": "salmon",
+      "ru": "лосось"
+    },
+    {
+      "en": "tuna",
+      "ru": "тунец"
+    },
+    {
+      "en": "shrimp",
+      "ru": "креветка"
+    },
+    {
+      "en": "crab",
+      "ru": "краб"
+    },
+    {
+      "en": "lobster",
+      "ru": "омар"
+    },
+    {
+      "en": "squid",
+      "ru": "кальмар"
+    },
+    {
+      "en": "oyster",
+      "ru": "устрица"
+    },
+    {
+      "en": "clam",
+      "ru": "моллюск"
+    },
+    {
+      "en": "sushi",
+      "ru": "суши"
+    },
+    {
+      "en": "stew",
+      "ru": "рагу"
+    },
+    {
+      "en": "sandwich",
+      "ru": "сэндвич"
+    },
+    {
+      "en": "burger",
+      "ru": "бургер"
+    },
+    {
+      "en": "pizza",
+      "ru": "пицца"
+    },
+    {
+      "en": "taco",
+      "ru": "тако"
+    },
+    {
+      "en": "burrito",
+      "ru": "буррито"
+    },
+    {
+      "en": "wrap",
+      "ru": "ролл-обёртка"
+    },
+    {
+      "en": "fries",
+      "ru": "картофель фри"
+    },
+    {
+      "en": "chips",
+      "ru": "чипсы"
+    },
+    {
+      "en": "nachos",
+      "ru": "начос"
+    },
+    {
+      "en": "pasta sauce",
+      "ru": "соус для пасты"
+    },
+    {
+      "en": "gravy",
+      "ru": "подливка"
+    },
+    {
+      "en": "broth",
+      "ru": "бульон"
+    },
+    {
+      "en": "soup stock",
+      "ru": "основа для бульона"
+    },
+    {
+      "en": "spice",
+      "ru": "специя"
+    },
+    {
+      "en": "herb",
+      "ru": "зелень"
+    },
+    {
+      "en": "basil",
+      "ru": "базилик"
+    },
+    {
+      "en": "oregano",
+      "ru": "орегано"
+    },
+    {
+      "en": "thyme",
+      "ru": "тимьян"
+    },
+    {
+      "en": "rosemary",
+      "ru": "розмарин"
+    },
+    {
+      "en": "cilantro",
+      "ru": "кинза"
+    },
+    {
+      "en": "parsley",
+      "ru": "петрушка"
+    },
+    {
+      "en": "ginger",
+      "ru": "имбирь"
+    },
+    {
+      "en": "cinnamon",
+      "ru": "корица"
+    },
+    {
+      "en": "vanilla",
+      "ru": "ваниль"
+    },
+    {
+      "en": "paprika",
+      "ru": "паприка"
+    },
+    {
+      "en": "curry",
+      "ru": "карри"
+    },
+    {
+      "en": "turmeric",
+      "ru": "куркума"
+    },
+    {
+      "en": "cumin",
+      "ru": "зира"
+    },
+    {
+      "en": "nutmeg",
+      "ru": "мускатный орех"
+    },
+    {
+      "en": "lunch",
+      "ru": "обед"
+    },
+    {
+      "en": "snack",
+      "ru": "перекус"
+    },
+    {
+      "en": "appetizer",
+      "ru": "закуска"
+    },
+    {
+      "en": "main course",
+      "ru": "основное блюдо"
+    },
+    {
+      "en": "dessert",
+      "ru": "десерт"
+    },
+    {
+      "en": "side dish",
+      "ru": "гарнир"
+    },
+    {
+      "en": "beverage",
+      "ru": "напиток"
+    },
+    {
+      "en": "soda",
+      "ru": "газировка"
+    },
+    {
+      "en": "smoothie",
+      "ru": "смузи"
+    },
+    {
+      "en": "milkshake",
+      "ru": "молочный коктейль"
+    },
+    {
+      "en": "wine",
+      "ru": "вино"
+    },
+    {
+      "en": "beer",
+      "ru": "пиво"
+    },
+    {
+      "en": "cocktail",
+      "ru": "коктейль"
+    },
+    {
+      "en": "lemonade",
+      "ru": "лимонад"
+    },
+    {
+      "en": "boil",
+      "ru": "варить"
+    },
+    {
+      "en": "fry",
+      "ru": "жарить"
+    },
+    {
+      "en": "bake",
+      "ru": "выпекать"
+    },
+    {
+      "en": "grill",
+      "ru": "гриль"
+    },
+    {
+      "en": "roast",
+      "ru": "запекать"
+    },
+    {
+      "en": "steam",
+      "ru": "готовить на пару"
+    },
+    {
+      "en": "simmer",
+      "ru": "томить"
+    },
+    {
+      "en": "saute",
+      "ru": "обжаривать"
+    },
+    {
+      "en": "chop",
+      "ru": "нарезать"
+    },
+    {
+      "en": "slice",
+      "ru": "нарезать ломтиками"
+    },
+    {
+      "en": "dice",
+      "ru": "нарезать кубиками"
+    },
+    {
+      "en": "peel",
+      "ru": "чистить"
+    },
+    {
+      "en": "mix",
+      "ru": "смешивать"
+    },
+    {
+      "en": "stir",
+      "ru": "мешать"
+    },
+    {
+      "en": "whisk",
+      "ru": "взбивать венчиком"
+    },
+    {
+      "en": "knead",
+      "ru": "месить"
+    },
+    {
+      "en": "marinate",
+      "ru": "мариновать"
+    },
+    {
+      "en": "season",
+      "ru": "приправлять"
+    },
+    {
+      "en": "taste",
+      "ru": "пробовать на вкус"
+    },
+    {
+      "en": "serve",
+      "ru": "подавать"
+    },
+    {
+      "en": "recipe",
+      "ru": "рецепт"
+    },
+    {
+      "en": "ingredient",
+      "ru": "ингредиент"
+    },
+    {
+      "en": "portion",
+      "ru": "порция"
+    },
+    {
+      "en": "serving",
+      "ru": "порция подачи"
+    },
+    {
+      "en": "calorie",
+      "ru": "калория"
+    },
+    {
+      "en": "protein",
+      "ru": "белок"
+    },
+    {
+      "en": "carb",
+      "ru": "углевод"
+    },
+    {
+      "en": "fat",
+      "ru": "жир"
+    },
+    {
+      "en": "fiber",
+      "ru": "клетчатка"
+    },
+    {
+      "en": "vitamin",
+      "ru": "витамин"
+    },
+    {
+      "en": "mineral",
+      "ru": "минерал"
+    },
+    {
+      "en": "organic",
+      "ru": "органический"
+    },
+    {
+      "en": "fresh",
+      "ru": "свежий"
+    },
+    {
+      "en": "frozen",
+      "ru": "замороженный"
+    },
+    {
+      "en": "canned",
+      "ru": "консервированный"
+    },
+    {
+      "en": "raw",
+      "ru": "сырой"
+    },
+    {
+      "en": "ripe",
+      "ru": "спелый"
+    },
+    {
+      "en": "spoiled",
+      "ru": "испорченный"
+    },
+    {
+      "en": "leftovers",
+      "ru": "остатки еды"
+    },
+    {
+      "en": "meal prep",
+      "ru": "заготовка еды"
+    },
+    {
+      "en": "grocery list",
+      "ru": "список продуктов"
+    },
+    {
+      "en": "aisle",
+      "ru": "проход в магазине"
+    },
+    {
+      "en": "checkout",
+      "ru": "касса"
+    },
+    {
+      "en": "cashier",
+      "ru": "кассир"
+    },
+    {
+      "en": "cart",
+      "ru": "тележка"
+    },
+    {
+      "en": "basket",
+      "ru": "корзина"
+    },
+    {
+      "en": "produce",
+      "ru": "свежие овощи и фрукты"
+    },
+    {
+      "en": "bakery",
+      "ru": "пекарня"
+    },
+    {
+      "en": "butcher",
+      "ru": "мясник"
+    },
+    {
+      "en": "deli",
+      "ru": "гастроном"
+    },
+    {
+      "en": "seafood counter",
+      "ru": "отдел морепродуктов"
+    }
   ],
   "phrases": [
-    {"en": "green apple", "ru": "зелёное яблоко", "uses": ["apple"]},
-    {"en": "ripe banana", "ru": "спелый банан", "uses": ["banana"]},
-    {"en": "cheese sandwich", "ru": "бутерброд с сыром", "uses": ["cheese"]},
-    {"en": "fried chicken", "ru": "жареная курица", "uses": ["chicken"]},
-    {"en": "steamed rice", "ru": "рис на пару", "uses": ["rice"]},
-    {"en": "hot soup", "ru": "горячий суп", "uses": ["soup"]},
-    {"en": "fresh salad", "ru": "свежий салат", "uses": ["salad"]},
-    {"en": "boiled egg", "ru": "варёное яйцо", "uses": ["egg"]},
-    {"en": "butter and bread", "ru": "масло и хлеб", "uses": ["butter"]},
-    {"en": "no sugar", "ru": "без сахара", "uses": ["sugar"]},
-    {"en": "salt and pepper", "ru": "соль и перец", "uses": ["salt", "pepper"]},
-    {"en": "grilled fish", "ru": "рыба на гриле", "uses": ["fish"]},
-    {"en": "potato soup", "ru": "картофельный суп", "uses": ["potato", "soup"]},
-    {"en": "tomato salad", "ru": "салат из помидоров", "uses": ["tomato", "salad"]},
-    {"en": "orange juice", "ru": "апельсиновый сок", "uses": ["juice"]}
+    {
+      "en": "a bowl of soup",
+      "ru": "миска супа",
+      "uses": [
+        "soup"
+      ]
+    },
+    {
+      "en": "a slice of pizza",
+      "ru": "кусок пиццы",
+      "uses": [
+        "slice",
+        "pizza"
+      ]
+    },
+    {
+      "en": "a dozen eggs",
+      "ru": "десяток яиц",
+      "uses": [
+        "egg"
+      ]
+    },
+    {
+      "en": "a bunch of bananas",
+      "ru": "связка бананов",
+      "uses": [
+        "banana"
+      ]
+    },
+    {
+      "en": "a bag of rice",
+      "ru": "мешок риса",
+      "uses": [
+        "rice"
+      ]
+    },
+    {
+      "en": "a jar of honey",
+      "ru": "банка мёда",
+      "uses": [
+        "honey"
+      ]
+    },
+    {
+      "en": "a pinch of salt",
+      "ru": "щепотка соли",
+      "uses": [
+        "salt"
+      ]
+    },
+    {
+      "en": "a spoonful of sugar",
+      "ru": "ложка сахара",
+      "uses": [
+        "sugar"
+      ]
+    },
+    {
+      "en": "a stick of butter",
+      "ru": "пачка сливочного масла",
+      "uses": [
+        "butter"
+      ]
+    },
+    {
+      "en": "a clove of garlic",
+      "ru": "зубчик чеснока",
+      "uses": [
+        "garlic"
+      ]
+    },
+    {
+      "en": "a head of lettuce",
+      "ru": "кочан салата",
+      "uses": [
+        "lettuce"
+      ]
+    },
+    {
+      "en": "a can of tuna",
+      "ru": "банка тунца",
+      "uses": [
+        "tuna"
+      ]
+    },
+    {
+      "en": "fresh ground pepper",
+      "ru": "свежемолотый перец",
+      "uses": [
+        "fresh",
+        "pepper"
+      ]
+    },
+    {
+      "en": "freshly baked bread",
+      "ru": "свежеиспечённый хлеб",
+      "uses": [
+        "fresh",
+        "bake"
+      ]
+    },
+    {
+      "en": "scrambled eggs",
+      "ru": "яичница-болтунья",
+      "uses": [
+        "egg"
+      ]
+    },
+    {
+      "en": "fried eggs sunny side up",
+      "ru": "глазунья",
+      "uses": [
+        "fry",
+        "egg"
+      ]
+    },
+    {
+      "en": "boiled potatoes",
+      "ru": "варёный картофель",
+      "uses": [
+        "boil",
+        "potato"
+      ]
+    },
+    {
+      "en": "mashed potatoes",
+      "ru": "картофельное пюре",
+      "uses": [
+        "potato"
+      ]
+    },
+    {
+      "en": "roasted vegetables",
+      "ru": "запечённые овощи",
+      "uses": [
+        "roast"
+      ]
+    },
+    {
+      "en": "grilled chicken breast",
+      "ru": "куриная грудка на гриле",
+      "uses": [
+        "grill",
+        "chicken"
+      ]
+    },
+    {
+      "en": "steamed rice",
+      "ru": "рис на пару",
+      "uses": [
+        "steam",
+        "rice"
+      ]
+    },
+    {
+      "en": "smoked salmon",
+      "ru": "копчёный лосось",
+      "uses": [
+        "salmon"
+      ]
+    },
+    {
+      "en": "cured ham",
+      "ru": "вяленая ветчина",
+      "uses": [
+        "ham"
+      ]
+    },
+    {
+      "en": "low fat yogurt",
+      "ru": "обезжиренный йогурт",
+      "uses": [
+        "fat",
+        "yogurt"
+      ]
+    },
+    {
+      "en": "sugar free gum",
+      "ru": "жвачка без сахара",
+      "uses": [
+        "sugar"
+      ]
+    },
+    {
+      "en": "gluten free pasta",
+      "ru": "паста без глютена",
+      "uses": [
+        "pasta"
+      ]
+    },
+    {
+      "en": "plant based burger",
+      "ru": "растительный бургер",
+      "uses": [
+        "burger"
+      ]
+    },
+    {
+      "en": "peanut butter",
+      "ru": "арахисовая паста",
+      "uses": [
+        "butter"
+      ]
+    },
+    {
+      "en": "cream cheese",
+      "ru": "сливочный сыр",
+      "uses": [
+        "cream",
+        "cheese"
+      ]
+    },
+    {
+      "en": "sour cream",
+      "ru": "сметана",
+      "uses": [
+        "cream"
+      ]
+    },
+    {
+      "en": "whipped cream",
+      "ru": "взбитые сливки",
+      "uses": [
+        "cream"
+      ]
+    },
+    {
+      "en": "ice cream cone",
+      "ru": "рожок мороженого",
+      "uses": [
+        "cream"
+      ]
+    },
+    {
+      "en": "chocolate chip cookie",
+      "ru": "печенье с шоколадной крошкой",
+      "uses": [
+        "chocolate",
+        "cookie"
+      ]
+    },
+    {
+      "en": "apple pie",
+      "ru": "яблочный пирог",
+      "uses": [
+        "apple",
+        "pie"
+      ]
+    },
+    {
+      "en": "cinnamon roll",
+      "ru": "булочка с корицей",
+      "uses": [
+        "cinnamon"
+      ]
+    },
+    {
+      "en": "blueberry muffin",
+      "ru": "черничный маффин",
+      "uses": [
+        "blueberry",
+        "muffin"
+      ]
+    },
+    {
+      "en": "french fries",
+      "ru": "картофель фри",
+      "uses": [
+        "fry"
+      ]
+    },
+    {
+      "en": "onion rings",
+      "ru": "луковые кольца",
+      "uses": [
+        "onion"
+      ]
+    },
+    {
+      "en": "chicken wings",
+      "ru": "куриные крылышки",
+      "uses": [
+        "chicken"
+      ]
+    },
+    {
+      "en": "beef stew",
+      "ru": "тушёная говядина",
+      "uses": [
+        "beef",
+        "stew"
+      ]
+    },
+    {
+      "en": "pork chop",
+      "ru": "свиная отбивная",
+      "uses": [
+        "pork",
+        "chop"
+      ]
+    },
+    {
+      "en": "lamb shank",
+      "ru": "голень ягнёнка",
+      "uses": [
+        "lamb"
+      ]
+    },
+    {
+      "en": "fish and chips",
+      "ru": "рыба с картофелем фри",
+      "uses": [
+        "fish"
+      ]
+    },
+    {
+      "en": "shrimp cocktail",
+      "ru": "креветочный коктейль",
+      "uses": [
+        "shrimp",
+        "cocktail"
+      ]
+    },
+    {
+      "en": "caesar salad",
+      "ru": "салат цезарь",
+      "uses": [
+        "salad"
+      ]
+    },
+    {
+      "en": "greek salad",
+      "ru": "греческий салат",
+      "uses": [
+        "salad"
+      ]
+    },
+    {
+      "en": "garden salad",
+      "ru": "овощной салат",
+      "uses": [
+        "salad"
+      ]
+    },
+    {
+      "en": "tomato soup",
+      "ru": "томатный суп",
+      "uses": [
+        "tomato",
+        "soup"
+      ]
+    },
+    {
+      "en": "chicken noodle soup",
+      "ru": "куриный суп с лапшой",
+      "uses": [
+        "chicken",
+        "soup"
+      ]
+    },
+    {
+      "en": "clam chowder",
+      "ru": "суп-пюре из моллюсков",
+      "uses": [
+        "clam"
+      ]
+    },
+    {
+      "en": "grilled cheese sandwich",
+      "ru": "тост с расплавленным сыром",
+      "uses": [
+        "grill",
+        "cheese",
+        "sandwich"
+      ]
+    },
+    {
+      "en": "peanut butter and jelly",
+      "ru": "арахисовая паста с джемом",
+      "uses": [
+        "butter"
+      ]
+    },
+    {
+      "en": "breakfast burrito",
+      "ru": "буррито на завтрак",
+      "uses": [
+        "breakfast",
+        "burrito"
+      ]
+    },
+    {
+      "en": "toast and jam",
+      "ru": "тост с джемом",
+      "uses": [
+        "toast",
+        "jam"
+      ]
+    },
+    {
+      "en": "orange juice",
+      "ru": "апельсиновый сок",
+      "uses": [
+        "orange",
+        "juice"
+      ]
+    },
+    {
+      "en": "a cold beer",
+      "ru": "холодное пиво",
+      "uses": [
+        "beer"
+      ]
+    },
+    {
+      "en": "a glass of red wine",
+      "ru": "бокал красного вина",
+      "uses": [
+        "wine"
+      ]
+    },
+    {
+      "en": "no onions please",
+      "ru": "без лука, пожалуйста",
+      "uses": [
+        "onion"
+      ]
+    },
+    {
+      "en": "extra cheese please",
+      "ru": "добавьте сыра, пожалуйста",
+      "uses": [
+        "cheese"
+      ]
+    },
+    {
+      "en": "easy on the salt",
+      "ru": "поменьше соли",
+      "uses": [
+        "salt"
+      ]
+    },
+    {
+      "en": "it tastes great",
+      "ru": "это очень вкусно",
+      "uses": [
+        "taste"
+      ]
+    },
+    {
+      "en": "overcooked pasta",
+      "ru": "переваренная паста",
+      "uses": [
+        "pasta"
+      ]
+    },
+    {
+      "en": "undercooked chicken",
+      "ru": "недоготовленная курица",
+      "uses": [
+        "chicken"
+      ]
+    },
+    {
+      "en": "burnt toast",
+      "ru": "подгоревший тост",
+      "uses": [
+        "toast"
+      ]
+    },
+    {
+      "en": "rotten apple",
+      "ru": "гнилое яблоко",
+      "uses": [
+        "apple"
+      ]
+    },
+    {
+      "en": "ripe avocado",
+      "ru": "спелый авокадо",
+      "uses": [
+        "ripe",
+        "avocado"
+      ]
+    },
+    {
+      "en": "raw vegetables",
+      "ru": "сырые овощи",
+      "uses": [
+        "raw"
+      ]
+    },
+    {
+      "en": "leftover pizza",
+      "ru": "остатки пиццы",
+      "uses": [
+        "pizza"
+      ]
+    },
+    {
+      "en": "homemade soup",
+      "ru": "домашний суп",
+      "uses": [
+        "soup"
+      ]
+    },
+    {
+      "en": "organic produce",
+      "ru": "органические овощи и фрукты",
+      "uses": [
+        "organic",
+        "produce"
+      ]
+    },
+    {
+      "en": "mixed nuts",
+      "ru": "ореховое ассорти",
+      "uses": [
+        "mix"
+      ]
+    },
+    {
+      "en": "trail mix",
+      "ru": "смесь орехов и сухофруктов",
+      "uses": [
+        "mix"
+      ]
+    },
+    {
+      "en": "potato chips",
+      "ru": "картофельные чипсы",
+      "uses": [
+        "potato"
+      ]
+    },
+    {
+      "en": "stir the sauce",
+      "ru": "помешать соус",
+      "uses": [
+        "stir"
+      ]
+    },
+    {
+      "en": "chop the onions",
+      "ru": "нарезать лук",
+      "uses": [
+        "chop",
+        "onion"
+      ]
+    },
+    {
+      "en": "slice the tomatoes",
+      "ru": "нарезать помидоры ломтиками",
+      "uses": [
+        "slice",
+        "tomato"
+      ]
+    },
+    {
+      "en": "peel the potatoes",
+      "ru": "почистить картофель",
+      "uses": [
+        "peel",
+        "potato"
+      ]
+    },
+    {
+      "en": "grate the cheese",
+      "ru": "натереть сыр",
+      "uses": [
+        "cheese"
+      ]
+    },
+    {
+      "en": "whisk the eggs",
+      "ru": "взбить яйца венчиком",
+      "uses": [
+        "whisk",
+        "egg"
+      ]
+    },
+    {
+      "en": "knead the dough",
+      "ru": "месить тесто",
+      "uses": [
+        "knead"
+      ]
+    },
+    {
+      "en": "bake for thirty minutes",
+      "ru": "выпекать тридцать минут",
+      "uses": [
+        "bake"
+      ]
+    },
+    {
+      "en": "simmer on low heat",
+      "ru": "томить на слабом огне",
+      "uses": [
+        "simmer"
+      ]
+    },
+    {
+      "en": "bring to a boil",
+      "ru": "довести до кипения",
+      "uses": [
+        "boil"
+      ]
+    },
+    {
+      "en": "drain the pasta",
+      "ru": "слить воду с пасты",
+      "uses": [
+        "pasta"
+      ]
+    },
+    {
+      "en": "season to taste",
+      "ru": "приправить по вкусу",
+      "uses": [
+        "season",
+        "taste"
+      ]
+    },
+    {
+      "en": "add a pinch of pepper",
+      "ru": "добавьте щепотку перца",
+      "uses": [
+        "pepper"
+      ]
+    },
+    {
+      "en": "marinate overnight",
+      "ru": "мариновать на ночь",
+      "uses": [
+        "marinate"
+      ]
+    },
+    {
+      "en": "defrost the chicken",
+      "ru": "разморозить курицу",
+      "uses": [
+        "chicken"
+      ]
+    },
+    {
+      "en": "read the ingredients",
+      "ru": "прочитать состав",
+      "uses": [
+        "ingredient"
+      ]
+    },
+    {
+      "en": "skip breakfast",
+      "ru": "пропустить завтрак",
+      "uses": [
+        "breakfast"
+      ]
+    },
+    {
+      "en": "deli counter",
+      "ru": "прилавок с готовой едой и нарезкой",
+      "uses": [
+        "deli"
+      ]
+    },
+    {
+      "en": "bakery aisle",
+      "ru": "отдел выпечки",
+      "uses": [
+        "bakery",
+        "aisle"
+      ]
+    },
+    {
+      "en": "shopping cart",
+      "ru": "тележка для покупок",
+      "uses": [
+        "cart"
+      ]
+    },
+    {
+      "en": "self checkout",
+      "ru": "касса самообслуживания",
+      "uses": [
+        "checkout"
+      ]
+    },
+    {
+      "en": "serving size",
+      "ru": "размер порции",
+      "uses": [
+        "serve"
+      ]
+    },
+    {
+      "en": "daily calorie intake",
+      "ru": "суточная калорийность",
+      "uses": [
+        "calorie"
+      ]
+    },
+    {
+      "en": "high in protein",
+      "ru": "богат белком",
+      "uses": [
+        "protein"
+      ]
+    },
+    {
+      "en": "added sugar",
+      "ru": "добавленный сахар",
+      "uses": [
+        "sugar"
+      ]
+    },
+    {
+      "en": "a cup of tea",
+      "ru": "чашка чая",
+      "uses": [
+        "cup",
+        "tea"
+      ]
+    },
+    {
+      "en": "a glass of water",
+      "ru": "стакан воды",
+      "uses": [
+        "glass",
+        "water"
+      ]
+    },
+    {
+      "en": "a loaf of bread",
+      "ru": "буханка хлеба",
+      "uses": [
+        "loaf",
+        "bread"
+      ]
+    },
+    {
+      "en": "a carton of milk",
+      "ru": "пакет молока",
+      "uses": [
+        "carton",
+        "milk"
+      ]
+    },
+    {
+      "en": "a box of cereal",
+      "ru": "коробка хлопьев",
+      "uses": [
+        "box",
+        "cereal"
+      ]
+    },
+    {
+      "en": "a pack of noodles",
+      "ru": "пачка лапши",
+      "uses": [
+        "pack",
+        "noodle"
+      ]
+    },
+    {
+      "en": "whole wheat bread",
+      "ru": "цельнозерновой хлеб",
+      "uses": [
+        "whole",
+        "wheat",
+        "bread"
+      ]
+    },
+    {
+      "en": "dairy free milk",
+      "ru": "безмолочное молоко",
+      "uses": [
+        "dairy",
+        "free",
+        "milk"
+      ]
+    },
+    {
+      "en": "extra virgin olive oil",
+      "ru": "оливковое масло первого отжима",
+      "uses": [
+        "extra",
+        "virgin",
+        "olive",
+        "oil"
+      ]
+    },
+    {
+      "en": "soy sauce",
+      "ru": "соевый соус",
+      "uses": [
+        "soy",
+        "sauce"
+      ]
+    },
+    {
+      "en": "hot sauce",
+      "ru": "острый соус",
+      "uses": [
+        "hot",
+        "sauce"
+      ]
+    },
+    {
+      "en": "maple syrup",
+      "ru": "кленовый сироп",
+      "uses": [
+        "maple",
+        "syrup"
+      ]
+    },
+    {
+      "en": "maple glazed donut",
+      "ru": "пончик в кленовой глазури",
+      "uses": [
+        "maple",
+        "glaze",
+        "donut"
+      ]
+    },
+    {
+      "en": "pancakes with syrup",
+      "ru": "блины с сиропом",
+      "uses": [
+        "pancake",
+        "syrup"
+      ]
+    },
+    {
+      "en": "oatmeal with berries",
+      "ru": "овсянка с ягодами",
+      "uses": [
+        "oatmeal",
+        "berry"
+      ]
+    },
+    {
+      "en": "black coffee",
+      "ru": "чёрный кофе",
+      "uses": [
+        "black",
+        "coffee"
+      ]
+    },
+    {
+      "en": "iced coffee",
+      "ru": "холодный кофе со льдом",
+      "uses": [
+        "ice",
+        "coffee"
+      ]
+    },
+    {
+      "en": "double espresso",
+      "ru": "двойной эспрессо",
+      "uses": [
+        "double",
+        "espresso"
+      ]
+    },
+    {
+      "en": "herbal tea",
+      "ru": "травяной чай",
+      "uses": [
+        "herbal",
+        "tea"
+      ]
+    },
+    {
+      "en": "sparkling water",
+      "ru": "газированная вода",
+      "uses": [
+        "sparkle",
+        "water"
+      ]
+    },
+    {
+      "en": "tap water",
+      "ru": "водопроводная вода",
+      "uses": [
+        "tap",
+        "water"
+      ]
+    },
+    {
+      "en": "for here or to go",
+      "ru": "здесь или с собой",
+      "uses": [
+        "here",
+        "go"
+      ]
+    },
+    {
+      "en": "is it spicy",
+      "ru": "это острое",
+      "uses": [
+        "spicy"
+      ]
+    },
+    {
+      "en": "on the side",
+      "ru": "отдельно, на гарнир",
+      "uses": [
+        "side"
+      ]
+    },
+    {
+      "en": "hold the mayo",
+      "ru": "без майонеза",
+      "uses": [
+        "hold",
+        "mayo"
+      ]
+    },
+    {
+      "en": "well done steak",
+      "ru": "хорошо прожаренный стейк",
+      "uses": [
+        "well",
+        "do",
+        "steak"
+      ]
+    },
+    {
+      "en": "medium rare",
+      "ru": "с кровью, средней прожарки",
+      "uses": [
+        "medium",
+        "rare"
+      ]
+    },
+    {
+      "en": "I'm allergic to nuts",
+      "ru": "у меня аллергия на орехи",
+      "uses": [
+        "allergic",
+        "nut"
+      ]
+    },
+    {
+      "en": "I'm lactose intolerant",
+      "ru": "у меня непереносимость лактозы",
+      "uses": [
+        "lactose",
+        "intolerant"
+      ]
+    },
+    {
+      "en": "I'm on a diet",
+      "ru": "я на диете",
+      "uses": [
+        "diet"
+      ]
+    },
+    {
+      "en": "I'm starving",
+      "ru": "я умираю с голоду",
+      "uses": [
+        "starve"
+      ]
+    },
+    {
+      "en": "I'm stuffed",
+      "ru": "я объелся",
+      "uses": [
+        "stuff"
+      ]
+    },
+    {
+      "en": "I'm craving sweets",
+      "ru": "мне хочется сладкого",
+      "uses": [
+        "crave",
+        "sweet"
+      ]
+    },
+    {
+      "en": "I have a sweet tooth",
+      "ru": "я сладкоежка",
+      "uses": [
+        "sweet",
+        "tooth"
+      ]
+    },
+    {
+      "en": "it smells delicious",
+      "ru": "это вкусно пахнет",
+      "uses": [
+        "smell",
+        "delicious"
+      ]
+    },
+    {
+      "en": "it's too salty",
+      "ru": "это слишком солёное",
+      "uses": [
+        "salty"
+      ]
+    },
+    {
+      "en": "it's a bit bland",
+      "ru": "это немного пресное",
+      "uses": [
+        "bland"
+      ]
+    },
+    {
+      "en": "it's rich and creamy",
+      "ru": "это насыщенное и сливочное",
+      "uses": [
+        "rich",
+        "creamy"
+      ]
+    },
+    {
+      "en": "crispy on the outside",
+      "ru": "хрустящий снаружи",
+      "uses": [
+        "crispy",
+        "outside"
+      ]
+    },
+    {
+      "en": "tender and juicy",
+      "ru": "нежный и сочный",
+      "uses": [
+        "tender",
+        "juicy"
+      ]
+    },
+    {
+      "en": "stale bread",
+      "ru": "чёрствый хлеб",
+      "uses": [
+        "stale",
+        "bread"
+      ]
+    },
+    {
+      "en": "expired milk",
+      "ru": "просроченное молоко",
+      "uses": [
+        "expire",
+        "milk"
+      ]
+    },
+    {
+      "en": "seasonal fruit",
+      "ru": "сезонные фрукты",
+      "uses": [
+        "seasonal",
+        "fruit"
+      ]
+    },
+    {
+      "en": "frozen vegetables",
+      "ru": "замороженные овощи",
+      "uses": [
+        "freeze",
+        "vegetable"
+      ]
+    },
+    {
+      "en": "canned beans",
+      "ru": "консервированная фасоль",
+      "uses": [
+        "can",
+        "bean"
+      ]
+    },
+    {
+      "en": "dried fruit",
+      "ru": "сухофрукты",
+      "uses": [
+        "dry",
+        "fruit"
+      ]
+    },
+    {
+      "en": "granola bar",
+      "ru": "батончик из мюсли",
+      "uses": [
+        "granola",
+        "bar"
+      ]
+    },
+    {
+      "en": "popcorn at the movies",
+      "ru": "попкорн в кино",
+      "uses": [
+        "popcorn",
+        "movie"
+      ]
+    },
+    {
+      "en": "set the table",
+      "ru": "накрыть на стол",
+      "uses": [
+        "set",
+        "table"
+      ]
+    },
+    {
+      "en": "clear the table",
+      "ru": "убрать со стола",
+      "uses": [
+        "clear",
+        "table"
+      ]
+    },
+    {
+      "en": "pour a drink",
+      "ru": "налить напиток",
+      "uses": [
+        "pour",
+        "drink"
+      ]
+    },
+    {
+      "en": "roll out the dough",
+      "ru": "раскатать тесто",
+      "uses": [
+        "roll",
+        "dough"
+      ]
+    }
   ],
   "sentences": [
-    {"en": "I eat an apple every morning.", "ru": "Я ем яблоко каждое утро.", "uses": ["apple"]},
-    {"en": "Do you want a banana?", "ru": "Хочешь банан?", "uses": ["banana"]},
-    {"en": "This cheese is delicious.", "ru": "Этот сыр вкусный.", "uses": ["cheese"]},
-    {"en": "We cooked chicken with rice.", "ru": "Мы приготовили курицу с рисом.", "uses": ["chicken", "rice"]},
-    {"en": "The soup is too hot.", "ru": "Суп слишком горячий.", "uses": ["soup"]},
-    {"en": "I like a fresh salad.", "ru": "Мне нравится свежий салат.", "uses": ["salad"]},
-    {"en": "She boiled two eggs.", "ru": "Она сварила два яйца.", "uses": ["egg"]},
-    {"en": "Please pass the salt and pepper.", "ru": "Передайте, пожалуйста, соль и перец.", "uses": ["salt", "pepper"]},
-    {"en": "Breakfast without sugar, please.", "ru": "Завтрак без сахара, пожалуйста.", "uses": ["breakfast", "sugar"]},
-    {"en": "Dinner is fish and potatoes.", "ru": "На ужин рыба и картофель.", "uses": ["dinner", "fish", "potato"]}
-  ]
+    {
+      "en": "Could I have the chicken salad without onions, please?",
+      "ru": "Можно мне куриный салат без лука, пожалуйста?",
+      "uses": [
+        "chicken",
+        "salad",
+        "onion"
+      ]
+    },
+    {
+      "en": "The soup was so hot that I burned my tongue.",
+      "ru": "Суп был таким горячим, что я обжёг язык.",
+      "uses": [
+        "soup"
+      ]
+    },
+    {
+      "en": "I usually have oatmeal with blueberries for breakfast.",
+      "ru": "На завтрак я обычно ем овсянку с черникой.",
+      "uses": [
+        "blueberry",
+        "breakfast"
+      ]
+    },
+    {
+      "en": "My mother makes the best borscht I have ever tasted.",
+      "ru": "Моя мама готовит лучший борщ из всех, что я пробовал.",
+      "uses": [
+        "taste"
+      ]
+    },
+    {
+      "en": "Add a pinch of salt and stir until the sauce thickens.",
+      "ru": "Добавьте щепотку соли и помешивайте, пока соус не загустеет.",
+      "uses": [
+        "salt",
+        "stir"
+      ]
+    },
+    {
+      "en": "This steak is a little overcooked for my taste.",
+      "ru": "Этот стейк немного переготовлен на мой вкус.",
+      "uses": [
+        "taste"
+      ]
+    },
+    {
+      "en": "We split a large pizza and a garlic bread.",
+      "ru": "Мы разделили большую пиццу и чесночный хлеб.",
+      "uses": [
+        "pizza",
+        "garlic"
+      ]
+    },
+    {
+      "en": "I'm trying to eat less sugar and more vegetables.",
+      "ru": "Я стараюсь есть меньше сахара и больше овощей.",
+      "uses": [
+        "sugar"
+      ]
+    },
+    {
+      "en": "The waiter recommended the grilled salmon with rice.",
+      "ru": "Официант порекомендовал лосось на гриле с рисом.",
+      "uses": [
+        "grill",
+        "salmon",
+        "rice"
+      ]
+    },
+    {
+      "en": "Leftover pasta tastes even better the next day.",
+      "ru": "Вчерашняя паста на следующий день ещё вкуснее.",
+      "uses": [
+        "pasta",
+        "taste"
+      ]
+    },
+    {
+      "en": "I forgot to buy eggs, so we can't make pancakes.",
+      "ru": "Я забыл купить яйца, поэтому мы не сможем испечь блины.",
+      "uses": [
+        "egg"
+      ]
+    },
+    {
+      "en": "The bakery on the corner sells fresh bread every morning.",
+      "ru": "Пекарня на углу каждое утро продаёт свежий хлеб.",
+      "uses": [
+        "bakery",
+        "fresh"
+      ]
+    },
+    {
+      "en": "He ordered a double espresso and a cinnamon roll.",
+      "ru": "Он заказал двойной эспрессо и булочку с корицей.",
+      "uses": [
+        "cinnamon"
+      ]
+    },
+    {
+      "en": "Stir the onions occasionally so that they don't burn.",
+      "ru": "Время от времени помешивайте лук, чтобы он не подгорел.",
+      "uses": [
+        "stir",
+        "onion"
+      ]
+    },
+    {
+      "en": "We had a barbecue in the backyard and grilled burgers.",
+      "ru": "Мы устроили барбекю на заднем дворе и пожарили бургеры.",
+      "uses": [
+        "grill",
+        "burger"
+      ]
+    },
+    {
+      "en": "I'm full, but I still have room for dessert.",
+      "ru": "Я сыт, но для десерта место ещё найдётся.",
+      "uses": [
+        "dessert"
+      ]
+    },
+    {
+      "en": "Cut the potatoes into small cubes and boil them for ten minutes.",
+      "ru": "Нарежьте картофель маленькими кубиками и варите десять минут.",
+      "uses": [
+        "potato",
+        "boil"
+      ]
+    },
+    {
+      "en": "She doesn't eat meat, but she eats fish and eggs.",
+      "ru": "Она не ест мясо, но ест рыбу и яйца.",
+      "uses": [
+        "meat",
+        "fish",
+        "egg"
+      ]
+    },
+    {
+      "en": "A balanced diet includes protein, carbohydrates, and healthy fats.",
+      "ru": "Сбалансированная диета включает белки, углеводы и полезные жиры.",
+      "uses": [
+        "protein",
+        "fat"
+      ]
+    },
+    {
+      "en": "The cheese on this sandwich is perfectly melted.",
+      "ru": "Сыр на этом сэндвиче идеально расплавлен.",
+      "uses": [
+        "cheese",
+        "sandwich"
+      ]
+    },
+    {
+      "en": "I like my coffee black, with no sugar.",
+      "ru": "Я пью кофе чёрным, без сахара.",
+      "uses": [
+        "sugar"
+      ]
+    },
+    {
+      "en": "They serve breakfast all day, even in the evening.",
+      "ru": "Они подают завтрак весь день, даже вечером.",
+      "uses": [
+        "serve",
+        "breakfast"
+      ]
+    },
+    {
+      "en": "Can you pass me the salt and pepper, please?",
+      "ru": "Передай мне, пожалуйста, соль и перец.",
+      "uses": [
+        "salt",
+        "pepper"
+      ]
+    },
+    {
+      "en": "The fish was so fresh that it needed almost no seasoning.",
+      "ru": "Рыба была такой свежей, что почти не требовала приправ.",
+      "uses": [
+        "fish",
+        "fresh",
+        "season"
+      ]
+    },
+    {
+      "en": "I'll have the lasagna, and my wife will have the mushroom risotto.",
+      "ru": "Мне лазанью, а моей жене — ризотто с грибами.",
+      "uses": [
+        "mushroom"
+      ]
+    },
+    {
+      "en": "We bought a whole chicken and roasted it with potatoes.",
+      "ru": "Мы купили целую курицу и запекли её с картофелем.",
+      "uses": [
+        "chicken",
+        "roast",
+        "potato"
+      ]
+    },
+    {
+      "en": "The smell of fresh coffee filled the whole kitchen.",
+      "ru": "Запах свежего кофе наполнил всю кухню.",
+      "uses": [
+        "fresh"
+      ]
+    },
+    {
+      "en": "I'm on a low-carb diet, so I skip bread and pasta.",
+      "ru": "Я на низкоуглеводной диете, поэтому не ем хлеб и пасту.",
+      "uses": [
+        "carb",
+        "pasta"
+      ]
+    },
+    {
+      "en": "Honey is a natural sweetener that dissolves well in hot tea.",
+      "ru": "Мёд — натуральный подсластитель, который хорошо растворяется в горячем чае.",
+      "uses": [
+        "honey"
+      ]
+    },
+    {
+      "en": "She sliced the avocado and spread it on toast.",
+      "ru": "Она нарезала авокадо и намазала его на тост.",
+      "uses": [
+        "slice",
+        "avocado",
+        "toast"
+      ]
+    },
+    {
+      "en": "You should wash your hands before handling raw meat.",
+      "ru": "Нужно мыть руки перед работой с сырым мясом.",
+      "uses": [
+        "raw",
+        "meat"
+      ]
+    },
+    {
+      "en": "The cake was moist, and the frosting was not too sweet.",
+      "ru": "Торт был влажным, а глазурь не слишком сладкой.",
+      "uses": [
+        "cake"
+      ]
+    },
+    {
+      "en": "We ran out of olive oil, so I used butter instead.",
+      "ru": "У нас закончилось оливковое масло, поэтому я использовал сливочное.",
+      "uses": [
+        "butter"
+      ]
+    },
+    {
+      "en": "Tomatoes taste much better in the summer than in the winter.",
+      "ru": "Помидоры летом гораздо вкуснее, чем зимой.",
+      "uses": [
+        "tomato",
+        "taste"
+      ]
+    },
+    {
+      "en": "Would you like your eggs scrambled or fried?",
+      "ru": "Вам яйца болтунью или жареные?",
+      "uses": [
+        "egg",
+        "fry"
+      ]
+    },
+    {
+      "en": "Rinse the rice several times until the water runs clear.",
+      "ru": "Промойте рис несколько раз, пока вода не станет прозрачной.",
+      "uses": [
+        "rice"
+      ]
+    },
+    {
+      "en": "She packed a sandwich, an apple, and a bottle of water for lunch.",
+      "ru": "Она собрала на обед сэндвич, яблоко и бутылку воды.",
+      "uses": [
+        "sandwich",
+        "apple",
+        "lunch"
+      ]
+    },
+    {
+      "en": "I prefer brown rice because it has more fibre.",
+      "ru": "Я предпочитаю бурый рис, потому что в нём больше клетчатки.",
+      "uses": [
+        "rice"
+      ]
+    },
+    {
+      "en": "They ordered a large platter of appetizers to share.",
+      "ru": "Они заказали большое блюдо закусок на всех.",
+      "uses": [
+        "appetizer"
+      ]
+    },
+    {
+      "en": "Don't overmix the batter, or the muffins will be tough.",
+      "ru": "Не перемешивай тесто слишком долго, иначе маффины получатся жёсткими.",
+      "uses": [
+        "muffin"
+      ]
+    },
+    {
+      "en": "A good cook always tastes the food before serving it.",
+      "ru": "Хороший повар всегда пробует блюдо перед подачей.",
+      "uses": [
+        "taste",
+        "serve"
+      ]
+    },
+    {
+      "en": "We've got fresh strawberries on sale today.",
+      "ru": "У нас сегодня свежая клубника по акции.",
+      "uses": [
+        "fresh",
+        "strawberry"
+      ]
+    },
+    {
+      "en": "The pasta needs about ten minutes to cook until it is firm to the bite.",
+      "ru": "Пасте нужно около десяти минут, чтобы приготовиться до состояния аль денте.",
+      "uses": [
+        "pasta"
+      ]
+    },
+    {
+      "en": "My favourite comfort food is a bowl of hot chicken soup.",
+      "ru": "Моя любимая утешительная еда — миска горячего куриного супа.",
+      "uses": [
+        "chicken",
+        "soup"
+      ]
+    },
+    {
+      "en": "The portions here are huge, so we usually share a dish.",
+      "ru": "Порции здесь огромные, поэтому мы обычно делим одно блюдо.",
+      "uses": [
+        "portion"
+      ]
+    },
+    {
+      "en": "You can substitute yogurt for sour cream in this recipe.",
+      "ru": "В этом рецепте можно заменить сметану йогуртом.",
+      "uses": [
+        "yogurt",
+        "cream",
+        "recipe"
+      ]
+    },
+    {
+      "en": "I burned the toast again because I was checking my phone.",
+      "ru": "Я снова сжёг тост, потому что смотрел в телефон.",
+      "uses": [
+        "toast"
+      ]
+    },
+    {
+      "en": "Garlic and onions are the base of many sauces.",
+      "ru": "Чеснок и лук — основа многих соусов.",
+      "uses": [
+        "garlic",
+        "onion"
+      ]
+    },
+    {
+      "en": "The waiter forgot our appetizers, so we asked for a discount.",
+      "ru": "Официант забыл наши закуски, поэтому мы попросили скидку.",
+      "uses": [
+        "appetizer"
+      ]
+    },
+    {
+      "en": "The sushi at this place is surprisingly cheap and fresh.",
+      "ru": "Суши в этом месте на удивление дёшевы и свежи.",
+      "uses": [
+        "sushi",
+        "fresh"
+      ]
+    },
+    {
+      "en": "Add the chopped herbs at the end to keep their flavour.",
+      "ru": "Добавьте нарезанную зелень в конце, чтобы сохранить аромат.",
+      "uses": [
+        "chop",
+        "herb"
+      ]
+    },
+    {
+      "en": "They sell hot dogs and lemonade at the corner stand.",
+      "ru": "На углу в ларьке продают хот-доги и лимонад.",
+      "uses": [
+        "lemonade"
+      ]
+    },
+    {
+      "en": "The sauce needs to simmer for at least twenty minutes.",
+      "ru": "Соусу нужно томиться как минимум двадцать минут.",
+      "uses": [
+        "simmer"
+      ]
+    },
+    {
+      "en": "My coworker brought homemade cookies to the office.",
+      "ru": "Мой коллега принёс в офис домашнее печенье.",
+      "uses": [
+        "cookie"
+      ]
+    },
+    {
+      "en": "It's better to drink water than sugary soda.",
+      "ru": "Лучше пить воду, чем сладкую газировку.",
+      "uses": [
+        "soda"
+      ]
+    },
+    {
+      "en": "The cream should be whipped until it forms soft peaks.",
+      "ru": "Сливки нужно взбивать, пока они не образуют мягкие пики.",
+      "uses": [
+        "cream"
+      ]
+    },
+    {
+      "en": "Our kitchen smells like cinnamon whenever my wife bakes.",
+      "ru": "На нашей кухне пахнет корицей, когда жена печёт.",
+      "uses": [
+        "cinnamon",
+        "bake"
+      ]
+    },
+    {
+      "en": "We shared a bottle of wine with our dinner.",
+      "ru": "Мы разделили бутылку вина за ужином.",
+      "uses": [
+        "wine",
+        "dinner"
+      ]
+    },
+    {
+      "en": "Once the water boils, add a handful of salt and the pasta.",
+      "ru": "Когда вода закипит, добавьте горсть соли и пасту.",
+      "uses": [
+        "boil",
+        "salt",
+        "pasta"
+      ]
+    },
+    {
+      "en": "I can't believe how expensive eggs have become.",
+      "ru": "Не могу поверить, как подорожали яйца.",
+      "uses": [
+        "egg"
+      ]
+    },
+    {
+      "en": "Fresh herbs make a big difference in a simple salad.",
+      "ru": "Свежая зелень сильно меняет простой салат.",
+      "uses": [
+        "fresh",
+        "herb",
+        "salad"
+      ]
+    },
+    {
+      "en": "I'm too full to finish my fries.",
+      "ru": "Я слишком сыт, чтобы доесть картофель фри.",
+      "uses": [
+        "fry"
+      ]
+    },
+    {
+      "en": "My daughter packs her own lunch for school.",
+      "ru": "Моя дочь сама собирает себе обед в школу.",
+      "uses": [
+        "lunch"
+      ]
+    },
+    {
+      "en": "Is there a gluten-free option for the pasta?",
+      "ru": "Есть ли безглютеновый вариант пасты?",
+      "uses": [
+        "pasta"
+      ]
+    },
+    {
+      "en": "Lemon juice keeps sliced apples from turning brown.",
+      "ru": "Лимонный сок не даёт нарезанным яблокам потемнеть.",
+      "uses": [
+        "lemon",
+        "juice",
+        "slice",
+        "apple"
+      ]
+    },
+    {
+      "en": "They cooked a big turkey for the holiday dinner.",
+      "ru": "Они приготовили большую индейку на праздничный ужин.",
+      "uses": [
+        "turkey",
+        "dinner"
+      ]
+    },
+    {
+      "en": "The pizza arrived cold, so we called the restaurant.",
+      "ru": "Пицца приехала холодной, поэтому мы позвонили в ресторан.",
+      "uses": [
+        "pizza"
+      ]
+    },
+    {
+      "en": "Use a timer so that you don't overcook the eggs.",
+      "ru": "Используй таймер, чтобы не переварить яйца.",
+      "uses": [
+        "egg"
+      ]
+    },
+    {
+      "en": "A little lemon makes the fish taste much fresher.",
+      "ru": "Немного лимона делает вкус рыбы гораздо свежее.",
+      "uses": [
+        "lemon",
+        "fish",
+        "taste",
+        "fresh"
+      ]
+    },
+    {
+      "en": "He likes his burger with extra pickles and no tomato.",
+      "ru": "Он любит бургер с дополнительными огурцами и без помидора.",
+      "uses": [
+        "burger",
+        "tomato"
+      ]
+    },
+    {
+      "en": "I'm trying a new recipe for vegetable curry tonight.",
+      "ru": "Сегодня вечером я пробую новый рецепт овощного карри.",
+      "uses": [
+        "recipe",
+        "curry"
+      ]
+    },
+    {
+      "en": "Wash the rice, add water, and cook it on low heat.",
+      "ru": "Промойте рис, добавьте воды и варите на слабом огне.",
+      "uses": [
+        "rice"
+      ]
+    },
+    {
+      "en": "Preheat the oven to two hundred degrees before you put the tray in.",
+      "ru": "Разогрейте духовку до двухсот градусов, прежде чем ставить противень.",
+      "uses": [
+        "preheat",
+        "oven",
+        "degree",
+        "tray"
+      ]
+    },
+    {
+      "en": "She is allergic to peanuts, so she always checks the label.",
+      "ru": "У неё аллергия на арахис, поэтому она всегда проверяет этикетку.",
+      "uses": [
+        "allergic",
+        "peanut",
+        "check",
+        "label"
+      ]
+    },
+    {
+      "en": "Please keep the milk in the fridge, or it will go bad.",
+      "ru": "Пожалуйста, держи молоко в холодильнике, иначе оно скиснет.",
+      "uses": [
+        "keep",
+        "milk",
+        "fridge",
+        "bad"
+      ]
+    },
+    {
+      "en": "Do you have any vegetarian options on the menu?",
+      "ru": "Есть ли в меню вегетарианские блюда?",
+      "uses": [
+        "vegetarian",
+        "option",
+        "menu"
+      ]
+    },
+    {
+      "en": "The restaurant is always packed on Friday nights.",
+      "ru": "В этом ресторане по пятницам вечером всегда полно народу.",
+      "uses": [
+        "restaurant",
+        "pack",
+        "friday",
+        "night"
+      ]
+    },
+    {
+      "en": "This coffee is too bitter; could I get some more milk?",
+      "ru": "Этот кофе слишком горький; можно ещё молока?",
+      "uses": [
+        "coffee",
+        "bitter",
+        "milk"
+      ]
+    },
+    {
+      "en": "Remember to wash the vegetables before you cut them.",
+      "ru": "Не забудь вымыть овощи, прежде чем резать их.",
+      "uses": [
+        "remember",
+        "wash",
+        "vegetable",
+        "cut"
+      ]
+    },
+    {
+      "en": "My son refuses to eat anything green.",
+      "ru": "Мой сын отказывается есть что-либо зелёное.",
+      "uses": [
+        "son",
+        "refuse",
+        "eat",
+        "green"
+      ]
+    },
+    {
+      "en": "Is the tip included, or should I add it myself?",
+      "ru": "Чаевые включены, или мне добавить их самому?",
+      "uses": [
+        "tip",
+        "include",
+        "add"
+      ]
+    },
+    {
+      "en": "Let the dough rest for an hour before you roll it out.",
+      "ru": "Дайте тесту отдохнуть час, прежде чем раскатывать его.",
+      "uses": [
+        "dough",
+        "rest",
+        "hour",
+        "roll"
+      ]
+    },
+    {
+      "en": "The bill came to forty dollars, including tax.",
+      "ru": "Счёт составил сорок долларов с учётом налога.",
+      "uses": [
+        "bill",
+        "dollar",
+        "include",
+        "tax"
+      ]
+    },
+    {
+      "en": "I like to try street food when I travel.",
+      "ru": "Я люблю пробовать уличную еду, когда путешествую.",
+      "uses": [
+        "try",
+        "street",
+        "food",
+        "travel"
+      ]
+    },
+    {
+      "en": "He drinks three cups of coffee before noon.",
+      "ru": "Он выпивает три чашки кофе до полудня.",
+      "uses": [
+        "drink",
+        "cup",
+        "coffee",
+        "noon"
+      ]
+    },
+    {
+      "en": "The farmers market opens every Saturday at eight.",
+      "ru": "Фермерский рынок открывается каждую субботу в восемь.",
+      "uses": [
+        "farmer",
+        "market",
+        "open",
+        "saturday"
+      ]
+    },
+    {
+      "en": "This sauce is too spicy for the kids.",
+      "ru": "Этот соус слишком острый для детей.",
+      "uses": [
+        "sauce",
+        "spicy",
+        "kid"
+      ]
+    },
+    {
+      "en": "If the milk smells sour, you should throw it away.",
+      "ru": "Если молоко кисло пахнет, его нужно выбросить.",
+      "uses": [
+        "milk",
+        "smell",
+        "sour",
+        "throw"
+      ]
+    },
+    {
+      "en": "He is on a strict diet because of his heart.",
+      "ru": "Он сидит на строгой диете из-за сердца.",
+      "uses": [
+        "strict",
+        "diet",
+        "heart"
+      ]
+    },
+    {
+      "en": "I'd like a refill, please; my glass is empty.",
+      "ru": "Долейте, пожалуйста; мой стакан пуст.",
+      "uses": [
+        "refill",
+        "glass",
+        "empty"
+      ]
+    },
+    {
+      "en": "Shake the bottle well before you pour the dressing.",
+      "ru": "Хорошо встряхните бутылку, прежде чем наливать заправку.",
+      "uses": [
+        "shake",
+        "bottle",
+        "pour",
+        "dressing"
+      ]
+    },
+    {
+      "en": "The cheapest way to eat healthy is to cook at home.",
+      "ru": "Самый дешёвый способ питаться здорово — готовить дома.",
+      "uses": [
+        "cheap",
+        "eat",
+        "healthy",
+        "cook",
+        "home"
+      ]
+    },
+    {
+      "en": "We stopped at a diner and had pancakes at midnight.",
+      "ru": "Мы остановились в закусочной и ели блины в полночь.",
+      "uses": [
+        "stop",
+        "diner",
+        "pancake",
+        "midnight"
+      ]
+    },
+    {
+      "en": "Please don't put ice in my drink.",
+      "ru": "Пожалуйста, не клади лёд в мой напиток.",
+      "uses": [
+        "put",
+        "ice",
+        "drink"
+      ]
+    },
+    {
+      "en": "She is learning to make sourdough bread at home.",
+      "ru": "Она учится печь хлеб на закваске дома.",
+      "uses": [
+        "learn",
+        "make",
+        "sourdough",
+        "bread"
+      ]
+    },
+    {
+      "en": "Always check the expiry date before you buy dairy products.",
+      "ru": "Всегда проверяйте срок годности, прежде чем покупать молочные продукты.",
+      "uses": [
+        "check",
+        "expiry",
+        "buy",
+        "dairy",
+        "product"
+      ]
+    },
+    {
+      "en": "I can't eat spicy food because it upsets my stomach.",
+      "ru": "Я не могу есть острую пищу, потому что у меня болит желудок.",
+      "uses": [
+        "eat",
+        "spicy",
+        "food",
+        "upset",
+        "stomach"
+      ]
+    },
+    {
+      "en": "A teaspoon of baking powder makes the pancakes fluffy.",
+      "ru": "Чайная ложка разрыхлителя делает блины пышными.",
+      "uses": [
+        "teaspoon",
+        "baking",
+        "powder",
+        "pancake",
+        "fluffy"
+      ]
+    },
+    {
+      "en": "Use a sharp knife; a dull one is more dangerous.",
+      "ru": "Пользуйся острым ножом; тупой опаснее.",
+      "uses": [
+        "use",
+        "sharp",
+        "knife",
+        "dull",
+        "dangerous"
+      ]
+    },
+    {
+      "en": "Can I get this to go, please?",
+      "ru": "Можно это с собой, пожалуйста?",
+      "uses": [
+        "get",
+        "go",
+        "please"
+      ]
+    }
+  ],
+  "notes": "Готовые словосочетания и предложения без шаблонной автоподстановки."
 }

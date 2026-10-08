@@ -65,6 +65,9 @@ data class VoiceTestUiState(
     val btPressCount: Int = 0,
     val btNextCount: Int = 0,
     val btStopCount: Int = 0,
+    val btQuadCount: Int = 0,
+    val btPendingBurstCount: Int = 0,
+    val btAwaitingSecondDouble: Boolean = false,
     val btLastEventLabel: String = "",
     val btLastEventAt: String = "",
     val btEventLog: List<String> = emptyList(),
@@ -128,6 +131,9 @@ class VoiceTestViewModel @Inject constructor(
             btPressCount = headset.pressCount,
             btNextCount = headset.nextCount,
             btStopCount = headset.stopCount,
+            btQuadCount = headset.quadCount,
+            btPendingBurstCount = headset.pendingBurstCount,
+            btAwaitingSecondDouble = headset.awaitingSecondDouble,
             btLastEventLabel = headset.lastEventLabel,
             btLastEventAt = headset.lastEventAt,
             btEventLog = headset.eventLog,
@@ -331,7 +337,10 @@ class VoiceTestViewModel @Inject constructor(
         }
     }
 
-    fun resetBtPlayCounter() = headsetTestController.resetCounter()
+    fun resetBtPlayCounter() {
+        headsetButtonNotifier.resetTestGestures()
+        headsetTestController.resetCounter()
+    }
 
     fun setDebounceEnabled(enabled: Boolean) {
         headsetButtonPreferences.setDebounceEnabled(enabled)
@@ -377,6 +386,8 @@ class VoiceTestViewModel @Inject constructor(
     }
 
     fun simulateBtPlay() = headsetButtonNotifier.notifyButton("MEDIA_PLAY", source = "ui-simulate")
+
+    fun simulateBtPlayBurst(taps: Int) = headsetButtonNotifier.simulatePlayBurst(taps)
 
     fun speak() {
         val text = localState.value.speakText.trim()

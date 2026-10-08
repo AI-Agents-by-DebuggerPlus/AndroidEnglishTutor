@@ -1,12 +1,34 @@
 # Тест кнопок Bluetooth-гарнитуры (AndEngTutor)
 
-**Версия:** 1.5.6 (versionCode 27)  
+**Актуальная сборка приёмки:** 1.6.33 (versionCode 61)  
 **Отображаемое имя:** AndEngTutor · пакет `com.englishtutor`  
-**Устройства:** Pixel 6a + Pixel Buds Pro 2 (подтверждено 2026-09-06…2026-09-10)
+**Устройства:** Pixel 6a + Pixel Buds Pro 2; дополнительно Grind (хуже стабильность серий)
 
-Отчёты:
+---
 
-- [Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md](Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md) — **проблемы, решения, порт в другое приложение**
+## Актуальный гайд (2026-10-07)
+
+**Полная инструкция по тестированию BT Play (1×/2×/3×/4×, интервал серии, ограничения Buds/Grind):**
+
+→ [Reports/AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md](Reports/AndEngTutor_BT_Play_Testing_Guide_2026-10-07.md)
+
+Кратко по жестам на вкладке **Тесты → BT Play**:
+
+| Серия Play | Счётчик |
+|------------|---------|
+| 1× | Play |
+| 2× | Next |
+| 3× | Stop |
+| 4× | 4× (одна непрерывная серия; не «2+2») |
+
+На BT Play окно серии **≥ 1.2 с** (после 3-го — до **1.8 с** под 4-е). HARDWARE **4×** на Buds Pro 2 нестабилен; у Grind — ещё хуже. Для проверки логики без железа: **Симулировать 4× Play**.
+
+---
+
+## Другие отчёты
+
+- [Reports/AndEngTutor_Headset_Play_Gestures_Test_Report_2026-10-04.md](Reports/AndEngTutor_Headset_Play_Gestures_Test_Report_2026-10-04.md) — приёмка 1×/2×/3× (v1.6.18)
+- [Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md](Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md) — проблемы, решения, порт
 - [Reports/AndEngTutor_BT_Play_Implementation_Report_2026-09-06.md](Reports/AndEngTutor_BT_Play_Implementation_Report_2026-09-06.md)
 - [Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md](Reports/AndEngTutor_BT_Play_Hardware_Fix_Notes_2026-09-06.md)
 
@@ -20,13 +42,11 @@
    adb shell am force-stop com.google.android.youtube
    ```
 3. Отключите Tasker-профиль **BT Key / Grab**, если включён.
-4. **AndEngTutor** → **Окно тестов** (вкладка **BT Play** по умолчанию).
-5. Cue *«BT test ready»* + тихий USAGE_MEDIA pulse.
-6. `Native capture: ON`.
-7. **Симулировать Play** → `[SIMULATED]`.
-8. Одиночный Play на гарнитуре → счётчик **Play** + `[HARDWARE]`.
-9. Двойное нажатие (жест Next на Buds) → счётчик **Next**; companion Play подавляется.
-10. При «молчании» после YouTube → **Reassert MediaSession**.
+4. **AndEngTutor** → **Окно тестов** → вкладка **BT Play**.
+5. **Reassert MediaSession** → cue *«BT test ready»* → `Native capture: ON`.
+6. **Симулировать Play** → `[SIMULATED]`.
+7. Одиночный / двойной / тройной Play на гарнитуре → Play / Next / Stop.
+8. При «молчании» после YouTube → снова **Reassert**.
 
 ```bash
 adb shell dumpsys media_session
@@ -35,21 +55,7 @@ adb shell dumpsys media_session
 
 ---
 
-## UI вкладки BT Play
-
-| Элемент | Описание |
-|---------|----------|
-| Native capture | ON/OFF — FGS + MediaSession |
-| Защита от повторного нажатия | Switch + интервал мс (SharedPreferences) |
-| Интервал Next | Окно двойного жеста / suppress Play после Next, мс |
-| Счётчики **Play** / **Next** | Рядом; Reset обнуляет оба |
-| Reassert / Simulate | Force claim / UI-событие без гарнитуры |
-| Журнал | До 40 строк HARDWARE/SIMULATED |
-| Диагностика | Разрешения, Tasker, Media-button #1, ActiveSessions |
-
----
-
-## Архитектура (v1.5.6)
+## Архитектура (кратко)
 
 ```
 Гарнитура (AVRCP / KeyEvent)
@@ -59,76 +65,22 @@ Android media-button session  ← UID com.englishtutor (claim + pulse)
         │
         ▼
 HeadsetMonitorService (FGS mediaPlayback)
-  • AudioFocus USAGE_MEDIA
-  • PLAYING → PAUSED claim
-  • MediaPlaybackPulse (AudioTrack USAGE_MEDIA ~180 ms)
-  • onMediaButtonEvent / onPlay / onSkipToNext → notifyButton
+  • onMediaButtonEvent / onPlay / onPause / onSkipToNext / onSkipToPrevious
         │
         ▼
 HeadsetButtonNotifier
   • HARDWARE vs SIMULATED
-  • debounce (опц.) после commit
-  • Play/Pause жест: wait nextDoubleTapMs → Play; 2-й жест → Next
-  • MEDIA_NEXT → Next + suppress companion Play
+  • burst 1…4 (на вкладке BT Play), settle по интервалу серии
+  • echo PLAY↔PAUSE
         │
         ├─ isolation ON (тесты) → HeadsetTestController (счётчики)
-        └─ isolation OFF → EnglishTutorPlayHandler → урок
+        └─ isolation OFF → EnglishTutorPlayHandler / WordStudyController
 ```
-
-**Важно:** TTS cue (`com.google.android.tts`) **не** делает приложение media-button session #1. Нужен pulse под UID приложения.
 
 ### Ключевые файлы
 
-| Файл | Роль |
-|------|------|
-| `session/HeadsetMonitorService.kt` | FGS, session, AudioFocus, reassert |
-| `session/MediaPlaybackPulse.kt` | USAGE_MEDIA pulse |
-| `session/HeadsetButtonNotifier.kt` | Debounce, Next, suppress |
-| `session/HeadsetButtonPreferences.kt` | Persist настроек |
-| `session/HeadsetTestController.kt` | Play/Next + журнал |
-| `session/HeadsetButtonNames.kt` | KeyCode → label, жесты |
-| `ui/screens/voicetest/*` | UI теста |
-| `bluetooth/*` | Диагностика ActiveSessions / Tasker |
-
-### Настройки (`headset_button_prefs`)
-
-| Ключ | Default | Смысл |
-|------|---------|--------|
-| `debounce_enabled` | `true` | Игнор повторов после commit |
-| `debounce_interval_ms` | `500` | Окно защиты |
-| `next_double_tap_ms` | `400` | Окно Next + suppress Play после Next |
-
----
-
-## Проблемы и решения (кратко)
-
-| Проблема | Решение |
-|----------|---------|
-| Simulate OK, HARDWARE нет; `Media button session is null` | USAGE_MEDIA `AudioTrack` pulse при reassert (v1.5.1) |
-| Двойной жест → только Play | Buds шлёт `MEDIA_NEXT` (+ часто `MEDIA_PLAY`); считать NEXT; Play/Pause как жест (v1.5.5) |
-| Next и Play вместе | После Next suppress Play на `nextDoubleTapMs` (v1.5.6) |
-| Случайные повторы | Debounce switch + интервал |
-
-Подробности и код для порта: [Porting Guide](Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md).
-
----
-
-## Типичные сбои
-
-| Симптом | Действие |
-|---------|----------|
-| HARDWARE нет | Reassert; force-stop YouTube; dumpsys |
-| Tasker WARN | Выключить Grab / BT Key |
-| Next + Play оба | Нужна v1.5.6+ (suppress) |
-
----
-
-## Чеклист приёмки
-
-- [x] Физический Play → HARDWARE + счётчик Play
-- [x] Simulate → SIMULATED
-- [x] Reassert + USAGE_MEDIA pulse; dumpsys = `com.englishtutor`
-- [x] Двойной жест Buds → Next; companion Play suppressed (v1.5.6, лог 2026-09-10)
-- [x] Isolation не ломает lesson вне теста
-- [ ] Notification Access (опционально)
-- [ ] POST_NOTIFICATIONS (рекомендуется API 33+)
+- `app/.../session/HeadsetMonitorService.kt`
+- `app/.../session/HeadsetButtonNotifier.kt`
+- `app/.../session/HeadsetTestController.kt`
+- `app/.../session/HeadsetButtonPreferences.kt`
+- `app/.../ui/screens/voicetest/VoiceTestScreen.kt`

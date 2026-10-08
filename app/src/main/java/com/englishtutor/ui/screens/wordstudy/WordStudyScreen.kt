@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.RecordVoiceOver
@@ -51,6 +52,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
@@ -80,6 +82,7 @@ private val CountdownBarHeight = 4.dp
 fun WordStudyScreen(
     onBack: () -> Unit,
     onOpenVoicePicker: () -> Unit = {},
+    onOpenStudyStats: () -> Unit = {},
     viewModel: WordStudyViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -197,16 +200,25 @@ fun WordStudyScreen(
                     settings = display,
                     english = enText,
                     russian = ruText,
-                    contentWidth = maxWidth - 48.dp,
+                    contentWidth = maxWidth,
                     contentHeight = maxHeight,
                     chromeHeight = FlashcardChromeHeight + 8.dp,
                 )
+                val cardScroll = rememberScrollState()
                 Column(Modifier.fillMaxSize()) {
                     Column(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxWidth()
-                            .padding(horizontal = 24.dp)
+                            .clipToBounds()
+                            .padding(horizontal = layout.horizontalPaddingDp.dp)
+                            .then(
+                                if (layout.fits) {
+                                    Modifier
+                                } else {
+                                    Modifier.verticalScroll(cardScroll)
+                                },
+                            )
                             .clickable {
                                 // Tap card area = Play (start or replay).
                                 viewModel.onPlay()
@@ -220,6 +232,7 @@ fun WordStudyScreen(
                             fontSize = layout.englishSp.sp,
                             textAlign = TextAlign.Center,
                             lineHeight = (layout.englishSp * 1.15f).sp,
+                            softWrap = true,
                         )
                         if (ruText != null) {
                             Spacer(Modifier.height(layout.enRuGapDp.dp))
@@ -229,6 +242,7 @@ fun WordStudyScreen(
                                 fontSize = layout.russianSp.sp,
                                 textAlign = TextAlign.Center,
                                 lineHeight = (layout.russianSp * 1.2f).sp,
+                                softWrap = true,
                             )
                         }
                     }
@@ -240,6 +254,7 @@ fun WordStudyScreen(
                         onNext = { viewModel.onNext() },
                         onPlay = { viewModel.onPlay() },
                         onTopics = { showTopics = true },
+                        onStats = onOpenStudyStats,
                         onVoices = onOpenVoicePicker,
                         onSettings = { showSettings = true },
                         onExit = { leaveStudy() },
@@ -309,6 +324,7 @@ private fun FlashcardBottomChrome(
     onNext: () -> Unit,
     onPlay: () -> Unit,
     onTopics: () -> Unit,
+    onStats: () -> Unit,
     onVoices: () -> Unit,
     onSettings: () -> Unit,
     onExit: () -> Unit,
@@ -364,6 +380,14 @@ private fun FlashcardBottomChrome(
             Icon(
                 Icons.Default.Topic,
                 contentDescription = stringResource(R.string.word_study_topics),
+                tint = HintMuted,
+                modifier = Modifier.size(20.dp),
+            )
+        }
+        FlashcardChromeIcon(onClick = onStats) {
+            Icon(
+                Icons.Default.BarChart,
+                contentDescription = stringResource(R.string.word_study_stats),
                 tint = HintMuted,
                 modifier = Modifier.size(20.dp),
             )
@@ -563,13 +587,20 @@ private fun FlashcardSettingsDialog(
                             contentHeight = maxHeight,
                             chromeHeight = 0.dp,
                         )
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = previewLayout.horizontalPaddingDp.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
                             Spacer(Modifier.height(previewLayout.englishTopDp.dp))
                             Text(
                                 previewEn,
                                 color = draft.englishColor,
                                 fontSize = previewLayout.englishSp.sp,
                                 textAlign = TextAlign.Center,
+                                lineHeight = (previewLayout.englishSp * 1.15f).sp,
+                                softWrap = true,
                             )
                             Spacer(Modifier.height(previewLayout.enRuGapDp.dp))
                             Text(
@@ -577,6 +608,8 @@ private fun FlashcardSettingsDialog(
                                 color = draft.russianColor,
                                 fontSize = previewLayout.russianSp.sp,
                                 textAlign = TextAlign.Center,
+                                lineHeight = (previewLayout.russianSp * 1.2f).sp,
+                                softWrap = true,
                             )
                         }
                     }
