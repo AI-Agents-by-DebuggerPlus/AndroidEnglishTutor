@@ -57,9 +57,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.view.WindowCompat
@@ -69,7 +67,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishtutor.R
 import com.englishtutor.data.topics.TopicInfo
+import com.englishtutor.ui.flashcards.FLASHCARD_EN_LINE_MULT
+import com.englishtutor.ui.flashcards.FLASHCARD_RU_LINE_MULT
 import com.englishtutor.ui.flashcards.FlashcardDisplaySettings
+import com.englishtutor.ui.flashcards.flashcardTextStyle
 import com.englishtutor.ui.flashcards.rememberFlashcardResolvedLayout
 import kotlinx.coroutines.delay
 
@@ -185,7 +186,7 @@ fun WordStudyScreen(
                     .clickable { blanked = false },
             )
         } else {
-            BoxWithConstraints(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(display.backgroundColor),
@@ -196,21 +197,24 @@ fun WordStudyScreen(
                     stringResource(R.string.word_study_waiting)
                 }
                 val ruText = russian.takeIf { hasCard && it.isNotBlank() }
-                val layout = rememberFlashcardResolvedLayout(
-                    settings = display,
-                    english = enText,
-                    russian = ruText,
-                    contentWidth = maxWidth,
-                    contentHeight = maxHeight,
-                    chromeHeight = FlashcardChromeHeight + 8.dp,
-                )
-                val cardScroll = rememberScrollState()
-                Column(Modifier.fillMaxSize()) {
+                // Measure against the real text slot (below chrome), not full-screen minus a guess.
+                BoxWithConstraints(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .clipToBounds(),
+                ) {
+                    val layout = rememberFlashcardResolvedLayout(
+                        settings = display,
+                        english = enText,
+                        russian = ruText,
+                        contentWidth = maxWidth,
+                        contentHeight = maxHeight,
+                    )
+                    val cardScroll = rememberScrollState()
                     Column(
                         modifier = Modifier
-                            .weight(1f)
-                            .fillMaxWidth()
-                            .clipToBounds()
+                            .fillMaxSize()
                             .padding(horizontal = layout.horizontalPaddingDp.dp)
                             .then(
                                 if (layout.fits) {
@@ -229,9 +233,8 @@ fun WordStudyScreen(
                         Text(
                             text = enText,
                             color = if (hasCard) display.englishColor else HintMuted,
-                            fontSize = layout.englishSp.sp,
-                            textAlign = TextAlign.Center,
-                            lineHeight = (layout.englishSp * 1.15f).sp,
+                            style = flashcardTextStyle(layout.englishSp, FLASHCARD_EN_LINE_MULT),
+                            modifier = Modifier.fillMaxWidth(),
                             softWrap = true,
                         )
                         if (ruText != null) {
@@ -239,27 +242,26 @@ fun WordStudyScreen(
                             Text(
                                 text = ruText,
                                 color = display.russianColor,
-                                fontSize = layout.russianSp.sp,
-                                textAlign = TextAlign.Center,
-                                lineHeight = (layout.russianSp * 1.2f).sp,
+                                style = flashcardTextStyle(layout.russianSp, FLASHCARD_RU_LINE_MULT),
+                                modifier = Modifier.fillMaxWidth(),
                                 softWrap = true,
                             )
                         }
                     }
-                    FlashcardBottomChrome(
-                        countdownProgress = if (hasCard) progress else 0f,
-                        secondsLeft = if (hasCard) secondsLeft else null,
-                        progressLabel = buildProgressLabel(state),
-                        playEnabled = true,
-                        onNext = { viewModel.onNext() },
-                        onPlay = { viewModel.onPlay() },
-                        onTopics = { showTopics = true },
-                        onStats = onOpenStudyStats,
-                        onVoices = onOpenVoicePicker,
-                        onSettings = { showSettings = true },
-                        onExit = { leaveStudy() },
-                    )
                 }
+                FlashcardBottomChrome(
+                    countdownProgress = if (hasCard) progress else 0f,
+                    secondsLeft = if (hasCard) secondsLeft else null,
+                    progressLabel = buildProgressLabel(state),
+                    playEnabled = true,
+                    onNext = { viewModel.onNext() },
+                    onPlay = { viewModel.onPlay() },
+                    onTopics = { showTopics = true },
+                    onStats = onOpenStudyStats,
+                    onVoices = onOpenVoicePicker,
+                    onSettings = { showSettings = true },
+                    onExit = { leaveStudy() },
+                )
             }
         }
     }
@@ -585,7 +587,6 @@ private fun FlashcardSettingsDialog(
                             russian = previewRu,
                             contentWidth = maxWidth,
                             contentHeight = maxHeight,
-                            chromeHeight = 0.dp,
                         )
                         Column(
                             modifier = Modifier
@@ -597,18 +598,22 @@ private fun FlashcardSettingsDialog(
                             Text(
                                 previewEn,
                                 color = draft.englishColor,
-                                fontSize = previewLayout.englishSp.sp,
-                                textAlign = TextAlign.Center,
-                                lineHeight = (previewLayout.englishSp * 1.15f).sp,
+                                style = flashcardTextStyle(
+                                    previewLayout.englishSp,
+                                    FLASHCARD_EN_LINE_MULT,
+                                ),
+                                modifier = Modifier.fillMaxWidth(),
                                 softWrap = true,
                             )
                             Spacer(Modifier.height(previewLayout.enRuGapDp.dp))
                             Text(
                                 previewRu,
                                 color = draft.russianColor,
-                                fontSize = previewLayout.russianSp.sp,
-                                textAlign = TextAlign.Center,
-                                lineHeight = (previewLayout.russianSp * 1.2f).sp,
+                                style = flashcardTextStyle(
+                                    previewLayout.russianSp,
+                                    FLASHCARD_RU_LINE_MULT,
+                                ),
+                                modifier = Modifier.fillMaxWidth(),
                                 softWrap = true,
                             )
                         }

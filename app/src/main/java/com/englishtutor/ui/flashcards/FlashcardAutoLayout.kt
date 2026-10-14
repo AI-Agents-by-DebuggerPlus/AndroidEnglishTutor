@@ -3,8 +3,12 @@ package com.englishtutor.ui.flashcards
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -24,16 +28,35 @@ data class FlashcardResolvedLayout(
     val fits: Boolean,
 )
 
-private const val MIN_EN_SP = 12
-private const val ABS_MIN_EN_SP = 10
+private const val MIN_EN_SP = 11
+private const val ABS_MIN_EN_SP = 8
 private const val MIN_RU_SP = 10
-private const val ABS_MIN_RU_SP = 9
+private const val ABS_MIN_RU_SP = 7
 private const val MIN_TOP_DP = 0
-private const val MIN_GAP_DP = 4
+private const val MIN_GAP_DP = 2
 private const val ABS_MIN_GAP_DP = 0
 private const val DEFAULT_H_PAD_DP = 24
 private const val MIN_H_PAD_DP = 8
 private const val ABS_MIN_H_PAD_DP = 4
+/** Extra slack so measured layout stays inside the clipped card area. */
+private const val SAFETY_DP = 12
+
+internal const val FLASHCARD_EN_LINE_MULT = 1.15f
+internal const val FLASHCARD_RU_LINE_MULT = 1.2f
+
+internal fun flashcardTextStyle(sp: Int, lineHeightMult: Float): TextStyle {
+    val size = sp.coerceAtLeast(ABS_MIN_RU_SP)
+    return TextStyle(
+        fontSize = size.sp,
+        lineHeight = (size * lineHeightMult).sp,
+        textAlign = TextAlign.Center,
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
+        lineHeightStyle = LineHeightStyle(
+            alignment = LineHeightStyle.Alignment.Center,
+            trim = LineHeightStyle.Trim.None,
+        ),
+    )
+}
 
 @Composable
 fun rememberFlashcardResolvedLayout(
@@ -42,7 +65,7 @@ fun rememberFlashcardResolvedLayout(
     russian: String?,
     contentWidth: Dp,
     contentHeight: Dp,
-    chromeHeight: Dp,
+    chromeHeight: Dp = 0.dp,
 ): FlashcardResolvedLayout {
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -57,6 +80,7 @@ fun rememberFlashcardResolvedLayout(
         fullWidthPx,
         maxHeightPx,
         density.density,
+        density.fontScale,
     ) {
         resolveFlashcardLayout(
             settings = settings,
@@ -69,13 +93,11 @@ fun rememberFlashcardResolvedLayout(
                 if (text.isBlank() || widthPx <= 0) {
                     0
                 } else {
-                    val size = sp.coerceAtLeast(ABS_MIN_RU_SP)
                     textMeasurer.measure(
                         text = text,
-                        style = TextStyle(
-                            fontSize = size.sp,
-                            lineHeight = (size * lineMult).sp,
-                        ),
+                        style = flashcardTextStyle(sp, lineMult),
+                        overflow = TextOverflow.Clip,
+                        softWrap = true,
                         constraints = Constraints(maxWidth = widthPx),
                     ).size.height
                 }
@@ -95,83 +117,114 @@ internal fun resolveFlashcardLayout(
 ): FlashcardResolvedLayout {
     val percent = settings.russianSmallerPercent.coerceIn(10, 55)
     val ruRatio = (100 - percent) / 100f
-    var topDp = settings.englishTopPaddingDp.coerceIn(0, 160)
-    var gapDp = settings.enRuGapDp.coerceIn(0, 120)
-    var hPadDp = DEFAULT_H_PAD_DP
-    var enSp = settings.englishSp.coerceIn(ABS_MIN_EN_SP, 72)
+    val desiredTop = settings.englishTopPaddingDp.coerceIn(0, 160)
+    val desiredGap = settings.enRuGapDp.coerceIn(0, 120)
+    val desiredEn = settings.englishSp.coerceIn(ABS_MIN_EN_SP, 72)
+    val desiredRuCap = settings.russianSp.coerceAtLeast(ABS_MIN_RU_SP)
+    val hasRu = !russian.isNullOrBlank()
+    val budgetPx = (maxHeightPx - dpToPx(SAFETY_DP)).coerceAtLeast(1)
 
     fun ruFor(en: Int): Int =
         floor(en * ruRatio).roundToInt().coerceIn(ABS_MIN_RU_SP, (en - 1).coerceAtLeast(ABS_MIN_RU_SP))
 
-    // Start from ratio target, but honor a smaller user-picked Russian size.
-    var ruSp = minOf(
-        settings.russianSp.coerceAtLeast(ABS_MIN_RU_SP),
-        ruFor(enSp),
-    ).coerceAtMost((enSp - 1).coerceAtLeast(ABS_MIN_RU_SP))
+    fun textWidthPx(hPadDp: Int): Int = (fullWidthPx - 2 * dpToPx(hPadDp)).coerceAtLeast(1)
 
-    fun textWidthPx(): Int = (fullWidthPx - 2 * dpToPx(hPadDp)).coerceAtLeast(1)
-
-    fun totalHeight(en: Int, ru: Int, top: Int, gap: Int, width: Int): Int {
-        val enH = measure(english, en, 1.15f, width)
-        val ruH = if (russian.isNullOrBlank()) 0 else measure(russian, ru, 1.2f, width)
-        val gapH = if (russian.isNullOrBlank()) 0 else dpToPx(gap)
+    fun totalHeight(en: Int, ru: Int, top: Int, gap: Int, hPad: Int): Int {
+        val width = textWidthPx(hPad)
+        val enH = measure(english, en, FLASHCARD_EN_LINE_MULT, width)
+        val ruH = if (!hasRu) 0 else measure(russian!!, ru, FLASHCARD_RU_LINE_MULT, width)
+        val gapH = if (!hasRu) 0 else dpToPx(gap)
         return dpToPx(top) + enH + gapH + ruH
     }
 
-    fun fits(): Boolean = totalHeight(enSp, ruSp, topDp, gapDp, textWidthPx()) <= maxHeightPx
+    fun fits(en: Int, ru: Int, top: Int, gap: Int, hPad: Int): Boolean =
+        totalHeight(en, ru, top, gap, hPad) <= budgetPx
 
-    if (fits()) {
-        return FlashcardResolvedLayout(
-            englishSp = enSp,
-            russianSp = ruSp,
-            englishTopDp = topDp,
-            enRuGapDp = if (russian.isNullOrBlank()) 0 else gapDp,
-            horizontalPaddingDp = hPadDp,
-            fits = true,
-        )
-    }
-
-    var attempts = 0
-    while (!fits() && attempts < 320) {
-        attempts++
-        when {
-            // 1) Compress vertical spacing first — keeps fonts readable longer.
-            topDp > MIN_TOP_DP -> topDp = max(MIN_TOP_DP, (topDp * 0.75f).roundToInt())
-            gapDp > MIN_GAP_DP -> gapDp = max(MIN_GAP_DP, (gapDp * 0.75f).roundToInt())
-            hPadDp > MIN_H_PAD_DP -> hPadDp -= 2
-
-            // 2) Shrink English (+ proportional Russian).
-            enSp > MIN_EN_SP -> {
-                enSp--
-                ruSp = ruFor(enSp)
-            }
-
-            // 3) Russian definitions are often the tall part — shrink them further.
-            !russian.isNullOrBlank() && ruSp > MIN_RU_SP -> ruSp--
-
-            // 4) Squeeze remaining spacing.
-            hPadDp > ABS_MIN_H_PAD_DP -> hPadDp--
-            gapDp > ABS_MIN_GAP_DP -> gapDp--
-            topDp > 0 -> topDp--
-
-            // 5) Absolute floor for fonts.
-            enSp > ABS_MIN_EN_SP -> {
-                enSp--
-                ruSp = minOf(ruSp, enSp - 1).coerceAtLeast(ABS_MIN_RU_SP)
-            }
-            !russian.isNullOrBlank() && ruSp > ABS_MIN_RU_SP -> ruSp--
-            else -> break
+    // Fast path: user sizes + paddings already fit.
+    run {
+        val ru = minOf(desiredRuCap, ruFor(desiredEn))
+            .coerceAtMost((desiredEn - 1).coerceAtLeast(ABS_MIN_RU_SP))
+        if (fits(desiredEn, ru, desiredTop, desiredGap, DEFAULT_H_PAD_DP)) {
+            return FlashcardResolvedLayout(
+                englishSp = desiredEn,
+                russianSp = ru,
+                englishTopDp = desiredTop,
+                enRuGapDp = if (hasRu) desiredGap else 0,
+                horizontalPaddingDp = DEFAULT_H_PAD_DP,
+                fits = true,
+            )
         }
     }
 
-    if (ruSp >= enSp) ruSp = (enSp - 1).coerceAtLeast(ABS_MIN_RU_SP)
+    /**
+     * For a fixed English size, shrink padding / Russian until the card fits (or floors hit).
+     * Returns the tightest fitting combo, or the absolute-minimum attempt if nothing fits.
+     */
+    fun packForEnglish(en: Int): FlashcardResolvedLayout {
+        var topDp = desiredTop
+        var gapDp = desiredGap
+        var hPadDp = DEFAULT_H_PAD_DP
+        var ruSp = minOf(desiredRuCap, ruFor(en))
+            .coerceAtMost((en - 1).coerceAtLeast(ABS_MIN_RU_SP))
 
-    return FlashcardResolvedLayout(
-        englishSp = enSp,
-        russianSp = ruSp,
-        englishTopDp = topDp,
-        enRuGapDp = if (russian.isNullOrBlank()) 0 else gapDp,
-        horizontalPaddingDp = hPadDp,
-        fits = fits(),
-    )
+        fun currentFits() = fits(en, ruSp, topDp, gapDp, hPadDp)
+
+        if (currentFits()) {
+            return FlashcardResolvedLayout(
+                englishSp = en,
+                russianSp = ruSp,
+                englishTopDp = topDp,
+                enRuGapDp = if (hasRu) gapDp else 0,
+                horizontalPaddingDp = hPadDp,
+                fits = true,
+            )
+        }
+
+        var attempts = 0
+        while (!currentFits() && attempts < 400) {
+            attempts++
+            when {
+                topDp > MIN_TOP_DP -> topDp = max(MIN_TOP_DP, (topDp * 0.7f).roundToInt())
+                gapDp > MIN_GAP_DP -> gapDp = max(MIN_GAP_DP, (gapDp * 0.7f).roundToInt())
+                hPadDp > MIN_H_PAD_DP -> hPadDp -= 2
+                hasRu && ruSp > MIN_RU_SP -> ruSp--
+                hPadDp > ABS_MIN_H_PAD_DP -> hPadDp--
+                gapDp > ABS_MIN_GAP_DP -> gapDp--
+                topDp > 0 -> topDp--
+                hasRu && ruSp > ABS_MIN_RU_SP -> ruSp--
+                else -> break
+            }
+        }
+
+        if (ruSp >= en) ruSp = (en - 1).coerceAtLeast(ABS_MIN_RU_SP)
+
+        return FlashcardResolvedLayout(
+            englishSp = en,
+            russianSp = ruSp,
+            englishTopDp = topDp,
+            enRuGapDp = if (hasRu) gapDp else 0,
+            horizontalPaddingDp = hPadDp,
+            fits = currentFits(),
+        )
+    }
+
+    // Largest English size that can be packed into the budget (binary search).
+    var lo = ABS_MIN_EN_SP
+    var hi = desiredEn
+    var best = packForEnglish(ABS_MIN_EN_SP)
+    while (lo <= hi) {
+        val mid = (lo + hi) / 2
+        val candidate = packForEnglish(mid)
+        if (candidate.fits) {
+            best = candidate
+            lo = mid + 1
+        } else {
+            hi = mid - 1
+        }
+    }
+
+    if (best.fits) return best
+
+    // Last resort: absolute floors (may still overflow → caller can scroll).
+    return packForEnglish(ABS_MIN_EN_SP)
 }

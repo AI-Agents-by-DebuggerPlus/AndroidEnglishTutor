@@ -99,6 +99,7 @@
     <string name="voice_quiz_guessed_total">Отгадано слов: %1$d · в тесте доступно: %2$d · уровень: %3$s</string>
     <string name="word_study_title">Уроки новых слов</string>
     <string name="word_study_home_button">Уроки новых / неотгаданных слов</string>
+    <string name="tutor_chat_home_button">EnglishTutor — генерация тем (offline)</string>
     <string name="word_study_summary">Отгадано: %1$d · для уроков: %2$d · уроков: %3$d · уровень: %4$s</string>
     <string name="word_study_waiting">Next — показать следующее слово</string>
     <string name="word_study_font_en">Размер английского: %1$d</string>

@@ -54,6 +54,7 @@ fun HomeScreen(
     onOpenQuizStats: () -> Unit,
     onOpenVoicePicker: () -> Unit,
     onOpenWordStudy: () -> Unit,
+    onOpenTutorChat: () -> Unit,
     onOpenLogs: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
@@ -213,6 +214,14 @@ fun HomeScreen(
                     modifier = Modifier.fillMaxWidth(),
                 ) {
                     Text(stringResource(R.string.word_study_home_button))
+                }
+            }
+            item {
+                Button(
+                    onClick = onOpenTutorChat,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(R.string.tutor_chat_home_button))
                 }
             }
             item {

@@ -2,7 +2,9 @@ package com.englishtutor.data.topics
 
 import android.content.Context
 import android.util.Log
+import com.englishtutor.data.tutor.GeneratedTopicStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.serialization.json.Json
@@ -10,6 +12,7 @@ import kotlinx.serialization.json.Json
 @Singleton
 class TopicRepository @Inject constructor(
     @ApplicationContext private val context: Context,
+    private val generatedTopicStore: GeneratedTopicStore,
 ) {
     private val json = Json {
         ignoreUnknownKeys = true
@@ -33,8 +36,27 @@ class TopicRepository @Inject constructor(
         return cache.keys.firstOrNull() ?: "general_conversation"
     }
 
+    /** Drop cache and reload assets + generated offline topics. */
+    fun reload() {
+        cache.clear()
+        ensureLoaded()
+    }
+
+    fun saveGenerated(dto: TopicFileDto): TopicContent {
+        generatedTopicStore.save(dto)
+        val content = dto.toContent()
+        cache[dto.id] = content
+        return content
+    }
+
     private fun ensureLoaded() {
         if (cache.isNotEmpty()) return
+        loadFromAssets()
+        loadFromFiles(generatedTopicStore.listFiles())
+        Log.i(TAG, "Topics loaded: ${cache.keys.joinToString()}")
+    }
+
+    private fun loadFromAssets() {
         val names = runCatching {
             context.assets.list(TOPICS_DIR)?.toList().orEmpty()
         }.onFailure {
@@ -53,7 +75,18 @@ class TopicRepository @Inject constructor(
                     Log.e(TAG, "Failed to load topic $file: ${it.message}", it)
                 }
             }
-        Log.i(TAG, "Topics loaded: ${cache.keys.joinToString()}")
+    }
+
+    private fun loadFromFiles(files: List<File>) {
+        files.forEach { file ->
+            runCatching {
+                val dto = json.decodeFromString<TopicFileDto>(file.readText(Charsets.UTF_8))
+                cache[dto.id] = dto.toContent()
+                Log.i(TAG, "Loaded generated topic ${dto.id} from ${file.name}")
+            }.onFailure {
+                Log.e(TAG, "Failed to load generated ${file.name}: ${it.message}", it)
+            }
+        }
     }
 
     private fun TopicFileDto.toContent(): TopicContent {

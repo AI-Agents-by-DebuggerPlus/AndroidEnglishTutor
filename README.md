@@ -4,7 +4,7 @@
 
 **Отображаемое имя:** AndEngTutor (иконка с буквой **E**)  
 **Пакет:** `com.englishtutor`  
-**Текущая сборка:** v1.5.6 (versionCode 27)
+**Текущая сборка:** v1.6.40 (versionCode 68)
 
 ## Возможности
 
@@ -15,6 +15,15 @@
 - **Окно тестов** (TTS / STT / BT Play) по образцу BT_Play / AndroidChatBtTest95
 - **BT Play:** HARDWARE/SIMULATED, Play/Next, debounce + интервал Next, Reassert, USAGE_MEDIA pulse, диагностика ActiveSessions
 - **Экран логов** → Supabase (`[LOG:category] message`)
+- **Миничат EnglishTutor → Hermes** через Telegram (TDLib user→bot, профиль `english_tutor`); offline JSON-темы в Word Study
+
+## Hermes / Telegram
+
+Миничат на главной (**EnglishTutor**): вход TDLib → тест профиля → генерация тем. Inference не используется.
+
+- [Docs/AET-Hermes-Telegram.md](Docs/AET-Hermes-Telegram.md) — подключение и индикация  
+- [Docs/AET-Telegram-Login-Code.md](Docs/AET-Telegram-Login-Code.md) — если код входа не приходит  
+- Индекс: [Docs/README.md](Docs/README.md)
 
 ## Окно тестов → BT Play
 
@@ -31,11 +40,12 @@
 Порт / проблемы и решения: [Docs/Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md](Docs/Reports/AndEngTutor_BT_Play_Problems_and_Porting_Guide_2026-09-10.md)  
 Отчёты: [Docs/Reports/](Docs/Reports/)
 
-## Настройка Supabase (логи)
+## Настройка (Supabase + Telegram/Hermes)
 
 1. Скопируйте `app/src/main/assets/default_settings.json.example` → `default_settings.json`
-2. Заполните `supabaseUrl` и `supabaseAnonKey`
-3. Файл `default_settings.json` в `.gitignore` — не коммитить
+2. Заполните `supabaseUrl` / `supabaseAnonKey` (логи)
+3. Для миничата Hermes: `telegramApiId`, `telegramApiHash`, `telegramPhone`, `telegramBotUsername` (`transport`: `telegram`)
+4. Файл `default_settings.json` в `.gitignore` — не коммитить
 
 ## Сборка
 

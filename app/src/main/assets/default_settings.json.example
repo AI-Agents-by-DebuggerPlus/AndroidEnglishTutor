@@ -4,5 +4,17 @@
   "senderName": "AndroidEnglishTutor",
   "logRecipientName": "WpfChat",
   "useAnonymousAuth": true,
-  "skipDuplicateLogsToSupabase": true
+  "skipDuplicateLogsToSupabase": true,
+  "hermesHost": "",
+  "hermesPort": 443,
+  "hermesSessionId": "aet_session",
+  "hermesUseTls": true,
+  "agentApiBaseUrl": "",
+  "transport": "telegram",
+  "telegramBotToken": "",
+  "telegramChatId": "",
+  "telegramBotUsername": "",
+  "telegramApiId": 0,
+  "telegramApiHash": "",
+  "telegramPhone": ""
 }
