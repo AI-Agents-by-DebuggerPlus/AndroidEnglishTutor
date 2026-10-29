@@ -1,0 +1,111 @@
+{
+  "id": "hermes_english_practice",
+  "titleRu": "Hermes: практика Q&A",
+  "words": [
+    {"en": "EnglishTutor", "ru": "тренер EnglishTutor (карточки)"},
+    {"en": "flashcard", "ru": "карточка для изучения"},
+    {"en": "gateway", "ru": "шлюз Telegram↔Hermes"},
+    {"en": "restart", "ru": "перезапуск"},
+    {"en": "profile bot", "ru": "бот профиля агента"},
+    {"en": "router", "ru": "маршрутизатор сообщений (TO:)"},
+    {"en": "host", "ru": "хост / сервер"},
+    {"en": "disk usage", "ru": "использование диска"},
+    {"en": "cleanup", "ru": "очистка (диска / данных)"},
+    {"en": "open order", "ru": "открытая (ещё не исполненная) заявка"},
+    {"en": "trade history", "ru": "история сделок"},
+    {"en": "fill", "ru": "исполнить заявку"},
+    {"en": "position", "ru": "позиция"},
+    {"en": "side", "ru": "сторона сделки (long/short)"},
+    {"en": "entry", "ru": "цена входа"},
+    {"en": "unrealized PnL", "ru": "нереализованный PnL"},
+    {"en": "API", "ru": "программный интерфейс (API)"},
+    {"en": "XAU", "ru": "золото (тикер XAU)"},
+    {"en": "greet", "ru": "приветствовать"},
+    {"en": "catch", "ru": "расслышать / понять на слух"},
+    {"en": "repeat", "ru": "повторить"},
+    {"en": "clarify", "ru": "уточнить"},
+    {"en": "paraphrase", "ru": "пересказать своими словами"},
+    {"en": "next", "ru": "следующая карточка (команда)"},
+    {"en": "stop flashcards", "ru": "остановить карточки"}
+  ],
+  "phrases": [
+    {"en": "Who are you?", "ru": "Кто ты?", "uses": ["EnglishTutor"]},
+    {"en": "What do you do?", "ru": "Чем ты занимаешься?", "uses": ["EnglishTutor"]},
+    {"en": "Please restart the Hermes gateway.", "ru": "Пожалуйста, перезапусти Hermes gateway.", "uses": ["gateway"]},
+    {"en": "Don't invent the numbers — query the API.", "ru": "Не выдумывай цифры — дерни API.", "uses": ["API"]},
+    {"en": "Wait for my OK before deleting anything.", "ru": "Удаляй только после моего OK.", "uses": ["cleanup"]},
+    {"en": "Keep me posted.", "ru": "Держи меня в курсе.", "uses": ["clarify"]},
+    {"en": "How's it going?", "ru": "Как дела?", "uses": ["greet"]},
+    {"en": "Nice to meet you.", "ru": "Приятно познакомиться.", "uses": ["greet"]},
+    {"en": "Good morning — good to see you.", "ru": "Доброе утро — рад вас видеть.", "uses": ["greet"]},
+    {"en": "Sorry — I didn't catch that.", "ru": "Извините — я не расслышал.", "uses": ["catch"]},
+    {"en": "Could you repeat that, please?", "ru": "Не могли бы вы повторить, пожалуйста?", "uses": ["repeat"]},
+    {"en": "Could you speak a little slower?", "ru": "Не могли бы вы говорить чуть медленнее?", "uses": ["repeat"]},
+    {"en": "So you mean … — is that right?", "ru": "То есть вы имеете в виду … — верно?", "uses": ["clarify"]},
+    {"en": "Thanks for your time — I'll get back to you today.", "ru": "Спасибо за время — я вернусь с ответом сегодня.", "uses": ["greet"]},
+    {"en": "I have to run — catch you later.", "ru": "Мне нужно бежать — увидимся позже.", "uses": ["greet"]},
+    {"en": "I'm running late.", "ru": "Я опаздываю.", "uses": ["greet"]}
+  ],
+  "sentences": [
+    {
+      "en": "I'm EnglishTutor — your flashcard coach. Say next when you want a card, or ask me to generate an offline topic pack.",
+      "ru": "Я EnglishTutor — тренер по карточкам. Напиши next, когда нужна карточка, или попроси сгенерировать offline-тему.",
+      "uses": ["EnglishTutor"]
+    },
+    {
+      "en": "The gateway connects Telegram to Hermes; a restart stops that process and starts it again, so a mid-task question may not finish.",
+      "ru": "Gateway — мост Telegram↔Hermes; restart перезапускает процесс, и задача посередине может оборваться.",
+      "uses": ["gateway"]
+    },
+    {
+      "en": "Each Hermes profile can have its own Telegram bot, so you message that bot directly without a TO: router.",
+      "ru": "У каждого профиля Hermes может быть свой Telegram-бот — пишешь ему напрямую, без маршрутизатора TO:.",
+      "uses": ["profile bot"]
+    },
+    {
+      "en": "Please inspect disk usage on the Hermes host, list the largest folders under /opt/data, and propose a cleanup plan with sizes.",
+      "ru": "Проверь использование диска на хосте Hermes, покажи самые большие папки в /opt/data и предложи план очистки с размерами.",
+      "uses": ["cleanup"]
+    },
+    {
+      "en": "Wait for my OK before deleting anything on the host.",
+      "ru": "Ничего не удаляй на хосте, пока я не дам OK.",
+      "uses": ["host"]
+    },
+    {
+      "en": "An open order is still live and not filled yet; trade history shows deals that already happened.",
+      "ru": "Open order — ещё живая заявка; trade history — уже исполненные сделки.",
+      "uses": ["open order"]
+    },
+    {
+      "en": "Please list my open USDT-M futures positions on Binance Demo, including symbol, side, size, entry, and unrealized PnL.",
+      "ru": "Пожалуйста, перечисли мои открытые позиции USDT-M на Binance Demo: символ, сторона, размер, вход и нереализованный PnL.",
+      "uses": ["position"]
+    },
+    {
+      "en": "Don't invent numbers — query the API or say if the tool failed.",
+      "ru": "Не выдумывай цифры — дерни API или скажи, что tool упал.",
+      "uses": ["API"]
+    },
+    {
+      "en": "In trading slang, «разнесли по золоту» often means traders got wrecked on gold (XAU) — ask for context before guessing.",
+      "ru": "В сленге «разнесли по золоту» часто значит сильные убытки на золоте (XAU) — сначала уточни контекст.",
+      "uses": ["XAU"]
+    },
+    {
+      "en": "If you didn't catch what they said, ask them to repeat or speak a little slower, then paraphrase to check.",
+      "ru": "Если не расслышал — попроси повторить или говорить медленнее, потом перескажи, чтобы проверить.",
+      "uses": ["catch"]
+    },
+    {
+      "en": "Keep greetings short and warm: Good morning — good to see you. If you haven't met: Nice to meet you.",
+      "ru": "Приветствуй коротко и тепло: Good morning — good to see you. При знакомстве: Nice to meet you.",
+      "uses": ["greet"]
+    },
+    {
+      "en": "Say next or дальше for a flashcard; say stop or стоп to stop flashcards. Who are you? must stay plain text.",
+      "ru": "Команды next/дальше — карточка; стоп — остановить. На «Кто ты?» — только текст, без JSON карточки.",
+      "uses": ["next"]
+    }
+  ]
+}

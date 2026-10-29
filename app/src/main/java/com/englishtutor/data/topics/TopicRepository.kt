@@ -13,6 +13,7 @@ import kotlinx.serialization.json.Json
 class TopicRepository @Inject constructor(
     @ApplicationContext private val context: Context,
     private val generatedTopicStore: GeneratedTopicStore,
+    private val xShootArchive: XShootArchiveStore,
 ) {
     private val json = Json {
         ignoreUnknownKeys = true
@@ -26,9 +27,18 @@ class TopicRepository @Inject constructor(
         return cache.values.map { it.info }
     }
 
+    fun topicsInFolder(folder: String): List<TopicInfo> {
+        val key = folder.ifBlank { "Другое" }
+        return listTopics().filter { it.folder.ifBlank { "Другое" } == key }
+    }
+
     fun getTopic(id: String): TopicContent? {
         ensureLoaded()
-        return cache[id] ?: cache.values.firstOrNull()
+        cache[id]?.let { return it }
+        if (id.isNotBlank()) {
+            Log.w(TAG, "Topic id='$id' not found; keys=${cache.keys.joinToString()}")
+        }
+        return cache.values.firstOrNull()
     }
 
     fun defaultTopicId(): String {
@@ -39,12 +49,13 @@ class TopicRepository @Inject constructor(
     /** Drop cache and reload assets + generated offline topics. */
     fun reload() {
         cache.clear()
+        xShootArchive.reload()
         ensureLoaded()
     }
 
     fun saveGenerated(dto: TopicFileDto): TopicContent {
         generatedTopicStore.save(dto)
-        val content = dto.toContent()
+        val content = dto.toContent("Сохранённые")
         cache[dto.id] = content
         return content
     }
@@ -57,31 +68,49 @@ class TopicRepository @Inject constructor(
     }
 
     private fun loadFromAssets() {
+        val files = mutableListOf<String>()
+        collectTopicJson(TOPICS_DIR, files)
+        Log.i(TAG, "Topic assets: ${files.joinToString()}")
+        files.sortedBy { path ->
+            orderIndex(path.substringAfterLast('/').removeSuffix(".json"))
+        }.forEach { path ->
+            runCatching {
+                context.assets.open(path).bufferedReader().use { reader ->
+                    val dto = json.decodeFromString<TopicFileDto>(reader.readText())
+                    val relative = path.removePrefix("$TOPICS_DIR/")
+                    val folder = relative.substringBeforeLast('/', missingDelimiterValue = "")
+                    cache[dto.id] = dto.toContent(folder)
+                }
+            }.onFailure {
+                Log.e(TAG, "Failed to load topic $path: ${it.message}", it)
+            }
+        }
+    }
+
+    private fun collectTopicJson(dir: String, out: MutableList<String>) {
         val names = runCatching {
-            context.assets.list(TOPICS_DIR)?.toList().orEmpty()
+            context.assets.list(dir)?.toList().orEmpty()
         }.onFailure {
-            Log.e(TAG, "assets.list($TOPICS_DIR) failed: ${it.message}")
+            Log.e(TAG, "assets.list($dir) failed: ${it.message}")
         }.getOrDefault(emptyList())
-        Log.i(TAG, "Topic assets: ${names.joinToString()}")
-        names.filter { it.endsWith(".json") }
-            .sortedBy { orderIndex(it.removeSuffix(".json")) }
-            .forEach { file ->
-                runCatching {
-                    context.assets.open("$TOPICS_DIR/$file").bufferedReader().use { reader ->
-                        val dto = json.decodeFromString<TopicFileDto>(reader.readText())
-                        cache[dto.id] = dto.toContent()
-                    }
-                }.onFailure {
-                    Log.e(TAG, "Failed to load topic $file: ${it.message}", it)
+        for (name in names) {
+            val path = "$dir/$name"
+            if (name.endsWith(".json")) {
+                out.add(path)
+            } else {
+                val children = context.assets.list(path)
+                if (!children.isNullOrEmpty()) {
+                    collectTopicJson(path, out)
                 }
             }
+        }
     }
 
     private fun loadFromFiles(files: List<File>) {
         files.forEach { file ->
             runCatching {
                 val dto = json.decodeFromString<TopicFileDto>(file.readText(Charsets.UTF_8))
-                cache[dto.id] = dto.toContent()
+                cache[dto.id] = dto.toContent("Сохранённые")
                 Log.i(TAG, "Loaded generated topic ${dto.id} from ${file.name}")
             }.onFailure {
                 Log.e(TAG, "Failed to load generated ${file.name}: ${it.message}", it)
@@ -89,16 +118,20 @@ class TopicRepository @Inject constructor(
         }
     }
 
-    private fun TopicFileDto.toContent(): TopicContent {
-        val words = words.map {
-            StudyCard(
-                en = it.en.trim(),
-                ru = it.ru.trim(),
-                stage = StudyStage.Words,
-                progressKey = progressKey(id, StudyStage.Words, it.ru),
-                uses = listOf(it.en.trim().lowercase()),
-            )
-        }
+    private fun TopicFileDto.toContent(folder: String): TopicContent {
+        val known = xShootArchive.knownEnglish()
+        // Archive words are skipped as standalone study cards, but may still appear in phrases/sentences.
+        val words = words
+            .filter { it.en.trim().lowercase() !in known }
+            .map {
+                StudyCard(
+                    en = it.en.trim(),
+                    ru = it.ru.trim(),
+                    stage = StudyStage.Words,
+                    progressKey = progressKey(id, StudyStage.Words, it.ru),
+                    uses = listOf(it.en.trim().lowercase()),
+                )
+            }
         val phrases = phrases.map {
             StudyCard(
                 en = it.en.trim(),
@@ -118,7 +151,7 @@ class TopicRepository @Inject constructor(
             )
         }
         return TopicContent(
-            info = TopicInfo(id = id, titleRu = titleRu, wordCount = words.size),
+            info = TopicInfo(id = id, titleRu = titleRu, wordCount = words.size, folder = folder),
             words = words,
             phrases = phrases,
             sentences = sentences,
@@ -131,11 +164,24 @@ class TopicRepository @Inject constructor(
 
         private val ORDER = listOf(
             "general_conversation",
+            "everyday_thousand",
+            "bridge_style_a1",
+            "bridge_dictation_monologues",
+            "bridge_dictation_dialogues",
+            "level_a2",
+            "level_b1",
+            "b1_tech_thousand",
+            "celpip_practice",
+            "clb5_week1",
+            "clb5_week2",
+            "clb5_week3",
+            "clb5_checklists",
             "food",
             "tools",
             "bottle_depot",
             "ai_engineering",
             "trading",
+            "hermes_english_practice",
         )
 
         fun progressKey(topicId: String, stage: StudyStage, ru: String): String =

@@ -1,0 +1,498 @@
+{
+  "id": "clb5_checklists",
+  "titleRu": "CLB 5 · чек-листы и цели",
+  "words": [
+    {
+      "en": "since",
+      "ru": "с (момента времени)"
+    },
+    {
+      "en": "for",
+      "ru": "в течение"
+    },
+    {
+      "en": "rain",
+      "ru": "дождь / идёт дождь"
+    },
+    {
+      "en": "stay",
+      "ru": "оставаться"
+    },
+    {
+      "en": "though",
+      "ru": "хотя"
+    },
+    {
+      "en": "hand",
+      "ru": "передать / сдать"
+    },
+    {
+      "en": "solve",
+      "ru": "решать"
+    },
+    {
+      "en": "problem",
+      "ru": "проблема"
+    },
+    {
+      "en": "daily",
+      "ru": "ежедневный"
+    },
+    {
+      "en": "conversation",
+      "ru": "разговор"
+    },
+    {
+      "en": "correspondence",
+      "ru": "переписка"
+    },
+    {
+      "en": "choice",
+      "ru": "выбор"
+    },
+    {
+      "en": "window",
+      "ru": "окно"
+    },
+    {
+      "en": "translate",
+      "ru": "переводить"
+    },
+    {
+      "en": "word",
+      "ru": "слово"
+    },
+    {
+      "en": "tag",
+      "ru": "метка / тег"
+    },
+    {
+      "en": "checklist",
+      "ru": "чек-лист"
+    },
+    {
+      "en": "criterion",
+      "ru": "критерий"
+    },
+    {
+      "en": "rubric",
+      "ru": "шкала оценки"
+    },
+    {
+      "en": "threshold",
+      "ru": "порог"
+    },
+    {
+      "en": "fluency",
+      "ru": "беглость"
+    },
+    {
+      "en": "accuracy",
+      "ru": "точность"
+    },
+    {
+      "en": "coherence",
+      "ru": "связность"
+    },
+    {
+      "en": "paragraph",
+      "ru": "абзац"
+    },
+    {
+      "en": "outline",
+      "ru": "план текста"
+    },
+    {
+      "en": "draft",
+      "ru": "черновик"
+    },
+    {
+      "en": "revise",
+      "ru": "пересмотреть / править"
+    },
+    {
+      "en": "proofread",
+      "ru": "вычитать"
+    },
+    {
+      "en": "timing",
+      "ru": "распределение времени"
+    },
+    {
+      "en": "stopwatch",
+      "ru": "секундомер"
+    },
+    {
+      "en": "prompt",
+      "ru": "задание / формулировка"
+    },
+    {
+      "en": "response",
+      "ru": "ответ (развёрнутый)"
+    },
+    {
+      "en": "structure",
+      "ru": "структура"
+    },
+    {
+      "en": "transition",
+      "ru": "переход"
+    },
+    {
+      "en": "summarize",
+      "ru": "кратко изложить"
+    },
+    {
+      "en": "paraphrase",
+      "ru": "перефразировать"
+    },
+    {
+      "en": "skim",
+      "ru": "пробежать глазами"
+    },
+    {
+      "en": "scan",
+      "ru": "искать конкретное"
+    },
+    {
+      "en": "inference",
+      "ru": "вывод"
+    },
+    {
+      "en": "distractor",
+      "ru": "отвлекающий вариант"
+    },
+    {
+      "en": "bandwidth",
+      "ru": "запас внимания"
+    },
+    {
+      "en": "warmup",
+      "ru": "разминка"
+    },
+    {
+      "en": "cooldown",
+      "ru": "завершение занятия"
+    },
+    {
+      "en": "streak",
+      "ru": "серия дней подряд"
+    },
+    {
+      "en": "milestone",
+      "ru": "контрольная точка"
+    },
+    {
+      "en": "benchmark",
+      "ru": "ориентир"
+    },
+    {
+      "en": "feedback",
+      "ru": "обратная связь"
+    },
+    {
+      "en": "selfcheck",
+      "ru": "самопроверка"
+    },
+    {
+      "en": "template",
+      "ru": "шаблон"
+    },
+    {
+      "en": "phrasebank",
+      "ru": "запас фраз"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "since 2020",
+      "ru": "с 2020 года",
+      "uses": [
+        "since"
+      ]
+    },
+    {
+      "en": "for three years",
+      "ru": "в течение трёх лет",
+      "uses": [
+        "for"
+      ]
+    },
+    {
+      "en": "hand in the draft",
+      "ru": "сдать черновик",
+      "uses": [
+        "hand",
+        "draft"
+      ]
+    },
+    {
+      "en": "solve the problem",
+      "ru": "решить проблему",
+      "uses": [
+        "solve",
+        "problem"
+      ]
+    },
+    {
+      "en": "daily conversation",
+      "ru": "ежедневный разговор",
+      "uses": [
+        "daily",
+        "conversation"
+      ]
+    },
+    {
+      "en": "reading correspondence",
+      "ru": "чтение переписки",
+      "uses": [
+        "correspondence"
+      ]
+    },
+    {
+      "en": "survey checklist",
+      "ru": "чек-лист опроса",
+      "uses": [
+        "checklist",
+        "choice"
+      ]
+    },
+    {
+      "en": "email checklist",
+      "ru": "чек-лист письма",
+      "uses": [
+        "checklist"
+      ]
+    },
+    {
+      "en": "speaking checklist",
+      "ru": "чек-лист говорения",
+      "uses": [
+        "checklist",
+        "fluency"
+      ]
+    },
+    {
+      "en": "timing with a stopwatch",
+      "ru": "контроль времени по секундомеру",
+      "uses": [
+        "timing",
+        "stopwatch"
+      ]
+    },
+    {
+      "en": "revise the outline",
+      "ru": "пересмотреть план",
+      "uses": [
+        "revise",
+        "outline"
+      ]
+    },
+    {
+      "en": "proofread the paragraph",
+      "ru": "вычитать абзац",
+      "uses": [
+        "proofread",
+        "paragraph"
+      ]
+    },
+    {
+      "en": "skim then scan",
+      "ru": "сначала пробежать, потом искать",
+      "uses": [
+        "skim",
+        "scan"
+      ]
+    },
+    {
+      "en": "paraphrase the prompt",
+      "ru": "перефразировать задание",
+      "uses": [
+        "paraphrase",
+        "prompt"
+      ]
+    },
+    {
+      "en": "summarize the response",
+      "ru": "кратко изложить ответ",
+      "uses": [
+        "summarize",
+        "response"
+      ]
+    },
+    {
+      "en": "use a transition",
+      "ru": "использовать переход",
+      "uses": [
+        "transition"
+      ]
+    },
+    {
+      "en": "check the rubric",
+      "ru": "свериться со шкалой",
+      "uses": [
+        "rubric",
+        "criterion"
+      ]
+    },
+    {
+      "en": "reach the threshold",
+      "ru": "достичь порога",
+      "uses": [
+        "threshold"
+      ]
+    },
+    {
+      "en": "build a phrasebank",
+      "ru": "собрать запас фраз",
+      "uses": [
+        "phrasebank",
+        "template"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "I have lived here since 2020.",
+      "ru": "Я живу здесь с 2020 года.",
+      "uses": [
+        "since"
+      ]
+    },
+    {
+      "en": "I have studied English for three years.",
+      "ru": "Я изучаю английский три года.",
+      "uses": [
+        "for"
+      ]
+    },
+    {
+      "en": "Though and even though have a similar meaning.",
+      "ru": "Though и even though близки по смыслу.",
+      "uses": [
+        "though"
+      ]
+    },
+    {
+      "en": "Hand in the draft after you proofread each paragraph.",
+      "ru": "Сдайте черновик после вычитки каждого абзаца.",
+      "uses": [
+        "hand",
+        "draft",
+        "proofread",
+        "paragraph"
+      ]
+    },
+    {
+      "en": "Use the checklist: outline, structure, transition, and clear response.",
+      "ru": "Используйте чек-лист: план, структура, переход и ясный ответ.",
+      "uses": [
+        "checklist",
+        "outline",
+        "structure",
+        "transition",
+        "response"
+      ]
+    },
+    {
+      "en": "Skim the text first, then scan for the exact word.",
+      "ru": "Сначала пробегите текст глазами, затем ищите нужное слово.",
+      "uses": [
+        "skim",
+        "scan",
+        "word"
+      ]
+    },
+    {
+      "en": "Paraphrase the prompt before you write the first paragraph.",
+      "ru": "Перефразируйте задание, прежде чем писать первый абзац.",
+      "uses": [
+        "paraphrase",
+        "prompt",
+        "paragraph"
+      ]
+    },
+    {
+      "en": "Summarize your response in one short sentence at the end.",
+      "ru": "В конце кратко изложите ответ одним предложением.",
+      "uses": [
+        "summarize",
+        "response"
+      ]
+    },
+    {
+      "en": "Check the rubric and each criterion before you submit the draft.",
+      "ru": "Сверьтесь со шкалой и каждым критерием, прежде чем сдать черновик.",
+      "uses": [
+        "rubric",
+        "criterion",
+        "draft"
+      ]
+    },
+    {
+      "en": "Fluency and accuracy both matter; coherence keeps the story clear.",
+      "ru": "Важны и беглость, и точность; связность делает рассказ ясным.",
+      "uses": [
+        "fluency",
+        "accuracy",
+        "coherence"
+      ]
+    },
+    {
+      "en": "Time the warmup with a stopwatch, then start the real prompt.",
+      "ru": "Засеките разминку по секундомеру, затем начните настоящее задание.",
+      "uses": [
+        "warmup",
+        "stopwatch",
+        "timing",
+        "prompt"
+      ]
+    },
+    {
+      "en": "A daily conversation streak is a useful milestone.",
+      "ru": "Серия ежедневных разговоров — полезная контрольная точка.",
+      "uses": [
+        "daily",
+        "conversation",
+        "streak",
+        "milestone"
+      ]
+    },
+    {
+      "en": "Use selfcheck and feedback to raise your benchmark.",
+      "ru": "Используйте самопроверку и обратную связь, чтобы поднять ориентир.",
+      "uses": [
+        "selfcheck",
+        "feedback",
+        "benchmark"
+      ]
+    },
+    {
+      "en": "Keep a phrasebank template for correspondence and problem solving.",
+      "ru": "Держите шаблон запаса фраз для переписки и решения проблем.",
+      "uses": [
+        "phrasebank",
+        "template",
+        "correspondence",
+        "problem",
+        "solve"
+      ]
+    },
+    {
+      "en": "Ignore the distractor and look for the real inference.",
+      "ru": "Не отвлекайтесь на ложный вариант и ищите настоящий вывод.",
+      "uses": [
+        "distractor",
+        "inference"
+      ]
+    },
+    {
+      "en": "After the cooldown, tag only the weak spots for review.",
+      "ru": "После завершения занятия пометьте только слабые места.",
+      "uses": [
+        "cooldown",
+        "tag"
+      ]
+    }
+  ]
+}

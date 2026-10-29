@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo
 import android.view.WindowManager
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -32,13 +34,13 @@ import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.Topic
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -47,6 +49,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -54,9 +57,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -92,6 +97,7 @@ fun WordStudyScreen(
     var showSettings by remember { mutableStateOf(false) }
     var showTopics by remember { mutableStateOf(false) }
     var blanked by remember { mutableStateOf(false) }
+    var touchChrome by remember { mutableStateOf(false) }
 
     DisposableEffect(Unit) {
         viewModel.onScreenVisible()
@@ -114,11 +120,25 @@ fun WordStudyScreen(
     val english = state.study.english
     val russian = state.study.russian
     val hasCard = english.isNotBlank()
+    val hidden = display.hiddenMode
+    val phoneBlack = hidden || (blanked && !showSettings && !showTopics)
 
     FlashcardImmersiveEffect(
         active = !showSettings && !showTopics,
-        systemBarColor = if (blanked) Color.Black else display.backgroundColor,
+        hideNavigationBar = phoneBlack && !touchChrome,
+        systemBarColor = if (phoneBlack) Color.Black else display.backgroundColor,
     )
+
+    LaunchedEffect(phoneBlack, touchChrome) {
+        if (!phoneBlack) {
+            touchChrome = false
+            return@LaunchedEffect
+        }
+        if (touchChrome) {
+            delay(5_000)
+            touchChrome = false
+        }
+    }
 
     fun leaveStudy() {
         viewModel.endStudySession()
@@ -140,9 +160,32 @@ fun WordStudyScreen(
         }
     }
 
+    var countdownEndsAtEpochMs by remember { mutableLongStateOf(0L) }
+    var countdownTotalMs by remember { mutableLongStateOf(0L) }
+
+    LaunchedEffect(
+        state.study,
+        state.display,
+        blanked,
+        hidden,
+        showSettings,
+        showTopics,
+        countdownEndsAtEpochMs,
+        countdownTotalMs,
+    ) {
+        // Hidden mode keeps the phone black but still sends the card. Desktop reveals it on Space.
+        val mirrorBlank = blanked && !hidden && !showSettings && !showTopics
+        viewModel.publishMirror(
+            blanked = mirrorBlank,
+            countdownEndsAtEpochMs = if (mirrorBlank || hidden) 0L else countdownEndsAtEpochMs,
+            countdownTotalMs = if (mirrorBlank || hidden) 0L else countdownTotalMs,
+            hidden = hidden && state.study.isActive,
+        )
+    }
+
     // Any show/replay (including Play while blank) un-blanks via displayEpoch.
-    LaunchedEffect(state.study.displayEpoch) {
-        if (state.study.displayEpoch > 0L) {
+    LaunchedEffect(state.study.displayEpoch, hidden) {
+        if (state.study.displayEpoch > 0L && !hidden) {
             blanked = false
         }
     }
@@ -156,14 +199,19 @@ fun WordStudyScreen(
         showTopics,
         display.blankAfterSeconds,
         hasCard,
+        hidden,
     ) {
-        if (!hasCard || blanked || showSettings || showTopics) {
+        if (!hasCard || blanked || hidden || showSettings || showTopics) {
             progress = if (blanked) 0f else 1f
+            countdownEndsAtEpochMs = 0L
+            countdownTotalMs = 0L
             return@LaunchedEffect
         }
         val total = display.blankAfterSeconds.coerceIn(5, 300)
         val totalMs = total * 1_000L
         val started = System.currentTimeMillis()
+        countdownTotalMs = totalMs
+        countdownEndsAtEpochMs = started + totalMs
         while (true) {
             val elapsed = System.currentTimeMillis() - started
             if (elapsed >= totalMs) break
@@ -178,18 +226,52 @@ fun WordStudyScreen(
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        if (blanked) {
+        if (phoneBlack) {
+            // Full-bleed black. A tap shows the study controls without the card text.
             Box(
                 Modifier
                     .fillMaxSize()
                     .background(Color.Black)
-                    .clickable { blanked = false },
+                    .pointerInput(hidden, touchChrome) {
+                        detectTapGestures(
+                            onTap = {
+                                if (hidden) touchChrome = !touchChrome
+                                else blanked = false
+                            },
+                            onDoubleTap = { if (hidden) showTopics = true },
+                            onLongPress = { if (hidden) showSettings = true },
+                        )
+                    },
             )
+            if (touchChrome) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth()
+                        .background(Color.Black)
+                        .navigationBarsPadding(),
+                ) {
+                    FlashcardBottomChrome(
+                        countdownProgress = if (hasCard && !hidden) progress else 0f,
+                        secondsLeft = if (hasCard && !hidden) secondsLeft else null,
+                        progressLabel = buildChromeProgressLabel(state),
+                        playEnabled = true,
+                        onNext = { viewModel.onNext() },
+                        onPlay = { viewModel.onPlay() },
+                        onTopics = { showTopics = true },
+                        onStats = onOpenStudyStats,
+                        onVoices = onOpenVoicePicker,
+                        onSettings = { showSettings = true },
+                        onExit = { leaveStudy() },
+                    )
+                }
+            }
         } else {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(display.backgroundColor),
+                    .background(display.backgroundColor)
+                    .navigationBarsPadding(),
             ) {
                 val enText = if (hasCard) {
                     english
@@ -197,6 +279,14 @@ fun WordStudyScreen(
                     stringResource(R.string.word_study_waiting)
                 }
                 val ruText = russian.takeIf { hasCard && it.isNotBlank() }
+                FlashcardTopicHeader(
+                    topicTitle = state.study.topicTitle.ifBlank {
+                        stringResource(R.string.word_study_topics_title)
+                    },
+                    stageLabel = state.study.stage.labelRu,
+                    cardIndex = if (hasCard) state.study.wordIndex + 1 else 0,
+                    cardCount = state.study.wordCount.coerceAtLeast(1),
+                )
                 // Measure against the real text slot (below chrome), not full-screen minus a guess.
                 BoxWithConstraints(
                     modifier = Modifier
@@ -252,7 +342,7 @@ fun WordStudyScreen(
                 FlashcardBottomChrome(
                     countdownProgress = if (hasCard) progress else 0f,
                     secondsLeft = if (hasCard) secondsLeft else null,
-                    progressLabel = buildProgressLabel(state),
+                    progressLabel = buildChromeProgressLabel(state),
                     playEnabled = true,
                     onNext = { viewModel.onNext() },
                     onPlay = { viewModel.onPlay() },
@@ -270,9 +360,14 @@ fun WordStudyScreen(
         TopicPickerDialog(
             topics = state.study.topics,
             selectedId = state.study.topicId,
-            onSelect = {
+            selectedFolder = state.study.studyFolder,
+            onSelectTopic = {
                 showTopics = false
                 viewModel.selectTopic(it)
+            },
+            onSelectFolder = {
+                showTopics = false
+                viewModel.selectFolder(it)
             },
             onDismiss = { showTopics = false },
         )
@@ -302,18 +397,56 @@ fun WordStudyScreen(
 }
 
 @Composable
-private fun buildProgressLabel(state: WordStudyUiState): String {
+private fun buildChromeProgressLabel(state: WordStudyUiState): String {
     val study = state.study
     return if (study.english.isNotBlank()) {
         stringResource(
-            R.string.word_study_card_progress_topic,
-            study.topicTitle.ifBlank { "—" },
+            R.string.word_study_topic_subheader,
             study.stage.labelRu,
             study.wordIndex + 1,
             study.wordCount.coerceAtLeast(1),
         )
     } else {
-        study.topicTitle.ifBlank { study.estimatedLevel }
+        study.stage.labelRu
+    }
+}
+
+@Composable
+private fun FlashcardTopicHeader(
+    topicTitle: String,
+    stageLabel: String,
+    cardIndex: Int,
+    cardCount: Int,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = stringResource(R.string.word_study_topic_header, topicTitle),
+            color = Cream,
+            style = MaterialTheme.typography.titleMedium,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
+            softWrap = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Text(
+            text = stringResource(
+                R.string.word_study_topic_subheader,
+                stageLabel,
+                cardIndex.coerceAtLeast(0),
+                cardCount,
+            ),
+            color = HintMuted,
+            style = MaterialTheme.typography.labelMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 2.dp),
+        )
     }
 }
 
@@ -425,43 +558,102 @@ private fun FlashcardBottomChrome(
 private fun TopicPickerDialog(
     topics: List<TopicInfo>,
     selectedId: String,
-    onSelect: (String) -> Unit,
+    selectedFolder: String,
+    onSelectTopic: (String) -> Unit,
+    onSelectFolder: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    AlertDialog(
+    Dialog(
         onDismissRequest = onDismiss,
-        containerColor = Color(0xFF123D45),
-        title = {
-            Text(stringResource(R.string.word_study_topics_title), color = Cream)
-        },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                topics.forEach { topic ->
-                    val selected = topic.id == selectedId
+        properties = DialogProperties(usePlatformDefaultWidth = false),
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(12.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Surface(
+                modifier = Modifier
+                    .fillMaxWidth(0.94f)
+                    .fillMaxHeight(0.92f),
+                shape = RoundedCornerShape(16.dp),
+                color = Color(0xFF123D45),
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 20.dp, vertical = 12.dp),
+                ) {
                     Text(
-                        text = "${topic.titleRu} (${topic.wordCount})",
-                        color = if (selected) Cream else HintMuted,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onSelect(topic.id) }
-                            .padding(vertical = 10.dp),
-                        style = MaterialTheme.typography.bodyLarge,
+                        text = stringResource(R.string.word_study_topics_title),
+                        color = Cream,
+                        style = MaterialTheme.typography.titleLarge,
                     )
+                    Text(
+                        text = stringResource(R.string.word_study_folder_hint),
+                        color = HintMuted,
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
+                    )
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        val folders = topics.map { it.folder.ifBlank { "Другое" } }.distinct()
+                        folders.forEach { folder ->
+                            val folderSelected = selectedFolder == folder
+                            val fileCount = topics.count { it.folder.ifBlank { "Другое" } == folder }
+                            Text(
+                                text = stringResource(
+                                    R.string.word_study_folder_row,
+                                    folder,
+                                    fileCount,
+                                ),
+                                color = if (folderSelected) Cream else Cream.copy(alpha = 0.92f),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { onSelectFolder(folder) }
+                                    .padding(top = 14.dp, bottom = 2.dp),
+                                style = MaterialTheme.typography.titleMedium,
+                            )
+                            topics.filter { it.folder.ifBlank { "Другое" } == folder }.forEach { topic ->
+                                val selected = topic.id == selectedId && selectedFolder.isBlank()
+                                val inFolderResume = topic.id == selectedId && folderSelected
+                                Text(
+                                    text = "${topic.titleRu} (${topic.wordCount})",
+                                    color = when {
+                                        selected || inFolderResume -> Cream
+                                        else -> HintMuted
+                                    },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable { onSelectTopic(topic.id) }
+                                        .padding(start = 16.dp, top = 8.dp, bottom = 8.dp),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                )
+                            }
+                        }
+                        Text(
+                            text = stringResource(R.string.word_study_triple_play_hint),
+                            color = HintMuted.copy(alpha = 0.8f),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(top = 8.dp),
+                        )
+                    }
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.align(Alignment.End),
+                    ) {
+                        Text(stringResource(R.string.word_study_settings_done), color = Cream)
+                    }
                 }
-                Text(
-                    text = stringResource(R.string.word_study_triple_play_hint),
-                    color = HintMuted.copy(alpha = 0.8f),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(top = 8.dp),
-                )
             }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.word_study_settings_done), color = Cream)
-            }
-        },
-    )
+        }
+    }
 }
 
 @Composable
@@ -480,10 +672,14 @@ private fun FlashcardChromeIcon(
 }
 
 @Composable
-private fun FlashcardImmersiveEffect(active: Boolean, systemBarColor: Color) {
+private fun FlashcardImmersiveEffect(
+    active: Boolean,
+    hideNavigationBar: Boolean,
+    systemBarColor: Color,
+) {
     val context = LocalContext.current
     val activity = context as? Activity ?: return
-    DisposableEffect(active, systemBarColor) {
+    DisposableEffect(active, hideNavigationBar, systemBarColor) {
         if (!active) {
             return@DisposableEffect onDispose { }
         }
@@ -497,9 +693,16 @@ private fun FlashcardImmersiveEffect(active: Boolean, systemBarColor: Color) {
         window.statusBarColor = bar
         @Suppress("DEPRECATION")
         window.navigationBarColor = bar
-        controller.hide(WindowInsetsCompat.Type.systemBars())
         controller.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        if (hideNavigationBar) {
+            // Blank/dark mode: hide status + navigation for a true black screen.
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+        } else {
+            // Study UI: keep nav bar (chrome sits above it via navigationBarsPadding).
+            controller.show(WindowInsetsCompat.Type.navigationBars())
+            controller.hide(WindowInsetsCompat.Type.statusBars())
+        }
         onDispose {
             controller.show(WindowInsetsCompat.Type.systemBars())
             WindowCompat.setDecorFitsSystemWindows(window, true)
@@ -563,6 +766,29 @@ private fun FlashcardSettingsDialog(
                         .weight(1f)
                         .verticalScroll(rememberScrollState()),
                 ) {
+                    Spacer(Modifier.height(8.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            stringResource(R.string.word_study_hidden_mode),
+                            color = Cream,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Switch(
+                            checked = draft.hiddenMode,
+                            onCheckedChange = {
+                                draft = draft.copy(hiddenMode = it)
+                                onChange(draft)
+                            },
+                        )
+                    }
+                    Text(
+                        stringResource(R.string.word_study_hidden_mode_hint),
+                        color = HintMuted,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                     Spacer(Modifier.height(8.dp))
                     Text(summary, color = HintMuted, style = MaterialTheme.typography.bodySmall)
                     if (status.isNotBlank()) {

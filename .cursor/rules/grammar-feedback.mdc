@@ -1,0 +1,18 @@
+---
+description: Always correct grammar mistakes in the user's messages
+alwaysApply: true
+---
+
+# Grammar feedback for the user
+
+Always correct grammatical errors in the user's Russian or English messages.
+
+1. Put a short note at the start or end of the reply, usually 1–3 items.
+2. Format: «неверно» → «верно».
+3. Do not lecture and do not skip the requested work.
+4. Correct agreement, case, spelling, and wrong word forms.
+5. Skip a note only when the message has no grammatical error. Style preferences are not errors.
+
+Example:
+
+> «должны» → «должна»: подлежащее «активность» в единственном числе. «За одно» → «Заодно».

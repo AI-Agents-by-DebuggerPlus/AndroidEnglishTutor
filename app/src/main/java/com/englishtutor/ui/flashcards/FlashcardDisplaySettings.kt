@@ -14,6 +14,8 @@ data class FlashcardDisplaySettings(
     val backgroundArgb: Int = 0xFF000000.toInt(),
     /** Seconds on screen before auto blank (dark mode). */
     val blankAfterSeconds: Int = 60,
+    /** Phone stays black; the card is shown only on AET Desktop. */
+    val hiddenMode: Boolean = false,
     val englishTopPaddingDp: Int = 8,
     val enRuGapDp: Int = 24,
     /** Target: Russian ≈ English × (100 − N) / 100; auto-fit may shrink further. */

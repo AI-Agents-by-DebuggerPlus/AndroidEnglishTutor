@@ -5,6 +5,9 @@ import com.englishtutor.data.topics.StudyStage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /**
  * Remembers current study topic, stage, card position and studied keys across restarts.
@@ -17,6 +20,36 @@ class StudySessionPreferences @Inject constructor(
 
     fun topicId(defaultId: String): String =
         prefs.getString(KEY_TOPIC_ID, null)?.takeIf { it.isNotBlank() } ?: defaultId
+
+    /** Non-blank when the user chose a whole theme folder to study. */
+    fun studyFolder(): String =
+        prefs.getString(KEY_STUDY_FOLDER, null)?.trim().orEmpty()
+
+    fun setStudyFolder(folder: String?) {
+        val value = folder?.trim().orEmpty()
+        prefs.edit().apply {
+            if (value.isBlank()) remove(KEY_STUDY_FOLDER) else putString(KEY_STUDY_FOLDER, value)
+        }.apply()
+    }
+
+    fun lastTopicInFolder(folder: String): String? {
+        val key = folder.trim()
+        if (key.isBlank()) return null
+        return folderLastTopics()[key]?.takeIf { it.isNotBlank() }
+    }
+
+    fun saveLastTopicInFolder(folder: String, topicId: String) {
+        val key = folder.trim()
+        if (key.isBlank() || topicId.isBlank()) return
+        val next = folderLastTopics().toMutableMap()
+        next[key] = topicId
+        prefs.edit().putString(KEY_FOLDER_LAST, json.encodeToString(next)).apply()
+    }
+
+    private fun folderLastTopics(): Map<String, String> {
+        val raw = prefs.getString(KEY_FOLDER_LAST, null)?.takeIf { it.isNotBlank() } ?: return emptyMap()
+        return runCatching { json.decodeFromString<Map<String, String>>(raw) }.getOrDefault(emptyMap())
+    }
 
     fun stage(): StudyStage = StudyStage.fromStored(prefs.getString(KEY_STAGE, null))
 
@@ -54,6 +87,16 @@ class StudySessionPreferences @Inject constructor(
 
     fun isStudied(progressKey: String): Boolean = progressKey in studiedKeys()
 
+    /** Drop studied marks for one topic so the next pass starts at the first card. */
+    fun clearStudiedForTopic(topicId: String) {
+        if (topicId.isBlank()) return
+        val prefix = "$topicId|"
+        val next = studiedKeys().filterNot { it.startsWith(prefix) }.toSet()
+        val editor = prefs.edit()
+        if (next.isEmpty()) editor.remove(KEY_STUDIED) else editor.putStringSet(KEY_STUDIED, next)
+        editor.apply()
+    }
+
     fun studiedCount(): Int = studiedKeys().size
 
     fun studiedWordsCount(): Int =
@@ -78,6 +121,35 @@ class StudySessionPreferences @Inject constructor(
         prefs.edit().remove(KEY_VIEWED_TOPICS).apply()
     }
 
+    fun topicBookmark(topicId: String): TopicBookmark? =
+        if (topicId.isBlank()) null else bookmarks()[topicId]
+
+    fun saveTopicBookmark(
+        topicId: String,
+        stage: StudyStage,
+        cardIndex: Int,
+        batchWordEns: List<String>,
+        queueKeys: List<String>,
+        completed: Boolean,
+    ) {
+        if (topicId.isBlank()) return
+        val next = bookmarks().toMutableMap()
+        next[topicId] = TopicBookmark(
+            stage = stage.name,
+            cardIndex = cardIndex.coerceAtLeast(0),
+            batchWordEns = batchWordEns,
+            queueKeys = if (completed) emptyList() else queueKeys,
+            completed = completed,
+        )
+        prefs.edit().putString(KEY_BOOKMARKS, json.encodeToString(next)).apply()
+    }
+
+    private fun bookmarks(): Map<String, TopicBookmark> {
+        val raw = prefs.getString(KEY_BOOKMARKS, null)?.takeIf { it.isNotBlank() } ?: return emptyMap()
+        return runCatching { json.decodeFromString<Map<String, TopicBookmark>>(raw) }
+            .getOrDefault(emptyMap())
+    }
+
     /**
      * Prefer topics not yet viewed; after all are viewed, reset the cycle and start from the first.
      */
@@ -94,6 +166,8 @@ class StudySessionPreferences @Inject constructor(
         return allIds.first()
     }
 
+    private val json = Json { ignoreUnknownKeys = true }
+
     companion object {
         private const val PREFS = "study_session_prefs"
         private const val KEY_TOPIC_ID = "topic_id"
@@ -102,5 +176,17 @@ class StudySessionPreferences @Inject constructor(
         private const val KEY_BATCH_ENS = "batch_word_ens"
         private const val KEY_STUDIED = "studied_keys"
         private const val KEY_VIEWED_TOPICS = "viewed_topic_ids"
+        private const val KEY_BOOKMARKS = "topic_bookmarks"
+        private const val KEY_STUDY_FOLDER = "study_folder"
+        private const val KEY_FOLDER_LAST = "folder_last_topics"
     }
 }
+
+@Serializable
+data class TopicBookmark(
+    val stage: String = StudyStage.Words.name,
+    val cardIndex: Int = 0,
+    val batchWordEns: List<String> = emptyList(),
+    val queueKeys: List<String> = emptyList(),
+    val completed: Boolean = false,
+)

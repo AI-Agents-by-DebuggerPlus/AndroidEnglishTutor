@@ -7,6 +7,14 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 TOPICS_DIR = ROOT / "app/src/main/assets/topics"
+TOPIC_FOLDERS = {
+    "general_conversation": "General conversation",
+    "food": "Food",
+    "tools": "Tools",
+    "bottle_depot": "Bottle Depot",
+    "ai_engineering": "AI Engineering",
+    "trading": "Trading",
+}
 
 TARGETS = {
     "general_conversation": (300, 150, 120),
@@ -155,7 +163,8 @@ def main() -> None:
         "trading",
     ]
     for tid in order:
-        path = TOPICS_DIR / f"{tid}.json"
+        path = TOPICS_DIR / TOPIC_FOLDERS[tid] / f"{tid}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
         old = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"words": []}
         tw, tp, ts = TARGETS[tid]
         override = AI_RU if tid == "ai_engineering" else None

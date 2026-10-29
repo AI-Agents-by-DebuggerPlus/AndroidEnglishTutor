@@ -6,6 +6,7 @@ import com.englishtutor.data.topics.StudyStage
 import com.englishtutor.data.topics.TopicInfo
 import com.englishtutor.data.topics.TopicRepository
 import com.englishtutor.data.voice.StudySessionPreferences
+import com.englishtutor.data.voice.TopicBookmark
 import com.englishtutor.domain.voice.TextToSpeechProvider
 import com.englishtutor.util.AppLogger
 import javax.inject.Inject
@@ -34,6 +35,8 @@ data class WordStudyState(
     val phase: WordStudyPhase = WordStudyPhase.Idle,
     val topicId: String = "",
     val topicTitle: String = "",
+    /** Non-blank when studying a whole theme folder (resume within that folder). */
+    val studyFolder: String = "",
     val topics: List<TopicInfo> = emptyList(),
     val stage: StudyStage = StudyStage.Words,
     val lessonIndex: Int = 0,
@@ -76,6 +79,7 @@ class WordStudyController @Inject constructor(
     private var batchWordEns: List<String> = emptyList()
     private var currentTopicId: String = ""
     private var currentStage: StudyStage = StudyStage.Words
+    private var currentFolder: String = ""
 
     private val _state = MutableStateFlow(WordStudyState())
     val state: StateFlow<WordStudyState> = _state.asStateFlow()
@@ -89,9 +93,15 @@ class WordStudyController @Inject constructor(
         currentTopicId = sessionPrefs.topicId(topicRepository.defaultTopicId())
         currentStage = sessionPrefs.stage()
         batchWordEns = sessionPrefs.batchWordEns()
+        currentFolder = sessionPrefs.studyFolder()
         // Prefer not-yet-viewed topics on a fresh start of a topic.
         val viewed = sessionPrefs.viewedTopicIds()
-        val unviewedIds = topics.map { it.id }.filter { it !in viewed }
+        val scopeTopics = if (currentFolder.isNotBlank()) {
+            topicRepository.topicsInFolder(currentFolder)
+        } else {
+            topics
+        }
+        val unviewedIds = scopeTopics.map { it.id }.filter { it !in viewed }
         if (
             unviewedIds.isNotEmpty() &&
             currentTopicId !in unviewedIds &&
@@ -102,8 +112,21 @@ class WordStudyController @Inject constructor(
             currentTopicId = unviewedIds.first()
             logger.i(TAG, "Activate → first unviewed topic $currentTopicId")
         }
-        rebuildQueue()
-        val savedIndex = sessionPrefs.cardIndex().coerceIn(0, (queue.size - 1).coerceAtLeast(0))
+        val bookmark = sessionPrefs.topicBookmark(currentTopicId)
+        val restored = bookmark != null && !bookmark.completed && restoreQueue(bookmark)
+        if (!restored) {
+            if (bookmark?.completed == true) {
+                currentStage = StudyStage.Words
+                batchWordEns = emptyList()
+            }
+            rebuildQueue()
+        }
+        val savedIndex = when {
+            restored && bookmark != null ->
+                bookmark.cardIndex.coerceIn(0, (queue.size - 1).coerceAtLeast(0))
+            bookmark?.completed == true -> 0
+            else -> sessionPrefs.cardIndex().coerceIn(0, (queue.size - 1).coerceAtLeast(0))
+        }
         val topic = topicRepository.getTopic(currentTopicId)
         val level = statsStore.estimatedLevel()
         logger.i(
@@ -117,6 +140,7 @@ class WordStudyController @Inject constructor(
             phase = WordStudyPhase.Idle,
             topicId = currentTopicId,
             topicTitle = topic?.info?.titleRu.orEmpty(),
+            studyFolder = currentFolder,
             topics = topics,
             stage = currentStage,
             lessonIndex = 0,
@@ -166,12 +190,14 @@ class WordStudyController @Inject constructor(
         job = null
         textToSpeech.stopSpeaking()
         persistPosition()
+        saveCurrentBookmark(completed = _state.value.phase == WordStudyPhase.AllComplete)
         logger.i(TAG, "Study deactivate")
         _state.value = WordStudyState(
             isActive = false,
             topics = topicRepository.listTopics(),
             topicId = currentTopicId,
             topicTitle = topicRepository.getTopic(currentTopicId)?.info?.titleRu.orEmpty(),
+            studyFolder = currentFolder,
             estimatedLevel = statsStore.estimatedLevel(),
             studiedCount = sessionPrefs.studiedCount(),
             studiedWordsCount = sessionPrefs.studiedWordsCount(),
@@ -209,23 +235,50 @@ class WordStudyController @Inject constructor(
         if (!isActive) return
         enqueue {
             logger.i(TAG, "Topic selected → $topicId")
-            selectTopicLocked(topicId, autoShow = false)
+            currentFolder = ""
+            sessionPrefs.setStudyFolder(null)
+            // Show first card immediately so the new topic is obvious on screen.
+            selectTopicLocked(topicId, autoShow = true)
+        }
+    }
+
+    /** Study all files in a theme folder, resuming the last file and card position. */
+    fun selectFolder(folder: String) {
+        if (!isActive) return
+        val key = folder.trim()
+        if (key.isBlank()) return
+        enqueue {
+            val inFolder = topicRepository.topicsInFolder(key)
+            if (inFolder.isEmpty()) {
+                speakRu("В папке нет уроков.")
+                return@enqueue
+            }
+            currentFolder = key
+            sessionPrefs.setStudyFolder(key)
+            val resumeId = resolveFolderResumeTopicId(key, inFolder.map { it.id })
+            logger.i(TAG, "Folder selected → $key · resume=$resumeId")
+            selectTopicLocked(resumeId, autoShow = true, keepFolder = true)
         }
     }
 
     fun nextTopic(source: String = "native") {
         if (!isActive) return
         enqueue {
-            val topics = topicRepository.listTopics()
+            val topics = if (currentFolder.isNotBlank()) {
+                topicRepository.topicsInFolder(currentFolder)
+            } else {
+                topicRepository.listTopics()
+            }
             if (topics.isEmpty()) return@enqueue
             val ids = topics.map { it.id }
             sessionPrefs.markTopicViewed(currentTopicId)
             val nextId = sessionPrefs.nextTopicId(currentTopicId, ids) ?: ids.first()
             logger.i(
                 TAG,
-                "Next topic ($source) → $nextId · viewed=${sessionPrefs.viewedTopicIds().size}/${ids.size}",
+                "Next topic ($source) → $nextId · folder=${currentFolder.ifBlank { "-" }} · " +
+                    "viewed=${sessionPrefs.viewedTopicIds().size}/${ids.size}",
             )
-            selectTopicLocked(nextId, autoShow = true)
+            selectTopicLocked(nextId, autoShow = true, keepFolder = currentFolder.isNotBlank())
         }
     }
 
@@ -297,25 +350,55 @@ class WordStudyController @Inject constructor(
         }
     }
 
-    private suspend fun selectTopicLocked(topicId: String, autoShow: Boolean) {
+    private suspend fun selectTopicLocked(
+        topicId: String,
+        autoShow: Boolean,
+        keepFolder: Boolean = false,
+    ) {
+        if (topicId == currentTopicId && queue.isNotEmpty() && _state.value.phase != WordStudyPhase.AllComplete) {
+            if (keepFolder && currentFolder.isNotBlank()) {
+                sessionPrefs.saveLastTopicInFolder(currentFolder, currentTopicId)
+                _state.update { it.copy(studyFolder = currentFolder) }
+            }
+            return
+        }
+        if (currentTopicId.isNotBlank() && currentTopicId != topicId) {
+            saveCurrentBookmark(completed = _state.value.phase == WordStudyPhase.AllComplete)
+        }
+        if (!keepFolder) {
+            currentFolder = ""
+            sessionPrefs.setStudyFolder(null)
+        }
         val topic = topicRepository.getTopic(topicId) ?: return
         currentTopicId = topic.info.id
-        currentStage = StudyStage.Words
-        batchWordEns = emptyList()
-        rebuildQueue()
-        persistPosition(index = 0)
+        if (currentFolder.isNotBlank()) {
+            sessionPrefs.saveLastTopicInFolder(currentFolder, currentTopicId)
+        }
+        val bookmark = sessionPrefs.topicBookmark(currentTopicId)
+        val restored = bookmark != null && !bookmark.completed && restoreQueue(bookmark)
+        val index = if (restored && bookmark != null) {
+            bookmark.cardIndex.coerceIn(0, queue.lastIndex)
+        } else {
+            currentStage = StudyStage.Words
+            batchWordEns = emptyList()
+            rebuildQueue()
+            0
+        }
+        persistPosition(index = index)
         sessionPrefs.markTopicViewed(currentTopicId)
+        val folderLabel = if (currentFolder.isNotBlank()) " · папка $currentFolder" else ""
         _state.update {
             it.copy(
                 topicId = currentTopicId,
                 topicTitle = topic.info.titleRu,
+                studyFolder = currentFolder,
                 stage = currentStage,
                 phase = WordStudyPhase.Idle,
                 english = "",
                 russian = "",
-                wordIndex = 0,
+                wordIndex = index,
                 wordCount = queue.size,
-                statusMessage = "Тема: ${topic.info.titleRu}. Next — первое слово.",
+                statusMessage = "Тема: ${topic.info.titleRu}$folderLabel. Next — первое слово.",
                 displayEpoch = it.displayEpoch + 1,
                 topics = topicRepository.listTopics(),
                 viewedTopicCount = sessionPrefs.viewedTopicIds().size,
@@ -323,10 +406,36 @@ class WordStudyController @Inject constructor(
                 studiedWordsCount = sessionPrefs.studiedWordsCount(),
             )
         }
-        speakRu("Тема ${topic.info.titleRu}")
-        if (autoShow && queue.isNotEmpty()) {
-            showCard(0)
+        val spoken = if (currentFolder.isNotBlank()) {
+            "Папка $currentFolder. ${topic.info.titleRu}"
+        } else {
+            "Тема ${topic.info.titleRu}"
         }
+        speakRu(spoken)
+        if (autoShow && queue.isNotEmpty()) {
+            showCard(index, markStudied = !restored)
+        }
+    }
+
+    private fun resolveFolderResumeTopicId(folder: String, ids: List<String>): String {
+        if (ids.isEmpty()) return ""
+        val lastId = sessionPrefs.lastTopicInFolder(folder)?.takeIf { it in ids }
+        if (lastId != null) {
+            val bookmark = sessionPrefs.topicBookmark(lastId)
+            if (bookmark == null || !bookmark.completed) return lastId
+            val idx = ids.indexOf(lastId)
+            val after = ids.drop(idx + 1)
+            val nextOpen = after.firstOrNull { id ->
+                val b = sessionPrefs.topicBookmark(id)
+                b == null || !b.completed
+            }
+            if (nextOpen != null) return nextOpen
+            return after.firstOrNull() ?: ids.first()
+        }
+        return ids.firstOrNull { id ->
+            val b = sessionPrefs.topicBookmark(id)
+            b == null || !b.completed
+        } ?: ids.first()
     }
 
     private suspend fun advanceStageOrBatch() {
@@ -368,28 +477,118 @@ class WordStudyController @Inject constructor(
     }
 
     private suspend fun startNextWordBatch() {
+        if (topicFullyStudied()) {
+            completeTopic()
+            return
+        }
         currentStage = StudyStage.Words
         batchWordEns = emptyList()
         rebuildQueue()
         if (queue.isEmpty()) {
-            sessionPrefs.markTopicViewed(currentTopicId)
-            _state.update {
-                it.copy(
-                    phase = WordStudyPhase.AllComplete,
-                    english = "",
-                    russian = "",
-                    statusMessage = "Тема пройдена. 3×Play — следующая тема, или выберите тему.",
-                    displayEpoch = it.displayEpoch + 1,
-                    viewedTopicCount = sessionPrefs.viewedTopicIds().size,
-                )
-            }
-            persistPosition(index = 0)
-            speakRu("Тема пройдена.")
+            completeTopic()
             return
         }
         logger.i(TAG, "Advance → next word batch (${queue.size})")
         speakRu("Следующие слова")
         showCard(0)
+    }
+
+    private suspend fun completeTopic() {
+        val title = topicRepository.getTopic(currentTopicId)?.info?.titleRu.orEmpty()
+        sessionPrefs.markTopicViewed(currentTopicId)
+        sessionPrefs.clearStudiedForTopic(currentTopicId)
+        queue = emptyList()
+        currentStage = StudyStage.Words
+        batchWordEns = emptyList()
+        persistPosition(index = 0)
+        saveCurrentBookmark(completed = true)
+        if (currentFolder.isNotBlank()) {
+            val ids = topicRepository.topicsInFolder(currentFolder).map { it.id }
+            val idx = ids.indexOf(currentTopicId)
+            val nextId = ids.getOrNull(idx + 1)
+            if (nextId != null) {
+                logger.i(TAG, "Topic complete · $currentTopicId → next in folder $nextId")
+                speakRu(if (title.isBlank()) "Тема пройдена." else "Тема $title пройдена.")
+                selectTopicLocked(nextId, autoShow = true, keepFolder = true)
+                return
+            }
+            logger.i(TAG, "Folder complete · $currentFolder")
+            _state.update {
+                it.copy(
+                    phase = WordStudyPhase.AllComplete,
+                    stage = StudyStage.Words,
+                    studyFolder = currentFolder,
+                    english = "",
+                    russian = "",
+                    wordIndex = 0,
+                    wordCount = 0,
+                    statusMessage = "Папка «$currentFolder» пройдена. Выберите тему или папку.",
+                    displayEpoch = it.displayEpoch + 1,
+                    viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+                    studiedCount = sessionPrefs.studiedCount(),
+                    studiedWordsCount = sessionPrefs.studiedWordsCount(),
+                    studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+                    studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+                )
+            }
+            speakRu("Папка $currentFolder пройдена полностью.")
+            return
+        }
+        _state.update {
+            it.copy(
+                phase = WordStudyPhase.AllComplete,
+                stage = StudyStage.Words,
+                studyFolder = "",
+                english = "",
+                russian = "",
+                wordIndex = 0,
+                wordCount = 0,
+                statusMessage = "Тема пройдена полностью. 3×Play — следующая тема, или выберите тему.",
+                displayEpoch = it.displayEpoch + 1,
+                viewedTopicCount = sessionPrefs.viewedTopicIds().size,
+                studiedCount = sessionPrefs.studiedCount(),
+                studiedWordsCount = sessionPrefs.studiedWordsCount(),
+                studiedPhrasesCount = sessionPrefs.studiedPhrasesCount(),
+                studiedSentencesCount = sessionPrefs.studiedSentencesCount(),
+            )
+        }
+        logger.i(TAG, "Topic complete · $currentTopicId")
+        val spoken = if (title.isBlank()) "Тема пройдена полностью." else "Тема $title пройдена полностью."
+        speakRu(spoken)
+    }
+
+    private fun topicFullyStudied(): Boolean {
+        val topic = topicRepository.getTopic(currentTopicId) ?: return false
+        val cards = topic.words + topic.phrases + topic.sentences
+        if (cards.isEmpty()) return false
+        if (topic.words.isNotEmpty()) {
+            return topic.words.all { sessionPrefs.isStudied(it.progressKey) }
+        }
+        return cards.all { sessionPrefs.isStudied(it.progressKey) }
+    }
+
+    private fun restoreQueue(bookmark: TopicBookmark): Boolean {
+        val topic = topicRepository.getTopic(currentTopicId) ?: return false
+        if (bookmark.queueKeys.isEmpty()) return false
+        val byKey = (topic.words + topic.phrases + topic.sentences).associateBy { it.progressKey }
+        val restored = bookmark.queueKeys.mapNotNull { byKey[it] }
+        if (restored.size != bookmark.queueKeys.size) return false
+        queue = restored
+        currentStage = StudyStage.fromStored(bookmark.stage)
+        batchWordEns = bookmark.batchWordEns
+        return true
+    }
+
+    private fun saveCurrentBookmark(completed: Boolean) {
+        if (currentTopicId.isBlank()) return
+        sessionPrefs.saveTopicBookmark(
+            topicId = currentTopicId,
+            stage = currentStage,
+            cardIndex = _state.value.wordIndex,
+            batchWordEns = batchWordEns,
+            queueKeys = queue.map { it.progressKey },
+            completed = completed,
+        )
     }
 
     private fun rebuildQueue() {
@@ -452,6 +651,7 @@ class WordStudyController @Inject constructor(
                 phase = WordStudyPhase.ShowingWord,
                 topicId = currentTopicId,
                 topicTitle = topicRepository.getTopic(currentTopicId)?.info?.titleRu.orEmpty(),
+                studyFolder = currentFolder,
                 topics = topicRepository.listTopics(),
                 stage = currentStage,
                 lessonIndex = 0,
@@ -468,6 +668,7 @@ class WordStudyController @Inject constructor(
                 displayEpoch = it.displayEpoch + 1,
             )
         }
+        saveCurrentBookmark(completed = false)
         speakEn(card.en)
         delay(GAP_MS)
         speakRu(card.ru)
@@ -503,6 +704,9 @@ class WordStudyController @Inject constructor(
             cardIndex = index,
             batchWordEns = batchWordEns,
         )
+        if (currentFolder.isNotBlank() && currentTopicId.isNotBlank()) {
+            sessionPrefs.saveLastTopicInFolder(currentFolder, currentTopicId)
+        }
     }
 
     private fun enqueue(block: suspend () -> Unit) {

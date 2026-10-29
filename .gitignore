@@ -14,7 +14,16 @@ local.properties
 *.aab
 
 **/build/
+Desktop.Wpf/bin/
+Desktop.Wpf/obj/
+Desktop.Wpf/publish/
+Desktop.Setup/bin/
+Desktop.Setup/obj/
+Desktop.XShoot/bin/
+Desktop.XShoot/obj/
+Desktop.XShoot/publish/
 app/src/main/assets/default_settings.json
+Files/xshoot_archive.json
 
 # Local runtime logs and screenshots
 Files/Logs/

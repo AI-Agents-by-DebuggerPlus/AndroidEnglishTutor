@@ -1,0 +1,432 @@
+{
+  "id": "bridge_dictation_monologues",
+  "titleRu": "Bridge: простые диктанты",
+  "words": [
+    {
+      "en": "name",
+      "ru": "имя"
+    },
+    {
+      "en": "morning",
+      "ru": "утро"
+    },
+    {
+      "en": "tea",
+      "ru": "чай"
+    },
+    {
+      "en": "bread",
+      "ru": "хлеб"
+    },
+    {
+      "en": "bus",
+      "ru": "автобус"
+    },
+    {
+      "en": "work",
+      "ru": "работа"
+    },
+    {
+      "en": "family",
+      "ru": "семья"
+    },
+    {
+      "en": "mother",
+      "ru": "мама"
+    },
+    {
+      "en": "father",
+      "ru": "папа"
+    },
+    {
+      "en": "sister",
+      "ru": "сестра"
+    },
+    {
+      "en": "brother",
+      "ru": "брат"
+    },
+    {
+      "en": "shop",
+      "ru": "магазин"
+    },
+    {
+      "en": "apple",
+      "ru": "яблоко"
+    },
+    {
+      "en": "milk",
+      "ru": "молоко"
+    },
+    {
+      "en": "price",
+      "ru": "цена"
+    },
+    {
+      "en": "home",
+      "ru": "дом"
+    },
+    {
+      "en": "room",
+      "ru": "комната"
+    },
+    {
+      "en": "window",
+      "ru": "окно"
+    },
+    {
+      "en": "kitchen",
+      "ru": "кухня"
+    },
+    {
+      "en": "weather",
+      "ru": "погода"
+    },
+    {
+      "en": "rain",
+      "ru": "дождь"
+    },
+    {
+      "en": "coat",
+      "ru": "пальто"
+    },
+    {
+      "en": "phone",
+      "ru": "телефон"
+    },
+    {
+      "en": "friend",
+      "ru": "друг"
+    },
+    {
+      "en": "evening",
+      "ru": "вечер"
+    },
+    {
+      "en": "dinner",
+      "ru": "ужин"
+    },
+    {
+      "en": "park",
+      "ru": "парк"
+    },
+    {
+      "en": "dog",
+      "ru": "собака"
+    },
+    {
+      "en": "walk",
+      "ru": "прогулка"
+    },
+    {
+      "en": "weekend",
+      "ru": "выходные"
+    },
+    {
+      "en": "market",
+      "ru": "рынок"
+    },
+    {
+      "en": "letter",
+      "ru": "письмо"
+    },
+    {
+      "en": "school",
+      "ru": "школа"
+    },
+    {
+      "en": "teacher",
+      "ru": "учитель"
+    },
+    {
+      "en": "book",
+      "ru": "книга"
+    },
+    {
+      "en": "water",
+      "ru": "вода"
+    },
+    {
+      "en": "street",
+      "ru": "улица"
+    },
+    {
+      "en": "key",
+      "ru": "ключ"
+    },
+    {
+      "en": "bag",
+      "ru": "сумка"
+    },
+    {
+      "en": "clock",
+      "ru": "часы"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "every morning",
+      "ru": "каждое утро",
+      "uses": [
+        "morning"
+      ]
+    },
+    {
+      "en": "a cup of tea",
+      "ru": "чашка чая",
+      "uses": [
+        "tea"
+      ]
+    },
+    {
+      "en": "my family",
+      "ru": "моя семья",
+      "uses": [
+        "family"
+      ]
+    },
+    {
+      "en": "at the shop",
+      "ru": "в магазине",
+      "uses": [
+        "shop"
+      ]
+    },
+    {
+      "en": "the bus stop",
+      "ru": "автобусная остановка",
+      "uses": [
+        "bus"
+      ]
+    },
+    {
+      "en": "go home",
+      "ru": "идти домой",
+      "uses": [
+        "home"
+      ]
+    },
+    {
+      "en": "heavy rain",
+      "ru": "сильный дождь",
+      "uses": [
+        "rain"
+      ]
+    },
+    {
+      "en": "a warm coat",
+      "ru": "тёплое пальто",
+      "uses": [
+        "coat"
+      ]
+    },
+    {
+      "en": "phone my friend",
+      "ru": "позвонить другу",
+      "uses": [
+        "phone",
+        "friend"
+      ]
+    },
+    {
+      "en": "cook dinner",
+      "ru": "готовить ужин",
+      "uses": [
+        "dinner"
+      ]
+    },
+    {
+      "en": "walk the dog",
+      "ru": "выгуливать собаку",
+      "uses": [
+        "walk",
+        "dog"
+      ]
+    },
+    {
+      "en": "on the weekend",
+      "ru": "на выходных",
+      "uses": [
+        "weekend"
+      ]
+    },
+    {
+      "en": "at the market",
+      "ru": "на рынке",
+      "uses": [
+        "market"
+      ]
+    },
+    {
+      "en": "a short letter",
+      "ru": "короткое письмо",
+      "uses": [
+        "letter"
+      ]
+    },
+    {
+      "en": "after school",
+      "ru": "после школы",
+      "uses": [
+        "school"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "My name is Mia. Every morning I drink tea and eat bread. Then I take the bus to work. I come home at six. I like a quiet evening.",
+      "ru": "Меня зовут Миа. Каждое утро я пью чай и ем хлеб. Потом я еду на автобусе на работу. Я прихожу домой в шесть. Мне нравится тихий вечер.",
+      "uses": [
+        "name",
+        "morning",
+        "tea",
+        "bread",
+        "bus",
+        "work",
+        "home",
+        "evening"
+      ]
+    },
+    {
+      "en": "I have a small family. My mother cooks, and my father reads. My sister is at school. My brother walks the dog. We eat dinner together.",
+      "ru": "У меня небольшая семья. Мама готовит, а папа читает. Сестра в школе. Брат выгуливает собаку. Мы ужинаем вместе.",
+      "uses": [
+        "family",
+        "mother",
+        "father",
+        "sister",
+        "school",
+        "brother",
+        "dog",
+        "dinner"
+      ]
+    },
+    {
+      "en": "The shop on our street opens at eight. I buy milk, bread, and apples. The price is on the bag. I pay and say thank you. Then I walk home.",
+      "ru": "Магазин на нашей улице открывается в восемь. Я покупаю молоко, хлеб и яблоки. Цена указана на сумке. Я плачу и говорю спасибо. Потом иду домой.",
+      "uses": [
+        "shop",
+        "street",
+        "milk",
+        "bread",
+        "apple",
+        "price",
+        "bag",
+        "home"
+      ]
+    },
+    {
+      "en": "I wait for the bus at the corner. The bus is sometimes late. I look at the clock and hold my bag. At work I am rarely late. The ride takes twenty minutes.",
+      "ru": "Я жду автобус на углу. Автобус иногда опаздывает. Я смотрю на часы и держу сумку. На работу я редко опаздываю. Дорога занимает двадцать минут.",
+      "uses": [
+        "bus",
+        "clock",
+        "bag",
+        "work"
+      ]
+    },
+    {
+      "en": "Our home has a small kitchen and one bedroom. The window looks onto the street. In the morning the room is bright. I leave the key on the table. I lock the door when I go to work.",
+      "ru": "У нас дома маленькая кухня и одна спальня. Окно выходит на улицу. Утром в комнате светло. Я оставляю ключ на столе. Когда ухожу на работу, я запираю дверь.",
+      "uses": [
+        "home",
+        "kitchen",
+        "window",
+        "street",
+        "morning",
+        "room",
+        "key",
+        "work"
+      ]
+    },
+    {
+      "en": "The weather is cold today. Rain starts after lunch. I take my coat and close the window. The street is wet. I am glad the bus comes quickly.",
+      "ru": "Сегодня холодная погода. После обеда начинается дождь. Я беру пальто и закрываю окно. Улица мокрая. Я рад, что автобус приходит быстро.",
+      "uses": [
+        "weather",
+        "rain",
+        "coat",
+        "window",
+        "street",
+        "bus"
+      ]
+    },
+    {
+      "en": "In the evening I phone my friend. I tell her about my day at work. She tells me about school. We laugh. Then I say goodbye and cook dinner.",
+      "ru": "Вечером я звоню подруге. Я рассказываю ей о дне на работе. Она рассказывает мне о школе. Мы смеёмся. Потом я прощаюсь и готовлю ужин.",
+      "uses": [
+        "evening",
+        "phone",
+        "friend",
+        "work",
+        "school",
+        "dinner"
+      ]
+    },
+    {
+      "en": "On the weekend I do not go to work. I walk in the park with my dog. We sit near the water. The dog runs, and I read a book. It is a good day.",
+      "ru": "На выходных я не хожу на работу. Я гуляю в парке с собакой. Мы сидим у воды. Собака бегает, а я читаю книгу. Это хороший день.",
+      "uses": [
+        "weekend",
+        "work",
+        "walk",
+        "park",
+        "dog",
+        "water",
+        "book"
+      ]
+    },
+    {
+      "en": "I like the market on Saturday. I buy apples, bread, and milk. I talk to the seller about the price. I put the food in my bag. Then I go home and make tea.",
+      "ru": "Мне нравится рынок по субботам. Я покупаю яблоки, хлеб и молоко. Я говорю с продавцом о цене. Я кладу еду в сумку. Потом иду домой и завариваю чай.",
+      "uses": [
+        "market",
+        "apple",
+        "bread",
+        "milk",
+        "price",
+        "bag",
+        "home",
+        "tea"
+      ]
+    },
+    {
+      "en": "Today I write a short letter to my mother. I tell her about my new room. I say the street is quiet. I thank her for the book. I will post the letter after work.",
+      "ru": "Сегодня я пишу короткое письмо маме. Я рассказываю ей о новой комнате. Я пишу, что улица тихая. Я благодарю её за книгу. Я отправлю письмо после работы.",
+      "uses": [
+        "letter",
+        "mother",
+        "room",
+        "street",
+        "book",
+        "work"
+      ]
+    },
+    {
+      "en": "After school the teacher gives me a book. I read two pages at home. The story is easy. My father asks me about it at dinner. I answer, and he smiles.",
+      "ru": "После школы учитель даёт мне книгу. Дома я читаю две страницы. Рассказ лёгкий. За ужином папа спрашивает меня о нём. Я отвечаю, и он улыбается.",
+      "uses": [
+        "school",
+        "teacher",
+        "book",
+        "home",
+        "father",
+        "dinner"
+      ]
+    },
+    {
+      "en": "I leave home at half past seven. I check the key, the phone, and the bag. The weather is fine, so I do not take a coat. I walk to the bus. My morning is simple.",
+      "ru": "Я выхожу из дома в половине восьмого. Я проверяю ключ, телефон и сумку. Погода хорошая, поэтому пальто я не беру. Я иду к автобусу. Моё утро простое.",
+      "uses": [
+        "home",
+        "key",
+        "phone",
+        "bag",
+        "weather",
+        "coat",
+        "bus",
+        "morning"
+      ]
+    }
+  ]
+}

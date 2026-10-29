@@ -15,6 +15,13 @@
 | [Reports/](./Reports/) | Отчёты по BT Play, жестам, сессиям |
 | [Tasks/Cursor/](./Tasks/Cursor/) | Задачи и инструкции агенту |
 
+## Desktop
+
+| Документ | Содержание |
+|----------|------------|
+| [AET-Desktop.md](./AET-Desktop.md) | Зеркало экрана урока на ПК через Supabase (без озвучки и BT) |
+| [XShoot.md](./XShoot.md) | Тир XSHOOT: архив отгаданных слов для уроков AET |
+
 ## Настройки
 
 Секреты: `app/src/main/assets/default_settings.json` (gitignore).  

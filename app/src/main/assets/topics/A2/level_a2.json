@@ -1,0 +1,986 @@
+{
+  "id": "level_a2",
+  "titleRu": "Уровень A2",
+  "words": [
+    {
+      "en": "yesterday",
+      "ru": "вчера"
+    },
+    {
+      "en": "weekend",
+      "ru": "выходные"
+    },
+    {
+      "en": "month",
+      "ru": "месяц"
+    },
+    {
+      "en": "year",
+      "ru": "год"
+    },
+    {
+      "en": "often",
+      "ru": "часто"
+    },
+    {
+      "en": "usually",
+      "ru": "обычно"
+    },
+    {
+      "en": "sometimes",
+      "ru": "иногда"
+    },
+    {
+      "en": "never",
+      "ru": "никогда"
+    },
+    {
+      "en": "always",
+      "ru": "всегда"
+    },
+    {
+      "en": "early",
+      "ru": "рано"
+    },
+    {
+      "en": "late",
+      "ru": "поздно"
+    },
+    {
+      "en": "cheap",
+      "ru": "дешёвый"
+    },
+    {
+      "en": "expensive",
+      "ru": "дорогой"
+    },
+    {
+      "en": "fast",
+      "ru": "быстрый"
+    },
+    {
+      "en": "slow",
+      "ru": "медленный"
+    },
+    {
+      "en": "easy",
+      "ru": "лёгкий"
+    },
+    {
+      "en": "difficult",
+      "ru": "трудный"
+    },
+    {
+      "en": "quiet",
+      "ru": "тихий"
+    },
+    {
+      "en": "noisy",
+      "ru": "шумный"
+    },
+    {
+      "en": "comfortable",
+      "ru": "удобный"
+    },
+    {
+      "en": "famous",
+      "ru": "известный"
+    },
+    {
+      "en": "airport",
+      "ru": "аэропорт"
+    },
+    {
+      "en": "plane",
+      "ru": "самолёт"
+    },
+    {
+      "en": "train",
+      "ru": "поезд"
+    },
+    {
+      "en": "ticket",
+      "ru": "билет"
+    },
+    {
+      "en": "hotel",
+      "ru": "гостиница"
+    },
+    {
+      "en": "passport",
+      "ru": "паспорт"
+    },
+    {
+      "en": "luggage",
+      "ru": "багаж"
+    },
+    {
+      "en": "left",
+      "ru": "налево"
+    },
+    {
+      "en": "right",
+      "ru": "направо"
+    },
+    {
+      "en": "straight",
+      "ru": "прямо"
+    },
+    {
+      "en": "near",
+      "ru": "рядом"
+    },
+    {
+      "en": "far",
+      "ru": "далеко"
+    },
+    {
+      "en": "corner",
+      "ru": "угол"
+    },
+    {
+      "en": "headache",
+      "ru": "головная боль"
+    },
+    {
+      "en": "cough",
+      "ru": "кашель"
+    },
+    {
+      "en": "pharmacy",
+      "ru": "аптека"
+    },
+    {
+      "en": "doctor",
+      "ru": "врач"
+    },
+    {
+      "en": "appointment",
+      "ru": "запись к врачу"
+    },
+    {
+      "en": "rest",
+      "ru": "отдых"
+    },
+    {
+      "en": "pain",
+      "ru": "боль"
+    },
+    {
+      "en": "tired",
+      "ru": "уставший"
+    },
+    {
+      "en": "healthy",
+      "ru": "здоровый"
+    },
+    {
+      "en": "size",
+      "ru": "размер"
+    },
+    {
+      "en": "price",
+      "ru": "цена"
+    },
+    {
+      "en": "discount",
+      "ru": "скидка"
+    },
+    {
+      "en": "cash",
+      "ru": "наличные"
+    },
+    {
+      "en": "receipt",
+      "ru": "чек"
+    },
+    {
+      "en": "customer",
+      "ru": "покупатель"
+    },
+    {
+      "en": "message",
+      "ru": "сообщение"
+    },
+    {
+      "en": "call",
+      "ru": "звонок"
+    },
+    {
+      "en": "email",
+      "ru": "электронная почта"
+    },
+    {
+      "en": "meeting",
+      "ru": "встреча"
+    },
+    {
+      "en": "opinion",
+      "ru": "мнение"
+    },
+    {
+      "en": "because",
+      "ru": "потому что"
+    },
+    {
+      "en": "neighbor",
+      "ru": "сосед"
+    },
+    {
+      "en": "bill",
+      "ru": "счёт"
+    },
+    {
+      "en": "repair",
+      "ru": "ремонт"
+    },
+    {
+      "en": "menu",
+      "ru": "меню"
+    },
+    {
+      "en": "order",
+      "ru": "заказ"
+    },
+    {
+      "en": "waiter",
+      "ru": "официант"
+    },
+    {
+      "en": "delicious",
+      "ru": "вкусный"
+    },
+    {
+      "en": "spicy",
+      "ru": "острый"
+    },
+    {
+      "en": "boss",
+      "ru": "начальник"
+    },
+    {
+      "en": "colleague",
+      "ru": "коллега"
+    },
+    {
+      "en": "salary",
+      "ru": "зарплата"
+    },
+    {
+      "en": "schedule",
+      "ru": "расписание"
+    },
+    {
+      "en": "office",
+      "ru": "офис"
+    },
+    {
+      "en": "break",
+      "ru": "перерыв"
+    },
+    {
+      "en": "happy",
+      "ru": "счастливый"
+    },
+    {
+      "en": "sad",
+      "ru": "грустный"
+    },
+    {
+      "en": "angry",
+      "ru": "злой"
+    },
+    {
+      "en": "worried",
+      "ru": "обеспокоенный"
+    },
+    {
+      "en": "surprised",
+      "ru": "удивлённый"
+    },
+    {
+      "en": "bored",
+      "ru": "скучающий"
+    },
+    {
+      "en": "interested",
+      "ru": "заинтересованный"
+    },
+    {
+      "en": "need",
+      "ru": "нуждаться"
+    },
+    {
+      "en": "visit",
+      "ru": "посещать"
+    },
+    {
+      "en": "travel",
+      "ru": "путешествовать"
+    },
+    {
+      "en": "arrive",
+      "ru": "прибывать"
+    },
+    {
+      "en": "leave",
+      "ru": "уезжать"
+    },
+    {
+      "en": "miss",
+      "ru": "скучать / пропускать"
+    },
+    {
+      "en": "remember",
+      "ru": "помнить"
+    },
+    {
+      "en": "forget",
+      "ru": "забывать"
+    },
+    {
+      "en": "decide",
+      "ru": "решать"
+    },
+    {
+      "en": "plan",
+      "ru": "планировать"
+    },
+    {
+      "en": "hope",
+      "ru": "надеяться"
+    },
+    {
+      "en": "prefer",
+      "ru": "предпочитать"
+    },
+    {
+      "en": "explain",
+      "ru": "объяснять"
+    },
+    {
+      "en": "ask",
+      "ru": "спрашивать"
+    },
+    {
+      "en": "answer",
+      "ru": "отвечать"
+    },
+    {
+      "en": "wait",
+      "ru": "ждать"
+    },
+    {
+      "en": "help",
+      "ru": "помогать"
+    },
+    {
+      "en": "spend",
+      "ru": "тратить"
+    },
+    {
+      "en": "save",
+      "ru": "копить"
+    },
+    {
+      "en": "wear",
+      "ru": "носить одежду"
+    },
+    {
+      "en": "choose",
+      "ru": "выбирать"
+    },
+    {
+      "en": "return",
+      "ru": "возвращать"
+    },
+    {
+      "en": "agree",
+      "ru": "соглашаться"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "last weekend",
+      "ru": "в прошлые выходные",
+      "uses": [
+        "weekend"
+      ]
+    },
+    {
+      "en": "yesterday morning",
+      "ru": "вчера утром",
+      "uses": [
+        "yesterday"
+      ]
+    },
+    {
+      "en": "once a month",
+      "ru": "раз в месяц",
+      "uses": [
+        "month"
+      ]
+    },
+    {
+      "en": "too expensive",
+      "ru": "слишком дорого",
+      "uses": [
+        "expensive"
+      ]
+    },
+    {
+      "en": "a cheap ticket",
+      "ru": "дешёвый билет",
+      "uses": [
+        "cheap"
+      ]
+    },
+    {
+      "en": "a fast train",
+      "ru": "быстрый поезд",
+      "uses": [
+        "fast",
+        "train"
+      ]
+    },
+    {
+      "en": "a quiet hotel",
+      "ru": "тихая гостиница",
+      "uses": [
+        "quiet",
+        "hotel"
+      ]
+    },
+    {
+      "en": "a noisy street",
+      "ru": "шумная улица",
+      "uses": [
+        "noisy"
+      ]
+    },
+    {
+      "en": "turn left",
+      "ru": "поверните налево",
+      "uses": [
+        "left"
+      ]
+    },
+    {
+      "en": "turn right",
+      "ru": "поверните направо",
+      "uses": [
+        "right"
+      ]
+    },
+    {
+      "en": "go straight",
+      "ru": "идите прямо",
+      "uses": [
+        "straight"
+      ]
+    },
+    {
+      "en": "near the corner",
+      "ru": "рядом с углом",
+      "uses": [
+        "near",
+        "corner"
+      ]
+    },
+    {
+      "en": "far from the airport",
+      "ru": "далеко от аэропорта",
+      "uses": [
+        "far",
+        "airport"
+      ]
+    },
+    {
+      "en": "a bad headache",
+      "ru": "сильная головная боль",
+      "uses": [
+        "headache"
+      ]
+    },
+    {
+      "en": "a dry cough",
+      "ru": "сухой кашель",
+      "uses": [
+        "cough"
+      ]
+    },
+    {
+      "en": "at the pharmacy",
+      "ru": "в аптеке",
+      "uses": [
+        "pharmacy"
+      ]
+    },
+    {
+      "en": "see a doctor",
+      "ru": "сходить к врачу",
+      "uses": [
+        "doctor"
+      ]
+    },
+    {
+      "en": "the right size",
+      "ru": "нужный размер",
+      "uses": [
+        "size"
+      ]
+    },
+    {
+      "en": "a good price",
+      "ru": "хорошая цена",
+      "uses": [
+        "price"
+      ]
+    },
+    {
+      "en": "pay in cash",
+      "ru": "платить наличными",
+      "uses": [
+        "cash"
+      ]
+    },
+    {
+      "en": "keep the receipt",
+      "ru": "сохраните чек",
+      "uses": [
+        "receipt"
+      ]
+    },
+    {
+      "en": "a short message",
+      "ru": "короткое сообщение",
+      "uses": [
+        "message"
+      ]
+    },
+    {
+      "en": "a phone call",
+      "ru": "телефонный звонок",
+      "uses": [
+        "call"
+      ]
+    },
+    {
+      "en": "a work meeting",
+      "ru": "рабочая встреча",
+      "uses": [
+        "meeting",
+        "office"
+      ]
+    },
+    {
+      "en": "in my opinion",
+      "ru": "по моему мнению",
+      "uses": [
+        "opinion"
+      ]
+    },
+    {
+      "en": "the electricity bill",
+      "ru": "счёт за электричество",
+      "uses": [
+        "bill"
+      ]
+    },
+    {
+      "en": "home repair",
+      "ru": "ремонт дома",
+      "uses": [
+        "repair"
+      ]
+    },
+    {
+      "en": "a spicy dish",
+      "ru": "остроё блюдо",
+      "uses": [
+        "spicy"
+      ]
+    },
+    {
+      "en": "a delicious lunch",
+      "ru": "вкусный обед",
+      "uses": [
+        "delicious"
+      ]
+    },
+    {
+      "en": "my colleague",
+      "ru": "мой коллега",
+      "uses": [
+        "colleague"
+      ]
+    },
+    {
+      "en": "a busy schedule",
+      "ru": "плотное расписание",
+      "uses": [
+        "schedule"
+      ]
+    },
+    {
+      "en": "a coffee break",
+      "ru": "перерыв на кофе",
+      "uses": [
+        "break"
+      ]
+    },
+    {
+      "en": "feel tired",
+      "ru": "чувствовать усталость",
+      "uses": [
+        "tired"
+      ]
+    },
+    {
+      "en": "feel worried",
+      "ru": "беспокоиться",
+      "uses": [
+        "worried"
+      ]
+    },
+    {
+      "en": "travel by plane",
+      "ru": "лететь самолётом",
+      "uses": [
+        "travel",
+        "plane"
+      ]
+    },
+    {
+      "en": "arrive on time",
+      "ru": "прибыть вовремя",
+      "uses": [
+        "arrive"
+      ]
+    },
+    {
+      "en": "leave early",
+      "ru": "уехать рано",
+      "uses": [
+        "leave",
+        "early"
+      ]
+    },
+    {
+      "en": "forget the passport",
+      "ru": "забыть паспорт",
+      "uses": [
+        "forget",
+        "passport"
+      ]
+    },
+    {
+      "en": "save money",
+      "ru": "копить деньги",
+      "uses": [
+        "save"
+      ]
+    },
+    {
+      "en": "spend the weekend",
+      "ru": "провести выходные",
+      "uses": [
+        "spend",
+        "weekend"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "Yesterday I visited my neighbor.",
+      "ru": "Вчера я навестил соседа.",
+      "uses": [
+        "yesterday",
+        "visit",
+        "neighbor"
+      ]
+    },
+    {
+      "en": "Last weekend we traveled by train.",
+      "ru": "В прошлые выходные мы ездили на поезде.",
+      "uses": [
+        "weekend",
+        "travel",
+        "train"
+      ]
+    },
+    {
+      "en": "I usually get up early, but yesterday I was late.",
+      "ru": "Я обычно встаю рано, но вчера опоздал.",
+      "uses": [
+        "usually",
+        "early",
+        "yesterday",
+        "late"
+      ]
+    },
+    {
+      "en": "We sometimes eat out, but we never stay late.",
+      "ru": "Мы иногда едим вне дома, но никогда не засиживаемся допоздна.",
+      "uses": [
+        "sometimes",
+        "never",
+        "late"
+      ]
+    },
+    {
+      "en": "The hotel was quiet and comfortable.",
+      "ru": "Гостиница была тихой и удобной.",
+      "uses": [
+        "hotel",
+        "quiet",
+        "comfortable"
+      ]
+    },
+    {
+      "en": "This ticket is cheaper than the plane.",
+      "ru": "Этот билет дешевле, чем самолёт.",
+      "uses": [
+        "cheap",
+        "plane"
+      ]
+    },
+    {
+      "en": "The train is fast, but the ticket is expensive.",
+      "ru": "Поезд быстрый, но билет дорогой.",
+      "uses": [
+        "train",
+        "fast",
+        "ticket",
+        "expensive"
+      ]
+    },
+    {
+      "en": "Turn left at the corner and go straight.",
+      "ru": "На углу поверните налево и идите прямо.",
+      "uses": [
+        "left",
+        "corner",
+        "straight"
+      ]
+    },
+    {
+      "en": "The airport is far, so we leave early.",
+      "ru": "Аэропорт далеко, поэтому мы выезжаем рано.",
+      "uses": [
+        "airport",
+        "far",
+        "leave",
+        "early"
+      ]
+    },
+    {
+      "en": "I forgot my passport at home.",
+      "ru": "Я забыл паспорт дома.",
+      "uses": [
+        "forget",
+        "passport"
+      ]
+    },
+    {
+      "en": "Please wait near the station.",
+      "ru": "Пожалуйста, подождите рядом со станцией.",
+      "uses": [
+        "wait",
+        "near"
+      ]
+    },
+    {
+      "en": "I have a headache and a cough.",
+      "ru": "У меня болит голова и кашель.",
+      "uses": [
+        "headache",
+        "cough"
+      ]
+    },
+    {
+      "en": "I need an appointment with the doctor.",
+      "ru": "Мне нужна запись к врачу.",
+      "uses": [
+        "need",
+        "appointment",
+        "doctor"
+      ]
+    },
+    {
+      "en": "You can buy medicine at the pharmacy.",
+      "ru": "Лекарство можно купить в аптеке.",
+      "uses": [
+        "pharmacy"
+      ]
+    },
+    {
+      "en": "Rest today, and you will feel better.",
+      "ru": "Отдохните сегодня, и вам станет лучше.",
+      "uses": [
+        "rest"
+      ]
+    },
+    {
+      "en": "This size is small. Can I try a bigger one?",
+      "ru": "Этот размер маленький. Можно примерить побольше?",
+      "uses": [
+        "size"
+      ]
+    },
+    {
+      "en": "The price is good because there is a discount.",
+      "ru": "Цена хорошая, потому что есть скидка.",
+      "uses": [
+        "price",
+        "because",
+        "discount"
+      ]
+    },
+    {
+      "en": "I prefer to pay in cash.",
+      "ru": "Я предпочитаю платить наличными.",
+      "uses": [
+        "prefer",
+        "cash"
+      ]
+    },
+    {
+      "en": "The customer asked for a receipt.",
+      "ru": "Покупатель попросил чек.",
+      "uses": [
+        "customer",
+        "ask",
+        "receipt"
+      ]
+    },
+    {
+      "en": "I can return it if it does not fit.",
+      "ru": "Я могу вернуть это, если не подойдёт.",
+      "uses": [
+        "return"
+      ]
+    },
+    {
+      "en": "She sent me a message, but I did not answer.",
+      "ru": "Она прислала сообщение, но я не ответил.",
+      "uses": [
+        "message",
+        "answer"
+      ]
+    },
+    {
+      "en": "Call me after the meeting.",
+      "ru": "Позвони мне после встречи.",
+      "uses": [
+        "call",
+        "meeting"
+      ]
+    },
+    {
+      "en": "I agree with your opinion.",
+      "ru": "Я согласен с твоим мнением.",
+      "uses": [
+        "agree",
+        "opinion"
+      ]
+    },
+    {
+      "en": "The bill is high because the repair was difficult.",
+      "ru": "Счёт большой, потому что ремонт был трудным.",
+      "uses": [
+        "bill",
+        "because",
+        "repair",
+        "difficult"
+      ]
+    },
+    {
+      "en": "The waiter explained the menu.",
+      "ru": "Официант объяснил меню.",
+      "uses": [
+        "waiter",
+        "explain",
+        "menu"
+      ]
+    },
+    {
+      "en": "I ordered a spicy dish, and it was delicious.",
+      "ru": "Я заказал острое блюдо, и оно было вкусным.",
+      "uses": [
+        "order",
+        "spicy",
+        "delicious"
+      ]
+    },
+    {
+      "en": "My boss changed the schedule.",
+      "ru": "Начальник изменил расписание.",
+      "uses": [
+        "boss",
+        "schedule"
+      ]
+    },
+    {
+      "en": "I hope my salary is higher next year.",
+      "ru": "Надеюсь, в следующем году зарплата будет выше.",
+      "uses": [
+        "hope",
+        "salary",
+        "year"
+      ]
+    },
+    {
+      "en": "We decided to spend the weekend at home.",
+      "ru": "Мы решили провести выходные дома.",
+      "uses": [
+        "decide",
+        "spend",
+        "weekend"
+      ]
+    },
+    {
+      "en": "I was surprised and a little angry.",
+      "ru": "Я удивился и немного разозлился.",
+      "uses": [
+        "surprised",
+        "angry"
+      ]
+    },
+    {
+      "en": "She feels sad because she misses her family.",
+      "ru": "Ей грустно, потому что она скучает по семье.",
+      "uses": [
+        "sad",
+        "because",
+        "miss"
+      ]
+    },
+    {
+      "en": "Are you interested in this job?",
+      "ru": "Тебе интересна эта работа?",
+      "uses": [
+        "interested"
+      ]
+    },
+    {
+      "en": "I always remember faces, but I often forget names.",
+      "ru": "Я всегда помню лица, но часто забываю имена.",
+      "uses": [
+        "always",
+        "remember",
+        "often",
+        "forget"
+      ]
+    },
+    {
+      "en": "Choose a healthy lunch and save money.",
+      "ru": "Выбери полезный обед и сэкономь деньги.",
+      "uses": [
+        "choose",
+        "healthy",
+        "save"
+      ]
+    }
+  ]
+}

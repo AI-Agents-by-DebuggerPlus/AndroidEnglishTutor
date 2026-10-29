@@ -41,6 +41,7 @@ class StudyFontPreferences @Inject constructor(
             .putInt(KEY_RU_COLOR, normalized.russianColorArgb)
             .putInt(KEY_BG, normalized.backgroundArgb)
             .putInt(KEY_BLANK_AFTER, normalized.blankAfterSeconds)
+            .putBoolean(KEY_HIDDEN, normalized.hiddenMode)
             .putInt(KEY_EN_TOP, normalized.englishTopPaddingDp)
             .putInt(KEY_EN_RU_GAP, normalized.enRuGapDp)
             .putInt(KEY_RU_SMALLER, normalized.russianSmallerPercent)
@@ -70,6 +71,7 @@ class StudyFontPreferences @Inject constructor(
             russianColorArgb = prefs.getInt(KEY_RU_COLOR, defaults.russianColorArgb),
             backgroundArgb = prefs.getInt(KEY_BG, defaults.backgroundArgb),
             blankAfterSeconds = prefs.getInt(KEY_BLANK_AFTER, defaults.blankAfterSeconds),
+            hiddenMode = prefs.getBoolean(KEY_HIDDEN, defaults.hiddenMode),
             englishTopPaddingDp = prefs.getInt(KEY_EN_TOP, defaults.englishTopPaddingDp),
             enRuGapDp = prefs.getInt(KEY_EN_RU_GAP, defaults.enRuGapDp),
             russianSmallerPercent = prefs.getInt(KEY_RU_SMALLER, defaults.russianSmallerPercent),
@@ -86,6 +88,7 @@ class StudyFontPreferences @Inject constructor(
         private const val KEY_RU_COLOR = "flashcard_ru_color"
         private const val KEY_BG = "flashcard_bg_color"
         private const val KEY_BLANK_AFTER = "flashcard_blank_after_sec"
+        private const val KEY_HIDDEN = "flashcard_hidden_mode"
         private const val KEY_EN_TOP = "flashcard_en_top_pad"
         private const val KEY_EN_RU_GAP = "flashcard_en_ru_gap"
         private const val KEY_RU_SMALLER = "flashcard_ru_smaller_pct"

@@ -1,0 +1,476 @@
+{
+  "id": "clb5_week2",
+  "titleRu": "CLB 5 · неделя 2: навыки",
+  "words": [
+    {
+      "en": "yesterday",
+      "ru": "вчера"
+    },
+    {
+      "en": "ago",
+      "ru": "назад"
+    },
+    {
+      "en": "last",
+      "ru": "прошлый"
+    },
+    {
+      "en": "week",
+      "ru": "неделя"
+    },
+    {
+      "en": "plan",
+      "ru": "план"
+    },
+    {
+      "en": "will",
+      "ru": "буду / будет"
+    },
+    {
+      "en": "going",
+      "ru": "собирающийся"
+    },
+    {
+      "en": "table",
+      "ru": "таблица"
+    },
+    {
+      "en": "notice",
+      "ru": "объявление"
+    },
+    {
+      "en": "instruction",
+      "ru": "инструкция"
+    },
+    {
+      "en": "dialogue",
+      "ru": "диалог"
+    },
+    {
+      "en": "detail",
+      "ru": "подробность"
+    },
+    {
+      "en": "gist",
+      "ru": "общий смысл"
+    },
+    {
+      "en": "request",
+      "ru": "просьба"
+    },
+    {
+      "en": "polite",
+      "ru": "вежливый"
+    },
+    {
+      "en": "purpose",
+      "ru": "цель письма"
+    },
+    {
+      "en": "greeting",
+      "ru": "приветствие"
+    },
+    {
+      "en": "close",
+      "ru": "завершение письма"
+    },
+    {
+      "en": "point",
+      "ru": "пункт"
+    },
+    {
+      "en": "cover",
+      "ru": "охватить / покрыть"
+    },
+    {
+      "en": "example",
+      "ru": "пример"
+    },
+    {
+      "en": "error",
+      "ru": "ошибка"
+    },
+    {
+      "en": "score",
+      "ru": "результат / балл"
+    },
+    {
+      "en": "level",
+      "ru": "уровень"
+    },
+    {
+      "en": "mode",
+      "ru": "режим"
+    },
+    {
+      "en": "beginner",
+      "ru": "новичок"
+    },
+    {
+      "en": "exam",
+      "ru": "экзамен"
+    },
+    {
+      "en": "send",
+      "ru": "отправлять"
+    },
+    {
+      "en": "ask",
+      "ru": "просить / спрашивать"
+    },
+    {
+      "en": "help",
+      "ru": "помощь / помогать"
+    },
+    {
+      "en": "centre",
+      "ru": "центр"
+    },
+    {
+      "en": "community",
+      "ru": "община"
+    },
+    {
+      "en": "noise",
+      "ru": "шум"
+    },
+    {
+      "en": "repair",
+      "ru": "ремонт"
+    },
+    {
+      "en": "appointment",
+      "ru": "запись"
+    },
+    {
+      "en": "tomorrow",
+      "ru": "завтра"
+    },
+    {
+      "en": "tonight",
+      "ru": "сегодня вечером"
+    },
+    {
+      "en": "future",
+      "ru": "будущее"
+    },
+    {
+      "en": "past",
+      "ru": "прошлое"
+    },
+    {
+      "en": "event",
+      "ru": "событие"
+    },
+    {
+      "en": "information",
+      "ru": "информация"
+    },
+    {
+      "en": "search",
+      "ru": "искать"
+    },
+    {
+      "en": "twice",
+      "ru": "дважды"
+    },
+    {
+      "en": "first",
+      "ru": "сначала / первый"
+    },
+    {
+      "en": "then",
+      "ru": "затем"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "last week",
+      "ru": "на прошлой неделе",
+      "uses": [
+        "last",
+        "week"
+      ]
+    },
+    {
+      "en": "two days ago",
+      "ru": "два дня назад",
+      "uses": [
+        "ago"
+      ]
+    },
+    {
+      "en": "going to",
+      "ru": "собираться (план)",
+      "uses": [
+        "going",
+        "plan"
+      ]
+    },
+    {
+      "en": "will help",
+      "ru": "помогу / поможет",
+      "uses": [
+        "will",
+        "help"
+      ]
+    },
+    {
+      "en": "reading for information",
+      "ru": "чтение ради информации",
+      "uses": [
+        "information"
+      ]
+    },
+    {
+      "en": "short dialogue",
+      "ru": "короткий диалог",
+      "uses": [
+        "dialogue"
+      ]
+    },
+    {
+      "en": "listen twice",
+      "ru": "слушать дважды",
+      "uses": [
+        "twice"
+      ]
+    },
+    {
+      "en": "first the gist",
+      "ru": "сначала общий смысл",
+      "uses": [
+        "first",
+        "gist"
+      ]
+    },
+    {
+      "en": "then the details",
+      "ru": "затем подробности",
+      "uses": [
+        "then",
+        "detail"
+      ]
+    },
+    {
+      "en": "writing an email",
+      "ru": "написать письмо",
+      "uses": [
+        "yesterday"
+      ]
+    },
+    {
+      "en": "polite close",
+      "ru": "вежливое завершение",
+      "uses": [
+        "polite",
+        "close"
+      ]
+    },
+    {
+      "en": "cover three points",
+      "ru": "охватить три пункта",
+      "uses": [
+        "cover",
+        "point"
+      ]
+    },
+    {
+      "en": "ask a neighbour",
+      "ru": "попросить соседа",
+      "uses": [
+        "ask"
+      ]
+    },
+    {
+      "en": "community centre",
+      "ru": "общественный центр",
+      "uses": [
+        "community",
+        "centre"
+      ]
+    },
+    {
+      "en": "book an appointment",
+      "ru": "записаться на приём",
+      "uses": [
+        "appointment"
+      ]
+    },
+    {
+      "en": "practice mode",
+      "ru": "режим практики",
+      "uses": [
+        "mode"
+      ]
+    },
+    {
+      "en": "beginner mode",
+      "ru": "режим новичка",
+      "uses": [
+        "beginner",
+        "mode"
+      ]
+    },
+    {
+      "en": "exam mode",
+      "ru": "экзаменационный режим",
+      "uses": [
+        "exam",
+        "mode"
+      ]
+    },
+    {
+      "en": "at least sixty percent",
+      "ru": "не меньше шестидесяти процентов",
+      "uses": [
+        "score",
+        "level"
+      ]
+    },
+    {
+      "en": "past simple",
+      "ru": "простое прошедшее",
+      "uses": [
+        "past"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "Yesterday I finished work late and went home by bus.",
+      "ru": "Вчера я поздно закончил работу и поехал домой на автобусе.",
+      "uses": [
+        "yesterday",
+        "past"
+      ]
+    },
+    {
+      "en": "Last week I visited the community centre.",
+      "ru": "На прошлой неделе я был в общественном центре.",
+      "uses": [
+        "last",
+        "week",
+        "community",
+        "centre"
+      ]
+    },
+    {
+      "en": "Two days ago my neighbour asked for a repair.",
+      "ru": "Два дня назад сосед попросил о ремонте.",
+      "uses": [
+        "ago",
+        "ask",
+        "repair"
+      ]
+    },
+    {
+      "en": "I am going to study for one hour tonight.",
+      "ru": "Я собираюсь заниматься час сегодня вечером.",
+      "uses": [
+        "going",
+        "tonight"
+      ]
+    },
+    {
+      "en": "If it rains tomorrow, we will stay home.",
+      "ru": "Если завтра будет дождь, мы останемся дома.",
+      "uses": [
+        "tomorrow",
+        "will"
+      ]
+    },
+    {
+      "en": "Read the notice and find only the needed information.",
+      "ru": "Прочитайте объявление и найдите только нужную информацию.",
+      "uses": [
+        "notice",
+        "information",
+        "search"
+      ]
+    },
+    {
+      "en": "Look at the table first, then answer the question.",
+      "ru": "Сначала посмотрите на таблицу, затем ответьте на вопрос.",
+      "uses": [
+        "table",
+        "first",
+        "then"
+      ]
+    },
+    {
+      "en": "Listen to the short dialogue twice: first for gist, then for details.",
+      "ru": "Слушайте короткий диалог дважды: сначала общий смысл, затем детали.",
+      "uses": [
+        "dialogue",
+        "twice",
+        "gist",
+        "detail"
+      ]
+    },
+    {
+      "en": "Write a polite email to your neighbour about the noise.",
+      "ru": "Напишите вежливое письмо соседу о шуме.",
+      "uses": [
+        "polite",
+        "noise"
+      ]
+    },
+    {
+      "en": "Start with a greeting, state the purpose, and cover three points.",
+      "ru": "Начните с приветствия, укажите цель и охватите три пункта.",
+      "uses": [
+        "greeting",
+        "purpose",
+        "cover",
+        "point"
+      ]
+    },
+    {
+      "en": "End with a polite close and send the email.",
+      "ru": "Завершите вежливо и отправьте письмо.",
+      "uses": [
+        "polite",
+        "close",
+        "send"
+      ]
+    },
+    {
+      "en": "Week two goal: past and future forms, reading for facts, and email writing.",
+      "ru": "Цель недели 2: прошедшее и будущее, чтение фактов и письмо.",
+      "uses": [
+        "past",
+        "future"
+      ]
+    },
+    {
+      "en": "In practice mode try for at least sixty percent at CLB 5 level.",
+      "ru": "В режиме практики стремитесь к ≥60% на уровне CLB 5.",
+      "uses": [
+        "mode",
+        "score",
+        "level"
+      ]
+    },
+    {
+      "en": "Review your errors, then use beginner mode only for weak questions.",
+      "ru": "Разберите ошибки, затем режим новичка только для слабых вопросов.",
+      "uses": [
+        "error",
+        "beginner",
+        "mode"
+      ]
+    },
+    {
+      "en": "I will book an appointment at the community centre tomorrow.",
+      "ru": "Завтра я запишусь в общественный центр.",
+      "uses": [
+        "will",
+        "appointment",
+        "community",
+        "centre",
+        "tomorrow"
+      ]
+    }
+  ]
+}

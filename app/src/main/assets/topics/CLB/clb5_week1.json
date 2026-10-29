@@ -1,0 +1,486 @@
+{
+  "id": "clb5_week1",
+  "titleRu": "CLB 5 · неделя 1: основа",
+  "words": [
+    {
+      "en": "go",
+      "ru": "идти, ехать"
+    },
+    {
+      "en": "work",
+      "ru": "работать"
+    },
+    {
+      "en": "live",
+      "ru": "жить"
+    },
+    {
+      "en": "like",
+      "ru": "нравиться"
+    },
+    {
+      "en": "need",
+      "ru": "нуждаться"
+    },
+    {
+      "en": "want",
+      "ru": "хотеть"
+    },
+    {
+      "en": "catch",
+      "ru": "успеть сесть / поймать"
+    },
+    {
+      "en": "finish",
+      "ru": "закончить"
+    },
+    {
+      "en": "wake",
+      "ru": "просыпаться"
+    },
+    {
+      "en": "start",
+      "ru": "начинать"
+    },
+    {
+      "en": "early",
+      "ru": "рано"
+    },
+    {
+      "en": "late",
+      "ru": "поздно"
+    },
+    {
+      "en": "usually",
+      "ru": "обычно"
+    },
+    {
+      "en": "always",
+      "ru": "всегда"
+    },
+    {
+      "en": "never",
+      "ru": "никогда"
+    },
+    {
+      "en": "often",
+      "ru": "часто"
+    },
+    {
+      "en": "bus",
+      "ru": "автобус"
+    },
+    {
+      "en": "office",
+      "ru": "офис"
+    },
+    {
+      "en": "home",
+      "ru": "дом"
+    },
+    {
+      "en": "kitchen",
+      "ru": "кухня"
+    },
+    {
+      "en": "grandmother",
+      "ru": "бабушка"
+    },
+    {
+      "en": "umbrella",
+      "ru": "зонт"
+    },
+    {
+      "en": "hour",
+      "ru": "час"
+    },
+    {
+      "en": "sandwich",
+      "ru": "сэндвич"
+    },
+    {
+      "en": "grocery",
+      "ru": "продуктовый"
+    },
+    {
+      "en": "store",
+      "ru": "магазин"
+    },
+    {
+      "en": "email",
+      "ru": "электронное письмо"
+    },
+    {
+      "en": "letter",
+      "ru": "письмо"
+    },
+    {
+      "en": "article",
+      "ru": "артикл / статья"
+    },
+    {
+      "en": "routine",
+      "ru": "распорядок"
+    },
+    {
+      "en": "morning",
+      "ru": "утро"
+    },
+    {
+      "en": "evening",
+      "ru": "вечер"
+    },
+    {
+      "en": "breakfast",
+      "ru": "завтрак"
+    },
+    {
+      "en": "dinner",
+      "ru": "ужин"
+    },
+    {
+      "en": "neighbour",
+      "ru": "сосед"
+    },
+    {
+      "en": "apartment",
+      "ru": "квартира"
+    },
+    {
+      "en": "schedule",
+      "ru": "расписание"
+    },
+    {
+      "en": "practice",
+      "ru": "практика / практиковаться"
+    },
+    {
+      "en": "review",
+      "ru": "повторение / повторять"
+    },
+    {
+      "en": "weak",
+      "ru": "слабый"
+    },
+    {
+      "en": "goal",
+      "ru": "цель"
+    },
+    {
+      "en": "fact",
+      "ru": "факт"
+    },
+    {
+      "en": "question",
+      "ru": "вопрос"
+    },
+    {
+      "en": "answer",
+      "ru": "ответ"
+    },
+    {
+      "en": "explain",
+      "ru": "объяснять"
+    },
+    {
+      "en": "read",
+      "ru": "читать"
+    },
+    {
+      "en": "write",
+      "ru": "писать"
+    },
+    {
+      "en": "speak",
+      "ru": "говорить"
+    },
+    {
+      "en": "listen",
+      "ru": "слушать"
+    },
+    {
+      "en": "study",
+      "ru": "учиться"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "wake up",
+      "ru": "проснуться",
+      "uses": [
+        "wake"
+      ]
+    },
+    {
+      "en": "get up",
+      "ru": "встать с кровати",
+      "uses": [
+        "wake"
+      ]
+    },
+    {
+      "en": "catch the bus",
+      "ru": "успеть на автобус",
+      "uses": [
+        "catch",
+        "bus"
+      ]
+    },
+    {
+      "en": "finish work",
+      "ru": "закончить работу",
+      "uses": [
+        "finish",
+        "work"
+      ]
+    },
+    {
+      "en": "go to work",
+      "ru": "ехать на работу",
+      "uses": [
+        "go",
+        "work"
+      ]
+    },
+    {
+      "en": "by bus",
+      "ru": "на автобусе",
+      "uses": [
+        "bus"
+      ]
+    },
+    {
+      "en": "every morning",
+      "ru": "каждое утро",
+      "uses": [
+        "morning"
+      ]
+    },
+    {
+      "en": "in the evening",
+      "ru": "вечером",
+      "uses": [
+        "evening"
+      ]
+    },
+    {
+      "en": "daily routine",
+      "ru": "ежедневный распорядок",
+      "uses": [
+        "routine"
+      ]
+    },
+    {
+      "en": "a short email",
+      "ru": "короткое письмо",
+      "uses": [
+        "email"
+      ]
+    },
+    {
+      "en": "grocery store",
+      "ru": "продуктовый магазин",
+      "uses": [
+        "grocery",
+        "store"
+      ]
+    },
+    {
+      "en": "living room",
+      "ru": "гостиная",
+      "uses": [
+        "home"
+      ]
+    },
+    {
+      "en": "Present Simple",
+      "ru": "настоящее простое время",
+      "uses": [
+        "study"
+      ]
+    },
+    {
+      "en": "a or an",
+      "ru": "неопределённый артикль",
+      "uses": [
+        "article"
+      ]
+    },
+    {
+      "en": "the known thing",
+      "ru": "определённый артикль the",
+      "uses": [
+        "article"
+      ]
+    },
+    {
+      "en": "an umbrella",
+      "ru": "зонт (перед гласным звуком)",
+      "uses": [
+        "umbrella",
+        "article"
+      ]
+    },
+    {
+      "en": "an hour",
+      "ru": "час (h немая)",
+      "uses": [
+        "hour",
+        "article"
+      ]
+    },
+    {
+      "en": "a university",
+      "ru": "университет (звук /ju/)",
+      "uses": [
+        "article"
+      ]
+    },
+    {
+      "en": "do not like",
+      "ru": "не нравится (they/we/I)",
+      "uses": [
+        "like"
+      ]
+    },
+    {
+      "en": "does not work",
+      "ru": "не работает (he/she/it)",
+      "uses": [
+        "work"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "She goes to work by bus.",
+      "ru": "Она ездит на работу на автобусе.",
+      "uses": [
+        "go",
+        "work",
+        "bus"
+      ]
+    },
+    {
+      "en": "They do not like cold weather.",
+      "ru": "Им не нравится холодная погода.",
+      "uses": [
+        "like"
+      ]
+    },
+    {
+      "en": "Does your brother live here?",
+      "ru": "Твой брат здесь живёт?",
+      "uses": [
+        "live"
+      ]
+    },
+    {
+      "en": "I wake up early and get up at seven.",
+      "ru": "Я просыпаюсь рано и встаю в семь.",
+      "uses": [
+        "wake",
+        "early"
+      ]
+    },
+    {
+      "en": "I usually catch the bus near my apartment.",
+      "ru": "Я обычно сажусь на автобус около квартиры.",
+      "uses": [
+        "usually",
+        "catch",
+        "bus",
+        "apartment"
+      ]
+    },
+    {
+      "en": "I finish work at five and cook dinner in the kitchen.",
+      "ru": "Я заканчиваю работу в пять и готовлю ужин на кухне.",
+      "uses": [
+        "finish",
+        "work",
+        "dinner",
+        "kitchen"
+      ]
+    },
+    {
+      "en": "I bought a sandwich. The sandwich was cold.",
+      "ru": "Я купил сэндвич. Сэндвич был холодный.",
+      "uses": [
+        "sandwich",
+        "article"
+      ]
+    },
+    {
+      "en": "Please take an umbrella. It may rain this evening.",
+      "ru": "Возьмите зонт. Вечером может пойти дождь.",
+      "uses": [
+        "umbrella",
+        "evening"
+      ]
+    },
+    {
+      "en": "My grandmother lives near the grocery store.",
+      "ru": "Моя бабушка живёт рядом с продуктовым магазином.",
+      "uses": [
+        "grandmother",
+        "live",
+        "grocery",
+        "store"
+      ]
+    },
+    {
+      "en": "I need to read a short email and answer one question.",
+      "ru": "Мне нужно прочитать короткое письмо и ответить на один вопрос.",
+      "uses": [
+        "need",
+        "read",
+        "email",
+        "answer",
+        "question"
+      ]
+    },
+    {
+      "en": "Week one goal: Present Simple, articles, and daily words.",
+      "ru": "Цель недели 1: Present Simple, артикли и бытовые слова.",
+      "uses": [
+        "goal",
+        "article",
+        "routine"
+      ]
+    },
+    {
+      "en": "Study twenty minutes of cards and one short lesson every day.",
+      "ru": "Учите двадцать минут карточек и один короткий урок каждый день.",
+      "uses": [
+        "study",
+        "practice"
+      ]
+    },
+    {
+      "en": "Open the Present Simple lesson in beginner mode first.",
+      "ru": "Сначала откройте урок Present Simple в режиме новичка.",
+      "uses": [
+        "study",
+        "explain"
+      ]
+    },
+    {
+      "en": "Review only the weak cards before the mini test.",
+      "ru": "Перед мини-тестом повторите только слабые карточки.",
+      "uses": [
+        "review",
+        "weak"
+      ]
+    },
+    {
+      "en": "Find facts in the email. Do not translate every word.",
+      "ru": "Ищите факты в письме. Не переводите каждое слово.",
+      "uses": [
+        "fact",
+        "email",
+        "read"
+      ]
+    }
+  ]
+}

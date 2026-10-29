@@ -1,0 +1,990 @@
+{
+  "id": "bridge_style_a1",
+  "titleRu": "Базовый курс A1",
+  "words": [
+    {
+      "en": "hello",
+      "ru": "здравствуйте"
+    },
+    {
+      "en": "goodbye",
+      "ru": "до свидания"
+    },
+    {
+      "en": "please",
+      "ru": "пожалуйста"
+    },
+    {
+      "en": "thanks",
+      "ru": "спасибо"
+    },
+    {
+      "en": "sorry",
+      "ru": "извините"
+    },
+    {
+      "en": "yes",
+      "ru": "да"
+    },
+    {
+      "en": "no",
+      "ru": "нет"
+    },
+    {
+      "en": "name",
+      "ru": "имя"
+    },
+    {
+      "en": "morning",
+      "ru": "утро"
+    },
+    {
+      "en": "evening",
+      "ru": "вечер"
+    },
+    {
+      "en": "man",
+      "ru": "мужчина"
+    },
+    {
+      "en": "woman",
+      "ru": "женщина"
+    },
+    {
+      "en": "child",
+      "ru": "ребёнок"
+    },
+    {
+      "en": "friend",
+      "ru": "друг"
+    },
+    {
+      "en": "family",
+      "ru": "семья"
+    },
+    {
+      "en": "mother",
+      "ru": "мама"
+    },
+    {
+      "en": "father",
+      "ru": "папа"
+    },
+    {
+      "en": "brother",
+      "ru": "брат"
+    },
+    {
+      "en": "sister",
+      "ru": "сестра"
+    },
+    {
+      "en": "husband",
+      "ru": "муж"
+    },
+    {
+      "en": "wife",
+      "ru": "жена"
+    },
+    {
+      "en": "son",
+      "ru": "сын"
+    },
+    {
+      "en": "daughter",
+      "ru": "дочь"
+    },
+    {
+      "en": "house",
+      "ru": "дом"
+    },
+    {
+      "en": "room",
+      "ru": "комната"
+    },
+    {
+      "en": "kitchen",
+      "ru": "кухня"
+    },
+    {
+      "en": "door",
+      "ru": "дверь"
+    },
+    {
+      "en": "window",
+      "ru": "окно"
+    },
+    {
+      "en": "table",
+      "ru": "стол"
+    },
+    {
+      "en": "chair",
+      "ru": "стул"
+    },
+    {
+      "en": "bed",
+      "ru": "кровать"
+    },
+    {
+      "en": "key",
+      "ru": "ключ"
+    },
+    {
+      "en": "water",
+      "ru": "вода"
+    },
+    {
+      "en": "bread",
+      "ru": "хлеб"
+    },
+    {
+      "en": "milk",
+      "ru": "молоко"
+    },
+    {
+      "en": "tea",
+      "ru": "чай"
+    },
+    {
+      "en": "coffee",
+      "ru": "кофе"
+    },
+    {
+      "en": "apple",
+      "ru": "яблоко"
+    },
+    {
+      "en": "soup",
+      "ru": "суп"
+    },
+    {
+      "en": "meat",
+      "ru": "мясо"
+    },
+    {
+      "en": "fish",
+      "ru": "рыба"
+    },
+    {
+      "en": "one",
+      "ru": "один"
+    },
+    {
+      "en": "two",
+      "ru": "два"
+    },
+    {
+      "en": "three",
+      "ru": "три"
+    },
+    {
+      "en": "ten",
+      "ru": "десять"
+    },
+    {
+      "en": "hour",
+      "ru": "час"
+    },
+    {
+      "en": "minute",
+      "ru": "минута"
+    },
+    {
+      "en": "today",
+      "ru": "сегодня"
+    },
+    {
+      "en": "tomorrow",
+      "ru": "завтра"
+    },
+    {
+      "en": "week",
+      "ru": "неделя"
+    },
+    {
+      "en": "day",
+      "ru": "день"
+    },
+    {
+      "en": "night",
+      "ru": "ночь"
+    },
+    {
+      "en": "city",
+      "ru": "город"
+    },
+    {
+      "en": "street",
+      "ru": "улица"
+    },
+    {
+      "en": "shop",
+      "ru": "магазин"
+    },
+    {
+      "en": "bus",
+      "ru": "автобус"
+    },
+    {
+      "en": "car",
+      "ru": "машина"
+    },
+    {
+      "en": "ticket",
+      "ru": "билет"
+    },
+    {
+      "en": "map",
+      "ru": "карта"
+    },
+    {
+      "en": "station",
+      "ru": "станция"
+    },
+    {
+      "en": "work",
+      "ru": "работа"
+    },
+    {
+      "en": "school",
+      "ru": "школа"
+    },
+    {
+      "en": "teacher",
+      "ru": "учитель"
+    },
+    {
+      "en": "student",
+      "ru": "ученик"
+    },
+    {
+      "en": "book",
+      "ru": "книга"
+    },
+    {
+      "en": "pen",
+      "ru": "ручка"
+    },
+    {
+      "en": "breakfast",
+      "ru": "завтрак"
+    },
+    {
+      "en": "lunch",
+      "ru": "обед"
+    },
+    {
+      "en": "dinner",
+      "ru": "ужин"
+    },
+    {
+      "en": "sun",
+      "ru": "солнце"
+    },
+    {
+      "en": "rain",
+      "ru": "дождь"
+    },
+    {
+      "en": "snow",
+      "ru": "снег"
+    },
+    {
+      "en": "wind",
+      "ru": "ветер"
+    },
+    {
+      "en": "weather",
+      "ru": "погода"
+    },
+    {
+      "en": "good",
+      "ru": "хороший"
+    },
+    {
+      "en": "bad",
+      "ru": "плохой"
+    },
+    {
+      "en": "big",
+      "ru": "большой"
+    },
+    {
+      "en": "small",
+      "ru": "маленький"
+    },
+    {
+      "en": "new",
+      "ru": "новый"
+    },
+    {
+      "en": "old",
+      "ru": "старый"
+    },
+    {
+      "en": "hot",
+      "ru": "горячий"
+    },
+    {
+      "en": "cold",
+      "ru": "холодный"
+    },
+    {
+      "en": "be",
+      "ru": "быть"
+    },
+    {
+      "en": "have",
+      "ru": "иметь"
+    },
+    {
+      "en": "go",
+      "ru": "идти"
+    },
+    {
+      "en": "come",
+      "ru": "приходить"
+    },
+    {
+      "en": "see",
+      "ru": "видеть"
+    },
+    {
+      "en": "want",
+      "ru": "хотеть"
+    },
+    {
+      "en": "need",
+      "ru": "нуждаться"
+    },
+    {
+      "en": "like",
+      "ru": "нравиться"
+    },
+    {
+      "en": "live",
+      "ru": "жить"
+    },
+    {
+      "en": "speak",
+      "ru": "говорить"
+    },
+    {
+      "en": "eat",
+      "ru": "есть"
+    },
+    {
+      "en": "drink",
+      "ru": "пить"
+    },
+    {
+      "en": "buy",
+      "ru": "покупать"
+    },
+    {
+      "en": "open",
+      "ru": "открывать"
+    },
+    {
+      "en": "close",
+      "ru": "закрывать"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "good morning",
+      "ru": "доброе утро",
+      "uses": [
+        "morning",
+        "good"
+      ]
+    },
+    {
+      "en": "good evening",
+      "ru": "добрый вечер",
+      "uses": [
+        "evening",
+        "good"
+      ]
+    },
+    {
+      "en": "my name",
+      "ru": "моё имя",
+      "uses": [
+        "name"
+      ]
+    },
+    {
+      "en": "a good friend",
+      "ru": "хороший друг",
+      "uses": [
+        "good",
+        "friend"
+      ]
+    },
+    {
+      "en": "my family",
+      "ru": "моя семья",
+      "uses": [
+        "family"
+      ]
+    },
+    {
+      "en": "my mother",
+      "ru": "моя мама",
+      "uses": [
+        "mother"
+      ]
+    },
+    {
+      "en": "my father",
+      "ru": "мой папа",
+      "uses": [
+        "father"
+      ]
+    },
+    {
+      "en": "a big house",
+      "ru": "большой дом",
+      "uses": [
+        "big",
+        "house"
+      ]
+    },
+    {
+      "en": "a small room",
+      "ru": "маленькая комната",
+      "uses": [
+        "small",
+        "room"
+      ]
+    },
+    {
+      "en": "the front door",
+      "ru": "входная дверь",
+      "uses": [
+        "door"
+      ]
+    },
+    {
+      "en": "a cup of tea",
+      "ru": "чашка чая",
+      "uses": [
+        "tea"
+      ]
+    },
+    {
+      "en": "a cup of coffee",
+      "ru": "чашка кофе",
+      "uses": [
+        "coffee"
+      ]
+    },
+    {
+      "en": "a glass of water",
+      "ru": "стакан воды",
+      "uses": [
+        "water"
+      ]
+    },
+    {
+      "en": "a glass of milk",
+      "ru": "стакан молока",
+      "uses": [
+        "milk"
+      ]
+    },
+    {
+      "en": "a piece of bread",
+      "ru": "кусок хлеба",
+      "uses": [
+        "bread"
+      ]
+    },
+    {
+      "en": "hot soup",
+      "ru": "горячий суп",
+      "uses": [
+        "hot",
+        "soup"
+      ]
+    },
+    {
+      "en": "ten minutes",
+      "ru": "десять минут",
+      "uses": [
+        "ten",
+        "minute"
+      ]
+    },
+    {
+      "en": "one hour",
+      "ru": "один час",
+      "uses": [
+        "one",
+        "hour"
+      ]
+    },
+    {
+      "en": "today and tomorrow",
+      "ru": "сегодня и завтра",
+      "uses": [
+        "today",
+        "tomorrow"
+      ]
+    },
+    {
+      "en": "this week",
+      "ru": "на этой неделе",
+      "uses": [
+        "week"
+      ]
+    },
+    {
+      "en": "in the city",
+      "ru": "в городе",
+      "uses": [
+        "city"
+      ]
+    },
+    {
+      "en": "on the street",
+      "ru": "на улице",
+      "uses": [
+        "street"
+      ]
+    },
+    {
+      "en": "the bus stop",
+      "ru": "остановка автобуса",
+      "uses": [
+        "bus",
+        "station"
+      ]
+    },
+    {
+      "en": "a bus ticket",
+      "ru": "билет на автобус",
+      "uses": [
+        "bus",
+        "ticket"
+      ]
+    },
+    {
+      "en": "a city map",
+      "ru": "карта города",
+      "uses": [
+        "city",
+        "map"
+      ]
+    },
+    {
+      "en": "at school",
+      "ru": "в школе",
+      "uses": [
+        "school"
+      ]
+    },
+    {
+      "en": "my teacher",
+      "ru": "мой учитель",
+      "uses": [
+        "teacher"
+      ]
+    },
+    {
+      "en": "a new book",
+      "ru": "новая книга",
+      "uses": [
+        "new",
+        "book"
+      ]
+    },
+    {
+      "en": "at work",
+      "ru": "на работе",
+      "uses": [
+        "work"
+      ]
+    },
+    {
+      "en": "breakfast time",
+      "ru": "время завтрака",
+      "uses": [
+        "breakfast"
+      ]
+    },
+    {
+      "en": "good weather",
+      "ru": "хорошая погода",
+      "uses": [
+        "good",
+        "weather"
+      ]
+    },
+    {
+      "en": "heavy rain",
+      "ru": "сильный дождь",
+      "uses": [
+        "rain"
+      ]
+    },
+    {
+      "en": "cold wind",
+      "ru": "холодный ветер",
+      "uses": [
+        "cold",
+        "wind"
+      ]
+    },
+    {
+      "en": "white snow",
+      "ru": "белый снег",
+      "uses": [
+        "snow"
+      ]
+    },
+    {
+      "en": "the hot sun",
+      "ru": "жаркое солнце",
+      "uses": [
+        "hot",
+        "sun"
+      ]
+    },
+    {
+      "en": "come in",
+      "ru": "входите",
+      "uses": [
+        "come"
+      ]
+    },
+    {
+      "en": "go home",
+      "ru": "идти домой",
+      "uses": [
+        "go",
+        "house"
+      ]
+    },
+    {
+      "en": "speak English",
+      "ru": "говорить по-английски",
+      "uses": [
+        "speak"
+      ]
+    },
+    {
+      "en": "open the door",
+      "ru": "открыть дверь",
+      "uses": [
+        "open",
+        "door"
+      ]
+    },
+    {
+      "en": "close the window",
+      "ru": "закрыть окно",
+      "uses": [
+        "close",
+        "window"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "Hello. My name is Anna.",
+      "ru": "Здравствуйте. Меня зовут Анна.",
+      "uses": [
+        "hello",
+        "name"
+      ]
+    },
+    {
+      "en": "Good morning. How are you?",
+      "ru": "Доброе утро. Как вы?",
+      "uses": [
+        "morning",
+        "good"
+      ]
+    },
+    {
+      "en": "Thank you very much.",
+      "ru": "Большое спасибо.",
+      "uses": [
+        "thanks"
+      ]
+    },
+    {
+      "en": "I am sorry. Please come in.",
+      "ru": "Извините. Пожалуйста, входите.",
+      "uses": [
+        "sorry",
+        "please",
+        "come"
+      ]
+    },
+    {
+      "en": "This is my friend.",
+      "ru": "Это мой друг.",
+      "uses": [
+        "friend"
+      ]
+    },
+    {
+      "en": "I have a brother and a sister.",
+      "ru": "У меня есть брат и сестра.",
+      "uses": [
+        "have",
+        "brother",
+        "sister"
+      ]
+    },
+    {
+      "en": "My mother and father live here.",
+      "ru": "Мои мама и папа живут здесь.",
+      "uses": [
+        "mother",
+        "father",
+        "live"
+      ]
+    },
+    {
+      "en": "We have a small house.",
+      "ru": "У нас маленький дом.",
+      "uses": [
+        "have",
+        "small",
+        "house"
+      ]
+    },
+    {
+      "en": "The key is on the table.",
+      "ru": "Ключ на столе.",
+      "uses": [
+        "key",
+        "table"
+      ]
+    },
+    {
+      "en": "Please open the door.",
+      "ru": "Пожалуйста, откройте дверь.",
+      "uses": [
+        "please",
+        "open",
+        "door"
+      ]
+    },
+    {
+      "en": "I want a cup of tea.",
+      "ru": "Я хочу чашку чая.",
+      "uses": [
+        "want",
+        "tea"
+      ]
+    },
+    {
+      "en": "She likes coffee in the morning.",
+      "ru": "Она любит кофе утром.",
+      "uses": [
+        "like",
+        "coffee",
+        "morning"
+      ]
+    },
+    {
+      "en": "We eat soup for lunch.",
+      "ru": "Мы едим суп на обед.",
+      "uses": [
+        "eat",
+        "soup",
+        "lunch"
+      ]
+    },
+    {
+      "en": "He drinks milk at breakfast.",
+      "ru": "Он пьёт молоко за завтраком.",
+      "uses": [
+        "drink",
+        "milk",
+        "breakfast"
+      ]
+    },
+    {
+      "en": "I need bread from the shop.",
+      "ru": "Мне нужен хлеб из магазина.",
+      "uses": [
+        "need",
+        "bread",
+        "shop"
+      ]
+    },
+    {
+      "en": "Today is a good day.",
+      "ru": "Сегодня хороший день.",
+      "uses": [
+        "today",
+        "good",
+        "day"
+      ]
+    },
+    {
+      "en": "See you tomorrow evening.",
+      "ru": "Увидимся завтра вечером.",
+      "uses": [
+        "see",
+        "tomorrow",
+        "evening"
+      ]
+    },
+    {
+      "en": "The bus comes in ten minutes.",
+      "ru": "Автобус придёт через десять минут.",
+      "uses": [
+        "bus",
+        "come",
+        "ten",
+        "minute"
+      ]
+    },
+    {
+      "en": "I go to work by car.",
+      "ru": "Я езжу на работу на машине.",
+      "uses": [
+        "go",
+        "work",
+        "car"
+      ]
+    },
+    {
+      "en": "Where is the station?",
+      "ru": "Где станция?",
+      "uses": [
+        "station"
+      ]
+    },
+    {
+      "en": "Can I buy a ticket here?",
+      "ru": "Можно купить билет здесь?",
+      "uses": [
+        "buy",
+        "ticket"
+      ]
+    },
+    {
+      "en": "The teacher has a new book.",
+      "ru": "У учителя новая книга.",
+      "uses": [
+        "teacher",
+        "have",
+        "new",
+        "book"
+      ]
+    },
+    {
+      "en": "The student writes with a pen.",
+      "ru": "Ученик пишет ручкой.",
+      "uses": [
+        "student",
+        "pen"
+      ]
+    },
+    {
+      "en": "I live near the school.",
+      "ru": "Я живу рядом со школой.",
+      "uses": [
+        "live",
+        "school"
+      ]
+    },
+    {
+      "en": "It is night, and I go to bed.",
+      "ru": "Ночь, и я иду спать.",
+      "uses": [
+        "night",
+        "go",
+        "bed"
+      ]
+    },
+    {
+      "en": "We have dinner at seven.",
+      "ru": "Мы ужинаем в семь.",
+      "uses": [
+        "have",
+        "dinner"
+      ]
+    },
+    {
+      "en": "The weather is cold today.",
+      "ru": "Сегодня погода холодная.",
+      "uses": [
+        "weather",
+        "cold",
+        "today"
+      ]
+    },
+    {
+      "en": "The sun is hot, but the wind is cold.",
+      "ru": "Солнце жаркое, но ветер холодный.",
+      "uses": [
+        "sun",
+        "hot",
+        "wind",
+        "cold"
+      ]
+    },
+    {
+      "en": "I do not like rain.",
+      "ru": "Мне не нравится дождь.",
+      "uses": [
+        "like",
+        "rain"
+      ]
+    },
+    {
+      "en": "Snow is on the street.",
+      "ru": "На улице снег.",
+      "uses": [
+        "snow",
+        "street"
+      ]
+    },
+    {
+      "en": "Yes, this shop is open.",
+      "ru": "Да, этот магазин открыт.",
+      "uses": [
+        "yes",
+        "shop",
+        "open"
+      ]
+    },
+    {
+      "en": "No, the window is closed.",
+      "ru": "Нет, окно закрыто.",
+      "uses": [
+        "no",
+        "window",
+        "close"
+      ]
+    },
+    {
+      "en": "I want to speak English every day.",
+      "ru": "Я хочу говорить по-английски каждый день.",
+      "uses": [
+        "want",
+        "speak",
+        "day"
+      ]
+    },
+    {
+      "en": "Goodbye. See you next week.",
+      "ru": "До свидания. Увидимся на следующей неделе.",
+      "uses": [
+        "goodbye",
+        "see",
+        "week"
+      ]
+    }
+  ]
+}

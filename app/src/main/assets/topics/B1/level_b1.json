@@ -1,0 +1,981 @@
+{
+  "id": "level_b1",
+  "titleRu": "Уровень B1",
+  "words": [
+    {
+      "en": "already",
+      "ru": "уже"
+    },
+    {
+      "en": "yet",
+      "ru": "ещё"
+    },
+    {
+      "en": "ever",
+      "ru": "когда-либо"
+    },
+    {
+      "en": "since",
+      "ru": "с тех пор"
+    },
+    {
+      "en": "recently",
+      "ru": "недавно"
+    },
+    {
+      "en": "although",
+      "ru": "хотя"
+    },
+    {
+      "en": "however",
+      "ru": "однако"
+    },
+    {
+      "en": "instead",
+      "ru": "вместо этого"
+    },
+    {
+      "en": "actually",
+      "ru": "на самом деле"
+    },
+    {
+      "en": "especially",
+      "ru": "особенно"
+    },
+    {
+      "en": "probably",
+      "ru": "вероятно"
+    },
+    {
+      "en": "perhaps",
+      "ru": "возможно"
+    },
+    {
+      "en": "experience",
+      "ru": "опыт"
+    },
+    {
+      "en": "skill",
+      "ru": "навык"
+    },
+    {
+      "en": "goal",
+      "ru": "цель"
+    },
+    {
+      "en": "project",
+      "ru": "проект"
+    },
+    {
+      "en": "deadline",
+      "ru": "срок"
+    },
+    {
+      "en": "responsibility",
+      "ru": "обязанность"
+    },
+    {
+      "en": "interview",
+      "ru": "собеседование"
+    },
+    {
+      "en": "career",
+      "ru": "карьера"
+    },
+    {
+      "en": "abroad",
+      "ru": "за границей"
+    },
+    {
+      "en": "foreign",
+      "ru": "иностранный"
+    },
+    {
+      "en": "fluent",
+      "ru": "свободно владеющий"
+    },
+    {
+      "en": "accent",
+      "ru": "акцент"
+    },
+    {
+      "en": "culture",
+      "ru": "культура"
+    },
+    {
+      "en": "custom",
+      "ru": "обычай"
+    },
+    {
+      "en": "advice",
+      "ru": "совет"
+    },
+    {
+      "en": "suggest",
+      "ru": "предлагать"
+    },
+    {
+      "en": "recommend",
+      "ru": "рекомендовать"
+    },
+    {
+      "en": "warn",
+      "ru": "предупреждать"
+    },
+    {
+      "en": "promise",
+      "ru": "обещать"
+    },
+    {
+      "en": "refuse",
+      "ru": "отказываться"
+    },
+    {
+      "en": "manage",
+      "ru": "справляться"
+    },
+    {
+      "en": "improve",
+      "ru": "улучшать"
+    },
+    {
+      "en": "develop",
+      "ru": "развивать"
+    },
+    {
+      "en": "explain",
+      "ru": "объяснять"
+    },
+    {
+      "en": "discuss",
+      "ru": "обсуждать"
+    },
+    {
+      "en": "argue",
+      "ru": "спорить"
+    },
+    {
+      "en": "agree",
+      "ru": "соглашаться"
+    },
+    {
+      "en": "decide",
+      "ru": "решать"
+    },
+    {
+      "en": "environment",
+      "ru": "окружающая среда"
+    },
+    {
+      "en": "pollution",
+      "ru": "загрязнение"
+    },
+    {
+      "en": "recycle",
+      "ru": "перерабатывать"
+    },
+    {
+      "en": "traffic",
+      "ru": "пробки"
+    },
+    {
+      "en": "crowded",
+      "ru": "переполненный"
+    },
+    {
+      "en": "convenient",
+      "ru": "удобный"
+    },
+    {
+      "en": "neighborhood",
+      "ru": "район"
+    },
+    {
+      "en": "rent",
+      "ru": "аренда"
+    },
+    {
+      "en": "exercise",
+      "ru": "упражнение"
+    },
+    {
+      "en": "diet",
+      "ru": "диета"
+    },
+    {
+      "en": "stress",
+      "ru": "стресс"
+    },
+    {
+      "en": "habit",
+      "ru": "привычка"
+    },
+    {
+      "en": "proud",
+      "ru": "гордый"
+    },
+    {
+      "en": "disappointed",
+      "ru": "разочарованный"
+    },
+    {
+      "en": "nervous",
+      "ru": "нервный"
+    },
+    {
+      "en": "confident",
+      "ru": "уверенный"
+    },
+    {
+      "en": "grateful",
+      "ru": "благодарный"
+    },
+    {
+      "en": "jealous",
+      "ru": "завидующий"
+    },
+    {
+      "en": "unless",
+      "ru": "если не"
+    },
+    {
+      "en": "until",
+      "ru": "до тех пор"
+    },
+    {
+      "en": "while",
+      "ru": "пока"
+    },
+    {
+      "en": "during",
+      "ru": "во время"
+    },
+    {
+      "en": "news",
+      "ru": "новости"
+    },
+    {
+      "en": "article",
+      "ru": "статья"
+    },
+    {
+      "en": "opinion",
+      "ru": "мнение"
+    },
+    {
+      "en": "reason",
+      "ru": "причина"
+    },
+    {
+      "en": "result",
+      "ru": "результат"
+    },
+    {
+      "en": "problem",
+      "ru": "проблема"
+    },
+    {
+      "en": "solution",
+      "ru": "решение"
+    },
+    {
+      "en": "advantage",
+      "ru": "преимущество"
+    },
+    {
+      "en": "disadvantage",
+      "ru": "недостаток"
+    },
+    {
+      "en": "opportunity",
+      "ru": "возможность"
+    },
+    {
+      "en": "choice",
+      "ru": "выбор"
+    },
+    {
+      "en": "risk",
+      "ru": "риск"
+    },
+    {
+      "en": "success",
+      "ru": "успех"
+    },
+    {
+      "en": "failure",
+      "ru": "неудача"
+    },
+    {
+      "en": "progress",
+      "ru": "прогресс"
+    },
+    {
+      "en": "effort",
+      "ru": "усилие"
+    },
+    {
+      "en": "support",
+      "ru": "поддержка"
+    },
+    {
+      "en": "trust",
+      "ru": "доверие"
+    },
+    {
+      "en": "respect",
+      "ru": "уважение"
+    },
+    {
+      "en": "invite",
+      "ru": "приглашать"
+    },
+    {
+      "en": "attend",
+      "ru": "посещать"
+    },
+    {
+      "en": "cancel",
+      "ru": "отменять"
+    },
+    {
+      "en": "postpone",
+      "ru": "откладывать"
+    },
+    {
+      "en": "prepare",
+      "ru": "готовиться"
+    },
+    {
+      "en": "achieve",
+      "ru": "достигать"
+    },
+    {
+      "en": "avoid",
+      "ru": "избегать"
+    },
+    {
+      "en": "expect",
+      "ru": "ожидать"
+    },
+    {
+      "en": "realize",
+      "ru": "осознавать"
+    },
+    {
+      "en": "notice",
+      "ru": "замечать"
+    },
+    {
+      "en": "compare",
+      "ru": "сравнивать"
+    },
+    {
+      "en": "prefer",
+      "ru": "предпочитать"
+    },
+    {
+      "en": "depend",
+      "ru": "зависеть"
+    },
+    {
+      "en": "belong",
+      "ru": "принадлежать"
+    },
+    {
+      "en": "include",
+      "ru": "включать"
+    },
+    {
+      "en": "offer",
+      "ru": "предлагать"
+    },
+    {
+      "en": "accept",
+      "ru": "принимать"
+    },
+    {
+      "en": "borrow",
+      "ru": "брать взаймы"
+    },
+    {
+      "en": "lend",
+      "ru": "давать взаймы"
+    },
+    {
+      "en": "apologize",
+      "ru": "извиняться"
+    },
+    {
+      "en": "complain",
+      "ru": "жаловаться"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "work experience",
+      "ru": "опыт работы",
+      "uses": [
+        "experience"
+      ]
+    },
+    {
+      "en": "a useful skill",
+      "ru": "полезный навык",
+      "uses": [
+        "skill"
+      ]
+    },
+    {
+      "en": "a clear goal",
+      "ru": "ясная цель",
+      "uses": [
+        "goal"
+      ]
+    },
+    {
+      "en": "a tight deadline",
+      "ru": "сжатый срок",
+      "uses": [
+        "deadline"
+      ]
+    },
+    {
+      "en": "a job interview",
+      "ru": "собеседование",
+      "uses": [
+        "interview"
+      ]
+    },
+    {
+      "en": "study abroad",
+      "ru": "учиться за границей",
+      "uses": [
+        "abroad"
+      ]
+    },
+    {
+      "en": "a foreign language",
+      "ru": "иностранный язык",
+      "uses": [
+        "foreign"
+      ]
+    },
+    {
+      "en": "a strong accent",
+      "ru": "сильный акцент",
+      "uses": [
+        "accent"
+      ]
+    },
+    {
+      "en": "local custom",
+      "ru": "местный обычай",
+      "uses": [
+        "custom"
+      ]
+    },
+    {
+      "en": "good advice",
+      "ru": "хороший совет",
+      "uses": [
+        "advice"
+      ]
+    },
+    {
+      "en": "air pollution",
+      "ru": "загрязнение воздуха",
+      "uses": [
+        "pollution"
+      ]
+    },
+    {
+      "en": "heavy traffic",
+      "ru": "сильные пробки",
+      "uses": [
+        "traffic"
+      ]
+    },
+    {
+      "en": "a crowded bus",
+      "ru": "переполненный автобус",
+      "uses": [
+        "crowded"
+      ]
+    },
+    {
+      "en": "a convenient place",
+      "ru": "удобное место",
+      "uses": [
+        "convenient"
+      ]
+    },
+    {
+      "en": "monthly rent",
+      "ru": "месячная аренда",
+      "uses": [
+        "rent"
+      ]
+    },
+    {
+      "en": "daily exercise",
+      "ru": "ежедневная зарядка",
+      "uses": [
+        "exercise"
+      ]
+    },
+    {
+      "en": "a healthy diet",
+      "ru": "здоровое питание",
+      "uses": [
+        "diet"
+      ]
+    },
+    {
+      "en": "work stress",
+      "ru": "рабочий стресс",
+      "uses": [
+        "stress"
+      ]
+    },
+    {
+      "en": "a bad habit",
+      "ru": "плохая привычка",
+      "uses": [
+        "habit"
+      ]
+    },
+    {
+      "en": "feel nervous",
+      "ru": "нервничать",
+      "uses": [
+        "nervous"
+      ]
+    },
+    {
+      "en": "feel confident",
+      "ru": "чувствовать уверенность",
+      "uses": [
+        "confident"
+      ]
+    },
+    {
+      "en": "the main reason",
+      "ru": "главная причина",
+      "uses": [
+        "reason"
+      ]
+    },
+    {
+      "en": "a possible solution",
+      "ru": "возможное решение",
+      "uses": [
+        "solution"
+      ]
+    },
+    {
+      "en": "a big advantage",
+      "ru": "большое преимущество",
+      "uses": [
+        "advantage"
+      ]
+    },
+    {
+      "en": "a real opportunity",
+      "ru": "настоящая возможность",
+      "uses": [
+        "opportunity"
+      ]
+    },
+    {
+      "en": "make progress",
+      "ru": "делать успехи",
+      "uses": [
+        "progress"
+      ]
+    },
+    {
+      "en": "make an effort",
+      "ru": "приложить усилие",
+      "uses": [
+        "effort"
+      ]
+    },
+    {
+      "en": "public support",
+      "ru": "общественная поддержка",
+      "uses": [
+        "support"
+      ]
+    },
+    {
+      "en": "mutual respect",
+      "ru": "взаимное уважение",
+      "uses": [
+        "respect"
+      ]
+    },
+    {
+      "en": "cancel a meeting",
+      "ru": "отменить встречу",
+      "uses": [
+        "cancel"
+      ]
+    },
+    {
+      "en": "postpone a trip",
+      "ru": "отложить поездку",
+      "uses": [
+        "postpone"
+      ]
+    },
+    {
+      "en": "prepare for an interview",
+      "ru": "готовиться к собеседованию",
+      "uses": [
+        "prepare",
+        "interview"
+      ]
+    },
+    {
+      "en": "avoid the risk",
+      "ru": "избежать риска",
+      "uses": [
+        "avoid",
+        "risk"
+      ]
+    },
+    {
+      "en": "accept an offer",
+      "ru": "принять предложение",
+      "uses": [
+        "accept",
+        "offer"
+      ]
+    },
+    {
+      "en": "borrow money",
+      "ru": "взять деньги взаймы",
+      "uses": [
+        "borrow"
+      ]
+    },
+    {
+      "en": "apologize for the delay",
+      "ru": "извиниться за задержку",
+      "uses": [
+        "apologize"
+      ]
+    },
+    {
+      "en": "complain about the noise",
+      "ru": "пожаловаться на шум",
+      "uses": [
+        "complain"
+      ]
+    },
+    {
+      "en": "depend on the weather",
+      "ru": "зависеть от погоды",
+      "uses": [
+        "depend"
+      ]
+    },
+    {
+      "en": "belong to the team",
+      "ru": "быть частью команды",
+      "uses": [
+        "belong"
+      ]
+    },
+    {
+      "en": "compare two options",
+      "ru": "сравнить два варианта",
+      "uses": [
+        "compare",
+        "choice"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "I have already finished the project, but I have not sent it yet.",
+      "ru": "Я уже закончил проект, но ещё не отправил его.",
+      "uses": [
+        "already",
+        "project",
+        "yet"
+      ]
+    },
+    {
+      "en": "Have you ever worked abroad?",
+      "ru": "Ты когда-нибудь работал за границей?",
+      "uses": [
+        "ever",
+        "abroad"
+      ]
+    },
+    {
+      "en": "I have lived here since last year.",
+      "ru": "Я живу здесь с прошлого года.",
+      "uses": [
+        "since"
+      ]
+    },
+    {
+      "en": "Although the rent is high, the neighborhood is convenient.",
+      "ru": "Хотя аренда высокая, район удобный.",
+      "uses": [
+        "although",
+        "rent",
+        "neighborhood",
+        "convenient"
+      ]
+    },
+    {
+      "en": "The traffic was bad. However, I arrived on time.",
+      "ru": "Пробки были сильные. Однако я приехал вовремя.",
+      "uses": [
+        "traffic",
+        "however"
+      ]
+    },
+    {
+      "en": "I actually prefer a quiet office.",
+      "ru": "На самом деле я предпочитаю тихий офис.",
+      "uses": [
+        "actually",
+        "prefer"
+      ]
+    },
+    {
+      "en": "She is especially good at explaining difficult ideas.",
+      "ru": "Она особенно хорошо объясняет сложные мысли.",
+      "uses": [
+        "especially",
+        "explain"
+      ]
+    },
+    {
+      "en": "We will probably postpone the meeting.",
+      "ru": "Мы, вероятно, отложим встречу.",
+      "uses": [
+        "probably",
+        "postpone"
+      ]
+    },
+    {
+      "en": "Perhaps you should ask for advice.",
+      "ru": "Возможно, тебе стоит попросить совет.",
+      "uses": [
+        "perhaps",
+        "advice"
+      ]
+    },
+    {
+      "en": "He suggested a simple solution.",
+      "ru": "Он предложил простое решение.",
+      "uses": [
+        "suggest",
+        "solution"
+      ]
+    },
+    {
+      "en": "I recommend this course if you want to become fluent.",
+      "ru": "Я рекомендую этот курс, если хочешь заговорить свободно.",
+      "uses": [
+        "recommend",
+        "fluent"
+      ]
+    },
+    {
+      "en": "They warned us about the deadline.",
+      "ru": "Они предупредили нас о сроке.",
+      "uses": [
+        "warn",
+        "deadline"
+      ]
+    },
+    {
+      "en": "I promise I will prepare tonight.",
+      "ru": "Обещаю, я подготовлюсь сегодня вечером.",
+      "uses": [
+        "promise",
+        "prepare"
+      ]
+    },
+    {
+      "en": "She refused the offer because the salary was low.",
+      "ru": "Она отказалась от предложения, потому что зарплата была низкой.",
+      "uses": [
+        "refuse",
+        "offer"
+      ]
+    },
+    {
+      "en": "I managed to finish it during the break.",
+      "ru": "Я сумел закончить это во время перерыва.",
+      "uses": [
+        "manage",
+        "during"
+      ]
+    },
+    {
+      "en": "Daily exercise helps me reduce stress.",
+      "ru": "Ежедневная зарядка помогает мне снизить стресс.",
+      "uses": [
+        "exercise",
+        "stress"
+      ]
+    },
+    {
+      "en": "A healthy diet is a habit I am trying to develop.",
+      "ru": "Здоровое питание — привычка, которую я стараюсь выработать.",
+      "uses": [
+        "diet",
+        "habit",
+        "develop"
+      ]
+    },
+    {
+      "en": "I felt nervous before the interview, but now I feel confident.",
+      "ru": "Я нервничал перед собеседованием, но теперь чувствую уверенность.",
+      "uses": [
+        "nervous",
+        "interview",
+        "confident"
+      ]
+    },
+    {
+      "en": "She was disappointed with the result.",
+      "ru": "Она была разочарована результатом.",
+      "uses": [
+        "disappointed",
+        "result"
+      ]
+    },
+    {
+      "en": "I am grateful for your support.",
+      "ru": "Я благодарен за твою поддержку.",
+      "uses": [
+        "grateful",
+        "support"
+      ]
+    },
+    {
+      "en": "Unless we leave now, we will miss the train.",
+      "ru": "Если не выйдем сейчас, опоздаем на поезд.",
+      "uses": [
+        "unless"
+      ]
+    },
+    {
+      "en": "Wait until I call you.",
+      "ru": "Подожди, пока я тебе позвоню.",
+      "uses": [
+        "until"
+      ]
+    },
+    {
+      "en": "While I was reading the article, I noticed a mistake.",
+      "ru": "Пока я читал статью, я заметил ошибку.",
+      "uses": [
+        "while",
+        "article",
+        "notice"
+      ]
+    },
+    {
+      "en": "In my opinion, recycling is worth the effort.",
+      "ru": "По-моему, переработка стоит усилий.",
+      "uses": [
+        "opinion",
+        "recycle",
+        "effort"
+      ]
+    },
+    {
+      "en": "The main advantage is the price, and the disadvantage is the noise.",
+      "ru": "Главное преимущество — цена, а недостаток — шум.",
+      "uses": [
+        "advantage",
+        "disadvantage"
+      ]
+    },
+    {
+      "en": "This choice depends on your goal.",
+      "ru": "Этот выбор зависит от твоей цели.",
+      "uses": [
+        "choice",
+        "depend",
+        "goal"
+      ]
+    },
+    {
+      "en": "We discussed the problem and agreed on a plan.",
+      "ru": "Мы обсудили проблему и согласовали план.",
+      "uses": [
+        "discuss",
+        "problem",
+        "agree"
+      ]
+    },
+    {
+      "en": "He argued with his colleague, then apologized.",
+      "ru": "Он поспорил с коллегой, а потом извинился.",
+      "uses": [
+        "argue",
+        "apologize"
+      ]
+    },
+    {
+      "en": "I realized I had forgotten an important detail.",
+      "ru": "Я понял, что забыл важную деталь.",
+      "uses": [
+        "realize"
+      ]
+    },
+    {
+      "en": "She expects to achieve her goal this year.",
+      "ru": "Она рассчитывает достичь цели в этом году.",
+      "uses": [
+        "expect",
+        "achieve",
+        "goal"
+      ]
+    },
+    {
+      "en": "Can I borrow your book? I will return it tomorrow.",
+      "ru": "Можно взять твою книгу? Я верну её завтра.",
+      "uses": [
+        "borrow"
+      ]
+    },
+    {
+      "en": "I will lend it to you if you promise to be careful.",
+      "ru": "Я дам её тебе, если пообещаешь быть аккуратным.",
+      "uses": [
+        "lend",
+        "promise"
+      ]
+    },
+    {
+      "en": "The meeting was cancelled, so we have more time to improve the project.",
+      "ru": "Встречу отменили, так что у нас больше времени улучшить проект.",
+      "uses": [
+        "cancel",
+        "improve",
+        "project"
+      ]
+    },
+    {
+      "en": "Success takes time, and failure is part of progress.",
+      "ru": "Успех требует времени, а неудача — часть прогресса.",
+      "uses": [
+        "success",
+        "failure",
+        "progress"
+      ]
+    }
+  ]
+}

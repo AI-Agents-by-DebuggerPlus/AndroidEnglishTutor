@@ -41,6 +41,7 @@ data class TopicInfo(
     val id: String,
     val titleRu: String,
     val wordCount: Int,
+    val folder: String = "",
 )
 
 data class StudyCard(

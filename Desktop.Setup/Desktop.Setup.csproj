@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>AETDesktopSetup</AssemblyName>
+    <RootNamespace>AETDesktopSetup</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Desktop.Wpf\publish\setup-staging\AETDesktop.exe" LogicalName="payload/AETDesktop.exe" />
+    <EmbeddedResource Include="..\Desktop.Wpf\publish\setup-staging\default_settings.json" LogicalName="payload/default_settings.json" />
+    <EmbeddedResource Include="..\Desktop.Wpf\publish\setup-staging\desktop-settings.json" LogicalName="payload/desktop-settings.json" />
+  </ItemGroup>
+</Project>

@@ -2,6 +2,8 @@ package com.englishtutor.ui.screens.wordstudy
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.englishtutor.data.supabase.StudyDisplayPublisher
+import com.englishtutor.data.supabase.StudyDisplaySnapshot
 import com.englishtutor.data.voice.StudyFontPreferences
 import com.englishtutor.session.VoiceQuizController
 import com.englishtutor.session.WordStudyController
@@ -25,6 +27,7 @@ class WordStudyViewModel @Inject constructor(
     private val wordStudyController: WordStudyController,
     private val voiceQuizController: VoiceQuizController,
     private val fontPreferences: StudyFontPreferences,
+    private val studyDisplayPublisher: StudyDisplayPublisher,
     private val logger: AppLogger,
 ) : ViewModel() {
 
@@ -62,6 +65,27 @@ class WordStudyViewModel @Inject constructor(
 
     fun endStudySession() {
         wordStudyController.deactivate()
+        publishMirror(blanked = false)
+    }
+
+    /** Push the on-screen card to AET Desktop. Does not speak or handle headset buttons. */
+    fun publishMirror(
+        blanked: Boolean,
+        countdownEndsAtEpochMs: Long = 0L,
+        countdownTotalMs: Long = 0L,
+        hidden: Boolean = false,
+    ) {
+        val ui = uiState.value
+        studyDisplayPublisher.publish(
+            StudyDisplaySnapshot.from(
+                study = ui.study,
+                display = ui.display,
+                blanked = blanked,
+                countdownEndsAtEpochMs = countdownEndsAtEpochMs,
+                countdownTotalMs = countdownTotalMs,
+                hidden = hidden,
+            ),
+        )
     }
 
     fun onNext() {
@@ -77,6 +101,11 @@ class WordStudyViewModel @Inject constructor(
     fun selectTopic(topicId: String) {
         ensureStudyActive()
         wordStudyController.selectTopic(topicId)
+    }
+
+    fun selectFolder(folder: String) {
+        ensureStudyActive()
+        wordStudyController.selectFolder(folder)
     }
 
     fun nextTopic() {

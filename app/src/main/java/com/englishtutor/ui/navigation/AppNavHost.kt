@@ -1,9 +1,15 @@
 package com.englishtutor.ui.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.englishtutor.ui.screens.home.HomeScreen
@@ -23,135 +29,151 @@ import com.englishtutor.ui.screens.wordstudy.WordStudyScreen
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
+    val currentEntry by navController.currentBackStackEntryAsState()
+    val route = currentEntry?.destination?.route
+    // Word Study manages its own inset (and hides nav bars in blank/dark mode).
+    val applyNavBarInset = route != NavRoutes.WORD_STUDY
 
-    NavHost(
-        navController = navController,
-        startDestination = NavRoutes.SPLASH,
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .then(
+                if (applyNavBarInset) {
+                    Modifier.navigationBarsPadding()
+                } else {
+                    Modifier
+                },
+            ),
     ) {
-        composable(NavRoutes.SPLASH) {
-            SplashScreen(
-                onNavigate = { destination ->
-                    navController.navigate(destination) {
-                        popUpTo(NavRoutes.SPLASH) { inclusive = true }
-                    }
-                },
-            )
-        }
+        NavHost(
+            navController = navController,
+            startDestination = NavRoutes.SPLASH,
+        ) {
+            composable(NavRoutes.SPLASH) {
+                SplashScreen(
+                    onNavigate = { destination ->
+                        navController.navigate(destination) {
+                            popUpTo(NavRoutes.SPLASH) { inclusive = true }
+                        }
+                    },
+                )
+            }
 
-        composable(NavRoutes.PLACEMENT) {
-            PlacementTestScreen(
-                onCompleted = {
-                    navController.navigate(NavRoutes.HOME) {
-                        popUpTo(NavRoutes.PLACEMENT) { inclusive = true }
-                    }
-                },
-                onOpenVoiceTest = {
-                    navController.navigate(NavRoutes.VOICE_TEST)
-                },
-                onOpenLogs = {
-                    navController.navigate(NavRoutes.LOGS)
-                },
-            )
-        }
+            composable(NavRoutes.PLACEMENT) {
+                PlacementTestScreen(
+                    onCompleted = {
+                        navController.navigate(NavRoutes.HOME) {
+                            popUpTo(NavRoutes.PLACEMENT) { inclusive = true }
+                        }
+                    },
+                    onOpenVoiceTest = {
+                        navController.navigate(NavRoutes.VOICE_TEST)
+                    },
+                    onOpenLogs = {
+                        navController.navigate(NavRoutes.LOGS)
+                    },
+                )
+            }
 
-        composable(NavRoutes.HOME) {
-            HomeScreen(
-                onOpenLesson = { lessonId ->
-                    navController.navigate(NavRoutes.lesson(lessonId))
-                },
-                onOpenProgress = {
-                    navController.navigate(NavRoutes.PROGRESS)
-                },
-                onOpenVoiceTest = {
-                    navController.navigate(NavRoutes.VOICE_TEST)
-                },
-                onOpenVoiceQuiz = {
-                    navController.navigate(NavRoutes.VOICE_QUIZ)
-                },
-                onOpenQuizStats = {
-                    navController.navigate(NavRoutes.QUIZ_STATS)
-                },
-                onOpenVoicePicker = {
-                    navController.navigate(NavRoutes.VOICE_PICKER)
-                },
-                onOpenWordStudy = {
-                    navController.navigate(NavRoutes.WORD_STUDY)
-                },
-                onOpenTutorChat = {
-                    navController.navigate(NavRoutes.TUTOR_CHAT)
-                },
-                onOpenLogs = {
-                    navController.navigate(NavRoutes.LOGS)
-                },
-            )
-        }
+            composable(NavRoutes.HOME) {
+                HomeScreen(
+                    onOpenLesson = { lessonId ->
+                        navController.navigate(NavRoutes.lesson(lessonId))
+                    },
+                    onOpenProgress = {
+                        navController.navigate(NavRoutes.PROGRESS)
+                    },
+                    onOpenVoiceTest = {
+                        navController.navigate(NavRoutes.VOICE_TEST)
+                    },
+                    onOpenVoiceQuiz = {
+                        navController.navigate(NavRoutes.VOICE_QUIZ)
+                    },
+                    onOpenQuizStats = {
+                        navController.navigate(NavRoutes.QUIZ_STATS)
+                    },
+                    onOpenVoicePicker = {
+                        navController.navigate(NavRoutes.VOICE_PICKER)
+                    },
+                    onOpenWordStudy = {
+                        navController.navigate(NavRoutes.WORD_STUDY)
+                    },
+                    onOpenTutorChat = {
+                        navController.navigate(NavRoutes.TUTOR_CHAT)
+                    },
+                    onOpenLogs = {
+                        navController.navigate(NavRoutes.LOGS)
+                    },
+                )
+            }
 
-        composable(
-            route = NavRoutes.LESSON,
-            arguments = listOf(navArgument("lessonId") { type = NavType.StringType }),
-        ) { backStackEntry ->
-            val lessonId = backStackEntry.arguments?.getString("lessonId").orEmpty()
-            LessonScreen(
-                lessonId = lessonId,
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(
+                route = NavRoutes.LESSON,
+                arguments = listOf(navArgument("lessonId") { type = NavType.StringType }),
+            ) { backStackEntry ->
+                val lessonId = backStackEntry.arguments?.getString("lessonId").orEmpty()
+                LessonScreen(
+                    lessonId = lessonId,
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.PROGRESS) {
-            ProgressScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.PROGRESS) {
+                ProgressScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.VOICE_TEST) {
-            VoiceTestScreen(
-                onBack = { navController.popBackStack() },
-                onOpenLogs = { navController.navigate(NavRoutes.LOGS) },
-            )
-        }
+            composable(NavRoutes.VOICE_TEST) {
+                VoiceTestScreen(
+                    onBack = { navController.popBackStack() },
+                    onOpenLogs = { navController.navigate(NavRoutes.LOGS) },
+                )
+            }
 
-        composable(NavRoutes.VOICE_QUIZ) {
-            VoiceQuizScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.VOICE_QUIZ) {
+                VoiceQuizScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.QUIZ_STATS) {
-            QuizStatsScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.QUIZ_STATS) {
+                QuizStatsScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.VOICE_PICKER) {
-            VoicePickerScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.VOICE_PICKER) {
+                VoicePickerScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.WORD_STUDY) {
-            WordStudyScreen(
-                onBack = { navController.popBackStack() },
-                onOpenVoicePicker = { navController.navigate(NavRoutes.VOICE_PICKER) },
-                onOpenStudyStats = { navController.navigate(NavRoutes.STUDY_STATS) },
-            )
-        }
+            composable(NavRoutes.WORD_STUDY) {
+                WordStudyScreen(
+                    onBack = { navController.popBackStack() },
+                    onOpenVoicePicker = { navController.navigate(NavRoutes.VOICE_PICKER) },
+                    onOpenStudyStats = { navController.navigate(NavRoutes.STUDY_STATS) },
+                )
+            }
 
-        composable(NavRoutes.STUDY_STATS) {
-            StudyStatsScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.STUDY_STATS) {
+                StudyStatsScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.TUTOR_CHAT) {
-            TutorChatScreen(
-                onBack = { navController.popBackStack() },
-            )
-        }
+            composable(NavRoutes.TUTOR_CHAT) {
+                TutorChatScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
 
-        composable(NavRoutes.LOGS) {
-            LogsScreen(
-                onBack = { navController.popBackStack() },
-            )
+            composable(NavRoutes.LOGS) {
+                LogsScreen(
+                    onBack = { navController.popBackStack() },
+                )
+            }
         }
     }
 }

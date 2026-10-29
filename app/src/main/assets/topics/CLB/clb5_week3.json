@@ -1,0 +1,494 @@
+{
+  "id": "clb5_week3",
+  "titleRu": "CLB 5 · неделя 3: экзамен",
+  "words": [
+    {
+      "en": "advice",
+      "ru": "совет"
+    },
+    {
+      "en": "advise",
+      "ru": "советовать"
+    },
+    {
+      "en": "reason",
+      "ru": "причина"
+    },
+    {
+      "en": "experience",
+      "ru": "опыт"
+    },
+    {
+      "en": "sequence",
+      "ru": "последовательность"
+    },
+    {
+      "en": "after",
+      "ru": "после"
+    },
+    {
+      "en": "survey",
+      "ru": "опрос"
+    },
+    {
+      "en": "choose",
+      "ru": "выбирать"
+    },
+    {
+      "en": "option",
+      "ru": "вариант"
+    },
+    {
+      "en": "side",
+      "ru": "сторона"
+    },
+    {
+      "en": "agree",
+      "ru": "соглашаться"
+    },
+    {
+      "en": "disagree",
+      "ru": "не соглашаться"
+    },
+    {
+      "en": "viewpoint",
+      "ru": "точка зрения"
+    },
+    {
+      "en": "linker",
+      "ru": "связка"
+    },
+    {
+      "en": "although",
+      "ru": "хотя"
+    },
+    {
+      "en": "however",
+      "ru": "однако"
+    },
+    {
+      "en": "therefore",
+      "ru": "поэтому"
+    },
+    {
+      "en": "news",
+      "ru": "новости"
+    },
+    {
+      "en": "name",
+      "ru": "имя"
+    },
+    {
+      "en": "number",
+      "ru": "число"
+    },
+    {
+      "en": "time",
+      "ru": "время"
+    },
+    {
+      "en": "note",
+      "ru": "заметка / записывать"
+    },
+    {
+      "en": "clear",
+      "ru": "ясный"
+    },
+    {
+      "en": "direct",
+      "ru": "прямой"
+    },
+    {
+      "en": "ending",
+      "ru": "окончание"
+    },
+    {
+      "en": "second",
+      "ru": "секунда / второй"
+    },
+    {
+      "en": "minute",
+      "ru": "минута"
+    },
+    {
+      "en": "story",
+      "ru": "история"
+    },
+    {
+      "en": "personal",
+      "ru": "личный"
+    },
+    {
+      "en": "support",
+      "ru": "поддержка / поддерживать"
+    },
+    {
+      "en": "opinion",
+      "ru": "мнение"
+    },
+    {
+      "en": "compare",
+      "ru": "сравнивать"
+    },
+    {
+      "en": "statistics",
+      "ru": "статистика"
+    },
+    {
+      "en": "mock",
+      "ru": "пробный"
+    },
+    {
+      "en": "hint",
+      "ru": "подсказка"
+    },
+    {
+      "en": "sleep",
+      "ru": "сон / спать"
+    },
+    {
+      "en": "habit",
+      "ru": "привычка"
+    },
+    {
+      "en": "target",
+      "ru": "цель"
+    },
+    {
+      "en": "listening",
+      "ru": "аудирование"
+    },
+    {
+      "en": "reading",
+      "ru": "чтение"
+    },
+    {
+      "en": "writing",
+      "ru": "письмо"
+    },
+    {
+      "en": "speaking",
+      "ru": "говорение"
+    },
+    {
+      "en": "submit",
+      "ru": "сдать / отправить на проверку"
+    },
+    {
+      "en": "improve",
+      "ru": "улучшать"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "giving advice",
+      "ru": "дать совет",
+      "uses": [
+        "advice"
+      ]
+    },
+    {
+      "en": "two reasons",
+      "ru": "две причины",
+      "uses": [
+        "reason"
+      ]
+    },
+    {
+      "en": "short personal example",
+      "ru": "короткий личный пример",
+      "uses": [
+        "personal"
+      ]
+    },
+    {
+      "en": "personal experience",
+      "ru": "личный опыт",
+      "uses": [
+        "personal",
+        "experience"
+      ]
+    },
+    {
+      "en": "after that",
+      "ru": "после этого",
+      "uses": [
+        "after"
+      ]
+    },
+    {
+      "en": "choose a side",
+      "ru": "выбрать сторону",
+      "uses": [
+        "choose",
+        "side"
+      ]
+    },
+    {
+      "en": "survey question",
+      "ru": "вопрос опроса",
+      "uses": [
+        "survey"
+      ]
+    },
+    {
+      "en": "why not the other option",
+      "ru": "почему не другой вариант",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "even though",
+      "ru": "хотя / даже если",
+      "uses": [
+        "although"
+      ]
+    },
+    {
+      "en": "linker words",
+      "ru": "слова-связки",
+      "uses": [
+        "linker"
+      ]
+    },
+    {
+      "en": "names and numbers",
+      "ru": "имена и числа",
+      "uses": [
+        "name",
+        "number"
+      ]
+    },
+    {
+      "en": "exam mode mock",
+      "ru": "пробный блок в режиме экзамена",
+      "uses": [
+        "mock"
+      ]
+    },
+    {
+      "en": "without hints",
+      "ru": "без подсказок",
+      "uses": [
+        "hint"
+      ]
+    },
+    {
+      "en": "clear ending",
+      "ru": "ясное завершение",
+      "uses": [
+        "clear",
+        "ending"
+      ]
+    },
+    {
+      "en": "direct answer first",
+      "ru": "сначала прямой ответ",
+      "uses": [
+        "direct",
+        "clear"
+      ]
+    },
+    {
+      "en": "sixty to ninety seconds",
+      "ru": "шестьдесят–девяносто секунд",
+      "uses": [
+        "second",
+        "minute"
+      ]
+    },
+    {
+      "en": "hand in",
+      "ru": "сдать работу",
+      "uses": [
+        "submit"
+      ]
+    },
+    {
+      "en": "daily minimum",
+      "ru": "ежедневный минимум",
+      "uses": [
+        "habit"
+      ]
+    },
+    {
+      "en": "before test day",
+      "ru": "перед днём теста",
+      "uses": [
+        "advice"
+      ]
+    },
+    {
+      "en": "weak tags only",
+      "ru": "только слабые темы",
+      "uses": [
+        "advice"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "I advise you to practice speaking for sixty to ninety seconds.",
+      "ru": "Советую практиковать говорение шестьдесят–девяносто секунд.",
+      "uses": [
+        "advise",
+        "speaking",
+        "second",
+        "minute"
+      ]
+    },
+    {
+      "en": "Give advice first, then two reasons, then a short example.",
+      "ru": "Сначала дайте совет, затем две причины, затем короткий пример.",
+      "uses": [
+        "advice",
+        "reason"
+      ]
+    },
+    {
+      "en": "First I arrived late. Then I called. After that I apologized.",
+      "ru": "Сначала я опоздал. Затем позвонил. После этого извинился.",
+      "uses": [
+        "after",
+        "experience"
+      ]
+    },
+    {
+      "en": "In the survey I choose option A for two clear reasons.",
+      "ru": "В опросе я выбираю вариант A по двум ясным причинам.",
+      "uses": [
+        "survey",
+        "choose",
+        "option",
+        "reason"
+      ]
+    },
+    {
+      "en": "I support side B. However, side A is cheaper.",
+      "ru": "Я за сторону B. Однако сторона A дешевле.",
+      "uses": [
+        "support",
+        "side",
+        "however"
+      ]
+    },
+    {
+      "en": "Although I disagree with this viewpoint, I understand the reason.",
+      "ru": "Хотя я не согласен с этой точкой зрения, я понимаю причину.",
+      "uses": [
+        "although",
+        "disagree",
+        "viewpoint",
+        "reason"
+      ]
+    },
+    {
+      "en": "Therefore, I will submit my answer before the time ends.",
+      "ru": "Поэтому я сдам ответ до конца времени.",
+      "uses": [
+        "therefore",
+        "submit",
+        "time"
+      ]
+    },
+    {
+      "en": "While listening to the news, note names, numbers, and time.",
+      "ru": "Слушая новости, записывайте имена, числа и время.",
+      "uses": [
+        "listening",
+        "news",
+        "note",
+        "name",
+        "number",
+        "time"
+      ]
+    },
+    {
+      "en": "In reading viewpoints, find who agrees and who disagrees.",
+      "ru": "В чтении мнений найдите, кто согласен, а кто нет.",
+      "uses": [
+        "reading",
+        "viewpoint",
+        "agree",
+        "disagree"
+      ]
+    },
+    {
+      "en": "A clear speaking answer starts with a direct reply and ends clearly.",
+      "ru": "Ясный устный ответ начинается с прямого ответа и ясно заканчивается.",
+      "uses": [
+        "speaking",
+        "clear",
+        "direct",
+        "ending"
+      ]
+    },
+    {
+      "en": "Week three goal: speaking advice and experience, plus survey writing.",
+      "ru": "Цель недели 3: говорение (совет и опыт) и ответ на опрос.",
+      "uses": [
+        "speaking",
+        "advice",
+        "experience",
+        "writing",
+        "survey"
+      ]
+    },
+    {
+      "en": "Take one full mock in exam mode without hints.",
+      "ru": "Пройдите один полный пробный блок в режиме экзамена без подсказок.",
+      "uses": [
+        "mock",
+        "hint"
+      ]
+    },
+    {
+      "en": "Compare your statistics across beginner, practice, and exam modes.",
+      "ru": "Сравните статистику по режимам новичок, практика и экзамен.",
+      "uses": [
+        "compare",
+        "statistics"
+      ]
+    },
+    {
+      "en": "Daily minimum: twenty minutes of cards plus one lesson or writing task.",
+      "ru": "Ежедневный минимум: двадцать минут карточек плюс урок или письмо.",
+      "uses": [
+        "habit",
+        "writing"
+      ]
+    },
+    {
+      "en": "Before test day, sleep well and review only weak tags.",
+      "ru": "Перед днём теста хорошо выспитесь и повторите только слабые темы.",
+      "uses": [
+        "sleep"
+      ]
+    },
+    {
+      "en": "My target for listening is short everyday dialogues and simple information.",
+      "ru": "Моя цель по аудированию — короткие бытовые диалоги и простая информация.",
+      "uses": [
+        "target",
+        "listening"
+      ]
+    },
+    {
+      "en": "My target for writing is a clear email or survey with three covered points.",
+      "ru": "Цель по письму — ясное письмо или опрос с тремя пунктами.",
+      "uses": [
+        "target",
+        "writing",
+        "survey"
+      ]
+    },
+    {
+      "en": "I lived here since 2020 is wrong. Say: I have lived here since 2020.",
+      "ru": "«I lived here since 2020» неверно. Нужно: I have lived here since 2020.",
+      "uses": [
+        "improve"
+      ]
+    }
+  ]
+}

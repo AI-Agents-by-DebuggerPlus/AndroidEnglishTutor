@@ -46,6 +46,34 @@ class HeadsetMonitorService : Service() {
     private var audioFocusRequest: AudioFocusRequest? = null
     private val mainHandler = Handler(Looper.getMainLooper())
     private val pulseExecutor = java.util.concurrent.Executors.newSingleThreadExecutor()
+    private var claimingFocus = false
+    private var focusLost = false
+    private val reclaimSoon = Runnable { reclaimAfterFocusChange() }
+    private val reclaimLater = Runnable { reclaimAfterFocusChange() }
+    private val focusListener = AudioManager.OnAudioFocusChangeListener { change ->
+        if (claimingFocus) return@OnAudioFocusChangeListener
+        logger.i(TAG, "AudioFocus change=$change")
+        when (change) {
+            AudioManager.AUDIOFOCUS_LOSS,
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT,
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK,
+            -> {
+                focusLost = true
+                mainHandler.removeCallbacks(reclaimSoon)
+                mainHandler.removeCallbacks(reclaimLater)
+                // Assistant ("OK Google") keeps the session for the utterance, then drops it.
+                mainHandler.postDelayed(reclaimSoon, 2_500L)
+                mainHandler.postDelayed(reclaimLater, 8_000L)
+            }
+            AudioManager.AUDIOFOCUS_GAIN -> {
+                if (!focusLost) return@OnAudioFocusChangeListener
+                focusLost = false
+                mainHandler.removeCallbacks(reclaimLater)
+                mainHandler.removeCallbacks(reclaimSoon)
+                mainHandler.postDelayed(reclaimSoon, 400L)
+            }
+        }
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -69,6 +97,8 @@ class HeadsetMonitorService : Service() {
     }
 
     override fun onDestroy() {
+        mainHandler.removeCallbacks(reclaimSoon)
+        mainHandler.removeCallbacks(reclaimLater)
         bluetoothConnectionMonitor.setOnAclEventListener(null)
         headsetTestController.setCaptureStatus(nativeCaptureOn = false)
         abandonAudioFocus()
@@ -203,6 +233,11 @@ class HeadsetMonitorService : Service() {
         logger.i(TAG, "MediaSession claim refreshed after USAGE_MEDIA pulse")
     }
 
+    private fun reclaimAfterFocusChange() {
+        logger.i(TAG, "Reclaim headset buttons after audio focus change")
+        attachMediaSession(forceReattach = true)
+    }
+
     private fun requestAudioFocus() {
         val am = getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return
         val attrs = AudioAttributes.Builder()
@@ -211,11 +246,21 @@ class HeadsetMonitorService : Service() {
             .build()
         val req = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
             .setAudioAttributes(attrs)
-            .setOnAudioFocusChangeListener { }
+            .setOnAudioFocusChangeListener(focusListener, mainHandler)
             .build()
         audioFocusRequest = req
-        val result = am.requestAudioFocus(req)
+        claimingFocus = true
+        val result = try {
+            am.requestAudioFocus(req)
+        } finally {
+            claimingFocus = false
+        }
         logger.i(TAG, "AudioFocus request result=$result")
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            focusLost = false
+            mainHandler.removeCallbacks(reclaimSoon)
+            mainHandler.removeCallbacks(reclaimLater)
+        }
     }
 
     private fun abandonAudioFocus() {

@@ -1,0 +1,392 @@
+{
+  "id": "bridge_dictation_dialogues",
+  "titleRu": "Bridge: сложные диктанты",
+  "words": [
+    {
+      "en": "heating",
+      "ru": "отопление"
+    },
+    {
+      "en": "apartment",
+      "ru": "квартира"
+    },
+    {
+      "en": "landlord",
+      "ru": "арендодатель"
+    },
+    {
+      "en": "repair",
+      "ru": "ремонт"
+    },
+    {
+      "en": "cold",
+      "ru": "холодный"
+    },
+    {
+      "en": "refund",
+      "ru": "возврат денег"
+    },
+    {
+      "en": "receipt",
+      "ru": "чек"
+    },
+    {
+      "en": "manager",
+      "ru": "руководитель"
+    },
+    {
+      "en": "customer",
+      "ru": "клиент"
+    },
+    {
+      "en": "quality",
+      "ru": "качество"
+    },
+    {
+      "en": "clinic",
+      "ru": "клиника"
+    },
+    {
+      "en": "symptom",
+      "ru": "симптом"
+    },
+    {
+      "en": "appointment",
+      "ru": "запись на приём"
+    },
+    {
+      "en": "advice",
+      "ru": "совет"
+    },
+    {
+      "en": "shift",
+      "ru": "смена"
+    },
+    {
+      "en": "coworker",
+      "ru": "коллега"
+    },
+    {
+      "en": "deadline",
+      "ru": "крайний срок"
+    },
+    {
+      "en": "schedule",
+      "ru": "расписание"
+    },
+    {
+      "en": "noise",
+      "ru": "шум"
+    },
+    {
+      "en": "neighbour",
+      "ru": "сосед"
+    },
+    {
+      "en": "policy",
+      "ru": "правило"
+    },
+    {
+      "en": "sorry",
+      "ru": "извините"
+    },
+    {
+      "en": "problem",
+      "ru": "проблема"
+    },
+    {
+      "en": "solution",
+      "ru": "решение"
+    },
+    {
+      "en": "agree",
+      "ru": "соглашаться"
+    },
+    {
+      "en": "prefer",
+      "ru": "предпочитать"
+    },
+    {
+      "en": "option",
+      "ru": "вариант"
+    },
+    {
+      "en": "transit",
+      "ru": "общественный транспорт"
+    },
+    {
+      "en": "expensive",
+      "ru": "дорогой"
+    },
+    {
+      "en": "convenient",
+      "ru": "удобный"
+    },
+    {
+      "en": "training",
+      "ru": "обучение"
+    },
+    {
+      "en": "safety",
+      "ru": "безопасность"
+    },
+    {
+      "en": "delay",
+      "ru": "задержка"
+    },
+    {
+      "en": "confirm",
+      "ru": "подтверждать"
+    },
+    {
+      "en": "complaint",
+      "ru": "жалоба"
+    },
+    {
+      "en": "service",
+      "ru": "услуга"
+    },
+    {
+      "en": "available",
+      "ru": "доступный"
+    },
+    {
+      "en": "tomorrow",
+      "ru": "завтра"
+    },
+    {
+      "en": "evening",
+      "ru": "вечер"
+    },
+    {
+      "en": "morning",
+      "ru": "утро"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "the heating is off",
+      "ru": "отопление не работает",
+      "uses": [
+        "heating"
+      ]
+    },
+    {
+      "en": "ask for a repair",
+      "ru": "попросить о ремонте",
+      "uses": [
+        "repair"
+      ]
+    },
+    {
+      "en": "keep the receipt",
+      "ru": "сохранить чек",
+      "uses": [
+        "receipt"
+      ]
+    },
+    {
+      "en": "a poor quality",
+      "ru": "плохое качество",
+      "uses": [
+        "quality"
+      ]
+    },
+    {
+      "en": "book an appointment",
+      "ru": "записаться на приём",
+      "uses": [
+        "appointment"
+      ]
+    },
+    {
+      "en": "describe the symptom",
+      "ru": "описать симптом",
+      "uses": [
+        "symptom"
+      ]
+    },
+    {
+      "en": "change the shift",
+      "ru": "поменять смену",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "before the deadline",
+      "ru": "до крайнего срока",
+      "uses": [
+        "deadline"
+      ]
+    },
+    {
+      "en": "a noise complaint",
+      "ru": "жалоба на шум",
+      "uses": [
+        "noise",
+        "complaint"
+      ]
+    },
+    {
+      "en": "the house policy",
+      "ru": "правило дома",
+      "uses": [
+        "policy"
+      ]
+    },
+    {
+      "en": "two options",
+      "ru": "два варианта",
+      "uses": [
+        "option"
+      ]
+    },
+    {
+      "en": "public transit",
+      "ru": "общественный транспорт",
+      "uses": [
+        "transit"
+      ]
+    },
+    {
+      "en": "safety training",
+      "ru": "обучение по безопасности",
+      "uses": [
+        "safety",
+        "training"
+      ]
+    },
+    {
+      "en": "confirm the time",
+      "ru": "подтвердить время",
+      "uses": [
+        "confirm"
+      ]
+    },
+    {
+      "en": "a fair solution",
+      "ru": "справедливое решение",
+      "uses": [
+        "solution"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "Sam: The heating in my apartment stopped last night.\nLee: I am the landlord. Is the whole apartment cold?\nSam: Yes. The bedroom is very cold in the morning.\nLee: I can send a repair tomorrow evening.\nSam: Thank you. Please confirm the time by phone.\nLee: I will. Sorry about the problem.",
+      "ru": "Сэм: Отопление в моей квартире остановилось прошлой ночью.\nЛи: Я арендодатель. Вся квартира холодная?\nСэм: Да. В спальне очень холодно утром.\nЛи: Я могу прислать ремонт завтра вечером.\nСэм: Спасибо. Подтвердите, пожалуйста, время по телефону.\nЛи: Хорошо. Извините за проблему.",
+      "uses": [
+        "heating",
+        "apartment",
+        "landlord",
+        "cold",
+        "morning",
+        "repair",
+        "tomorrow",
+        "evening",
+        "confirm",
+        "sorry",
+        "problem"
+      ]
+    },
+    {
+      "en": "Ana: I bought this coat yesterday, but the quality is poor.\nBen: I am the manager. Do you have the receipt?\nAna: Yes. I am a regular customer here.\nBen: We can offer a repair or a refund.\nAna: I prefer a refund.\nBen: That is fine. I agree. The service desk will help you.",
+      "ru": "Ана: Я купила это пальто вчера, но качество плохое.\nБен: Я руководитель. Чек у вас есть?\nАна: Да. Я здесь постоянный клиент.\nБен: Мы можем предложить ремонт или возврат денег.\nАна: Я предпочитаю возврат.\nБен: Хорошо. Я согласен. Стойка услуг вам поможет.",
+      "uses": [
+        "quality",
+        "manager",
+        "receipt",
+        "customer",
+        "repair",
+        "refund",
+        "prefer",
+        "agree",
+        "service"
+      ]
+    },
+    {
+      "en": "Dr. Kim: What is the symptom today?\nNoah: My throat hurts, and I feel cold.\nDr. Kim: When did this start?\nNoah: Yesterday evening. I booked this appointment this morning.\nDr. Kim: Rest today. Drink water. Come back if it is worse tomorrow morning.\nNoah: Thank you for the advice.",
+      "ru": "Доктор Ким: Какой сегодня симптом?\nНоа: Болит горло, и мне холодно.\nДоктор Ким: Когда вам стало нужно записаться?\nНоа: Со вчерашнего вечера.\nДоктор Ким: Сегодня отдохните. Пейте воду. Приходите снова, если завтра утром станет хуже.\nНоа: Спасибо за совет.",
+      "uses": [
+        "symptom",
+        "cold",
+        "appointment",
+        "evening",
+        "tomorrow",
+        "morning",
+        "advice"
+      ]
+    },
+    {
+      "en": "Rita: Can we change the schedule? I cannot work the night shift.\nOmar: I am your coworker, not the manager. What is the problem?\nRita: I have safety training tomorrow morning.\nOmar: Then take the evening shift. I can take the night.\nRita: Are you sure?\nOmar: Yes. Tell the manager, and she will confirm it.",
+      "ru": "Рита: Можем изменить расписание? Я не могу работать в ночную смену.\nОмар: Я коллега, а не руководитель. В чём проблема?\nРита: Завтра утром у меня обучение по безопасности.\nОмар: Тогда возьми вечернюю смену. Я могу взять ночь.\nРита: Ты уверен?\nОмар: Да. Скажи руководителю, и она это подтвердит.",
+      "uses": [
+        "schedule",
+        "shift",
+        "coworker",
+        "manager",
+        "problem",
+        "safety",
+        "training",
+        "tomorrow",
+        "morning",
+        "evening",
+        "confirm"
+      ]
+    },
+    {
+      "en": "Lina: Do you prefer the car or public transit?\nJon: Transit is convenient, but it is often late.\nLina: The car is faster. The disadvantage is that parking is expensive.\nJon: So we have two options.\nLina: I prefer transit when the weather is bad.\nJon: I agree. That is a good solution.",
+      "ru": "Лина: Ты предпочитаешь машину или общественный транспорт?\nДжон: Транспорт удобный, но часто опаздывает.\nЛина: На машине быстрее. Недостаток в том, что парковка дорогая.\nДжон: Значит, у нас два варианта.\nЛина: Я предпочитаю транспорт, когда плохая погода.\nДжон: Согласен. Это хорошее решение.",
+      "uses": [
+        "prefer",
+        "transit",
+        "convenient",
+        "expensive",
+        "option",
+        "agree",
+        "solution"
+      ]
+    },
+    {
+      "en": "Ms. Ortiz: Your report is late. The deadline was yesterday.\nEvan: I am sorry. There was a delay with the data.\nMs. Ortiz: Is a new deadline tomorrow evening possible?\nEvan: Yes. I will send it before six.\nMs. Ortiz: Please confirm by email in the morning.\nEvan: I will. Thank you for the extra time.",
+      "ru": "Госпожа Ортис: Ваш отчёт опоздал. Крайний срок был вчера.\nЭван: Извините. Была задержка с данными.\nГоспожа Ортис: Новый срок завтра вечером возможен?\nЭван: Да. Я отправлю его до шести.\nГоспожа Ортис: Подтвердите, пожалуйста, письмом утром.\nЭван: Хорошо. Спасибо за дополнительное время.",
+      "uses": [
+        "deadline",
+        "sorry",
+        "delay",
+        "tomorrow",
+        "evening",
+        "confirm",
+        "morning"
+      ]
+    },
+    {
+      "en": "Nina: Your music is loud after ten. I am the neighbour across the hall.\nChris: I am sorry. I did not know it was a problem.\nNina: The building policy says quiet hours start at ten.\nChris: I understand. I will turn it down.\nNina: Thank you. I did not want to make a formal complaint.\nChris: That is fair. I agree with the rule.",
+      "ru": "Нина: Ваша музыка громкая после десяти. Я соседка напротив.\nКрис: Извините. Я не знал, что это проблема.\nНина: По правилу дома тихие часы начинаются в десять.\nКрис: Понимаю. Я сделаю тише.\nНина: Спасибо. Я не хотела писать официальную жалобу.\nКрис: Это справедливо. Я согласен с правилом.",
+      "uses": [
+        "neighbour",
+        "sorry",
+        "problem",
+        "policy",
+        "complaint",
+        "agree"
+      ]
+    },
+    {
+      "en": "Ivy: The online service is not available, and my payment is stuck.\nPaul: I am sorry. Is the error still on the screen?\nIvy: Yes. I have tried three times this morning.\nPaul: We have two options: wait an hour or I can move the payment now.\nIvy: I prefer the second solution.\nPaul: Done. I will confirm by email this evening.",
+      "ru": "Айви: Онлайн-услуга недоступна, и мой платёж завис.\nПол: Извините. Ошибка всё ещё на экране?\nАйви: Да. Я пробовала три раза сегодня утром.\nПол: Есть два варианта: подождать час или я переведу платёж сейчас.\nАйви: Я предпочитаю второе решение.\nПол: Готово. Я подтвержу письмом сегодня вечером.",
+      "uses": [
+        "service",
+        "available",
+        "sorry",
+        "morning",
+        "option",
+        "prefer",
+        "solution",
+        "confirm",
+        "evening"
+      ]
+    }
+  ]
+}

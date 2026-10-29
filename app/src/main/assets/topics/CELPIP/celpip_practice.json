@@ -1,0 +1,1178 @@
+{
+  "id": "celpip_practice",
+  "titleRu": "CELPIP: практика",
+  "words": [
+    {
+      "en": "listen",
+      "ru": "слушать"
+    },
+    {
+      "en": "hear",
+      "ru": "слышать"
+    },
+    {
+      "en": "understand",
+      "ru": "понимать"
+    },
+    {
+      "en": "repeat",
+      "ru": "повторять"
+    },
+    {
+      "en": "explain",
+      "ru": "объяснять"
+    },
+    {
+      "en": "describe",
+      "ru": "описывать"
+    },
+    {
+      "en": "compare",
+      "ru": "сравнивать"
+    },
+    {
+      "en": "predict",
+      "ru": "предсказывать"
+    },
+    {
+      "en": "suggest",
+      "ru": "предлагать"
+    },
+    {
+      "en": "advise",
+      "ru": "советовать"
+    },
+    {
+      "en": "opinion",
+      "ru": "мнение"
+    },
+    {
+      "en": "reason",
+      "ru": "причина"
+    },
+    {
+      "en": "example",
+      "ru": "пример"
+    },
+    {
+      "en": "detail",
+      "ru": "подробность"
+    },
+    {
+      "en": "main",
+      "ru": "главный"
+    },
+    {
+      "en": "idea",
+      "ru": "мысль"
+    },
+    {
+      "en": "fact",
+      "ru": "факт"
+    },
+    {
+      "en": "view",
+      "ru": "точка зрения"
+    },
+    {
+      "en": "agree",
+      "ru": "соглашаться"
+    },
+    {
+      "en": "disagree",
+      "ru": "не соглашаться"
+    },
+    {
+      "en": "prefer",
+      "ru": "предпочитать"
+    },
+    {
+      "en": "choose",
+      "ru": "выбирать"
+    },
+    {
+      "en": "decide",
+      "ru": "решать"
+    },
+    {
+      "en": "experience",
+      "ru": "опыт"
+    },
+    {
+      "en": "situation",
+      "ru": "ситуация"
+    },
+    {
+      "en": "problem",
+      "ru": "проблема"
+    },
+    {
+      "en": "solution",
+      "ru": "решение"
+    },
+    {
+      "en": "advice",
+      "ru": "совет"
+    },
+    {
+      "en": "request",
+      "ru": "просьба"
+    },
+    {
+      "en": "reply",
+      "ru": "ответ"
+    },
+    {
+      "en": "apology",
+      "ru": "извинение"
+    },
+    {
+      "en": "complaint",
+      "ru": "жалоба"
+    },
+    {
+      "en": "thank",
+      "ru": "благодарить"
+    },
+    {
+      "en": "inform",
+      "ru": "сообщать"
+    },
+    {
+      "en": "confirm",
+      "ru": "подтверждать"
+    },
+    {
+      "en": "invite",
+      "ru": "приглашать"
+    },
+    {
+      "en": "remind",
+      "ru": "напоминать"
+    },
+    {
+      "en": "schedule",
+      "ru": "расписание"
+    },
+    {
+      "en": "appointment",
+      "ru": "запись на приём"
+    },
+    {
+      "en": "deadline",
+      "ru": "крайний срок"
+    },
+    {
+      "en": "polite",
+      "ru": "вежливый"
+    },
+    {
+      "en": "formal",
+      "ru": "официальный"
+    },
+    {
+      "en": "tone",
+      "ru": "тон"
+    },
+    {
+      "en": "paragraph",
+      "ru": "абзац"
+    },
+    {
+      "en": "introduction",
+      "ru": "вступление"
+    },
+    {
+      "en": "conclusion",
+      "ru": "заключение"
+    },
+    {
+      "en": "however",
+      "ru": "однако"
+    },
+    {
+      "en": "therefore",
+      "ru": "поэтому"
+    },
+    {
+      "en": "although",
+      "ru": "хотя"
+    },
+    {
+      "en": "because",
+      "ru": "потому что"
+    },
+    {
+      "en": "finally",
+      "ru": "наконец"
+    },
+    {
+      "en": "neighbour",
+      "ru": "сосед"
+    },
+    {
+      "en": "apartment",
+      "ru": "квартира"
+    },
+    {
+      "en": "rent",
+      "ru": "аренда"
+    },
+    {
+      "en": "landlord",
+      "ru": "арендодатель"
+    },
+    {
+      "en": "lease",
+      "ru": "договор аренды"
+    },
+    {
+      "en": "heating",
+      "ru": "отопление"
+    },
+    {
+      "en": "repair",
+      "ru": "ремонт"
+    },
+    {
+      "en": "noise",
+      "ru": "шум"
+    },
+    {
+      "en": "garbage",
+      "ru": "мусор"
+    },
+    {
+      "en": "recycle",
+      "ru": "перерабатывать"
+    },
+    {
+      "en": "transit",
+      "ru": "общественный транспорт"
+    },
+    {
+      "en": "commute",
+      "ru": "дорога на работу"
+    },
+    {
+      "en": "downtown",
+      "ru": "центр города"
+    },
+    {
+      "en": "suburb",
+      "ru": "пригород"
+    },
+    {
+      "en": "license",
+      "ru": "водительское удостоверение"
+    },
+    {
+      "en": "insurance",
+      "ru": "страховка"
+    },
+    {
+      "en": "clinic",
+      "ru": "клиника"
+    },
+    {
+      "en": "pharmacy",
+      "ru": "аптека"
+    },
+    {
+      "en": "symptom",
+      "ru": "симптом"
+    },
+    {
+      "en": "emergency",
+      "ru": "срочная помощь"
+    },
+    {
+      "en": "community",
+      "ru": "община"
+    },
+    {
+      "en": "volunteer",
+      "ru": "волонтёр"
+    },
+    {
+      "en": "library",
+      "ru": "библиотека"
+    },
+    {
+      "en": "weather",
+      "ru": "погода"
+    },
+    {
+      "en": "winter",
+      "ru": "зима"
+    },
+    {
+      "en": "coworker",
+      "ru": "коллега"
+    },
+    {
+      "en": "manager",
+      "ru": "руководитель"
+    },
+    {
+      "en": "shift",
+      "ru": "смена"
+    },
+    {
+      "en": "overtime",
+      "ru": "сверхурочная работа"
+    },
+    {
+      "en": "training",
+      "ru": "обучение"
+    },
+    {
+      "en": "policy",
+      "ru": "правило"
+    },
+    {
+      "en": "safety",
+      "ru": "безопасность"
+    },
+    {
+      "en": "customer",
+      "ru": "клиент"
+    },
+    {
+      "en": "refund",
+      "ru": "возврат денег"
+    },
+    {
+      "en": "receipt",
+      "ru": "чек"
+    },
+    {
+      "en": "survey",
+      "ru": "опрос"
+    },
+    {
+      "en": "option",
+      "ru": "вариант"
+    },
+    {
+      "en": "advantage",
+      "ru": "преимущество"
+    },
+    {
+      "en": "disadvantage",
+      "ru": "недостаток"
+    },
+    {
+      "en": "benefit",
+      "ru": "польза"
+    },
+    {
+      "en": "cost",
+      "ru": "стоимость"
+    },
+    {
+      "en": "quality",
+      "ru": "качество"
+    },
+    {
+      "en": "service",
+      "ru": "услуга"
+    },
+    {
+      "en": "reliable",
+      "ru": "надёжный"
+    },
+    {
+      "en": "convenient",
+      "ru": "удобный"
+    },
+    {
+      "en": "available",
+      "ru": "доступный"
+    },
+    {
+      "en": "crowded",
+      "ru": "переполненный"
+    },
+    {
+      "en": "quiet",
+      "ru": "тихий"
+    },
+    {
+      "en": "safe",
+      "ru": "безопасный"
+    },
+    {
+      "en": "expensive",
+      "ru": "дорогой"
+    },
+    {
+      "en": "affordable",
+      "ru": "доступный по цене"
+    },
+    {
+      "en": "scene",
+      "ru": "сцена"
+    },
+    {
+      "en": "feeling",
+      "ru": "чувство"
+    },
+    {
+      "en": "likely",
+      "ru": "вероятный"
+    },
+    {
+      "en": "possible",
+      "ru": "возможный"
+    },
+    {
+      "en": "plan",
+      "ru": "план"
+    },
+    {
+      "en": "goal",
+      "ru": "цель"
+    },
+    {
+      "en": "improve",
+      "ru": "улучшать"
+    },
+    {
+      "en": "practice",
+      "ru": "практиковаться"
+    },
+    {
+      "en": "clearly",
+      "ru": "ясно"
+    },
+    {
+      "en": "support",
+      "ru": "поддержка"
+    },
+    {
+      "en": "concern",
+      "ru": "беспокойство"
+    },
+    {
+      "en": "recommend",
+      "ru": "рекомендовать"
+    },
+    {
+      "en": "apologize",
+      "ru": "извиняться"
+    },
+    {
+      "en": "arrange",
+      "ru": "организовать"
+    },
+    {
+      "en": "attend",
+      "ru": "посещать"
+    },
+    {
+      "en": "cancel",
+      "ru": "отменять"
+    },
+    {
+      "en": "delay",
+      "ru": "задержка"
+    },
+    {
+      "en": "notice",
+      "ru": "объявление"
+    },
+    {
+      "en": "instruction",
+      "ru": "инструкция"
+    },
+    {
+      "en": "direction",
+      "ru": "направление"
+    },
+    {
+      "en": "location",
+      "ru": "место"
+    },
+    {
+      "en": "nearby",
+      "ru": "поблизости"
+    },
+    {
+      "en": "instead",
+      "ru": "вместо этого"
+    },
+    {
+      "en": "both",
+      "ru": "оба"
+    },
+    {
+      "en": "either",
+      "ru": "любой из двух"
+    },
+    {
+      "en": "enough",
+      "ru": "достаточно"
+    },
+    {
+      "en": "several",
+      "ru": "несколько"
+    },
+    {
+      "en": "recently",
+      "ru": "недавно"
+    },
+    {
+      "en": "usually",
+      "ru": "обычно"
+    },
+    {
+      "en": "immediately",
+      "ru": "немедленно"
+    },
+    {
+      "en": "sincerely",
+      "ru": "искренне"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "the main idea",
+      "ru": "главная мысль",
+      "uses": [
+        "main",
+        "idea"
+      ]
+    },
+    {
+      "en": "an important detail",
+      "ru": "важная подробность",
+      "uses": [
+        "detail"
+      ]
+    },
+    {
+      "en": "in my opinion",
+      "ru": "по моему мнению",
+      "uses": [
+        "opinion"
+      ]
+    },
+    {
+      "en": "for this reason",
+      "ru": "по этой причине",
+      "uses": [
+        "reason"
+      ]
+    },
+    {
+      "en": "a possible solution",
+      "ru": "возможное решение",
+      "uses": [
+        "possible",
+        "solution"
+      ]
+    },
+    {
+      "en": "a polite request",
+      "ru": "вежливая просьба",
+      "uses": [
+        "polite",
+        "request"
+      ]
+    },
+    {
+      "en": "a formal email",
+      "ru": "официальное письмо",
+      "uses": [
+        "formal"
+      ]
+    },
+    {
+      "en": "a short reply",
+      "ru": "короткий ответ",
+      "uses": [
+        "reply"
+      ]
+    },
+    {
+      "en": "a sincere apology",
+      "ru": "искреннее извинение",
+      "uses": [
+        "apology"
+      ]
+    },
+    {
+      "en": "a customer complaint",
+      "ru": "жалоба клиента",
+      "uses": [
+        "customer",
+        "complaint"
+      ]
+    },
+    {
+      "en": "confirm the appointment",
+      "ru": "подтвердить запись",
+      "uses": [
+        "confirm",
+        "appointment"
+      ]
+    },
+    {
+      "en": "before the deadline",
+      "ru": "до крайнего срока",
+      "uses": [
+        "deadline"
+      ]
+    },
+    {
+      "en": "monthly rent",
+      "ru": "месячная аренда",
+      "uses": [
+        "rent"
+      ]
+    },
+    {
+      "en": "a noisy neighbour",
+      "ru": "шумный сосед",
+      "uses": [
+        "noise",
+        "neighbour"
+      ]
+    },
+    {
+      "en": "ask for a repair",
+      "ru": "попросить о ремонте",
+      "uses": [
+        "repair"
+      ]
+    },
+    {
+      "en": "public transit",
+      "ru": "общественный транспорт",
+      "uses": [
+        "transit"
+      ]
+    },
+    {
+      "en": "a long commute",
+      "ru": "долгая дорога на работу",
+      "uses": [
+        "commute"
+      ]
+    },
+    {
+      "en": "a driver's license",
+      "ru": "водительские права",
+      "uses": [
+        "license"
+      ]
+    },
+    {
+      "en": "health insurance",
+      "ru": "медицинская страховка",
+      "uses": [
+        "insurance"
+      ]
+    },
+    {
+      "en": "a walk-in clinic",
+      "ru": "клиника без записи",
+      "uses": [
+        "clinic"
+      ]
+    },
+    {
+      "en": "a community centre",
+      "ru": "общественный центр",
+      "uses": [
+        "community"
+      ]
+    },
+    {
+      "en": "volunteer work",
+      "ru": "волонтёрская работа",
+      "uses": [
+        "volunteer"
+      ]
+    },
+    {
+      "en": "cold winter weather",
+      "ru": "холодная зимняя погода",
+      "uses": [
+        "winter",
+        "weather"
+      ]
+    },
+    {
+      "en": "the night shift",
+      "ru": "ночная смена",
+      "uses": [
+        "shift"
+      ]
+    },
+    {
+      "en": "safety training",
+      "ru": "обучение по безопасности",
+      "uses": [
+        "safety",
+        "training"
+      ]
+    },
+    {
+      "en": "a company policy",
+      "ru": "правило компании",
+      "uses": [
+        "policy"
+      ]
+    },
+    {
+      "en": "ask for a refund",
+      "ru": "попросить возврат денег",
+      "uses": [
+        "refund"
+      ]
+    },
+    {
+      "en": "keep the receipt",
+      "ru": "сохранить чек",
+      "uses": [
+        "receipt"
+      ]
+    },
+    {
+      "en": "a customer survey",
+      "ru": "опрос клиентов",
+      "uses": [
+        "customer",
+        "survey"
+      ]
+    },
+    {
+      "en": "a clear advantage",
+      "ru": "явное преимущество",
+      "uses": [
+        "advantage"
+      ]
+    },
+    {
+      "en": "the main disadvantage",
+      "ru": "главный недостаток",
+      "uses": [
+        "main",
+        "disadvantage"
+      ]
+    },
+    {
+      "en": "an affordable option",
+      "ru": "доступный по цене вариант",
+      "uses": [
+        "affordable",
+        "option"
+      ]
+    },
+    {
+      "en": "a reliable service",
+      "ru": "надёжная услуга",
+      "uses": [
+        "reliable",
+        "service"
+      ]
+    },
+    {
+      "en": "a convenient location",
+      "ru": "удобное место",
+      "uses": [
+        "convenient",
+        "location"
+      ]
+    },
+    {
+      "en": "describe the scene",
+      "ru": "описать сцену",
+      "uses": [
+        "describe",
+        "scene"
+      ]
+    },
+    {
+      "en": "a likely result",
+      "ru": "вероятный результат",
+      "uses": [
+        "likely"
+      ]
+    },
+    {
+      "en": "give useful advice",
+      "ru": "дать полезный совет",
+      "uses": [
+        "advice"
+      ]
+    },
+    {
+      "en": "follow the instruction",
+      "ru": "следовать инструкции",
+      "uses": [
+        "instruction"
+      ]
+    },
+    {
+      "en": "speak clearly",
+      "ru": "говорить ясно",
+      "uses": [
+        "clearly"
+      ]
+    },
+    {
+      "en": "practice every day",
+      "ru": "практиковаться каждый день",
+      "uses": [
+        "practice"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "en": "I listened carefully, but I did not hear the last detail.",
+      "ru": "Я слушал внимательно, но не услышал последнюю подробность.",
+      "uses": [
+        "listen",
+        "hear",
+        "detail"
+      ]
+    },
+    {
+      "en": "The main idea is that the clinic is closed on Sunday.",
+      "ru": "Главная мысль в том, что клиника закрыта в воскресенье.",
+      "uses": [
+        "main",
+        "idea",
+        "clinic"
+      ]
+    },
+    {
+      "en": "In my opinion, public transit is more convenient than driving downtown.",
+      "ru": "По-моему, общественный транспорт удобнее, чем ехать в центр на машине.",
+      "uses": [
+        "opinion",
+        "transit",
+        "convenient",
+        "downtown"
+      ]
+    },
+    {
+      "en": "Although the rent is high, the apartment is quiet and safe.",
+      "ru": "Хотя аренда высокая, квартира тихая и безопасная.",
+      "uses": [
+        "although",
+        "rent",
+        "apartment",
+        "quiet",
+        "safe"
+      ]
+    },
+    {
+      "en": "The heating does not work. Therefore, I am asking for a repair.",
+      "ru": "Отопление не работает. Поэтому я прошу о ремонте.",
+      "uses": [
+        "heating",
+        "therefore",
+        "repair"
+      ]
+    },
+    {
+      "en": "Dear Mr. Lee, I am writing to confirm my appointment on Friday.",
+      "ru": "Уважаемый мистер Ли, пишу, чтобы подтвердить запись на пятницу.",
+      "uses": [
+        "confirm",
+        "appointment"
+      ]
+    },
+    {
+      "en": "I apologize for the delay and I will send the reply today.",
+      "ru": "Извиняюсь за задержку и отправлю ответ сегодня.",
+      "uses": [
+        "apologize",
+        "delay",
+        "reply"
+      ]
+    },
+    {
+      "en": "Could you please remind me of the deadline?",
+      "ru": "Не могли бы вы напомнить мне крайний срок?",
+      "uses": [
+        "remind",
+        "deadline"
+      ]
+    },
+    {
+      "en": "I would like a refund because the quality was poor. I still have the receipt.",
+      "ru": "Я хотел бы вернуть деньги, потому что качество было плохим. Чек у меня ещё есть.",
+      "uses": [
+        "refund",
+        "because",
+        "quality",
+        "receipt"
+      ]
+    },
+    {
+      "en": "Both options are possible, but I prefer the more affordable one.",
+      "ru": "Оба варианта возможны, но я предпочитаю более доступный по цене.",
+      "uses": [
+        "both",
+        "possible",
+        "prefer",
+        "affordable",
+        "option"
+      ]
+    },
+    {
+      "en": "The advantage is the location. However, the service is expensive.",
+      "ru": "Преимущество — место. Однако услуга дорогая.",
+      "uses": [
+        "advantage",
+        "location",
+        "however",
+        "service",
+        "expensive"
+      ]
+    },
+    {
+      "en": "I disagree with this view because the commute takes too long.",
+      "ru": "Я не согласен с этой точкой зрения, потому что дорога на работу занимает слишком много времени.",
+      "uses": [
+        "disagree",
+        "view",
+        "because",
+        "commute"
+      ]
+    },
+    {
+      "en": "If the bus is crowded, I usually wait for the next one.",
+      "ru": "Если автобус переполнен, я обычно жду следующий.",
+      "uses": [
+        "crowded",
+        "usually"
+      ]
+    },
+    {
+      "en": "The notice says the library is nearby and open until eight.",
+      "ru": "В объявлении сказано, что библиотека рядом и открыта до восьми.",
+      "uses": [
+        "notice",
+        "library",
+        "nearby"
+      ]
+    },
+    {
+      "en": "Please follow the instruction and bring your license and insurance.",
+      "ru": "Следуйте инструкции и возьмите права и страховку.",
+      "uses": [
+        "instruction",
+        "license",
+        "insurance"
+      ]
+    },
+    {
+      "en": "I suggest that we arrange the training before the night shift.",
+      "ru": "Предлагаю организовать обучение до ночной смены.",
+      "uses": [
+        "suggest",
+        "arrange",
+        "training",
+        "shift"
+      ]
+    },
+    {
+      "en": "The manager advised us to read the safety policy.",
+      "ru": "Руководитель посоветовал нам прочитать правила безопасности.",
+      "uses": [
+        "manager",
+        "advise",
+        "safety",
+        "policy"
+      ]
+    },
+    {
+      "en": "A volunteer at the community centre gave me clear directions.",
+      "ru": "Волонтёр в общественном центре ясно объяснил, куда идти.",
+      "uses": [
+        "volunteer",
+        "community",
+        "direction"
+      ]
+    },
+    {
+      "en": "My coworker cannot attend the meeting, so I will go instead.",
+      "ru": "Коллега не может прийти на встречу, поэтому пойду я.",
+      "uses": [
+        "coworker",
+        "attend",
+        "instead"
+      ]
+    },
+    {
+      "en": "We should cancel the appointment if the symptom gets worse.",
+      "ru": "Нужно отменить запись, если симптом усилится.",
+      "uses": [
+        "cancel",
+        "appointment",
+        "symptom"
+      ]
+    },
+    {
+      "en": "In an emergency, go to the hospital immediately.",
+      "ru": "При срочной помощи езжайте в больницу немедленно.",
+      "uses": [
+        "emergency",
+        "immediately"
+      ]
+    },
+    {
+      "en": "The pharmacy is available after work, which is convenient for me.",
+      "ru": "Аптека работает после работы, и мне это удобно.",
+      "uses": [
+        "pharmacy",
+        "available",
+        "convenient"
+      ]
+    },
+    {
+      "en": "In the scene, two people are talking quietly near the door.",
+      "ru": "На сцене два человека тихо разговаривают у двери.",
+      "uses": [
+        "scene",
+        "quiet"
+      ]
+    },
+    {
+      "en": "I predict that the winter weather will delay the transit.",
+      "ru": "Думаю, зимняя погода задержит транспорт.",
+      "uses": [
+        "predict",
+        "winter",
+        "weather",
+        "delay",
+        "transit"
+      ]
+    },
+    {
+      "en": "This solution is likely to work if everyone follows the plan.",
+      "ru": "Это решение, скорее всего, сработает, если все будут следовать плану.",
+      "uses": [
+        "solution",
+        "likely",
+        "plan"
+      ]
+    },
+    {
+      "en": "My goal is to speak more clearly, so I practice every day.",
+      "ru": "Моя цель — говорить яснее, поэтому я практикуюсь каждый день.",
+      "uses": [
+        "goal",
+        "clearly",
+        "practice"
+      ]
+    },
+    {
+      "en": "I recently had a similar experience, and I chose a quieter apartment.",
+      "ru": "Недавно у меня был похожий опыт, и я выбрал более тихую квартиру.",
+      "uses": [
+        "recently",
+        "experience",
+        "choose",
+        "apartment"
+      ]
+    },
+    {
+      "en": "Several customers complained about the noise, and the landlord agreed to help.",
+      "ru": "Несколько жильцов пожаловались на шум, и арендодатель согласился помочь.",
+      "uses": [
+        "several",
+        "customer",
+        "noise",
+        "landlord",
+        "agree"
+      ]
+    },
+    {
+      "en": "Finally, thank you for your support. I look forward to your reply.",
+      "ru": "В заключение благодарю за поддержку. Жду вашего ответа.",
+      "uses": [
+        "finally",
+        "thank",
+        "support",
+        "reply"
+      ]
+    },
+    {
+      "en": "To improve my score, I listen to short talks and repeat the main facts.",
+      "ru": "Чтобы улучшить результат, я слушаю короткие рассказы и повторяю главные факты.",
+      "uses": [
+        "improve",
+        "listen",
+        "repeat",
+        "main",
+        "fact"
+      ]
+    },
+    {
+      "en": "Either plan is fine, but there is not enough time for both.",
+      "ru": "Любой из планов подойдёт, но на оба времени не хватит.",
+      "uses": [
+        "either",
+        "plan",
+        "enough",
+        "both"
+      ]
+    },
+    {
+      "en": "I recommend this service because it is reliable and the cost is fair.",
+      "ru": "Рекомендую эту услугу, потому что она надёжная, а цена справедливая.",
+      "uses": [
+        "recommend",
+        "service",
+        "because",
+        "reliable",
+        "cost"
+      ]
+    },
+    {
+      "en": "The survey asks which benefit matters more: time or money.",
+      "ru": "Опрос спрашивает, какая польза важнее: время или деньги.",
+      "uses": [
+        "survey",
+        "benefit"
+      ]
+    },
+    {
+      "en": "Although I understand the concern, I still support the new policy.",
+      "ru": "Хотя я понимаю беспокойство, я всё же поддерживаю новое правило.",
+      "uses": [
+        "although",
+        "understand",
+        "concern",
+        "support",
+        "policy"
+      ]
+    },
+    {
+      "en": "Please inform the team if you need to change the schedule.",
+      "ru": "Сообщите команде, если нужно изменить расписание.",
+      "uses": [
+        "inform",
+        "schedule"
+      ]
+    },
+    {
+      "en": "In the conclusion, I will repeat my opinion and give one example.",
+      "ru": "В заключении я повторю мнение и приведу один пример.",
+      "uses": [
+        "conclusion",
+        "repeat",
+        "opinion",
+        "example"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1276 @@
+computer	компьютер
+laptop	ноутбук
+desktop	настольный компьютер
+tablet	планшет
+smartphone	смартфон
+screen	экран
+display	дисплей
+keyboard	клавиатура
+mouse	мышь
+monitor	монитор
+printer	принтер
+scanner	сканер
+speaker	динамик
+microphone	микрофон
+headphone	наушник
+camera	камера
+battery	батарея
+charger	зарядка
+cable	кабель
+adapter	переходник
+button	кнопка
+switch	переключатель
+port	порт
+chip	чип
+processor	процессор
+memory	память
+storage	хранилище
+disk	диск
+drive	накопитель
+sensor	датчик
+robot	робот
+drone	дрон
+device	устройство
+gadget	гаджет
+hardware	оборудование
+software	программное обеспечение
+firmware	прошивка
+network	сеть
+router	маршрутизатор
+modem	модем
+server	сервер
+cloud	облако
+website	сайт
+browser	браузер
+app	приложение
+icon	значок
+window	окно
+menu	меню
+cursor	курсор
+password	пароль
+username	имя пользователя
+account	учётная запись
+login	вход
+logout	выход
+file	файл
+folder	папка
+document	документ
+image	изображение
+video	видео
+audio	аудио
+link	ссылка
+page	страница
+tab	вкладка
+click	щелчок
+tap	касание
+scroll	прокрутка
+zoom	масштаб
+copy	копия
+paste	вставка
+save	сохранение
+delete	удаление
+search	поиск
+filter	фильтр
+sort	сортировка
+share	отправка
+download	скачивание
+upload	загрузка
+install	установка
+update	обновление
+backup	резервная копия
+sync	синхронизация
+setting	настройка
+option	параметр
+mode	режим
+theme	тема
+font	шрифт
+language	язык
+notification	уведомление
+message	сообщение
+email	электронная почта
+inbox	входящие
+attachment	вложение
+spam	спам
+virus	вирус
+bug	ошибка в программе
+error	ошибка
+warning	предупреждение
+crash	сбой
+freeze	зависание
+restart	перезапуск
+shutdown	выключение
+boot	загрузка системы
+driver	драйвер
+plugin	плагин
+extension	расширение
+widget	виджет
+shortcut	ярлык
+command	команда
+key	клавиша
+shortcutkey	сочетание клавиш
+engine	двигатель
+motor	мотор
+machine	машина
+tool	инструмент
+part	деталь
+component	компонент
+module	модуль
+unit	блок
+system	система
+design	проект
+drawing	чертёж
+model	модель
+prototype	прототип
+sample	образец
+test	испытание
+measure	измерение
+size	размер
+weight	вес
+length	длина
+width	ширина
+height	высота
+depth	глубина
+speed	скорость
+force	сила
+pressure	давление
+temperature	температура
+heat	тепло
+energy	энергия
+power	мощность
+voltage	напряжение
+current	ток
+charge	заряд
+load	нагрузка
+fuel	топливо
+oil	масло
+metal	металл
+plastic	пластик
+glass	стекло
+wood	дерево
+material	материал
+frame	рама
+bolt	болт
+screw	винт
+nut	гайка
+spring	пружина
+lever	рычаг
+gear	шестерня
+wheel	колесо
+axle	ось
+brake	тормоз
+pump	насос
+valve	клапан
+pipe	труба
+tank	бак
+wire	провод
+circuit	схема
+board	плата
+signal	сигнал
+noise	шум
+light	свет
+sound	звук
+motion	движение
+balance	баланс
+safety	безопасность
+risk	риск
+failure	отказ
+repair	ремонт
+maintenance	обслуживание
+inspection	проверка
+quality	качество
+standard	стандарт
+tolerance	допуск
+accuracy	точность
+precision	прецизионность
+efficiency	эффективность
+capacity	ёмкость
+output	выход
+input	вход
+process	процесс
+step	шаг
+stage	этап
+plan	план
+goal	цель
+task	задача
+deadline	срок
+schedule	график
+budget	бюджет
+cost	стоимость
+resource	ресурс
+team	команда
+role	роль
+engineer	инженер
+technician	техник
+designer	конструктор
+operator	оператор
+client	заказчик
+requirement	требование
+specification	спецификация
+report	отчёт
+note	заметка
+meeting	встреча
+decision	решение
+change	изменение
+version	версия
+release	выпуск
+review	проверка
+approval	одобрение
+feedback	отзыв
+issue	проблема
+priority	приоритет
+status	статус
+progress	прогресс
+result	результат
+reason	причина
+effect	эффект
+cause	причина
+limit	предел
+range	диапазон
+level	уровень
+rate	скорость изменения
+ratio	соотношение
+average	среднее
+total	итог
+estimate	оценка
+forecast	прогноз
+diagram	схема
+chart	график
+table	таблица
+list	список
+label	метка
+value	значение
+number	число
+text	текст
+code	код
+script	скрипт
+program	программа
+function	функция
+method	метод
+class	класс
+object	объект
+variable	переменная
+constant	константа
+parameter	параметр функции
+argument	аргумент
+return	возврат
+loop	цикл
+condition	условие
+branch	ветка
+array	массив
+string	строка
+boolean	логический тип
+integer	целое число
+float	дробное число
+null	пустое значение
+type	тип
+syntax	синтаксис
+comment	комментарий
+library	библиотека
+package	пакет
+framework	фреймворк
+runtime	среда выполнения
+compiler	компилятор
+interpreter	интерпретатор
+build	сборка
+debug	отладка
+log	журнал
+console	консоль
+terminal	терминал
+editor	редактор
+ide	среда разработки
+repository	репозиторий
+commit	коммит
+branchname	ветка кода
+merge	слияние
+conflict	конфликт
+pull	получение изменений
+push	отправка изменений
+clone	клонирование
+diff	различие
+patch	патч
+refactor	рефакторинг
+lint	проверка стиля
+format	форматирование
+snippet	фрагмент кода
+template	шаблон
+boilerplate	заготовка
+dependency	зависимость
+import	импорт
+export	экспорт
+interface	интерфейс
+api	программный интерфейс
+endpoint	конечная точка
+request	запрос
+response	ответ
+header	заголовок
+body	тело запроса
+statuscode	код состояния
+clientapp	клиент
+backend	серверная часть
+frontend	клиентская часть
+database	база данных
+query	запрос к данным
+record	запись
+field	поле
+column	столбец
+row	строка таблицы
+index	индекс
+keyfield	ключ
+schema	схема данных
+migration	миграция
+cache	кэш
+session	сессия
+cookie	куки
+token	токен
+auth	аутентификация
+permission	разрешение
+roleaccess	доступ по роли
+encrypt	шифрование
+decrypt	расшифровка
+hash	хеш
+secret	секрет
+certificate	сертификат
+firewall	файрвол
+backupplan	план резервного копирования
+monitorjob	наблюдение
+alert	тревога
+metric	метрика
+dashboard	панель
+uptime	время работы
+latency	задержка
+throughput	пропускная способность
+bandwidth	полоса пропускания
+packet	пакет данных
+protocol	протокол
+address	адрес
+domain	домен
+dns	система имён
+host	хост
+clientnode	узел
+cluster	кластер
+container	контейнер
+imagefile	образ
+volume	том
+deploy	развёртывание
+pipeline	конвейер
+job	задание
+runner	исполнитель
+artifact	артефакт
+environment	окружение
+config	конфигурация
+secretstore	хранилище секретов
+rollback	откат
+hotfix	срочное исправление
+changelog	список изменений
+readme	описание проекта
+license	лицензия
+copyright	авторское право
+opensource	открытый код
+repositoryurl	адрес репозитория
+issueboard	доска задач
+ticket	заявка
+sprint	спринт
+backlog	бэклог
+story	пользовательская история
+epic	крупная задача
+estimatepoint	оценка в очках
+standup	короткая планёрка
+retro	ретроспектива
+demo	демонстрация
+stakeholder	заинтересованная сторона
+scope	объём работ
+milestone	веха
+roadmap	дорожная карта
+owner	владелец
+assignee	исполнитель
+blocker	блокер
+workaround	обходное решение
+rootcause	корневая причина
+incident	инцидент
+postmortem	разбор сбоя
+oncall	дежурство
+handoff	передача смены
+documentation	документация
+tutorial	учебник
+example	пример
+glossary	глоссарий
+checklist	контрольный список
+guideline	руководство
+convention	соглашение
+style	стиль
+naming	именование
+pattern	шаблон решения
+architecture	архитектура
+layer	слой
+service	сервис
+microservice	микросервис
+monolith	монолит
+queue	очередь
+event	событие
+messagebus	шина сообщений
+worker	воркер
+scheduler	планировщик
+cron	расписание
+webhook	вебхук
+callback	обратный вызов
+timeout	таймаут
+retry	повтор
+fallback	запасной вариант
+idempotent	идемпотентный
+transaction	транзакция
+lock	блокировка
+race	гонка
+deadlock	взаимная блокировка
+thread	поток
+processrun	процесс выполнения
+async	асинхронный
+await	ожидание
+promiseobj	обещание результата
+callbackhell	путаница колбэков
+exception	исключение
+stacktrace	трассировка стека
+breakpoint	точка останова
+watch	наблюдение за значением
+profiler	профилировщик
+benchmark	бенчмарк
+optimization	оптимизация
+memoryleak	утечка памяти
+garbage	сборка мусора
+pointer	указатель
+reference	ссылка на объект
+heap	куча
+stack	стек
+byte	байт
+bit	бит
+encoding	кодировка
+unicode	юникод
+regex	регулярное выражение
+parser	парсер
+lexer	лексер
+ast	синтаксическое дерево
+tokenstream	поток токенов
+grammar	грамматика
+keyword	ключевое слово
+operator	оператор
+expression	выражение
+statement	инструкция
+block	блок кода
+scopevar	область видимости
+closure	замыкание
+recursion	рекурсия
+iterator	итератор
+generator	генератор
+decorator	декоратор
+annotation	аннотация
+generic	обобщённый тип
+inheritance	наследование
+polymorphism	полиморфизм
+encapsulation	инкапсуляция
+abstraction	абстракция
+composition	композиция
+coupling	связанность
+cohesion	связность
+solid	принципы SOLID
+testcase	тест-кейс
+unittest	модульный тест
+integration	интеграционный тест
+e2e	сквозной тест
+mock	макет
+stub	заглушка
+fixture	фикстура
+assertion	утверждение
+coverage	покрытие
+flaky	нестабильный тест
+regression	регрессия
+smoke	дымовой тест
+qa	контроль качества
+tester	тестировщик
+bugreport	отчёт об ошибке
+repro	воспроизведение
+severity	серьёзность
+hotfixbranch	ветка срочного фикса
+feature	функция продукта
+flag	флаг
+toggle	переключатель функции
+experiment	эксперимент
+abtest	A/B-тест
+analytics	аналитика
+eventlog	журнал событий
+funnel	воронка
+retention	удержание
+conversion	конверсия
+cohort	когорта
+dataset	набор данных
+sampledata	выборка
+labeldata	метка данных
+featurecol	признак
+target	цель обучения
+split	разделение
+train	обучение
+validation	валидация
+testdata	тестовые данные
+overfit	переобучение
+underfit	недообучение
+bias	смещение
+variance	разброс
+metricscore	оценка метрики
+accuracyrate	точность
+precisionrate	прецизионность
+recall	полнота
+threshold	порог
+baseline	базовый уровень
+benchmarkset	набор для сравнения
+epoch	эпоха
+batch	пакет
+learningrate	скорость обучения
+loss	функция потерь
+gradient	градиент
+weight	вес модели
+layerneural	слой сети
+neuron	нейрон
+activation	активация
+embedding	эмбеддинг
+vector	вектор
+similarity	сходство
+clusterdata	кластер данных
+classification	классификация
+regressionmodel	регрессия
+clustering	кластеризация
+anomaly	аномалия
+forecastmodel	модель прогноза
+recommendation	рекомендация
+ranking	ранжирование
+pipelineai	конвейер ИИ
+notebook	блокнот
+experimentrun	запуск эксперимента
+checkpoint	контрольная точка
+artifactmodel	артефакт модели
+registry	реестр
+versionmodel	версия модели
+drift	дрейф данных
+monitorai	наблюдение за моделью
+fairness	справедливость
+privacy	приватность
+consent	согласие
+anonymize	обезличивать
+audit	аудит
+compliance	соответствие
+policy	политика
+governance	управление
+ethics	этика
+safetyai	безопасность ИИ
+alignment	согласование
+hallucination	галлюцинация
+grounding	опоры на факты
+citation	ссылка на источник
+context	контекст
+prompt	промпт
+instruction	инструкция
+systemprompt	системный промпт
+userprompt	промпт пользователя
+fewshot	несколько примеров
+zeroshot	без примеров
+temperature	температура генерации
+topk	верхние варианты
+stopword	стоп-слово
+tokenlimit	лимит токенов
+contextwindow	окно контекста
+completion	дополнение
+generation	генерация
+summary	краткое содержание
+translation	перевод
+rewrite	переписывание
+outline	план текста
+draft	черновик
+revision	правка
+tone	тон
+styletext	стиль текста
+persona	персона
+roleplay	ролевая инструкция
+constraint	ограничение
+rubric	критерий оценки
+score	оценка
+judge	оценщик
+reward	награда
+preference	предпочтение
+finetune	дообучение
+adapterlora	адаптер
+datasetai	набор для обучения
+synthetic	синтетические данные
+augmentation	аугментация
+cleanup	очистка
+dedupe	удаление дублей
+tokenizer	токенизатор
+vocabulary	словарь
+bytepair	байтовые пары
+inference	инференс
+latencyai	задержка ответа
+throughputai	пропускная способность модели
+batchinfer	пакетный инференс
+streaming	потоковая выдача
+cacheprompt	кэш промпта
+quantization	квантование
+distill	дистилляция
+prune	обрезка
+sparsity	разреженность
+gpu	графический процессор
+cpu	центральный процессор
+vram	видеопамять
+ram	оперативная память
+cuda	CUDA
+kernel	ядро
+tensor	тензор
+matrix	матрица
+dimension	размерность
+shapeai	форма тензора
+dtype	тип данных
+deviceai	устройство вычисления
+offload	выгрузка
+shard	шард
+replica	реплика
+loadbalance	балансировка
+autoscaling	автомасштабирование
+quota	квота
+ratelimit	лимит запросов
+billing	биллинг
+usage	использование
+costai	стоимость вызова
+provider	поставщик
+endpointai	адрес модели
+apikey	ключ API
+sdk	набор для разработчика
+cli	командная строка
+playground	песочница
+chat	чат
+assistant	ассистент
+agent	агент
+toolcall	вызов инструмента
+functioncall	вызов функции
+planner	планировщик агента
+executor	исполнитель
+memoryagent	память агента
+scratchpad	черновик рассуждения
+reflection	рефлексия
+critique	критика
+retryloop	цикл повторов
+handoffagent	передача между агентами
+orchestrator	оркестратор
+subagent	подагент
+supervisor	супервизор
+workflow	рабочий процесс
+graph	граф
+node	узел графа
+edge	ребро
+state	состояние
+checkpointagent	точка сохранения агента
+humanloop	участие человека
+approvalgate	шлюз одобрения
+guardrail	ограничитель
+policyagent	политика агента
+sandbox	песочница выполнения
+permissionagent	разрешение агента
+filesystem	файловая система
+shell	оболочка
+browsertool	инструмент браузера
+searchtool	инструмент поиска
+codeexec	выполнение кода
+artifactout	выходной артефакт
+trace	трасса
+span	отрезок трассы
+logagent	журнал агента
+eval	оценка качества
+benchmarkagent	бенчмарк агента
+taskset	набор задач
+successrate	доля успеха
+failuremode	тип отказа
+timeoutagent	таймаут агента
+budgettoken	бюджет токенов
+stopcondition	условие остановки
+goalagent	цель агента
+planstep	шаг плана
+observation	наблюдение
+action	действие
+thought	мысль
+react	цикл мысль-действие
+rag	поиск и генерация
+retriever	поисковик
+chunk	фрагмент
+embedindex	индекс эмбеддингов
+citationai	цитата модели
+source	источник
+knowledge	знание
+wiki	вики
+documentstore	хранилище документов
+metadata	метаданные
+filterai	фильтр поиска
+rerank	переранжирование
+hybrid	гибридный поиск
+keywordsearch	поиск по словам
+semantic	смысловой поиск
+freshness	свежесть
+authority	авторитетность
+snippetai	фрагмент ответа
+answer	ответ
+question	вопрос
+clarification	уточнение
+ambiguity	неоднозначность
+assumption	допущение
+constraintuser	ограничение пользователя
+acceptance	критерий приёмки
+spec	спецификация задачи
+ticketai	задача для агента
+diffreview	проверка различий
+codereview	ревью кода
+commentreview	комментарий к коду
+suggestion	предложение
+nit	мелкая правка
+approve	одобрить
+requestchange	запросить правки
+mergequeue	очередь слияния
+ci	непрерывная интеграция
+cd	непрерывная доставка
+greenbuild	зелёная сборка
+redbuild	красная сборка
+flake	нестабильный прогон
+cacheci	кэш сборки
+secretci	секрет сборки
+envvar	переменная окружения
+dotenv	файл окружения
+localhost	локальный компьютер
+portlocal	локальный порт
+hotreload	горячая перезагрузка
+debugger	отладчик
+consolelog	запись в консоль
+breakpointui	точка останова в редакторе
+watchvar	наблюдаемая переменная
+stepover	шаг без захода
+stepinto	шаг с заходом
+stackframe	кадр стека
+exceptionmsg	текст исключения
+fix	исправление
+patchfile	файл патча
+commitmsg	сообщение коммита
+branchfeat	ветка функции
+rebase	перебазирование
+squash	сжатие коммитов
+cherry	выборочный перенос
+tag	метка версии
+releasecut	срез релиза
+semver	семантическая версия
+changelogitem	пункт списка изменений
+migrationnote	заметка о миграции
+deprecation	устаревание
+breaking	ломающее изменение
+compat	совместимость
+shim	прослойка совместимости
+polyfill	полифил
+bundle	пакет сборки
+minify	минификация
+sourcemap	карта исходников
+treeshake	удаление лишнего кода
+lazy	ленивая загрузка
+preload	предзагрузка
+route	маршрут
+pageview	просмотр страницы
+componentui	компонент интерфейса
+layout	макет
+spacing	отступ
+color	цвет
+contrast	контраст
+accessibility	доступность
+responsive	адаптивный
+mobile	мобильный
+desktopui	настольный интерфейс
+hover	наведение
+focus	фокус
+clickui	нажатие
+form	форма
+fieldui	поле формы
+validationui	проверка формы
+errortext	текст ошибки
+placeholder	подсказка в поле
+submit	отправка формы
+cancel	отмена
+confirm	подтверждение
+modal	модальное окно
+toast	всплывающее сообщение
+drawer	выдвижная панель
+navbar	панель навигации
+sidebar	боковая панель
+breadcrumb	хлебные крошки
+pagination	постраничный вывод
+empty	пустое состояние
+loading	загрузка
+skeleton	скелет загрузки
+spinner	индикатор
+offline	без сети
+online	в сети
+retryui	кнопка повтора
+vibe	вайб
+coding	кодинг
+vibecoding	вайбкодинг
+prompting	написание промптов
+iterate	итерация
+prototypefast	быстрый прототип
+describe	описание задачи
+generate	сгенерировать
+revise	доработать
+acceptchange	принять правку
+rejectchange	отклонить правку
+contextfile	файл контекста
+rulefile	файл правил
+skill	навык агента
+agentmode	режим агента
+planmode	режим плана
+askmode	режим вопроса
+diffview	просмотр различий
+applyedit	применить правку
+undo	отмена правки
+redo	повтор правки
+multifile	несколько файлов
+repo	репозиторий проекта
+workspace	рабочая область
+terminalrun	запуск в терминале
+testcommand	команда теста
+buildcommand	команда сборки
+lintcommand	команда проверки
+formatcommand	команда форматирования
+preview	предпросмотр
+screenshot	снимок экрана
+logread	чтение журнала
+errorloop	цикл исправления ошибок
+smallstep	маленький шаг
+ship	выпустить
+demoapp	демо-приложение
+readmeai	описание, написанное с ИИ
+commentai	комментарий от ИИ
+testdraft	черновик теста
+refactorai	рефакторинг с ИИ
+explaincode	объяснение кода
+rename	переименование
+extract	выделение функции
+inline	встраивание
+deadcode	мёртвый код
+todo	пометка TODO
+fixme	пометка FIXME
+ownerai	ответственный
+pair	парная работа
+reviewer	ревьюер
+author	автор
+bot	бот
+automation	автоматизация
+hook	хук
+actionci	действие сборки
+workflowfile	файл процесса
+templateai	шаблон промпта
+exampleprompt	пример промпта
+badprompt	слабый промпт
+goodprompt	ясный промпт
+constraintprompt	ограничение в промпте
+outputformat	формат ответа
+jsonmode	режим JSON
+schemaout	схема ответа
+toolschema	схема инструмента
+argumentai	аргумент инструмента
+resulttool	результат инструмента
+sideeffect	побочный эффект
+dryrun	пробный запуск
+confirmstep	шаг подтверждения
+safechange	безопасная правка
+risky	рискованный
+rollbackplan	план отката
+observability	наблюдаемость
+tracing	трассировка
+dashboardai	панель агента
+alertai	тревога агента
+budgetcost	бюджет стоимости
+quotaai	квота модели
+fallbackmodel	запасная модель
+primarymodel	основная модель
+smallmodel	маленькая модель
+largemodel	большая модель
+localmodel	локальная модель
+cloudmodel	облачная модель
+opensourceai	открытая модель
+closedmodel	закрытая модель
+licenseai	лицензия модели
+benchmarkscore	оценка бенчмарка
+leaderboard	таблица лидеров
+paper	статья
+blog	блог
+docs	документы
+changelogai	список изменений модели
+deprecationai	устаревание API
+migrationai	миграция интеграции
+sdkupdate	обновление SDK
+examplecode	пример кода
+snippetai	фрагмент примера
+cookbook	сборник примеров
+quickstart	быстрый старт
+helloworld	первая программа
+sandboxrun	запуск в песочнице
+secretkey	секретный ключ
+envlocal	локальное окружение
+gitignore	файл исключений
+lockfile	файл фиксации версий
+dependencyupdate	обновление зависимости
+vulnerability	уязвимость
+patchsec	исправление уязвимости
+scan	сканирование
+secretleak	утечка секрета
+permissionless	без лишних прав
+leastprivilege	минимум прав
+auditlog	журнал аудита
+rotation	ротация ключей
+expiry	срок действия
+revoke	отозвать
+allowlist	список разрешённых
+denylist	список запрещённых
+sanitize	очищать ввод
+validate	проверять
+escape	экранировать
+injection	внедрение
+xss	межсайтовый скрипт
+csrf	подделка запроса
+sqlinjection	внедрение SQL
+secretscan	поиск секретов
+signed	подписанный
+checksum	контрольная сумма
+integrity	целостность
+availability	доступность
+confidentiality	конфиденциальность
+threat	угроза
+mitigation	снижение риска
+incidentresp	реагирование на инцидент
+backuptest	проверка восстановления
+restore	восстановление
+snapshot	снимок состояния
+retentionpolicy	политика хранения
+archive	архив
+compress	сжимать
+encryptrest	шифрование хранения
+transit	передача
+tls	защищённый канал
+certificateexp	срок сертификата
+dnsrecord	запись DNS
+subdomain	поддомен
+redirect	перенаправление
+cacheheader	заголовок кэша
+cdn	сеть доставки
+edge	край сети
+region	регион
+zone	зона
+replicaai	реплика сервиса
+failover	переключение при отказе
+healthcheck	проверка здоровья
+readiness	готовность
+liveness	живость
+slo	цель уровня сервиса
+sli	индикатор уровня
+errorbudget	бюджет ошибок
+pageoncall	вызов дежурного
+runbook	инструкция дежурного
+blameless	без поиска виноватых
+timeline	хронология
+actionitem	пункт действий
+followup	дальнейший шаг
+customer	клиент
+user	пользователь
+personaai	персона пользователя
+journey	путь пользователя
+pain	боль пользователя
+jobstory	работа пользователя
+outcome	результат для пользователя
+metricnorth	северная метрика
+experimentai	продуктовый эксперимент
+hypothesis	гипотеза
+insight	наблюдение из данных
+interviewuser	интервью с пользователем
+survey	опрос
+usability	удобство
+friction	трение
+delight	радость использования
+trust	доверие
+clarity	ясность
+simplicity	простота
+reliability	надёжность
+speedfeel	ощущение скорости
+polish	отделка
+craft	мастерство
+taste	вкус к деталям
+iteration	итерация продукта
+launch	запуск
+beta	бета
+alpha	альфа
+stable	стабильный
+deprecated	устаревший
+legacy	наследие
+modern	современный
+simple	простой
+complex	сложный
+clear	ясный
+vague	расплывчатый
+strict	строгий
+flexible	гибкий
+manual	ручной
+automatic	автоматический
+secure	защищённый
+public	публичный
+private	приватный
+internal	внутренний
+external	внешний
+local	локальный
+remote	удалённый
+onlinework	работа в сети
+offlinework	работа без сети
+fast	быстрый
+slow	медленный
+cheap	дешёвый
+expensive	дорогой
+useful	полезный
+useless	бесполезный
+correct	правильный
+wrong	неправильный
+complete	полный
+partial	частичный
+ready	готовый
+blocked	заблокированный
+done	сделанный
+pending	ожидающий
+active	активный
+idle	простаивающий
+buildverb	собирать
+designverb	проектировать
+testverb	тестировать
+fixverb	исправлять
+deployverb	разворачивать
+reviewverb	проверять
+explain	объяснять
+compare	сравнивать
+choose	выбирать
+decide	решать
+improve	улучшать
+simplify	упрощать
+document	документировать
+measureverb	измерять
+monitorverb	наблюдать
+automate	автоматизировать
+integrate	интегрировать
+migrate	переносить
+scale	масштабировать
+secureverb	защищать
+backupverb	делать копию
+restoreverb	восстанавливать
+debugverb	отлаживать
+refactorverb	упрощать код
+promptverb	писать промпт
+generateverb	генерировать
+iterateverb	повторять цикл
+shipverb	выпускать
+learn	изучать
+practice	практиковать
+teach	обучать
+ask	спрашивать
+answerverb	отвечать
+confirmverb	подтверждать
+reject	отклонять
+approveverb	одобрять
+assign	назначать
+estimateverb	оценивать
+prioritize	расставлять приоритеты
+collaborate	сотрудничать
+communicate	общаться
+present	представлять
+demoaction	показывать демо
+support	поддерживать
+maintain	обслуживать
+replace	заменять
+remove	удалять
+add	добавлять
+renameverb	переименовывать
+move	перемещать
+splitverb	разделять
+mergeverb	объединять
+connect	подключать
+disconnect	отключать
+configure	настраивать
+installverb	устанавливать
+updateverb	обновлять
+restartverb	перезапускать
+logverb	записывать в журнал
+traceverb	трассировать
+profileverb	профилировать
+optimize	оптимизировать
+cacheverb	кэшировать
+queueverb	ставить в очередь
+scheduleverb	планировать
+notify	уведомлять
+alertverb	поднимать тревогу
+escalate	эскалировать
+resolve	решать проблему
+closeissue	закрывать задачу
+reopen	открывать снова
+commentverb	комментировать
+mention	упоминать
+subscribe	подписываться
+unsubscribe	отписываться
+exportverb	экспортировать
+importverb	импортировать
+convert	преобразовывать
+parse	разбирать
+serialize	сериализовать
+validateverb	проверять данные
+sanitizeverb	очищать данные
+encryptverb	шифровать
+sign	подписывать
+verify	проверять подпись
+rotate	обновлять ключ
+revokeverb	отзывать доступ
+allow	разрешать
+deny	запрещать
+limitverb	ограничивать
+throttle	замедлять
+retryverb	повторять попытку
+timeoutverb	прерывать по времени
+fallbackverb	переходить на запасной вариант
+rollbackverb	откатывать
+canary	канареечный выпуск
+bluegreen	сине-зелёный выпуск
+featureflag	флаг функции
+darklaunch	скрытый запуск
+gradual	постепенный
+sudden	внезапный
+expected	ожидаемый
+unexpected	неожиданный
+reproducible	воспроизводимый
+deterministic	детерминированный
+random	случайный
+stablebuild	стабильная сборка
+fragile	хрупкий
+robust	устойчивый
+observable	наблюдаемый
+traceable	прослеживаемый
+testable	тестируемый
+readable	читаемый
+maintainable	поддерживаемый
+scalable	масштабируемый
+portable	переносимый
+reusable	повторно используемый
+composable	собираемый из частей
+declarative	декларативный
+imperative	императивный
+stateless	без состояния
+stateful	с состоянием
+syncwork	синхронный
+asyncwork	асинхронный
+blocking	блокирующий
+nonblocking	неблокирующий
+parallel	параллельный
+serial	последовательный
+batchwork	пакетная обработка
+streamwork	потоковая обработка
+onlineinfer	онлайн-инференс
+offlineinfer	офлайн-инференс
+supervised	обучение с учителем
+unsupervised	обучение без учителя
+reinforcement	обучение с подкреплением
+selfsupervised	самообучение
+multimodal	мультимодальный
+textmodel	текстовая модель
+imagemodel	модель изображений
+audiomodel	аудиомодель
+videomodel	видеомодель
+speech	речь
+recognition	распознавание
+synthesis	синтез
+caption	подпись
+transcript	расшифровка
+subtitle	субтитры
+promptchain	цепочка промптов
+agentloop	цикл агента
+tooluse	использование инструментов
+memorylong	долгая память
+memoryshort	короткая память
+contextpack	пакет контекста
+filetree	дерево файлов
+gitignoreai	исключения для агента
+rule	правило
+skilldoc	описание навыка
+handover	передача контекста
+summarychat	сводка чата
+nextstep	следующий шаг
+acceptanceai	приёмка результата
+demoresult	показ результата
+lesson	урок
+practiceai	практика с ИИ
+glossaryai	словарь терминов
+fluency	беглость
+confidence	уверенность
+mistake	ошибка ученика
+correction	исправление
+examplepair	пара примеров
+drill	упражнение
+reviewcard	карточка повторения
+topic	тема
+level	уровень языка
+batchcard	порция карточек
+progressbar	индикатор прогресса
+streak	серия дней
+reminder	напоминание
+voice	голос
+headset	гарнитура
+playback	воспроизведение
+pause	пауза
+repeat	повтор
+nextcard	следующая карточка
+previous	предыдущая
+hidden	скрытый
+blank	пустой экран
+brightness	яркость
+padding	отступ
+fullscreen	полный экран
+zoomtext	масштаб текста
+syncphone	синхронизация с телефоном
+desktopapp	приложение для компьютера
+supabase	база Supabase
+messagebusai	канал сообщений
+study	учёба
+tutor	преподаватель
+learner	ученик
+sessionstudy	учебная сессия
+goalstudy	цель учёбы
+habit	привычка
+practiceverb	практиковать ежедневно
+speak	говорить
+listen	слушать
+read	читать
+write	писать
+translate	переводить
+notice	замечать
+remember	помнить
+forget	забывать
+understand	понимать
+apply	применять
+buildskill	наращивать навык
+shipsmall	выпускать маленькими шагами
+askclear	спрашивать ясно
+showwork	показывать ход работы
+checkresult	проверять результат
+keepsimple	оставлять простым
+writeplain	писать просто
+nameclear	называть ясно
+testfirst	сначала тест
+readerror	читать ошибку
+fixone	исправлять одно
+tryagain	пробовать снова
+askhelp	просить помощь
+sharecontext	делиться контекстом
+saveprogress	сохранять прогресс
+rest	отдыхать
+continue	продолжать
+finish	заканчивать
+start	начинать
+planfirst	сначала план
+thenbuild	потом сборка
+thenreview	потом проверка
+thenship	потом выпуск
